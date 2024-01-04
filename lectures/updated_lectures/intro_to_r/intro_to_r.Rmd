@@ -1,22 +1,27 @@
 ---
-title: ""
-author: 
+title: "Introduction to R and R data structures"
+subtitle:  "EDUC 260A: Introduction to Programming and Data Management"
+author: Ozan Jaquette
 date: 
+classoption: dvipsnames  # for colors
+fontsize: 8pt
 urlcolor: blue
-output: 
-  html_document:
+output:
+  beamer_presentation:
+    keep_tex: true
     toc: true
-    toc_depth: 2
-    toc_float: true # toc_float option to float the table of contents to the left of the main document content. floating table of contents will always be visible even when the document is scrolled
-      #collapsed: false # collapsed (defaults to TRUE) controls whether the TOC appears with only the top-level (e.g., H2) headers. If collapsed initially, the TOC is automatically expanded inline when necessary
-      #smooth_scroll: true # smooth_scroll (defaults to TRUE) controls whether page scrolls are animated when TOC items are navigated to via mouse clicks
-    number_sections: true
-    fig_caption: true # ? this option doesnt seem to be working for figure inserted below outside of r code chunk    
-    highlight: tango # Supported styles include "default", "tango", "pygments", "kate", "monochrome", "espresso", "zenburn", and "haddock" (specify null to prevent syntax    
-    theme: default # theme specifies the Bootstrap theme to use for the page. Valid themes include default, cerulean, journal, flatly, readable, spacelab, united, cosmo, lumen, paper, sandstone, simplex, and yeti.
-    df_print: tibble #options: default, tibble, paged
-
+    slide_level: 3
+    theme: default # AnnArbor # push to header?
+    #colortheme: "dolphin" # push to header?
+    #fonttheme: "structurebold"
+    highlight: default # Supported styles include "default", "tango", "pygments", "kate", "monochrome", "espresso", "zenburn", and "haddock" (specify null to prevent syntax highlighting); push to header
+    df_print: default # push to header?    
+    latex_engine: xelatex #  Available engines are pdflatex [default], xelatex, and lualatex; The main reasons you may want to use xelatex or lualatex are: (1) They support Unicode better; (2) It is easier to make use of system fonts.
+    includes:
+      in_header: ../beamer_header.tex
+      #after_body: table-of-contents.txt 
 ---
+
 
 ```{r, echo=FALSE}
 knitr::opts_chunk$set(collapse = TRUE, comment = "#>", highlight = TRUE)
@@ -25,6 +30,12 @@ knitr::opts_chunk$set(collapse = TRUE, comment = "#>", highlight = TRUE)
   #comment = "#>" makes it so results from a code chunk start with "#>"; default is "##"
 ```
 
+```{r, echo=FALSE, include=FALSE}
+#THIS CODE DOWNLOADS THE MOST RECENT VERSION OF THE FILE beamer_header.tex AND SAVES IT TO THE DIRECTORY ONE LEVEL UP FROM THIS .RMD LECTURE FILE
+download.file(url = 'https://raw.githubusercontent.com/anyone-can-cook/rclass1/master/lectures/beamer_header.tex', 
+              destfile = '../beamer_header.tex',
+              mode = 'wb')
+```
 
 ```{r, echo=FALSE, include=FALSE}
 # Download images

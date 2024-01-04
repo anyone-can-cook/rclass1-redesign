@@ -7,7 +7,7 @@ library(tidyverse)
 
 yaml <- '---
 title: ""
-author: 
+author:   
 date: 
 urlcolor: blue
 output: 
@@ -39,10 +39,14 @@ editor: visual
 ---'
 
 #set directory path to rmd files
-dir_path <- "lectures/updated_lectures"
+#manually added .Rmd lecture files to the lectures folder, however each .Rmd file has an associated folder
+dir_path <- "lectures/lectures"
+
+#get name of rmd files
+lecs <- str_c(list.files(dir_path), ".Rmd")
 
 #list all lectures in the lectures folder
-rmd_files <- list.files(dir_path, pattern="\\.Rmd$", full.names = TRUE)
+rmd_files <- lecs
 
 for (file_path in rmd_files) {
   # Read the .Rmd file
