@@ -25,6 +25,19 @@ output:
 
 ---'
 
+yaml <- '---
+title: ""
+author: ""
+date: ""
+format: html
+toc: true
+toc-depth: 2
+toc-location: left
+number-sections: true
+editor: visual
+
+---'
+
 #set directory path to rmd files
 dir_path <- "lectures/updated_lectures"
 
