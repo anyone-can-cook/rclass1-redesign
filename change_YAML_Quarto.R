@@ -39,7 +39,7 @@ editor: visual
 ---'
 
 #set directory path to rmd files
-#manually added .Rmd lecture files to the lectures folder, however each .Rmd file has an associated folder
+#manually added .Rmd lecture files to the updated_lectures folder, however each .Rmd file has an associated folder
 dir_path <- "lectures/lectures"
 
 #get name of rmd files
