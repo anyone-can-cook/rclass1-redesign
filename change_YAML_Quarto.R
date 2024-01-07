@@ -2,29 +2,12 @@
 
 #load libraries
 library(tidyverse)
+library(markdown)
+library(fs)
 
 #Create YAML header template as string
-
-yaml <- '---
-title: ""
-author:   
-date: 
-urlcolor: blue
-output: 
-  html_document:
-    toc: true
-    toc_depth: 2
-    toc_float: true # toc_float option to float the table of contents to the left of the main document content. floating table of contents will always be visible even when the document is scrolled
-      #collapsed: false # collapsed (defaults to TRUE) controls whether the TOC appears with only the top-level (e.g., H2) headers. If collapsed initially, the TOC is automatically expanded inline when necessary
-      #smooth_scroll: true # smooth_scroll (defaults to TRUE) controls whether page scrolls are animated when TOC items are navigated to via mouse clicks
-    number_sections: true
-    fig_caption: true # ? this option doesnt seem to be working for figure inserted below outside of r code chunk    
-    highlight: tango # Supported styles include "default", "tango", "pygments", "kate", "monochrome", "espresso", "zenburn", and "haddock" (specify null to prevent syntax    
-    theme: default # theme specifies the Bootstrap theme to use for the page. Valid themes include default, cerulean, journal, flatly, readable, spacelab, united, cosmo, lumen, paper, sandstone, simplex, and yeti.
-    df_print: tibble #options: default, tibble, paged
-
----'
-
+#The YAML header from the original lecture files is longer than this one 
+#Because strings have to be same length, I am adding extra spaces as a workaround
 yaml <- '---
 title: ""
 author: ""
@@ -35,38 +18,59 @@ toc-depth: 2
 toc-location: left
 number-sections: true
 editor: visual
+---
 
----'
+
+
+
+
+
+
+
+
+
+
+
+'
 
 #set directory path to rmd files
 #manually added .Rmd lecture files to the updated_lectures folder, however each .Rmd file has an associated folder
-dir_path <- "lectures/lectures"
+dir_path <- "lectures/updated_lectures"
 
 #get name of rmd files
-lecs <- str_c(list.files(dir_path), ".Rmd")
+rmd_files <- list.files(dir_path, pattern = "\\.Rmd$", full.names = TRUE)
 
-#list all lectures in the lectures folder
-rmd_files <- lecs
 
 for (file_path in rmd_files) {
   # Read the .Rmd file
   rmd_content <- readLines(file_path, warn = FALSE)
   
   # Find the position of the existing YAML header
-  yaml_start <- grep("^---", rmd_content)
-  yaml_end <- grep("---$", rmd_content)
+  yaml_dash <- grep("^-{3}", rmd_content)
   
-  if (length(yaml_start) == 2 && length(yaml_end) >= 2) {
+  if (length(yaml_dash) >= 2) {
     # Replace the existing YAML header with the new YAML header
-    rmd_content[yaml_start[1]:yaml_end[2]] <- strsplit(yaml, "\n")[[1]]
+    rmd_content[yaml_dash[1]:yaml_dash[2]] <- strsplit(yaml, "\n")[[1]]
     
     # Save the modified content back to the file
     writeLines(rmd_content, con = file_path)
     cat("Modified:", file_path, "\n")
+    
   } else {
     cat("No YAML header found in", file_path, "\n")
   }
+  
 }
+
+#change R Markdown to Quarto .qmd extension
+
+qmd_files <- str_replace(string = rmd_files,
+                         pattern = "Rmd",
+                         replacement = "qmd")
+
+
+file_move(path = rmd_files,
+          new_path = qmd_files)
 
 
 #link to chatgot prompt that helped me with script:
