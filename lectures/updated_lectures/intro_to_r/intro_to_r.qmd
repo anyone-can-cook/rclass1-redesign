@@ -1,28 +1,17 @@
 ---
-title: ""
+title: "Introduction to R"
 author: ""
 date: ""
-format: html
-toc: true
-toc-depth: 2
-toc-location: left
-number-sections: true
-editor: visual
+format: 
+  html:
+    toc: true
+    toc-depth: 2
+    toc-location: left
+    number-sections: true
+    theme: default
+    highlight-style: tango
+    df_print: tibble
 ---
-
-```{r, echo=FALSE}
-knitr::opts_chunk$set(collapse = TRUE, comment = "#>", highlight = TRUE)
-#knitr::opts_chunk$set(collapse = TRUE, highlight = TRUE)
-#knitr::opts_chunk$set(comment = "#>", collapse = TRUE)
-  #comment = "#>" makes it so results from a code chunk start with "#>"; default is "##"
-```
-
-```{r, echo=FALSE, include=FALSE}
-#THIS CODE DOWNLOADS THE MOST RECENT VERSION OF THE FILE beamer_header.tex AND SAVES IT TO THE DIRECTORY ONE LEVEL UP FROM THIS .RMD LECTURE FILE
-download.file(url = 'https://raw.githubusercontent.com/anyone-can-cook/rclass1/master/lectures/beamer_header.tex', 
-              destfile = '../beamer_header.tex',
-              mode = 'wb')
-```
 
 ```{r, echo=FALSE, include=FALSE}
 # Download images
@@ -39,19 +28,13 @@ for (i in imgs) {
 
 # What is R? Why R?
 
-### What is R?
+## What is R?
 
 For detailed info visit [R-project.org](https://www.r-project.org/about.html)
 
-\medskip
-
 The Inter-University Consortium for Political and Social Research [(ICPSR)](https://www.icpsr.umich.edu/icpsrweb/content/shared/ICPSR/faqs/what-is-r.html) says:
 
-\medskip
-
 > R is "an alternative to traditional statistical packages such as SPSS, SAS, and Stata such that it is an extensible, open-source language and computing environment for Windows, Macintosh, UNIX, and Linux platforms. Such software allows for the user to freely distribute, study, change, and improve the software under the [Free Software Foundation's GNU General Public License](https://www.gnu.org/home.en.html)."
-
-\medskip
 
 I don't find this definition particularly helpful. I think of *R* as:
 
@@ -61,11 +44,9 @@ I don't find this definition particularly helpful. I think of *R* as:
     -   e.g., the `max()` function takes as input a collection of numbers (e.g., 3,5,6) and returns as output the number with the maximum value
     -   e.g., the `lm()` function takes in as inputs a dataset and a statistical model you specify within the function, and returns as output the results of the regression model
 
-\medskip
+## Base R vs. R packages
 
-### Base R vs. R packages
-
-Base R
+__Base R__
 
 -   When you install R, you automatically install the ["Base R"](https://stat.ethz.ch/R-manual/R-devel/library/base/html/00Index.html) set of functions
 -   Example of a few of the functions in in Base R:
@@ -73,9 +54,8 @@ Base R
     -   `print()` function
     -   `setwd()` function
 
-\medskip
 
-R packages
+__R packages__
 
 -   an R "package" (or "library") is a collection of (related) functions developed by the R community
 -   Examples of R packages:
@@ -859,7 +839,7 @@ Takeaways, continued
 
 ### What are functions
 
-\medskip *\*Functions\*\* are pre-written bits of code that accomplish some task.
+\medskip \*\*Functions\*\* are pre-written bits of code that accomplish some task.
 
 \medskip Functions generally follow three sequential steps:
 
@@ -977,7 +957,7 @@ To see help file on a function, type `?function_name` without parentheses
 -   **Examples**. Examples of function in action
 -   Bottom of help file identifies the package the function comes from
 
-\medskip *\*Practice!\*\*
+\medskip \*\*Practice!\*\*
 
 -   when you encounter a new function, spend two minutes reading the help file
 -   over time, help files will feel less cryptic and will start to feel helpful
@@ -1069,7 +1049,7 @@ getwd()
 ```
 
 | **Key** | **Description**                                                    |
-|-------------------------------|-----------------------------------------|
+|------------------|------------------------------------------------------|
 | \~      | tilde is a shortcut for user's home directory (mine is my name pm) |
 | ../     | moves up a level                                                   |
 | ../../  | moves up two level                                                 |
