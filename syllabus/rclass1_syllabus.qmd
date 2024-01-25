@@ -1,21 +1,22 @@
 ---
-title: 'EDUC XXX: Course title here'
-output:
-  html_document:
-    toc: yes
-    toc_depth: 3
-    toc_float: yes
-    number_sections: yes
-    fig_caption: yes
-    highlight: tango
-    theme: default
-    df_print: tibble
-    keep_md: yes
+title: 'XXX: Course title here'
+format: html
+toc: true
+toc-depth: 3
+toc_float: yes
+toccolor: blue
+toc-location: left
+number-sections: true
+fig_caption: yes
+highlight-style: tango
+theme: default
+df_print: tibble
+keep_md: yes
   #pdf_document:
   #  toc: yes
   #  toc_depth: '3'
 urlcolor: blue
-subtitle: Fall 2023
+subtitle: Fall 2024
 ---
 
 # Course information
@@ -51,11 +52,11 @@ The course will be taught using R, a free, open-source programming language. R h
 
 The data management and programming skills you learn in this course will transfer to other object-oriented programming languages (e.g., Python).
 
-The course primarily use data and examples from education research. However, the course is designed to teach skills that are important for social science research more broadly and also for computational research within the humanities. __We welcome students from across the university__.
+The course primarily use data and examples from social sciences research and designed to teach skills that are important for social science research more broadly and also for computational research within the humanities. __We welcome students from across the university__.
 
-Recommended prerequisites (not absolutely required)
+Recommended prerequisites (encourage, but not required)
 
-- One prior introductory statistics course (e.g., as an undergraduate)
+- One prior introductory statistics course (e.g., undergraduate-level stats course)
 - Proficiency in general computer skills is helpful, e.g., downloading files from internet, renaming files, saving them to a folder of your choosing, finding this folder on your computer, etc.
 
 <!-- 
@@ -78,42 +79,29 @@ Recommended prerequisites (not absolutely required)
 - Office: Moore Hall, Room 3038
 - Email: [ozanj@ucla.edu](ozanj@ucla.edu)
 - Office hours:
-  - Zoom office hours: Wednesdays 3-4PM, zoom [link](https://ucla.zoom.us/j/2545750562)
+  - Zoom office hours: DAY TIME, zoom link
       - Note: different than class zoom link
   - And by appointment (afternoons)
 
 ## Teaching assistants
 
-**Belle Lee**  
+**Name**  
 
-- Pronouns: she/her
-- Email: [bcl@g.ucla.edu](bcl@g.ucla.edu)
+- Pronouns: 
+- Email: 
 - Office hours:
-  - Zoom office hours: Mondays 10-11am, Zoom [link](https://ucla.zoom.us/j/99687673673)
+  - Zoom office hours: 
   - And by appointment
 
-**Trevor Stockinger**  
+**Name**  
 
-- Pronouns: he/his
-- Email: [tstockinger@g.ucla.edu](tstockinger@g.ucla.edu)
+- Pronouns:
+- Email: 
 - Office hours:
-  - Zoom office hours: Weds 5-6pm, zoom [link](https://ucla.zoom.us/j/99687673673)
+  - Zoom office hours: 
   - And by appointment
   
-**Diana Torres**  
 
-- Pronouns: she/her
-- Email: [dtorr@g.ucla.edu](dtorr@g.ucla.edu)
-- Office hours:
-  - Zoom office hours: Wednesday 11am-12pm, zoom [link](https://ucla.zoom.us/j/99687673673)
-
-**Jeffrey Yo**  
-
-- Pronouns: he/him/his
-- Email: [yjeffrey7@g.ucla.edu](yjeffrey7@g.ucla.edu)
-- Office hours:
-  - Zoom office hours: Tuesday 3pm-4pm, zoom [link](https://ucla.zoom.us/j/99687673673)
-  
 # Course learning goals
 
 1. Understand fundamental concepts of object-oriented programming
@@ -353,9 +341,10 @@ kable(grade,col.names = c("Letter Grade", "Percentage"), escape = T) %>%
 
 Below is an overview of course topics. Topics and schedule are subject to change at the discretion of the instructor. Topics may be cut if we need to devote more time to learning the most central topics. It is unlikely that additional topics will be added. The official course schedule, including weekly required reading and optional reading, will be posted on the [course website](https://anyone-can-cook.github.io/rclass1).
 
-1. Introduction to R
+1. __Week 1__: Introduction to R
     - Introduction to R and R data structures
     - Execute R commands, understand R objects and data structures, use R functions
+    
 1. Investigating data patterns in Base R [two weeks]
     - Data investigation and manipulation using Base R
     - Investigate R object type and structure, isolate elements using Base R subset operators and the `subset()` function, create new variables in Base R
