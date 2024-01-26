@@ -1,6 +1,6 @@
 ---
 title: 'XXX: Course title here'
-format: pdf
+format: docx
 toc: true
 toc-depth: 3
 toc-location: left
@@ -130,7 +130,7 @@ Recommended prerequisites (encourage, **but not required**)
     - Summarize and collapse observations by group
     - Reshape and "tidy" untidy data
 1. Learn guidelines and practical strategies for ensuring data quality when cleaning data and creating analysis variables
-1. Become proficient at using GitHub issues -- the industry standard platform used by programmers to collaborate on projects -- to ask questions about course material and to collaborate with your classmates
+1. Become proficient at using GitHub issues-- the industry standard platform used by programmers to collaborate on projects-- to ask questions about course material and to collaborate with your classmates
 
 
 ## Course structure
