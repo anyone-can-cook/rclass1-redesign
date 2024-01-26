@@ -22,7 +22,7 @@ library(knitr)
 ```
 
 
-```{r echo=FALSE, out.width="25%", fig.align='right'}
+```{r echo=FALSE, out.width="25%", fig.align='right', eval=FALSE}
 knitr::include_graphics("../web/images/anyone_can_cook.png")
 ```
 
@@ -36,25 +36,13 @@ ADD WEEKLY BREAK DOWN
 * ASSIGNMENT DUE
 * READINGS ETC.-->
 
-```{r echo=FALSE, message=FALSE, eval=FALSE}
-library(kableExtra)
-library(tidyverse)
-
-t <- c("Weekly meetings (online)","Class website (public)", "Questions, discussion, announcements (private)", "Class Zoom link")
-l <- c("Fridays 9-11AM Pacific","https://anyone-can-cook.github.io/rclass1/", "https://github.com/anyone-can-cook/rclass1_student_issues_f23",  "https://ucla.zoom.us/j/99687673673")
-
-info <- tibble(t, l)
-
-knitr::kable(info,col.names = c("Resource","Link"), escape = T) %>%
-  kable_styling(bootstrap_options = c("striped", "hover", "responsive"), full_width = F, position = "left")
-```
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 library(flextable)
 library(tidyverse)
 
 Resource <- c("Weekly meetings (online)","Class website (public)", "Questions, discussion, announcements (private)", "Class Zoom link")
-Link <- c("Fridays 9-11AM Pacific","https://anyone-can-cook.github.io/rclass1/", "https://github.com/anyone-can-cook/rclass1_student_issues_f23",  "https://ucla.zoom.us/j/99687673673")
+Link <- c("Day(s), Time, Timezone","Link to website here", "Link to class repository for student issues here",  "Zoom link here")
 
 info <- tibble(Resource, Link)
 
@@ -80,9 +68,9 @@ The course will be taught using R, a free, open-source programming language. R h
 
 The data management and programming skills you learn in this course will transfer to other object-oriented programming languages (e.g., Python).
 
-The course primarily use data and examples from social sciences research and designed to teach skills that are important for social science research more broadly and also for computational research within the humanities. __We welcome students from across the university__.
+The course primarily use data and examples from social science research and designed to teach skills that are important for social science research more broadly and also for computational research within the humanities. __We welcome students from across the university__.
 
-Recommended prerequisites (encourage, but not required)
+Recommended prerequisites (encourage, **but not required**)
 
 - One prior introductory statistics course (e.g., undergraduate-level stats course)
 - Proficiency in general computer skills is helpful, e.g., downloading files from internet, renaming files, saving them to a folder of your choosing, finding this folder on your computer, etc
@@ -93,13 +81,12 @@ Recommended prerequisites (encourage, but not required)
 
 **Instructor Name**  
 
-- Pronouns: he/him/his
-- Office: Moore Hall, Room 3038
+- Pronouns: 
+- Office: 
 - Email: 
 - Office hours:
-  - Zoom office hours: DAY TIME, zoom link
-      - Note: different than class zoom link
-  - And by appointment (afternoons)
+  - Zoom office hours: DAY, TIME, zoom link
+  - And by appointment 
 
 ## Teaching assistants
 
@@ -133,6 +120,9 @@ Recommended prerequisites (encourage, but not required)
 1. Create variables
     - Create variables that require calculations across columns
     - Create variables that require processing across rows
+1. Visualize data
+    - Create plots using the ggplot2 library
+    - Customize plots through color palettes, labels, line shapes, etc.
 1. Combine multiple datasets
     - Join (merge) datasets
     - Append (stack) datasets
@@ -140,18 +130,7 @@ Recommended prerequisites (encourage, but not required)
     - Summarize and collapse observations by group
     - Reshape and "tidy" untidy data
 1. Learn guidelines and practical strategies for ensuring data quality when cleaning data and creating analysis variables
-1. Become proficient at using GitHub -- the industry standard platform used by programmers to collaborate on projects -- to ask questions about course material and to collaborate with your classmates
-
-
-Another broad goal of the course is for students to begin developing practical proficiency in "computational thinking." The [California Computer Science Standards](https://www.cde.ca.gov/be/st/ss/documents/compsciintroduction.docx) define computational thinking as "the human ability to formulate problems so that their solutions can be represented as computational steps or algorithms to be executed by a computer." This course will encourage students to work on the following elements of computational thinking:
-
-- Before you start writing code to accomplish some task, write out the individual steps that must be completed to accomplish the task
-- When a particular piece of code is not working, develop a problem-solving approach where you change one element of the code at a time in order to systematically isolate and fix the problem
-- For when you conceptually understand what you need to do but you don't know the code to accomplish the task, develop a set of "go to" practices to help you figure it out, for example:
-    - Ask Google
-    - Post a question on the course GitHub "issues" page
-    - Become proficient at searching the course lecture slides and course textbook for answers
-    - When you know the right function, but not how to use it, become proficient at reading function documentation
+1. Become proficient at using GitHub issues -- the industry standard platform used by programmers to collaborate on projects -- to ask questions about course material and to collaborate with your classmates
 
 
 ## Course structure
@@ -160,10 +139,10 @@ __Overview__. Course structure consists of weekly __asynchronous course material
 
 __Asynchronous course materials__.  Asynchronous course materials will focus on the topic for that week (e.g., processing across rows). Course materials will consist of three types of resources: 
 
-1. Detailed lecture slides (PDF or HTML) with sample code
+1. Detailed lecture slides (HTML) with sample code
 1. Pre-recorded video lecture of the instructor working through these slides
-1. The ".Rmd" file that created the PDF/HTML lecture slides.
-    - The .Rmd file will contain all "code chunks" and links to all data utilized in the lecture. Thus, students will  "learn by doing" in that they will run _R_ code on their own computer while they work through lecture materials on their own.
+1. The ".qmd" file that created the HTML lecture slides.
+    - The .qmd file will contain all "code chunks" and links to all data utilized in the lecture. Thus, students will  "learn by doing" in that they will run _R_ code on their own computer while they work through lecture materials on their own.
 
 __Synchronous meetings__. Synchronous class meetings will be on Zoom. Attendance during the entire period is required, but students may ask instructor/TAs for exceptions due to scheduling conflicts. 
 
@@ -176,16 +155,16 @@ For students who decide to work in Zoom breakout rooms, you will use this time t
 
 Course grade will be based on the following components:
 
--	Weekly problem sets (90 percent of total grade)
--	Participation (10 percent of total grade)
+-	Weekly problem sets (90% of total grade)
+-	Participation (10% of total grade)
 
-## Problem sets (90 percent of total grade)
+## Problem sets (90% of total grade)
 
-Students will complete 10 problem sets (the last one due during finals week). Problem sets are due by 9am each Friday, right before we start class. In general, each problem set will give you practice using the skills and concepts introduced in course materials for thate week.  For example, after the lecture on joining (merging) datasets, the problem set for that week will require that students complete several different tasks involving merging data.  Additionally, the weekly problem sets will require you to use data manipulation skills you learned in previous weeks. Link to problem set expectations and helpful resources [HERE](https://github.com/anyone-can-cook/rclass1/raw/master/lectures/problemset_resources/problemset_resources.pdf).
+Students will complete 10 problem sets (the last one due during finals week). Problem sets are due by [TIME] on [DAY], right before we start class. In general, each problem set will give you practice using the skills and concepts introduced in course materials for that week.  For example, after the lecture on joining (merging) datasets, the problem set for that week will require that students complete several different tasks involving merging data.  Additionally, the weekly problem sets will require you to use data manipulation skills you learned in previous weeks. Link to problem set expectations and helpful resources [HERE](https://github.com/anyone-can-cook/rclass1/raw/master/lectures/problemset_resources/problemset_resources.pdf).
 
 **Problem set groups**
 
-- With the exception of the first problem set, students will complete problem sets in groups of 3. We highly encourage students who are abroad to form their own group to set a time to work on the problem sets together.  
+- Except for the first problem set, students will complete problem sets in groups of 3. We highly encourage students who are abroad to form their own group to set aside time to work on the problem sets together.
 - Students have the option of not being part of a problem set group.
 - We will form groups during the second synchronous class and you will keep the same group throughout the quarter. However, each student will submit their own assignment. You are encouraged to work together and get help from your group. However, it is important that you understand how to do the problem set on your own, rather than copying the solution developed by group members.
 - Since you will be working together, it is understandable that answers for many questions will be the same as your group members. However, if I find compelling evidence that a student merely copied solutions from a classmate, I will consider this a violation of academic integrity and that student will receive a zero for the homework assignment.
@@ -211,8 +190,8 @@ because we do not have resources to grade weekly due to the very large number of
 - Students who are not part of a problem set group will have their problem sets graded individually. A random subset of 4 or 5 problem sets will be graded. For students who work individually, the lowest problem set grade will not be dropped from calculation of final grade.
 - Weekly required participation on github will be part of your problem set grade
 - Policy on late assignments
-  - Problem sets submitted after 11:59PM on Friday will lose one percentage point (e.g., max grade becomes 99% instead of 100%)
-  - Starting at 12AM Monday morning, problem sets will lose an additional percentage point for each week-day it is not submitted
+  - Problem sets submitted after 11:59PM on [CLASS DATE] will lose one percentage point (e.g., max grade becomes 99% instead of 100%)
+  - Starting at 12AM [THREE DAYS AFTER CLASS SCHEDULED TIME] morning, problem sets will lose an additional percentage point for each week-day it is not submitted
     - e.g., for a problem set submitted at 10AM on Monday, the max grade becomes 98%
     - e.g., for a problem set submitted at 10AM on Tuesday, the max grade becomes 97%
   - For late submissions due to an unexpected emergency, you will not lose points. Please contact the instructor and/or TAs and we will work it out together.  
@@ -228,48 +207,78 @@ In addition, students can work towards an 100% participation grade for the quart
 
 ## Grading scale
 
-```{r echo=FALSE, message=FALSE, eval=FALSE}
-library(kableExtra)
-library(tidyverse)
-
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 lg <- c("A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D", "F")
 nv <- c("93<=100%", "90<93%", "87<90%", "83<87%", "80<83%", "77<80%", "73<77%", "70<73%", "60<70%", "0<60%")
 
 grade <- tibble(lg, nv)
 
-kable(grade,col.names = c("Letter Grade", "Percentage"), escape = T) %>%
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = F, position = "left")
+gd <- flextable(grade)
+
+gd <- set_header_labels(gd,
+  values = list(
+    lg = "Letter Grade",
+    nv = "Percentage"
+  ),
+  width = 3
+)
+
+gd
+
 ```
 
-# Course topics
+# Course Schedule
 
-Below is an overview of course topics. Topics and schedule are subject to change at the discretion of the instructor. Topics may be cut if we need to devote more time to learning the most central topics. It is unlikely that additional topics will be added. The official course schedule, including weekly required reading and optional reading, will be posted on the [course website](https://anyone-can-cook.github.io/rclass1).
+Below is an overview of course topics. Topics and schedule are subject to change at the discretion of the instructor. Topics may be cut if we need to devote more time to learning the most central topics. It is unlikely that additional topics will be added. The official course schedule, including weekly required reading and optional reading, will be posted on the [course website](LINK).
 
-1. __Week 1__: Introduction to R
-    - Introduction to R and R data structures
-    - Execute R commands, understand R objects and data structures, use R functions
+**Week 1: Introduction to R**  
+
+- Introduction to R and R data structures
+- Execute R commands, understand R objects and data structures, use R functions
+- Introduce atomic vectors, lists, and functions for investigating objects (e.g., length, type, str)
     
-1. Investigating data patterns in Base R [two weeks]
-    - Data investigation and manipulation using Base R
-    - Investigate R object type and structure, isolate elements using Base R subset operators and the `subset()` function, create new variables in Base R
-1. Enter the tidyverse: pipes, dplyr, and variable creation
-    - Data investigation and manipulation using tidyverse
-    - Select, filter, and sort data using `tidyverse` functions, chain functions together using pipes (`%>%`), create new variables conditionally using `if_else()`, `recode()`, and `case_when()`
-1. Enter the tidyverse: processing across rows
-    - Calculate aggregate statistics from multiple rows of data
-    - Group rows of data using `group_by()`, create aggregate statistics using `summarize()`
-1. Strings and dates
-    - Work with strings and date/datetime objects
-    - Understand string basics, manipulate strings using `stringr` functions, work with dates and times using the `lubridate` package
-1. Attributes and class
-    - Understand the class and attributes of R objects
-    - Investigate R object class and attributes, work with factor variables, label variables and values of a dataframe using the `labelled` package
-1. Data quality
-    - Tools and guidelines for exploratory data analysis (EDA)
-    - Learn common approaches for exploring and analyzing data, understand skip patterns in survey data
-1. Tidy data
-    - Understand tidy data structure and reshaping data
-    - Define tidy data and how to reshape untidy data into tidy form, reshape data from wide to long using `pivot_longer()`, reshape data from long to wide using `pivot_wider()`, handle missing values during reshaping
-1. Joining data
-    - Combine data from multiple datasets using joins
-    - Merge datasets using mutating joins, check quality of merge using filtering joins, append datasets by stacking rows
+**Week 2: Investigating data patterns in Base R** 
+
+- Data investigation and manipulation using Base R
+- Investigate R object type and structure, isolate elements using Base R subset operators and the `subset()` function, create new variables in Base R
+
+**Week 3: Enter the Tidyverse Part I: Pipes & Dplyr**
+
+- Data investigation and manipulation using tidyverse
+- Select, filter, and sort data using `tidyverse` functions, chain functions together using pipes (`%>%`)
+    
+**Week 4: Enter the Tidyverse Part II: variable creation**
+
+- Create new variables using `mutate()`
+- Create new variables conditionally using `if_else()`, `recode()`, and `case_when()`
+
+**Week 5: Processing across rows**
+
+- Calculate aggregate statistics from multiple rows of data
+- Group rows of data using `group_by()`, create aggregate statistics using `summarize()`
+
+**Week 6: Attributes and class**
+
+- Understand the class and attributes of R objects
+- Investigate R object class and attributes, work with factor variables, label variables and values of a dataframe using the `labelled` package
+
+**Week 7: Strings and dates**
+
+- Work with strings and date/datetime objects
+- Understand string basics, manipulate strings using `stringr` functions, work with dates and times using the `lubridate` package
+    
+**Week 8: Create plots w/ ggplot**
+
+- Understand the layered grammar of graphics for visualizing data with ggplot2
+- Make plots with the `ggplot` function (e.g., bar plots, scatter plots)
+- Customize plots through color palettes, labels, legends, etc.
+
+**Week 9: Tidy data**
+
+- Understand tidy data structure and reshaping data
+- Define tidy data and how to reshape untidy data into tidy form, reshape data from wide to long using `pivot_longer()`, reshape data from long to wide using `pivot_wider()`, handle missing values during reshaping
+
+**Week 10: Joining data**
+
+- Combine data from multiple datasets using joins
+- Merge datasets using mutating joins, check quality of merge using filtering joins, append datasets by stacking rows
