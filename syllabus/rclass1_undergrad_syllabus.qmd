@@ -1,10 +1,8 @@
 ---
 title: 'XXX: Course title here'
-format: html
+format: pdf
 toc: true
 toc-depth: 3
-toc_float: yes
-toccolor: blue
 toc-location: left
 number-sections: true
 fig_caption: yes
@@ -19,6 +17,17 @@ urlcolor: blue
 subtitle: Fall 2024
 ---
 
+```{r, warning=FALSE, echo=FALSE}
+library(knitr)
+```
+
+
+```{r echo=FALSE, out.width="25%", fig.align='right'}
+knitr::include_graphics("../web/images/anyone_can_cook.png")
+```
+
+\newpage
+
 # Course information
 <!--
 ADD WEEKLY BREAK DOWN
@@ -27,7 +36,7 @@ ADD WEEKLY BREAK DOWN
 * ASSIGNMENT DUE
 * READINGS ETC.-->
 
-```{r echo=FALSE, message=FALSE}
+```{r echo=FALSE, message=FALSE, eval=FALSE}
 library(kableExtra)
 library(tidyverse)
 
@@ -36,9 +45,28 @@ l <- c("Fridays 9-11AM Pacific","https://anyone-can-cook.github.io/rclass1/", "h
 
 info <- tibble(t, l)
 
-kable(info,col.names = c("Resource","Link"), escape = T) %>%
+knitr::kable(info,col.names = c("Resource","Link"), escape = T) %>%
   kable_styling(bootstrap_options = c("striped", "hover", "responsive"), full_width = F, position = "left")
 ```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(flextable)
+library(tidyverse)
+
+Resource <- c("Weekly meetings (online)","Class website (public)", "Questions, discussion, announcements (private)", "Class Zoom link")
+Link <- c("Fridays 9-11AM Pacific","https://anyone-can-cook.github.io/rclass1/", "https://github.com/anyone-can-cook/rclass1_student_issues_f23",  "https://ucla.zoom.us/j/99687673673")
+
+info <- tibble(Resource, Link)
+
+ft <- flextable(info)
+
+ft <- width(ft, width = 3)
+
+ft
+
+```
+
+
 
 # Course description
 
@@ -57,27 +85,17 @@ The course primarily use data and examples from social sciences research and des
 Recommended prerequisites (encourage, but not required)
 
 - One prior introductory statistics course (e.g., undergraduate-level stats course)
-- Proficiency in general computer skills is helpful, e.g., downloading files from internet, renaming files, saving them to a folder of your choosing, finding this folder on your computer, etc.
-
-<!-- 
-## Prerequisite Requirements 
-
-- Students must have taken at least a one-semester introductory statistics course
-- Students should have some very basic experience using statistical programming software (e.g., SPSS, Stata, R, SAS) 
-- [General computer skills] Students should be able to download files from the internet, rename these files, save them to a folder of your choosing, and open this folder
-    - During this course we will often be downloading datasets, opening .Rmd files and .R scripts, changing directories to the folder where we stored the data, and then opening the dataset we just downloaded
-
--->
+- Proficiency in general computer skills is helpful, e.g., downloading files from internet, renaming files, saving them to a folder of your choosing, finding this folder on your computer, etc
 
 # Instructor and teaching assistants
 
 ## Instructor
 
-**Ozan Jaquette**  
+**Instructor Name**  
 
 - Pronouns: he/him/his
 - Office: Moore Hall, Room 3038
-- Email: [ozanj@ucla.edu](ozanj@ucla.edu)
+- Email: 
 - Office hours:
   - Zoom office hours: DAY TIME, zoom link
       - Note: different than class zoom link
@@ -210,7 +228,7 @@ In addition, students can work towards an 100% participation grade for the quart
 
 ## Grading scale
 
-```{r echo=FALSE, message=FALSE}
+```{r echo=FALSE, message=FALSE, eval=FALSE}
 library(kableExtra)
 library(tidyverse)
 
