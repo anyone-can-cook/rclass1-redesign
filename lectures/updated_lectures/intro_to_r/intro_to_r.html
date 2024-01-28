@@ -84,6 +84,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#what-is-r" id="toc-what-is-r" class="nav-link" data-scroll-target="#what-is-r"><span class="header-section-number">1.1</span> What is R?</a></li>
   <li><a href="#base-r-vs.-r-packages" id="toc-base-r-vs.-r-packages" class="nav-link" data-scroll-target="#base-r-vs.-r-packages"><span class="header-section-number">1.2</span> Base R vs.&nbsp;R packages</a></li>
+  <li><a href="#rstudio" id="toc-rstudio" class="nav-link" data-scroll-target="#rstudio"><span class="header-section-number">1.3</span> RStudio</a></li>
+  <li><a href="#r-markdown" id="toc-r-markdown" class="nav-link" data-scroll-target="#r-markdown"><span class="header-section-number">1.4</span> R Markdown</a></li>
+  <li><a href="#why-learn-r-r-can-do-a-lot-of-stuff" id="toc-why-learn-r-r-can-do-a-lot-of-stuff" class="nav-link" data-scroll-target="#why-learn-r-r-can-do-a-lot-of-stuff"><span class="header-section-number">1.5</span> Why learn R? R can do a lot of stuff!</a></li>
   </ul></li>
   <li><a href="#executing-r-commands" id="toc-executing-r-commands" class="nav-link" data-scroll-target="#executing-r-commands"><span class="header-section-number">2</span> Executing R commands</a></li>
   <li><a href="#r-objects-and-data-structures" id="toc-r-objects-and-data-structures" class="nav-link" data-scroll-target="#r-objects-and-data-structures"><span class="header-section-number">3</span> R objects and data structures</a>
@@ -135,7 +138,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>I don’t find this definition particularly helpful. I think of <em>R</em> as:</p>
 <ul>
 <li>An “open source” programming language and software that provide collections of interrelated “functions”</li>
-<li>“open source” means that <em>R</em> is free and created by the user community. The user community can modify basic things about <em>R</em> and add new capabilities to what R can do the user community can modify R and</li>
+<li>“open source” means that <em>R</em> is free and created by the user community. The user community can modify basic things about <em>R</em> and add new capabilities to what R can do</li>
 <li>a “function” is usually something that takes in some “input,” processes this input in some way, and creates some “output”
 <ul>
 <li>e.g., the <code>max()</code> function takes as input a collection of numbers (e.g., 3,5,6) and returns as output the number with the maximum value</li>
@@ -145,7 +148,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="base-r-vs.-r-packages" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="base-r-vs.-r-packages"><span class="header-section-number">1.2</span> Base R vs.&nbsp;R packages</h2>
-<p>Base R</p>
+<p><strong>Base R</strong></p>
 <ul>
 <li>When you install R, you automatically install the <a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/00Index.html">“Base R”</a> set of functions</li>
 <li>Example of a few of the functions in in Base R:
@@ -155,7 +158,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>setwd()</code> function</li>
 </ul></li>
 </ul>
-<p>R packages</p>
+<p><strong>R packages</strong></p>
 <ul>
 <li>an R “package” (or “library”) is a collection of (related) functions developed by the R community</li>
 <li>Examples of R packages:
@@ -164,13 +167,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>igraph</code> package for network analyses</li>
 <li><code>leaflet</code> package for mapping</li>
 <li><code>rvest</code> package for webscraping</li>
-<li><code>rtweet</code> package for streaming and downloading data from Twitter</li>
 </ul></li>
 <li><strong>All</strong> R packages are free!</li>
 <li>Often a package we install may be a collection of packages (e.g., <code>tidyverse</code>) and/or may depend on other packages, which will be automatically installed for you</li>
 </ul>
-<section id="installing-and-loading-r-packages" class="level3" data-number="1.2.1">
-<h3 data-number="1.2.1" class="anchored" data-anchor-id="installing-and-loading-r-packages"><span class="header-section-number">1.2.1</span> Installing and Loading R packages</h3>
+<p><strong>Installing and Loading R packages</strong></p>
 <p>You only need to install a package once. To install an R package use <code>install.package()</code> function.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("tidyverse")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -191,13 +192,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="rstudio" class="level3" data-number="1.2.2">
-<h3 data-number="1.2.2" class="anchored" data-anchor-id="rstudio"><span class="header-section-number">1.2.2</span> RStudio</h3>
+<section id="rstudio" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="rstudio"><span class="header-section-number">1.3</span> RStudio</h2>
 <p>“<a href="https://www.rstudio.com/products/rstudio/features/">RStudio</a> is an integrated development environment (IDE) for R. It includes a console, syntax-highlighting editor that supports direct code execution, as well as tools for plotting, history, debugging and workspace management.”</p>
 <p><img src="pane_layout.png" class="img-fluid" style="width:60.0%"></p>
 </section>
-<section id="r-markdown" class="level3" data-number="1.2.3">
-<h3 data-number="1.2.3" class="anchored" data-anchor-id="r-markdown"><span class="header-section-number">1.2.3</span> R Markdown</h3>
+<section id="r-markdown" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="r-markdown"><span class="header-section-number">1.4</span> R Markdown</h2>
 <p><a href="https://rmarkdown.rstudio.com/">R Markdown</a></p>
 <ul>
 <li>R Markdown is a file format – R Markdown files have the extension <strong>.Rmd</strong> – that can create many kinds of static and dynamic documents</li>
@@ -225,8 +226,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Use R Markdown to create: papers for class; presentations; journal manuscripts; your dissertation; etc.</li>
 </ul>
 </section>
-<section id="why-learn-r-r-can-do-a-lot-of-stuff" class="level3" data-number="1.2.4">
-<h3 data-number="1.2.4" class="anchored" data-anchor-id="why-learn-r-r-can-do-a-lot-of-stuff"><span class="header-section-number">1.2.4</span> Why learn R? R can do a lot of stuff!</h3>
+<section id="why-learn-r-r-can-do-a-lot-of-stuff" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="why-learn-r-r-can-do-a-lot-of-stuff"><span class="header-section-number">1.5</span> Why learn R? R can do a lot of stuff!</h2>
 <p>How we have used R+RStudio+RMarkdown in our research team</p>
 <ul>
 <li>Stuff traditional statistical software (e.g., SPSS, Stata) can do
@@ -292,7 +293,6 @@ This class is for anyone who wants to work with data, that is people who want to
 - journalists who create interactive data visualizations
 
 -->
-</section>
 </section>
 </section>
 <section id="executing-r-commands" class="level1" data-number="2">
@@ -1603,8 +1603,8 @@ Hornet Sportabout 18.7   8 175</code></pre>
 <pre><code>        File path shortcuts (Mac)</code></pre>
 <table class="table">
 <colgroup>
-<col style="width: 23%">
-<col style="width: 76%">
+<col style="width: 25%">
+<col style="width: 75%">
 </colgroup>
 <thead>
 <tr class="header">
