@@ -28,8 +28,6 @@ for (i in imgs) {
 
 # What is R? Why R?
 
-## What is R?
-
 For detailed info visit [R-project.org](https://www.r-project.org/about.html)
 
 The Inter-University Consortium for Political and Social Research [(ICPSR)](https://www.icpsr.umich.edu/icpsrweb/content/shared/ICPSR/faqs/what-is-r.html) says:
@@ -103,12 +101,19 @@ How we will be using R Markdown in this class
 -   All lectures created using R Markdown
 -   You will use R Markdown to complete homework assignments
 
-\medskip
 
 After this class you might:
 
 -   never use Microsoft Word again!
 -   Use R Markdown to create: papers for class; presentations; journal manuscripts; your dissertation; etc.
+
+## Quarto (.qmd)
+
+[Quarto](https://quarto.org/)
+
+- Quarto is..... 
+- TEXT HERE ABOUT QUARTO
+- HOW & WHY WE WILL BE USING QUARTO FOR THIS CLASS  
 
 ## Why learn R? R can do a lot of stuff!
 
@@ -173,7 +178,7 @@ This class is for anyone who wants to work with data, that is people who want to
 
 # Executing R commands
 
-### R as a calculator
+## R as a calculator
 
 ```{r}
 5
@@ -181,39 +186,24 @@ This class is for anyone who wants to work with data, that is people who want to
 10*3
 ```
 
-### Executing commands in R
-
-```{r}
-5
-5+2
-10*3
-```
+## Shortcuts for Executing Commands in R
 
 Three ways to execute commands in R
 
 1.  Type/copy commands directly into the "console"
 2.  \`code chunks' in RMarkdown (.Rmd & .QMD files)
-    -   Can execute one command at a time, one chunk at a time, or "knit" the entire document
+    -   Can execute one command at a time, one chunk at a time, or "knit" the entire    
+    -   **Cmd/Ctrl + Enter**: execute highlighted line(s) within chunk
+    -   **Cmd/Ctrl + Shift + k**: "knit" entire document
 3.  R scripts (.R files)
     -   This is just a text file full of R commands
-    -   Can execute one command at a time, several commands at a time, or the entire script
-
-### Shortcuts you should learn for executing commands
+    -   **Cmd/Ctrl + Enter**: execute highlighted line(s)
+    -   **Cmd/Ctrl + Shift + Enter** (without highlighting any lines): run entire script
 
 ```{r}
 5+2
 10*3
 ```
-
-Three ways to execute commands in R
-
-1.  Type/copy commands directly into the "console"
-2.  \`code chunks' in RMarkdown (.Rmd files)
-    -   **Cmd/Ctrl + Enter**: execute highlighted line(s) within chunk
-    -   **Cmd/Ctrl + Shift + k**: "knit" entire document
-3.  R scripts (.R files)
-    -   **Cmd/Ctrl + Enter**: execute highlighted line(s)
-    -   **Cmd/Ctrl + Shift + Enter** (without highlighting any lines): run entire script
 
 # R objects and data structures
 
@@ -224,7 +214,7 @@ Three ways to execute commands in R
     -   I don't expect you to understand or retain all this information perfectly
     -   So just focus on understanding as much as you can and ask any questions that come to mind
 
-__Assignment__
+## Assignment
 
 **Assignment** refers to creating an "object" and assigning values to it
 
@@ -245,9 +235,10 @@ b <- "yay!"
 b
 ```
 
-__Objects__
+## Objects
 
-R is an "object-oriented" programming language (like Python, JavaScript). So, what is an "object"?
+
+R is an "object-oriented" programming language (like Python, JavaScript). So, what is an __object__?
 
 -   formal computer science definitions are confusing because they require knowledge of concepts we haven't introduced yet
 
@@ -262,7 +253,7 @@ R is an "object-oriented" programming language (like Python, JavaScript). So, wh
     b
     ```
 
--   Ben Skinner (my R maven) says "Objects are like boxes in which we can put things: data, functions, and even other objects."
+-   Ben Skinner (R maven) says "Objects are like boxes in which we can put things: data, functions, and even other objects."
 
 Many commercial statistical software packages (e.g., SPSS, Stata) operate on datasets, which consist of rows of observations and columns of variables
 
@@ -332,7 +323,9 @@ Either in the R console or within the R markdown file, do the following:
 2.  Create a vector called `v2` with four elements, where all the elements are characters (i.e., enclosed in single '' or double "" quotes). Then print the values.
 3.  Create a vector called `v3` with five elements, where some elements are numeric and some elements are characters. Then print the values.
 
-__Solution to student task__
+
+<details><summary><strong>Solutions</strong></summary>
+
 
 ```{r}
 v1 <- c(1, 2, 3) 
@@ -354,6 +347,11 @@ v3 <- c(1, 2, 3, "a", "b")
 # some elements are numeric and some elements are characters
 v3 # print value
 ```
+
+
+</details>
+<br>
+
 
 ```{=html}
 <!--
@@ -620,6 +618,8 @@ c(1,1,1)+c(1,0,2)
 c(1,1,1)*c(1,0,2)
 ```
 
+[LEFT OFF HERE]
+
 ## Lists
 
 __Lists__
@@ -873,7 +873,7 @@ Components of a function
         seq(10,15)
         ```
 
-        ### Function syntax: More on function arguments
+## Function syntax: More on function arguments
 
 Usually, function arguments have names
 
