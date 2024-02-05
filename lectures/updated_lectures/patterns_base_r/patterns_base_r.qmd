@@ -1,5 +1,5 @@
 ---
-title: ""
+title: "Investigating objects using Base R & subsetting with subset operators"
 author: ""
 date: ""
 format: html
@@ -16,12 +16,6 @@ knitr::opts_chunk$set(collapse = TRUE, comment = "#>", highlight = TRUE)
   #comment = "#>" makes it so results from a code chunk start with "#>"; default is "##"
 ```
 
-```{r, echo=FALSE, include=FALSE}
-#THIS CODE DOWNLOADS THE MOST RECENT VERSION OF THE FILE beamer_header.tex AND SAVES IT TO THE DIRECTORY ONE LEVEL UP FROM THIS .RMD LECTURE FILE
-download.file(url = 'https://raw.githubusercontent.com/anyone-can-cook/rclass1/master/lectures/beamer_header.tex', 
-              destfile = '../beamer_header.tex',
-              mode = 'wb')
-```
 
 ```{r, echo=FALSE, include=FALSE, eval = FALSE}
 # Download images saved on github site
@@ -55,20 +49,9 @@ for (i in imgs) {
 
 ```
 
-### Lecture outline
-
-\tableofcontents
-
-```{r, eval=FALSE, echo=FALSE}
-#Use this if you want TOC to show level 2 headings
-\tableofcontents
-#Use this if you don't want TOC to show level 2 headings
-\tableofcontents[subsectionstyle=hide/hide/hide]
-```
-
 # Investigate objects, base R
 
-### Load .Rdata data frames we will use today
+__Load .Rdata data frames we will use today__
 
 Data on off-campus recruiting events by public universities
 
@@ -92,8 +75,6 @@ load(url("https://github.com/ozanj/rclass/raw/master/data/recruiting/recruit_sch
 
 ## Functions to describe objects
 
-### Simple base R functions to describe objects
-
 This section introduces some base R functions to describe objects (some of these you have seen before)
 
 -   list objects, `list.files()` and `ls()`
@@ -113,7 +94,7 @@ I use the functions `typeof()`, `length()`, `str()` anytime I encounter a new ob
 
 `list.files()` function lists files in your current working directory
 
--   if you run this code from .Rmd file, working directory is location .Rmd file is stored
+-   if you run this code from .qmd file, working directory is the location where the .qmd file is stored.
 
 ```{r}
 getwd() # what is your current working directory
@@ -318,19 +299,6 @@ length(names(a)) # investigate length of object names(a)
 str(names(a)) # investigate structure of object names(a)
 ```
 
-### `names()` function
-
-`names()` function gets or sets the names of elements of an object
-
--   syntax:
-    -   get the names of an object: `names(x)`
-    -   set the names of an object: `names(x) <- value`
--   arguments (partial)
-    -   `x`: an R object
-    -   `value`: a character vector with same length as object `x` or `NULL`
--   value/return
-    -   `names(x)` returns a character vector of legnth = `length(x)` in which each element is the name of the element of `x`
-
 Example, set names (of atomic vector)
 
 ```{r}
@@ -390,11 +358,10 @@ typeof(df_event$instnm)
 typeof(df_event$med_inc)
 ```
 
-### Variable names
 
-\medskip Data frames are lists with the following criteria:
+Data frames are lists with the following criteria:
 
--   each element of the list is (usually) a vector; each element of list is a variable
+-   each element of the list is (usually) a vector; each element of a list is a variable
 -   length of data frame = number of variables
 
 ```{r}
@@ -415,8 +382,6 @@ typeof(df_event$med_inc)
 length(df_event$med_inc)
 str(df_event$med_inc)
 ```
-
-### Variable names
 
 The object `df_school` has one obs per high school
 
@@ -449,9 +414,9 @@ Many ways to view/print a data frame object. Here are three ways:
 
     -   number of observations and rows printed depend on YAML header settings and on object "attributes" (attributes discussed in future week)
 
-    ```{r, results="hide"}
-    df_event
-    ```
+```{r, results="hide"}
+df_event
+```
 
 2.  Use the `View()` function to view data in a browser
 
@@ -473,7 +438,7 @@ head(df_event, n=5)
 
 -   particularly powerful when combined with sequences (e.g., `1:10`)
 
-\medskip Examples (output omitted):
+Examples (output omitted):
 
 -   Print first five rows, all vars
 
@@ -518,7 +483,6 @@ length(df_event$zip)
 
 -   each element of a variable is the value of the variable for one observation
 
-\medskip
 
 Print specific elements (i.e., observations) of variable based on element position
 
@@ -564,7 +528,7 @@ Printing exercise using the df_school data frame
 3.  Use the `obj_name$var_name[1:10]` syntax to print the first 10 observations of a variable in the `df_school` data frame
 4.  Use combine() to print the first 3 observations of variables "school_type" & "name"
 
-### Solution
+<details><summary><strong>Solutions</strong></summary>
 
 1.  Use the `obj_name[<rows>,<cols>]` syntax to print the first 5 rows and 3 columns of the `df_school` data frame
 
@@ -572,7 +536,6 @@ Printing exercise using the df_school data frame
 df_school[1:5,1:3]
 ```
 
-### Solution
 
 2.  Use the `head()` function to print the first 4 observations
 
@@ -580,7 +543,6 @@ df_school[1:5,1:3]
 head(df_school, n=4)
 ```
 
-### Solution
 
 3.  Use the `obj_name$var_name[1:10]` syntax to print the first 10 observations of a variable in the `df_school` data frame
 
@@ -588,13 +550,15 @@ head(df_school, n=4)
 df_school$name[1:10]
 ```
 
-### Solution
 
 4.  Use combine() to print the first 3 observations of variables "school_type" & "name"
 
 ```{r}
 c(df_school$school_type[1:3],df_school$name[1:3])
 ```
+
+</details>
+<br> 
 
 ## Missing values
 
@@ -646,7 +610,6 @@ str(df_event$event_type)
 table(df_event$event_type)
 ```
 
-### Functions and missing values example, `table()`
 
 By default `table()` ignores `NA` values
 
@@ -677,7 +640,6 @@ Broader point: Most functions that create descriptive statistics have options ab
 
 "Subsetting" refers to isolating particular elements of an object
 
-\medskip
 
 Subsetting operators can be used to select/exclude elements (e.g., variables, observations)
 
@@ -917,7 +879,6 @@ Two ways to use `[]` to extract elements of a data frame
 
 Use "single index" `df_name[<columns>]` to extract columns (variables) based on element number (i.e., column number)
 
-\medskip
 
 Examples \[output omitted\]
 
@@ -947,11 +908,9 @@ df_event[1:3, 1:4]
 df_event[50:52, c(10,20)]
 ```
 
-### Subsetting Data Frames to extract columns (variables) and rows (observations) based on positionality
 
-use "double index" syntax `df_name[<rows>, <columns>]` to extact particular rows and columns of a data frame
+Use "double index" syntax `df_name[<rows>, <columns>]` to extact particular rows and columns of a data frame
 
-\medskip
 
 recall that empty `[]` returns original object (output omitted)
 
@@ -970,7 +929,6 @@ df_event[, c(1,2,3)]
 
 Selecting columns from a data frame by subsetting with `[]` and list of element names (i.e., variable names) enclose in quotes
 
-\medskip
 
 "single index" approach extracts specific variables, all rows (output omitted)
 
@@ -994,7 +952,7 @@ Use subsetting operators from base R in extracting columns (variables), observat
 
 2.  Use subsetting to return rows 1-5 of columns `state_code`, `name`, `address` from the `df_school` data frame.
 
-### Solution to Student Exercises
+<details><summary><strong>Solutions</strong></summary>
 
 Solution to 1
 
@@ -1015,6 +973,10 @@ Solution to 2
 ```{r}
 df_school[1:5, c("state_code", "name", "address")]
 ```
+
+</details>
+<br>
+
 
 ## Subsetting lists/data frames using \[\[\]\] and \$
 
@@ -1063,7 +1025,6 @@ In our train metaphor, object `list_x` is a train that contains 3 carriages
 
 [![](three_carriage_train.png)](https://adv-r.hadley.nz/subsetting.html#subset-single)
 
-### Subsetting lists using `[]` vs. `[[]]`, introduce "train metaphor"
 
 list object `list_x` is a train that contains 3 carriages
 
@@ -1130,7 +1091,6 @@ list_x[0]
 list_x[] # returns the original list; not shown in above train picture
 ```
 
-### Subset lists using `[]` vs. `[[]]`, deepen understanding of `[[]]`
 
 Rules about applying subset operator `[[]]` to a list
 
@@ -1164,7 +1124,6 @@ list_x[[1]]
 str(list_x[[1]])
 ```
 
-### Subset lists using `[]` vs. `[[]]`, deepen understanding of `[[]]`
 
 Rules about applying subset operator `[[]]` to a list
 
@@ -1183,8 +1142,6 @@ list_x[[c(2)]] # this works, subset element 2 using [[]]
 list_x[[c(2,3)]] # this doesn't work; subset element 2 and 3 using [[]]
 list_x[c(2,3)] # this works; subset element 2 and 3 using []
 ```
-
-### Subset lists using `[]` vs. `[[]]`, deepen understanding of `[[]]`
 
 Like `[]`, can use `[[]]` to return contents of **named** elements specified using quotes
 
@@ -1260,11 +1217,13 @@ str(df_event[["zip"]])
 str(df_event$zip)
 ```
 
+# Appendix
+
 ## Subset Data frames by combining \[\] and \$
 
-### Subset Data Frames by combining `[]` and `$`, Motivation
+### Subset Data Frames by combining `[]` and `$`
 
-Motivation
+__Motivation__
 
 -   When working with data frames we often want to isolate those observations that satisfy certain conditions
 -   This is often referred to as "filtering"
@@ -1281,10 +1240,6 @@ Filtering example using data frame `df_school`
     -   high school characteristics; number of off-campus recruiting visits from particular universities
     -   NCES ID for UC Berkeley is `110635`
     -   variable `visits_by_110635` shows number of visits a high school received from UC Berkeley
--   **Task**:
-    -   Isolate observations where the high school received at least 1 visit from UC Berkeley
-
-### Subset Data Frames by combining `[]` and `$`
 
 **Task**:
 
@@ -1330,6 +1285,9 @@ str(df_school$visits_by_110635 >= 1)
     -   uses "double index" `df_name[<rows>, <columns>]` syntax to extract rows, columns
     -   rows: extract rows where `df_school$visits_by_110635 >= 1` is `TRUE`
     -   columns: since `<columns>` is empty, extracts all columns
+    
+<br>
+
 -   **key point**: `df_name[df_name$var_name <condition>, ]` is "subset a vector approach #3": "Using logicals to return elements where condition `TRUE`"
 -   example using atomic vectors (output omitted)
 
@@ -1367,7 +1325,7 @@ Syntax:
 -   Example syntax to filter based on two conditions being true
     -   `df_name[df_name$var_name <condition> & df_name$var_name <condition>, <columns>]`
 
-Pro tip:
+__Pro tip:__
 
 -   wrap above syntax within `nrow()` function to count how many observations (rows) satisfy the condition (as opposed to printing all rows that satisfy condition)
 
@@ -1406,17 +1364,15 @@ nrow(df_school[df_school$visits_by_110635 >= 1
 | `|`    | OR                       |
 | `%in%` | includes                 |
 
-\medskip
+
 
 -   Visualization of "Boolean" operators (e.g., AND, OR, AND NOT)
 
 !["Boolean" operations, x=left circle, y=right circle, from Wichkam (2018)](transform-logical.png){width="40%"}
 
-### Subset Data Frames by combining `[]` and `$`, more examples
 
 **Example**: Count the number of out-of-state high schools that UC Berkeley visited.
 
-\smallskip
 
 ```{r}
 # The `inst_110635` variable contains the home state of UC Berkeley
@@ -1427,11 +1383,9 @@ nrow(df_school[df_school$visits_by_110635 >= 1 &
                  df_school$state_code != df_school$inst_110635, ])
 ```
 
-\bigskip
+<br>
 
 **Example**: Count the number of schools in the Northeast that received a visit from either UC Berkeley, U of Alabama, or CU Boulder.
-
-\smallskip
 
 ```{r}
 # Vector containing states located in the Northeast region
@@ -1448,14 +1402,12 @@ nrow(df_school[df_school$state_code %in% northeast_states &
 
 Filtering observations of data frame using `[]` combined with `$` is more complicated in the presence of missing values (`NA` values)
 
-\medskip
 
-The next few slides will explain
+The below we will explain
 
 -   why it is more complicated
 -   how to filter correctly when `NA`s are present
 
-### Subset Data Frames by combining `[]` and `$`, `NA` Observations
 
 When sub-setting via `[]` combined with `$`, result will include:
 
@@ -1482,7 +1434,6 @@ nrow(df_event[df_event$event_type == "public hs"
   & df_event$med_inc>=50000 , ])
 ```
 
-### Subset Data Frames by combining `[]` and `$`, `NA` Observations
 
 To exclude rows where condition is `NA` if subset using `[]` combined w/ `$`
 
@@ -1511,11 +1462,11 @@ nrow(df_event[which(df_event$event_type == "public hs"
 
 Subsetting Data Frames with `[]` and `$`:
 
-1.  Show how many public high schools in California with at least 50% Latinx (hispanic in data) student enrollment from df_school.
+1.  Show how many public high schools in California with at least 50% Latinx (hispanic in data) student enrollment from the dataframe df_school.
 
-2.  Show how many out-state events at public high schools with more than \$30K median from df_event (do not forget to exclude missing values).
+2.  Show how many out-state events at public high schools with more than \$30K median from the datframe df_event (do not forget to exclude missing values).
 
-### Solution to Student Exercises
+<details><summary><strong>Solutions</strong></summary>
 
 Solution to 1
 
@@ -1544,7 +1495,10 @@ nrow(df_event[which(df_event$event_type == "public hs" & df_event$event_inst =="
               & df_event$med_inc > 30000 ), ])
 ```
 
-# Subset using subset() function
+</details>
+<br>
+
+## Subset using subset() function
 
 ### Subset function
 
@@ -1596,7 +1550,6 @@ nrow(subset(x = df_event, subset = event_type == "public hs"
             & med_inc>=50000))
 ```
 
-### Subset function, examples
 
 Using `df_school`, show all public high schools that are at least 50% Latinx (var=`pct_hispanic`) student enrollment in California
 
@@ -1615,7 +1568,6 @@ nrow(subset(df_school, school_type == "public" & pct_hispanic >= 50
      & state_code == "CA"))
 ```
 
-### Subset function, examples
 
 Note that `subset()` identify the number of observations for which the condition is `TRUE`
 
@@ -1624,7 +1576,6 @@ nrow(subset(x = df_school, subset = TRUE))
 nrow(subset(x = df_school, subset = FALSE))
 ```
 
-### Subset function, examples
 
 Count all CA public high schools that are at least 50% Latinx and received at least 1 visit from UC Berkeley (var=`visits_by_110635`)
 
@@ -1633,7 +1584,6 @@ nrow(subset(df_school, school_type == "public" & pct_hispanic >= 50
   & state_code == "CA" & visits_by_110635 >= 1))
 ```
 
-### Subset function, examples
 
 `subset()` can also use `%in%` operator, which is more efficient version of **OR** operator `|`
 
@@ -1644,7 +1594,6 @@ nrow(subset(df_school, state_code %in% c("MA","ME","VT")
   & visits_by_100751 >= 1))
 ```
 
-### Subset function, examples
 
 Use the `select` argument within `subset()` to keep selected variables
 
@@ -1653,11 +1602,10 @@ Use the `select` argument within `subset()` to keep selected variables
 Subset all CA public high schools that are at least 50% Latinx **AND** only keep variables `name` and `address`
 
 ```{r}
-subset(x = df_school, subset = school_type == "public" & pct_hispanic >= 50 
-             & state_code == "CA", select = c(name, address))
+nrow(subset(x = df_school, subset = school_type == "public" & pct_hispanic >= 50 
+             & state_code == "CA", select = c(name, address)))
 ```
 
-### Subset function, examples
 
 Combine `subset()` with assignment (`<-`) to create a new data frame
 
@@ -1684,7 +1632,8 @@ Using `subset()` from base R:
 
 4.  Subset all public out-of-state high schools visited by University of California Berkeley that enroll at least 50% Black students, and only keep variables `state_code`, `name` and `zip_code`.
 
-### Solution to Student Exercises
+<details><summary><strong>Solutions</strong></summary>
+
 
 Solution to 1
 
@@ -1708,7 +1657,6 @@ nrow(subset(df_school, state_code %in% c("CA", "FL", "MA")
              & school_type == "public" & visits_by_110635 %in% c(1,2) ))
 ```
 
-### Solution to Student Exercises
 
 Solution to 4
 
@@ -1718,7 +1666,10 @@ subset(df_school, school_type == "public" & state_code != "CA"
        select = c(state_code, name, zip_code))
 ```
 
-# Creating variables
+</details>
+<br>
+
+## Creating variables
 
 ### Create new data frame based on `df_school_all`
 
@@ -1729,7 +1680,6 @@ load(url("https://github.com/ozanj/rclass/raw/master/data/recruiting/recruit_sch
 names(df_school_all)
 ```
 
-### Create new data frame based on `df_school_all`
 
 Create new version of data frame, called `school_v2`, which we'll use to introduce how to create new variables
 
@@ -1766,14 +1716,12 @@ glimpse(school_v2)
 
 Create new variables using assignment operator `<-` and subsetting operators `[]` and `$` to create new variables and set conditions of the input variables
 
-\medskip
 
 Pseudo syntax: `df$newvar <- ...`
 
 -   where `...` argument is expression(s)/calculation(s) used to create new variables
     -   expressions can include subsetting operators and/or other base R functions
 
-\medskip
 
 **Task**: Create measure of percent of students on free-reduced lunch
 
@@ -1800,12 +1748,8 @@ school_v2_temp <- school_v2 %>%
 
 If creating new variable based on the condition/values of input variables, basically the tidyverse equivalent of `mutate()` **with** `if_else()` or `recode()`
 
-\medskip
-
 -   Pseudo syntax: `df$newvar[logical condition]<- new value`
 -   `logical condition`: a condition that evaluates to `TRUE` or `FALSE`
-
-### Base R approach to creating new variables
 
 **Task**: Create 0/1 indicator if school has median income greater than \$100k
 
@@ -1871,7 +1815,7 @@ str(wwlist_temp$state_gen)
 count(wwlist_temp, state_gen)
 ```
 
-# Appendix
+
 
 ## Sorting data
 
