@@ -1,0 +1,192 @@
+---
+title: "Problem Set #2"
+author: "INSERT YOUR NAME HERE"
+date: "insert date here"
+urlcolor: blue
+output: pdf_document
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>", highlight = TRUE)
+  #comment = "#>" makes it so results from a code chunk start with "#>"; default is "##"
+```
+
+# Overview 
+In this problem set, you will practice investigating and subsetting objects using the Base R approach. We are asking you to practice working with different object types such as atomic vectors, lists, and data frames. Learning how to work with different object types will be very useful in the coming weeks and will help you understand the underlying structure of any data you are working with. While this problem set is fairly short, we want you to become familiar with these concepts -- which are fundamental to data management and working with R.
+
+# Question 1: Practice making changes to the YAML header [PROVIDE R MARKDOWN FOR THEM? OR HAVE THEM PRACTICE CREATING .QMD FILE, AND UPDATING YAML HEADER? TO CHECK WE CAN HAVE THEM RUN LS(), MAYBE CAT?]
+
+
+We recommend reading [R Markdown: The Definitive Guide section 3.3](https://bookdown.org/yihui/rmarkdown/pdf-document.html), then make the following changes to the YAML header of this Rmd:
+
+1. Add your name to the YAML header.  
+1. Add a table of contents to YAML header.  
+1. The table of contents should have "depth" of 2.  
+1. Add section numbering to headers.
+
+
+# Question 2: Investigating objects, Base R
+
+Run the following to load data frame objects:
+
+```{r}
+rm(list = ls()) # remove all objects
+
+load(url("https://github.com/ozanj/rclass/raw/master/data/recruiting/recruit_school_allvars.RData"))
+#glimpse(df_school_all)
+
+dim(df_school_all)
+```
+
+
+1. Answer the following questions about the object `df_school_all` by running the appropriate R command in the code chunks below and write your response below the question following the __ANSWER:__ prompt. The first question will be answered for you to show how it works.  
+
+    + What "type" of object is `df_school_all`?  
+      + __ANSWER [GIVEN]: The object `df_school_all` has type equals `r typeof(df_school_all)`.__   
+    + What is the "length" of the object `df_school_all`? What does this specific value of length refer to?  
+      + __ANSWER:  __  
+    + How many "rows" are in the object `df_school_all`? What does each row represent?  
+      + __ANSWER:  __
+
+```{r}
+
+```
+
+
+
+2. In the below code chunk, use the `str()` function to describe the contents of `df_school_all` and then answer the following questions:  
+
+    + What does each element of the object `df_school_all` represent? (Hint: Lecture Investigating data patterns in Base R, Slide 17)  
+      + __ANSWER:  __  
+    + Are the individual elements within `df_school_all` lists or vectors?
+      + __ANSWER:  __  
+    + Are the individual elements within `df_school_all` named or un-named? If named, what do these element names refer to?  
+      + __ANSWER:  __    
+        
+```{r, results='hide'}
+
+```
+
+
+3. These questions refer to the variable `school_type` within the object `df_school_all`. For the first two questions, run the appropriate R command in the code chunk below and write your response below the question.  
+
+    + What is the data "type" of `school_type`?  
+      + __ANSWER:  __  
+    + What is the "length" of `school_type`? What does this specific value of length refer to?  
+      + __ANSWER:  __
+        
+```{r}
+
+```
+        
+
+4. In these questions, you will apply the `table()` function to the variable `school_type` within the object `df_school_all`.  
+
+    + In your own words, what does the `table()` function do?  
+      + __ANSWER:  __  
+    + What does the `useNA` argument of the `table()` function control?  
+      + __ANSWER:  __  
+    + What is the default value of the `useNA` argument and what does this default value mean?  
+      + __ANSWER:  __  
+    + What happens when you assign the value `"ifany"` to the `useNA` argument?  
+      + __ANSWER: __  
+    + What happens when you assign the value `"always"` to the `useNA` argument?  
+      + __ANSWER:  __  
+    + In the below R code chunk, use the `table()` function to count the number of observations for each value `school_type` three different ways:  
+      + First, without specifying any value for `useNA`  
+      + Second, by assigning the value `"ifany"` to the `useNA` argument  
+      + Third,  by assigning the value `"always"` to the `useNA` argument  
+      
+```{r}
+
+```
+
+# Question 3: Subsetting, Base R  
+
+In the code chunk below, you will find 3 objects: a vector, a list, and the data frame `df_school_all`. Run the code chunk. You will use these objects in the following questions.
+
+```{r}
+# Create a named numeric atomic vector
+vec <- c(a = 2.4, b = 1.1, c = 3.4, d = 4, e = 6, f = 32, g = 21, h = 17, i = 10)
+str(vec)
+
+# Create a list
+list <- list(c(1:3), list("red", "orange"), list("LA", "NY", "DC")) 
+str(list)
+
+# View the `df_school_all` data frame you loaded earlier
+head(df_school_all, n = 5)
+#str(df_school_all)
+```
+
+
+1. In this question we will use the `[]` to subset the atomic vector `vec`:
+
+    + Return the 4th and 7th element of the vector `vec` (Hint: We are subsetting elements by position)  
+    + Return everything but the last element of the vector `vec`  
+    + Return elements named "a", "d", and "g"  
+    + Return elements that are less than `12`
+
+```{r}
+
+```
+
+
+2.  In this question we will use the `[]` to subset columns in `df_school_all`:
+
+    + Return the first 100 elements of the `state_code` column  
+    + Return all addresses in the `address` column that are more than 30 characters long (Hint: Use `nchar()` to get number of characters, you can type ?nchar in the console or code chunk to get more information on the function)  
+    + Return all cities in the `city` column that are either 21 or 25 characters in length  
+    
+```{r}
+
+```
+
+3.  In this question we will use the `[]` to subset a list/data frame:
+
+    + Return the 1st element of the list `list` using `[]`
+      + What is the data type? __ANSWER:__  
+    + Return the 2nd, 4th, and 6th elements of the data frame `df_school_all`  
+    + Return the first 3 rows (observations) and the variable names `state_code` and `name` of the data frame `df_school_all`  
+    
+```{r, results='hide'}
+
+```
+    
+4. In this question we will use `[[]]` and `$` to subset a list/data frame:  
+
+    + Return the 1st element of the list `list` using `[[]]`  
+      + What is the data type? __ANSWER:  __   
+    + Return the variable `total_students` using `$`. The output here will be too large when you try to knit to PDF at the end of the problem set so just makem this line of code a comment by putting a hashtag # in front of it.
+      + What is the data type? __ANSWER:  __  
+
+```{r}
+
+```
+
+
+
+# Question 4: Create a GitHub issue   
+
+- Go to the [class repository](https://github.com/anyone-can-cook/rclass1_student_issues_f23/issues) and create a new issue.
+
+- Refer to [rclass1 student issues readme](https://github.com/anyone-can-cook/rclass1_student_issues_f23/blob/main/README.md) for instructions on how to post questions or reflections.
+
+- You are also required to respond to at least one issue posted by another student.
+
+
+- Paste the url to your issue here: 
+- Paste the url to the issue you responded to here: 
+
+# Knit to pdf and submit problem set 
+
+**Knit to pdf** by clicking the "Knit" button near the top of your RStudio window (icon with blue yarn ball) or drop down and select "Knit to PDF"
+
+- Go to the [class website](https://anyone-can-cook.github.io/rclass1/) and under the "Readings & Assignments" >> "Week 2" tab, click on the "Problem set 2 submission link"  
+- Submit both .Rmd and pdf files  
+- Use this naming convention "lastname_firstname_ps#" for your .Rmd and pdf files (e.g. jaquette_ozan_ps2.Rmd & jaquette_ozan_ps2.pdf)  
+
+

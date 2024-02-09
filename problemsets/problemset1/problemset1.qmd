@@ -2,8 +2,8 @@
 title: "Problem Set #1"
 author: "INSERT YOUR NAME HERE"
 date: "insert date here"
-output: pdf_document
-urlcolor: blue
+format: pdf
+
 ---
 
 ```{r setup, include=FALSE}
@@ -13,72 +13,91 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Overview 
 
-Welcome to Introduction to Programming and Data Management using R! This problem set is intended to give you some practice becoming familiar with using R. In this problem set, we are asking you to: create an R project; knit to pdf [IF WE WANT THEM TO SUBMIT R SCRIPT, DO THEY NEED TO KNIT?]; load and investigate an R data frame that is stored on the web [GIVE THEM FILE?]; apply some basic functions to atomic vectors; and create a GitHub issue.
+Welcome to Introduction to Programming and Data Management using R! This problem set is intended to give you some practice becoming familiar with using R. In this problem set, we are asking you to: create an R project; knit a .QMD file to pdf [IF WE WANT THEM TO SUBMIT R SCRIPT, DO THEY NEED TO KNIT?]; load and investigate an R data frame that is stored on the web [GIVE THEM FILE?]; apply some basic functions to atomic vectors; and create a GitHub issue.
 
 - Note: Change the values of the YAML header above to your name and the date. 
 
 
-## Question 1: Creating an R project
+## Question 1: Creating an R project & R script
 
 \textcolor{red}{\textbf{/2 pts}}
 
 **Create an R project**  
 
-- Create a folder where you want to save files associated with problem set 1. Let's call that folder "problemset1", but you can name it whatever you want.
-  - For instance, it could be EDUC260a >> problem_sets >> problemset1.
+- Create a folder where you want to save files associated with problem set 1. Make sure to name the folder "problemset1".
+  - For instance, the file directory/structure could be EDUC260a >> problem_sets >> problemset1.
 - In RStudio, click on "File" >> "New Project" >> "Existing Directory" >> "Browse".
 - Browse to find and select your problem set 1 folder.
 - Click on "Create Project".
   - An R project file has the extension ".Rproj".
-  - The name of the file should be "problemset1.Rproj", or whatever you named the folder.
+  - The name of the file should be "problemset1.Rproj".
+  
 
-Save your problemset1.R file anywhere in the folder named problemset1. [GIVE THEM R SCRIPT TEMPLATE?]
+**Create an R script**  
+- In RStudio, click on "File" >> "New File" >> "R Script" 
+- Make sure to save your R script in the folder you just created and name it "problemset1.R" 
 
-- Run the `getwd()` function and the `list.files()` function in the code chunk below.
-- What is the output? Why?  
+- In your R script, run the `getwd()` function and the `list.files()` function.
+- What is the output? Why? Make sure to comment out your text using a `#`  
 
 ```{r, eval=FALSE}
 getwd()
 list.files()
 ```
 
-**Answer:** The output are files: "problemset1.Rmd" and "problemset1.Rproj" because these are the files currently saved in the folder where this .Rmd file is saved.
+**Answer:** The output are files: "problemset1.R", "problemset1.qmd", and "problemset1.Rproj" because these are the files currently saved in the folder where this .R file is saved.
 
-## Question 2: Knit to pdf  [REMOVE THIS SECTION? OR HAVE THEM KNIT .RMD PROBLEM SET FILE?]
+## Question 2: Knit to pdf  
 
 \textcolor{red}{\textbf{/1 pts}}
 
-- At the top of this .Rmd file, type in your first and last name in the appropriate place in the YAML header (e.g. "Joe Bruin").
+- Open the "problemset.qmd" file in your folder. At the top of this .Rmd file, type in your first and last name in the appropriate place in the YAML header (e.g. "Joe Bruin").
 - in the date field of the YAML header, insert the date within quotations (any date format is fine).
-- Now click the "Knit" button near the top of your RStudio window (icon with blue yarn ball) or drop down and select "Knit to PDF".
+- Now click the "Render" button near the top of your RStudio window (blue arrow icon) or drop down and select "Render Document".
   - Alternatively you can use the shortcut: __Cmd/Ctrl + Shift + k__.
 
-  - *Note*: One goal of this assignment is to make sure you are able to knit to a PDF without running into errors.
+  - *Note*: One goal of this assignment is to make sure you are able to render to a PDF without running into errors.
+  
+- In your R script, run the `list.files()` function.
+- What is the output? Did it change? Make sure to comment out your text in your R script using a `#`.
+
+```{r}
+list.files()
+```
+
 
 ## Question 3: Load .Rdata directly with url and then investigate the data frame [GIVE THEM R DATE OR CSV FILE?]
 
 \textcolor{red}{\textbf{/7 pts}}
 
-1. This question asks you to load a dataframe by specifying the `url()` function within the `load()` function.
-- Url link for data frame: https://github.com/anyone-can-cook/rclass1/raw/master/data/recruiting/recruit_ps1_small.Rdata
+1. This question asks you to load a dataset by specifying the `read_csv()` function and the name of the dataset.
 
-  - Hint: to load .Rdata use the `load()` and `url()` functions because you are using a link. follow this approach: `load(url("url_link"))`.
-    - Note: the `url_link` is put within quotes.
+  - Hint: You will need to load the library `readr`. To load a csv file use the `read_csv()` function and in quotes the name of the csv file: `read_csv("csv file")`.
+  - Name the dataframe "df_recruiting": `df_recruiting <- read_csv("csv file")`
+
 
 Load the dataframe within this code chunk below.
 ```{r}
 #?load
-load(url("https://github.com/anyone-can-cook/rclass1/raw/master/data/recruiting/recruit_ps1_small.Rdata"))
+library(readr)
+#load(url("https://github.com/anyone-can-cook/rclass1/raw/master/data/recruiting/recruit_ps1_small.Rdata"))
+
+#write_csv(df_recruiting, "recruit_ps1.csv")
+
+df_recruiting <- read_csv("recruit_ps1.csv")
 ```
+
 
 2. Print the data frame `df_recruiting` by typing its name.
 ```{r}
 df_recruiting
 ```
+
 3. Use the `typeof()` function to investigate the type of data frame `df_recruiting`.
 ```{r}
 typeof(df_recruiting)
 ```
+
 4. Apply the `length()` function to the data frame `df_recruiting`. What does this output mean in your own words?
 ```{r}
 length(df_recruiting)
@@ -172,6 +191,7 @@ Use the `mean()` function to calculate the mean of object `tf` (removing `NA` va
 mean(x=tf, trim = 0, na.rm = TRUE)
 mean(tf, 0, TRUE)
 ```
+
 ## Question 5: Create a GitHub issue  
 
 \textcolor{red}{\textbf{/1 pts}}  
