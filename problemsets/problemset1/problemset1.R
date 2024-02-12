@@ -33,11 +33,11 @@ str(names(df_recruiting))
 age <- c(3,6,41,43)
 
 typeof(age)
+
 length(age)
 str(age)
 
 sum(age)
-sum(age, na.rm = FALSE)
 
 #Answer: When calling a function, the argument name tells R which argument you are referring to (e.g., the `trim` argument) and the argument value is the value you are assigning to that argument. the argument `na.rm` controls whether `NA` values are removed or not prior to performing calculations.
 
