@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Overview 
 
-Welcome to Introduction to Programming and Data Management using R! This problem set is intended to give you some practice becoming familiar with using R. In this problem set, we are asking you to: create an R project; knit a .QMD file to pdf [IF WE WANT THEM TO SUBMIT R SCRIPT, DO THEY NEED TO KNIT?]; load and investigate an R data frame that is stored on the web [GIVE THEM FILE?]; apply some basic functions to atomic vectors; and create a GitHub issue.
+Welcome to Introduction to Programming and Data Management using R! This problem set is intended to give you some practice becoming familiar with using R. In this problem set, we ask you to create an R project, load and investigate an R data frame stored as a .csv file, apply some basic functions to atomic vectors, and create a GitHub issue.
 
 - Note: Change the values of the YAML header above to your name and the date. 
 
@@ -47,26 +47,8 @@ list.files()
 
 **Answer:** The output are files: "problemset1.R", "problemset1.qmd", and "problemset1.Rproj" because these are the files currently saved in the folder where this .R file is saved.
 
-## Question 2: Knit to pdf  
 
-\textcolor{red}{\textbf{/1 pts}}
-
-- Open the "problemset.qmd" file in your folder. At the top of this .Rmd file, type in your first and last name in the appropriate place in the YAML header (e.g. "Joe Bruin").
-- in the date field of the YAML header, insert the date within quotations (any date format is fine).
-- Now click the "Render" button near the top of your RStudio window (blue arrow icon) or drop down and select "Render Document".
-  - Alternatively you can use the shortcut: __Cmd/Ctrl + Shift + k__.
-
-  - *Note*: One goal of this assignment is to make sure you are able to render to a PDF without running into errors.
-  
-- In your R script, run the `list.files()` function.
-- What is the output? Did it change? Make sure to comment out your text in your R script using a `#`.
-
-```{r}
-list.files()
-```
-
-
-## Question 3: Load .Rdata directly with url and then investigate the data frame [GIVE THEM R DATE OR CSV FILE?]
+## Question 2: Load .csv file and then investigate the data frame
 
 \textcolor{red}{\textbf{/7 pts}}
 
@@ -79,12 +61,12 @@ list.files()
 Load the dataframe within this code chunk below.
 ```{r}
 #?load
-library(readr)
+#library(readr)
 #load(url("https://github.com/anyone-can-cook/rclass1/raw/master/data/recruiting/recruit_ps1_small.Rdata"))
 
 #write_csv(df_recruiting, "recruit_ps1.csv")
 
-df_recruiting <- read_csv("recruit_ps1.csv")
+df_recruiting <- read.csv("recruit_ps1.csv")
 ```
 
 
@@ -123,7 +105,7 @@ str(names(df_recruiting))
 
 **Answer:** the names of the elements of the data frame object `df_recruiting` are a character atomic vector of 6 elements
 
-## Question 4: Applying basic functions to atomic vectors
+## Question 3: Applying basic functions to atomic vectors
 
 \textcolor{red}{\textbf{/9 pts}}
 
@@ -188,7 +170,7 @@ mean(x=tf, trim = 0, na.rm = TRUE)
 mean(tf, 0, TRUE)
 ```
 
-## Question 5: Create a GitHub issue  
+## Question 4: Create a GitHub issue  
 
 \textcolor{red}{\textbf{/1 pts}}  
 

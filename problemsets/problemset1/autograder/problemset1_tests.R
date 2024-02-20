@@ -11,17 +11,12 @@ library(stringr)
 test_that("first (visible)", {
   
   expect_true(str_detect(getwd(), "\\/problemset1")) 
-  expect_true(length(list.files()) > 5)
+  expect_true(length(list.files()) > 4)
 
 })
 
-test_that("second (invisible)", {
 
-  expect_length(sum(str_detect(list.files(), "problemset1.pdf")), 1)
-
-})
-
-test_that("third", {
+test_that("second", {
 
   expect_equal(nrow(df_recruiting), 6)
   expect_equal(typeof(df_recruiting), "list")
@@ -32,7 +27,7 @@ test_that("third", {
 
 })
 
-test_that("fourth", {
+test_that("third", {
   
   expect_equal(sum(age), 93)
   expect_equal(typeof(age), "double")

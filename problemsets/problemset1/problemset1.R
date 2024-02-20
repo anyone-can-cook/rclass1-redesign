@@ -1,17 +1,27 @@
+################################################################################
+##
+## [ PROJ ] < Problem set 1 >
+## [ FILE ] < problemset1.R >
+## [ AUTH ] < Your name / GitHub handle >
+## [ INIT ] < Date you started the file >
+##
+################################################################################
 
-#question 1
+## -----------------------------------------------------------------------------
+## Question 1: Creating an R project & R script
+## -----------------------------------------------------------------------------
+
 getwd()
 list.files()
 
 #The output are files: "problemset1.R", "problemset1.qmd", and "problemset1.Rproj" because these are the files currently saved in the folder where this .R file is saved.
 
-#question 2
+## -----------------------------------------------------------------------------
+## Question 2: Load .csv file and then investigate the data frame
+## -----------------------------------------------------------------------------
 
-list.files()
-#The output now are files: "problemset1.R", "problemset1.qmd", "problemset.pdf" and "problemset1.Rproj" because I rendered the .qmd file to pdf output.
+df_recruiting <- read.csv("recruit_ps1.csv")
 
-#question 3
-df_recruiting <- read_csv("recruit_ps1.csv")
 df_recruiting
 
 typeof(df_recruiting)
@@ -29,7 +39,10 @@ str(names(df_recruiting))
 
 #Answer:the names of the elements of the data frame object `df_recruiting` are a character atomic vector of 6 elements
 
-#question 4
+## -----------------------------------------------------------------------------
+## Question 3: Applying basic functions to atomic vectors
+## -----------------------------------------------------------------------------
+
 age <- c(3,6,41,43)
 
 typeof(age)
@@ -60,3 +73,8 @@ sum(tf, na.rm = TRUE)
 
 mean(x=tf, trim = 0, na.rm = TRUE)
 mean(tf, 0, TRUE)
+
+## -----------------------------------------------------------------------------
+## END SCRIPT
+## -----------------------------------------------------------------------------
+
