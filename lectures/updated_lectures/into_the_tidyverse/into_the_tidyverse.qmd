@@ -1,5 +1,5 @@
 ---
-title: ""
+title: "Into the tidyverse: pipes, dplyr, and variable creation"
 author: ""
 date: ""
 format: html
@@ -16,32 +16,10 @@ knitr::opts_chunk$set(collapse = TRUE, comment = "#>", highlight = TRUE)
   #comment = "#>" makes it so results from a code chunk start with "#>"; default is "##"
 ```
 
-```{r, echo=FALSE, include=FALSE, eval = FALSE}
-# Download images saved on github site
-imgs <- c('transform-logical.png')
-for (i in imgs) {
-  if(!file.exists(i)){
-  download.file(url = paste0('https://raw.githubusercontent.com/anyone-can-cook/rclass1/master/lectures/enter_the_tidyverse/', i), 
-                destfile = i,
-                mode = 'wb')
-  }
-}
-```
-
-### Lecture outline
-
-\tableofcontents
-
-```{r, eval=FALSE, echo=FALSE}
-#Use this if you want TOC to show level 2 headings
-\tableofcontents
-#Use this if you don't want TOC to show level 2 headings
-\tableofcontents[subsectionstyle=hide/hide/hide]
-```
 
 # Introduction
 
-### Libraries we will use today
+## Libraries we will use today
 
 "Load" the package we will use today (output omitted)
 
@@ -51,7 +29,7 @@ for (i in imgs) {
 library(tidyverse)
 ```
 
-If package not yet installed, then must install before you load. Install in "console" rather than .Rmd file
+If package not yet installed, then must install before you load. Install in "console" rather than .qmd file
 
 -   Generic syntax: `install.packages("package_name")`
 -   Install "tidyverse": `install.packages("tidyverse")`
@@ -63,7 +41,7 @@ Note: when we load package, name of package is not in quotes; but when we instal
 
 ## Data for lecture sections on select(), filter(), and arrange() functions
 
-### Load .Rdata data frames, `df_event` and `df_school`
+__Load .Rdata data frames, `df_event` and `df_school`__
 
 Data on off-campus recruiting events by public universities
 
@@ -87,7 +65,7 @@ load(url("https://github.com/ozanj/rclass/raw/master/data/recruiting/recruit_sch
 
 ## Data for lecture sections on pipes and mutate() function
 
-### Load .Rdata data frame `wwlist`, "prospects" purchased by Western Washington U.
+__Load .Rdata data frame `wwlist`, "prospects" purchased by Western Washington U.__
 
 Note: we won't use this data frame until the lecture section on "pipes"
 
@@ -95,7 +73,7 @@ Note: we won't use this data frame until the lecture section on "pipes"
 
 The "Student list" business
 
--   Universities identify/target "prospects" by buying "student lists" from College Board/ACT (e.g., \$.40 per prospect)
+-   Universities identify/target "prospects" by buying "student lists" from College Board/ACT (e.g., \$.50+ per prospect)
 -   Prospect lists contain contact info (e.g., address, email), academic achievement, socioeconomic, demographic characteristics
 -   Universities choose which prospects to purchase by filtering on criteria like zip-code, GPA, test score range, etc.
 
@@ -178,7 +156,7 @@ filter(wwlist, firstgen == "Y")
 | Today                      | Upcoming weeks                                         |
 |------------------------------------|------------------------------------|
 | **Subsetting data**        | **Transforming data**                                  |
-| \- `select()` variables    | \- `mutate()` creates new variables                    |
+| \ `select()` variables    | \ `mutate()` creates new variables                    |
 | \- `filter()` observations | \- `summarize()` calculates across rows                |
 | **Sorting data**           | \- `group_by()` to calculate across rows within groups |
 | \- `arrange()`             |                                                        |
