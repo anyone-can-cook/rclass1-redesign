@@ -11,8 +11,8 @@
 ## Question 1: Creating an R project & R script
 ## -----------------------------------------------------------------------------
 
-getwd()
-list.files()
+#getwd()
+#list.files()
 
 #The output are files: "problemset1.R", "problemset1.qmd", and "problemset1.Rproj" because these are the files currently saved in the folder where this .R file is saved.
 

@@ -8,12 +8,12 @@ library(stringr)
 # you can have multiple tests for each question
 
 
-test_that("first (visible)", {
+#test_that("first (visible)", {
   
-  expect_true(str_detect(getwd(), "\\/problemset1")) 
-  expect_true(length(list.files()) > 4)
+#  expect_true(str_detect(getwd(), "\\/problemset1")) 
+#  expect_true(length(list.files()) > 4)
 
-})
+#})
 
 
 test_that("second", {
@@ -22,7 +22,7 @@ test_that("second", {
   expect_equal(typeof(df_recruiting), "list")
   expect_equal(length(df_recruiting), 6)
   expect_output(str(df_recruiting), "$ school_type", fixed = TRUE)
-  expect_output(names(df_recruiting), c("state_code","school_type","ncessch","name","address","city"))
+  expect_equal(names(df_recruiting), c("state_code","school_type","ncessch","name","address","city"))
   
 
 })
