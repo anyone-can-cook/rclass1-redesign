@@ -8,7 +8,7 @@
 
 <meta name="author" content="">
 
-<title>Enter the tidyverse: pipes, dplyr, and variable creation</title>
+<title>Into the tidyverse: pipes, dplyr, and variable creation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -58,16 +58,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="enter_the_tidyverse_files/libs/clipboard/clipboard.min.js"></script>
-<script src="enter_the_tidyverse_files/libs/quarto-html/quarto.js"></script>
-<script src="enter_the_tidyverse_files/libs/quarto-html/popper.min.js"></script>
-<script src="enter_the_tidyverse_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="enter_the_tidyverse_files/libs/quarto-html/anchor.min.js"></script>
-<link href="enter_the_tidyverse_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="enter_the_tidyverse_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="enter_the_tidyverse_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="enter_the_tidyverse_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="enter_the_tidyverse_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="into_the_tidyverse_files/libs/clipboard/clipboard.min.js"></script>
+<script src="into_the_tidyverse_files/libs/quarto-html/quarto.js"></script>
+<script src="into_the_tidyverse_files/libs/quarto-html/popper.min.js"></script>
+<script src="into_the_tidyverse_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="into_the_tidyverse_files/libs/quarto-html/anchor.min.js"></script>
+<link href="into_the_tidyverse_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="into_the_tidyverse_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="into_the_tidyverse_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="into_the_tidyverse_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="into_the_tidyverse_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
@@ -109,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Enter the tidyverse: pipes, dplyr, and variable creation</h1>
+<h1 class="title">Into the tidyverse: pipes, dplyr, and variable creation</h1>
 </div>
 
 
@@ -164,7 +164,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>()) <span class="co"># remove all objects in current environment</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "/Users/patriciamartin/Desktop/Github/rclass1-redesign/lectures/updated_lectures/enter_the_tidyverse"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "/Users/patriciamartin/Desktop/Github/rclass1-redesign/lectures/updated_lectures/into_the_tidyverse"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#load dataset with one obs per recruiting event</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>(<span class="st">"https://github.com/ozanj/rclass/raw/master/data/recruiting/recruit_event_somevars.RData"</span>))</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#load("../../data/recruiting/recruit_event_somevars.Rdata")</span></span>
@@ -272,8 +272,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <table class="table">
 <colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
+<col style="width: 33%">
+<col style="width: 66%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -287,19 +287,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><strong>Transforming data</strong></td>
 </tr>
 <tr class="even">
-<td>&nbsp;<code>select()</code> variables</td>
-<td>&nbsp;<code>mutate()</code> creates new variables</td>
+<td><code>select()</code> variables</td>
+<td><code>mutate()</code> creates new variables</td>
 </tr>
 <tr class="odd">
-<td>- <code>filter()</code> observations</td>
-<td>- <code>summarize()</code> calculates across rows</td>
+<td><code>filter()</code> observations</td>
+<td><code>summarize()</code> calculates across rows</td>
 </tr>
 <tr class="even">
 <td><strong>Sorting data</strong></td>
-<td>- <code>group_by()</code> to calculate across rows within groups</td>
+<td><code>group_by()</code> to calculate across rows within groups</td>
 </tr>
 <tr class="odd">
-<td>- <code>arrange()</code></td>
+<td><code>arrange()</code></td>
 <td></td>
 </tr>
 </tbody>
@@ -1601,8 +1601,8 @@ names(df_school)
 <p>Recall that <code>dplyr</code> package within <code>tidyverse</code> provide a set of functions that can be described as “verbs”: <strong>subsetting</strong>, <strong>sorting</strong>, and <strong>transforming</strong></p>
 <table class="table">
 <colgroup>
-<col style="width: 43%">
-<col style="width: 56%">
+<col style="width: 33%">
+<col style="width: 66%">
 </colgroup>
 <thead>
 <tr class="header">

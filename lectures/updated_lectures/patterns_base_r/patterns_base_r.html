@@ -880,9 +880,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="subset-atomic-vectors-using" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="subset-atomic-vectors-using"><span class="header-section-number">2.1</span> Subset atomic vectors using []</h2>
-<section id="subsetting-elements-of-atomic-vectors" class="level3" data-number="2.1.1">
-<h3 data-number="2.1.1" class="anchored" data-anchor-id="subsetting-elements-of-atomic-vectors"><span class="header-section-number">2.1.1</span> Subsetting elements of atomic vectors</h3>
-<p>“Subsetting” a vector refers to isolating particular elements of a vector</p>
+<p><strong>“Subsetting” a vector refers to isolating particular elements of a vector</strong></p>
 <ul>
 <li>I sometimes refer to this as “accessing elements of a vector”</li>
 <li>subsetting elements of a vector is similar to “filtering” rows of a data-frame</li>
@@ -897,9 +895,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Zero vector [0], useful for testing data</li>
 <li>If vector is “named,” use character vectors to return elements with matching names</li>
 </ol>
-</section>
-<section id="using-positive-integers-to-return-elements-at-specified-positions-subset-atomic-vectors-using" class="level3" data-number="2.1.2">
-<h3 data-number="2.1.2" class="anchored" data-anchor-id="using-positive-integers-to-return-elements-at-specified-positions-subset-atomic-vectors-using"><span class="header-section-number">2.1.2</span> 1. Using positive integers to return elements at specified positions (subset atomic vectors using [])</h3>
+<section id="using-positive-integers-to-return-elements-at-specified-positions-subset-atomic-vectors-using" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="using-positive-integers-to-return-elements-at-specified-positions-subset-atomic-vectors-using"><span class="header-section-number">2.1.1</span> 1. Using positive integers to return elements at specified positions (subset atomic vectors using [])</h3>
 <p>Create atomic vector <code>x</code></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb103"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a>(x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.1</span>, <span class="fl">2.2</span>, <span class="fl">3.3</span>, <span class="fl">4.4</span>, <span class="fl">5.5</span>))</span>
@@ -929,8 +926,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb108-4"><a href="#cb108-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3.3 4.4 5.5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="using-negative-integers-to-exclude-elements-at-specified-positions-subset-atomic-vectors-using" class="level3" data-number="2.1.3">
-<h3 data-number="2.1.3" class="anchored" data-anchor-id="using-negative-integers-to-exclude-elements-at-specified-positions-subset-atomic-vectors-using"><span class="header-section-number">2.1.3</span> 2. Using negative integers to exclude elements at specified positions (subset atomic vectors using [])</h3>
+<section id="using-negative-integers-to-exclude-elements-at-specified-positions-subset-atomic-vectors-using" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="using-negative-integers-to-exclude-elements-at-specified-positions-subset-atomic-vectors-using"><span class="header-section-number">2.1.2</span> 2. Using negative integers to exclude elements at specified positions (subset atomic vectors using [])</h3>
 <p>Before excluding elements based on position, investigate object</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb109"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a>x</span>
@@ -952,8 +949,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb114-2"><a href="#cb114-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2.2 4.4 5.5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="using-logicals-to-return-elements-where-corresponding-logical-is-true-subset-atomic-vectors-using" class="level3" data-number="2.1.4">
-<h3 data-number="2.1.4" class="anchored" data-anchor-id="using-logicals-to-return-elements-where-corresponding-logical-is-true-subset-atomic-vectors-using"><span class="header-section-number">2.1.4</span> 3. Using logicals to return elements where corresponding logical is <code>TRUE</code> (subset atomic vectors using [])</h3>
+<section id="using-logicals-to-return-elements-where-corresponding-logical-is-true-subset-atomic-vectors-using" class="level3" data-number="2.1.3">
+<h3 data-number="2.1.3" class="anchored" data-anchor-id="using-logicals-to-return-elements-where-corresponding-logical-is-true-subset-atomic-vectors-using"><span class="header-section-number">2.1.3</span> 3. Using logicals to return elements where corresponding logical is <code>TRUE</code> (subset atomic vectors using [])</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb115"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a>x</span>
 <span id="cb115-2"><a href="#cb115-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.1 2.2 3.3 4.4 5.5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -981,9 +978,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb122"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">FALSE</span>)]</span>
 <span id="cb122-2"><a href="#cb122-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.1 3.3 5.5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="using-logicals-to-return-elements-where-corresponding-logical-is-true-subset-atomic-vectors-using-1" class="level3" data-number="2.1.5">
-<h3 data-number="2.1.5" class="anchored" data-anchor-id="using-logicals-to-return-elements-where-corresponding-logical-is-true-subset-atomic-vectors-using-1"><span class="header-section-number">2.1.5</span> 3. Using logicals to return elements where corresponding logical is <code>TRUE</code> (subset atomic vectors using [])</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb123"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a>x</span>
 <span id="cb123-2"><a href="#cb123-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.1 2.2 3.3 4.4 5.5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1004,9 +998,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb128"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a>x[x<span class="sc">&gt;</span><span class="dv">3</span>] <span class="co"># prints only the values that had TRUE at that position</span></span>
 <span id="cb128-2"><a href="#cb128-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3.3 4.4 5.5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="using-logicals-to-return-elements-where-corresponding-logical-is-true-subset-atomic-vectors-using-cont." class="level3" data-number="2.1.6">
-<h3 data-number="2.1.6" class="anchored" data-anchor-id="using-logicals-to-return-elements-where-corresponding-logical-is-true-subset-atomic-vectors-using-cont."><span class="header-section-number">2.1.6</span> 3. Using logicals to return elements where corresponding logical is <code>TRUE</code> (subset atomic vectors using []) [cont.]</h3>
 <p>The <code>visits_by_100751</code> column shows how many visits the University of Alabama made to each school. Let’s subset this to only include 2 or more visits:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb129"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a>df_school<span class="sc">$</span>visits_by_100751[<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>]</span>
@@ -1031,8 +1022,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb131-6"><a href="#cb131-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [149] 3 3 3 3 4 3 3 3 3 3 3 3 3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="empty-returns-original-vector-subset-atomic-vectors-using" class="level3" data-number="2.1.7">
-<h3 data-number="2.1.7" class="anchored" data-anchor-id="empty-returns-original-vector-subset-atomic-vectors-using"><span class="header-section-number">2.1.7</span> 4. Empty <code>[]</code> returns original vector (subset atomic vectors using [])</h3>
+<section id="empty-returns-original-vector-subset-atomic-vectors-using" class="level3" data-number="2.1.4">
+<h3 data-number="2.1.4" class="anchored" data-anchor-id="empty-returns-original-vector-subset-atomic-vectors-using"><span class="header-section-number">2.1.4</span> 4. Empty <code>[]</code> returns original vector (subset atomic vectors using [])</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb132"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a>x</span>
 <span id="cb132-2"><a href="#cb132-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.1 2.2 3.3 4.4 5.5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1042,8 +1033,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>This is useful for sub-setting data frames, as we will show below</p>
 </section>
-<section id="zero-vector-0-subset-atomic-vectors-using" class="level3" data-number="2.1.8">
-<h3 data-number="2.1.8" class="anchored" data-anchor-id="zero-vector-0-subset-atomic-vectors-using"><span class="header-section-number">2.1.8</span> 5. Zero vector [0] (subset atomic vectors using [])</h3>
+<section id="zero-vector-0-subset-atomic-vectors-using" class="level3" data-number="2.1.5">
+<h3 data-number="2.1.5" class="anchored" data-anchor-id="zero-vector-0-subset-atomic-vectors-using"><span class="header-section-number">2.1.5</span> 5. Zero vector [0] (subset atomic vectors using [])</h3>
 <p>Zero vector, <code>x[0]</code></p>
 <ul>
 <li>R interprets this as returning element 0</li>
@@ -1057,8 +1048,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>“This is not something you usually do on purpose, but it can be helpful for generating test data.”</li>
 </ul>
 </section>
-<section id="if-vector-is-named-character-vectors-to-return-elements-with-matching-names-subset-atomic-vectors-using" class="level3" data-number="2.1.9">
-<h3 data-number="2.1.9" class="anchored" data-anchor-id="if-vector-is-named-character-vectors-to-return-elements-with-matching-names-subset-atomic-vectors-using"><span class="header-section-number">2.1.9</span> 6. If vector is named, character vectors to return elements with matching names (subset atomic vectors using [])</h3>
+<section id="if-vector-is-named-character-vectors-to-return-elements-with-matching-names-subset-atomic-vectors-using" class="level3" data-number="2.1.6">
+<h3 data-number="2.1.6" class="anchored" data-anchor-id="if-vector-is-named-character-vectors-to-return-elements-with-matching-names-subset-atomic-vectors-using"><span class="header-section-number">2.1.6</span> 6. If vector is named, character vectors to return elements with matching names (subset atomic vectors using [])</h3>
 <p>Create vector <code>y</code> that has values of vector <code>x</code> but each element is named</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb135"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb135-1"><a href="#cb135-1" aria-hidden="true" tabindex="-1"></a>x</span>
@@ -1087,8 +1078,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="subsetting-listsdata-frames-using" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="subsetting-listsdata-frames-using"><span class="header-section-number">2.2</span> Subsetting lists/data frames using []</h2>
-<section id="subsetting-lists-using" class="level3" data-number="2.2.1">
-<h3 data-number="2.2.1" class="anchored" data-anchor-id="subsetting-lists-using"><span class="header-section-number">2.2.1</span> Subsetting lists using []</h3>
 <p>Using <code>[]</code> operator to subset lists works the same as subsetting atomic vector</p>
 <ul>
 <li>Using <code>[]</code> with a list always returns a list</li>
@@ -1115,9 +1104,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb141-2"><a href="#cb141-2" aria-hidden="true" tabindex="-1"></a><span class="co">#show elements 3 and 1 of object list_a</span></span>
 <span id="cb141-3"><a href="#cb141-3" aria-hidden="true" tabindex="-1"></a><span class="co">#str(list_a[c(3, 1)])</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="subsetting-data-frames-using" class="level3" data-number="2.2.2">
-<h3 data-number="2.2.2" class="anchored" data-anchor-id="subsetting-data-frames-using"><span class="header-section-number">2.2.2</span> Subsetting data frames using []</h3>
 <p>Recall that a data frame is just a particular kind of list</p>
 <ul>
 <li>each element = a column = a variable</li>
@@ -1131,9 +1117,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>use “single index” <code>df_name[&lt;columns&gt;]</code> to extract columns (variables) based on element position number (i.e., column number)</li>
 <li>use “double index” <code>df_name[&lt;rows&gt;, &lt;columns&gt;]</code> to extact particular rows and columns of a data frame</li>
 </ol>
-</section>
-<section id="subsetting-data-frames-using-to-extract-columns-variables-based-on-element-position" class="level3" data-number="2.2.3">
-<h3 data-number="2.2.3" class="anchored" data-anchor-id="subsetting-data-frames-using-to-extract-columns-variables-based-on-element-position"><span class="header-section-number">2.2.3</span> Subsetting data frames using [] to extract columns (variables) based on element position</h3>
+<section id="subsetting-data-frames-using-to-extract-columns-variables-based-on-element-position" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="subsetting-data-frames-using-to-extract-columns-variables-based-on-element-position"><span class="header-section-number">2.2.1</span> Subsetting data frames using [] to extract columns (variables) based on element position</h3>
 <p>Use “single index” <code>df_name[&lt;columns&gt;]</code> to extract columns (variables) based on element number (i.e., column number)</p>
 <p>Examples [output omitted]</p>
 <div class="cell">
@@ -1148,8 +1133,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb142-9"><a href="#cb142-9" aria-hidden="true" tabindex="-1"></a>df_event[<span class="fu">c</span>(<span class="dv">13</span>,<span class="dv">7</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="subsetting-data-frames-to-extract-columns-variables-and-rows-observations-based-on-positionality" class="level3" data-number="2.2.4">
-<h3 data-number="2.2.4" class="anchored" data-anchor-id="subsetting-data-frames-to-extract-columns-variables-and-rows-observations-based-on-positionality"><span class="header-section-number">2.2.4</span> Subsetting Data Frames to extract columns (variables) and rows (observations) based on positionality</h3>
+<section id="subsetting-data-frames-to-extract-columns-variables-and-rows-observations-based-on-positionality" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="subsetting-data-frames-to-extract-columns-variables-and-rows-observations-based-on-positionality"><span class="header-section-number">2.2.2</span> Subsetting Data Frames to extract columns (variables) and rows (observations) based on positionality</h3>
 <p>use “double index” syntax <code>df_name[&lt;rows&gt;, &lt;columns&gt;]</code> to extact particular rows and columns of a data frame</p>
 <ul>
 <li>often combined with sequences (e.g., <code>1:10</code>)</li>
@@ -1182,8 +1167,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb145-8"><a href="#cb145-8" aria-hidden="true" tabindex="-1"></a>df_event[, <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="use-to-extract-data-frame-columns-based-on-variable-names" class="level3" data-number="2.2.5">
-<h3 data-number="2.2.5" class="anchored" data-anchor-id="use-to-extract-data-frame-columns-based-on-variable-names"><span class="header-section-number">2.2.5</span> Use [] to extract data frame columns based on variable names</h3>
+<section id="use-to-extract-data-frame-columns-based-on-variable-names" class="level3" data-number="2.2.3">
+<h3 data-number="2.2.3" class="anchored" data-anchor-id="use-to-extract-data-frame-columns-based-on-variable-names"><span class="header-section-number">2.2.3</span> Use [] to extract data frame columns based on variable names</h3>
 <p>Selecting columns from a data frame by subsetting with <code>[]</code> and list of element names (i.e., variable names) enclose in quotes</p>
 <p>“single index” approach extracts specific variables, all rows (output omitted)</p>
 <div class="cell">
@@ -1203,8 +1188,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb147-7"><a href="#cb147-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 Stony Brook          MA  public hs</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="student-exercises" class="level3" data-number="2.2.6">
-<h3 data-number="2.2.6" class="anchored" data-anchor-id="student-exercises"><span class="header-section-number">2.2.6</span> Student exercises</h3>
+<section id="student-exercises" class="level3" data-number="2.2.4">
+<h3 data-number="2.2.4" class="anchored" data-anchor-id="student-exercises"><span class="header-section-number">2.2.4</span> Student exercises</h3>
 <p>Use subsetting operators from base R in extracting columns (variables), observations:</p>
 <ol type="1">
 <li><p>Use both “single index” and “double index” in subsetting to create a new dataframe by extracting the columns <code>instnm</code>, <code>event_date</code>, <code>event_type</code> from the <code>df_event</code> data frame. And show what columns (variables) are in the newly created dataframe.</p></li>
@@ -1475,8 +1460,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1 data-number="3"><span class="header-section-number">3</span> Appendix</h1>
 <section id="subset-data-frames-by-combining-and" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="subset-data-frames-by-combining-and"><span class="header-section-number">3.1</span> Subset Data frames by combining [] and $</h2>
-<section id="subset-data-frames-by-combining-and-1" class="level3" data-number="3.1.1">
-<h3 data-number="3.1.1" class="anchored" data-anchor-id="subset-data-frames-by-combining-and-1"><span class="header-section-number">3.1.1</span> Subset Data Frames by combining <code>[]</code> and <code>$</code></h3>
 <p><strong>Motivation</strong></p>
 <ul>
 <li>When working with data frames we often want to isolate those observations that satisfy certain conditions</li>
@@ -1523,9 +1506,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb178"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb178-1"><a href="#cb178-1" aria-hidden="true" tabindex="-1"></a>df_school[df_school<span class="sc">$</span>visits_by_110635 <span class="sc">&gt;=</span> <span class="dv">1</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="subset-data-frames-by-combining-and-decompose-syntax" class="level3" data-number="3.1.2">
-<h3 data-number="3.1.2" class="anchored" data-anchor-id="subset-data-frames-by-combining-and-decompose-syntax"><span class="header-section-number">3.1.2</span> Subset Data Frames by combining <code>[]</code> and <code>$</code>, decompose syntax</h3>
+<section id="subset-data-frames-by-combining-and-decompose-syntax" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="subset-data-frames-by-combining-and-decompose-syntax"><span class="header-section-number">3.1.1</span> Subset Data Frames by combining <code>[]</code> and <code>$</code>, decompose syntax</h3>
 <p><strong>Task</strong>: Isolate obs where school received at least 1 visit from UC Berkeley</p>
 <ul>
 <li>general syntax: <code>df_name[df_name$var_name &lt;condition&gt;, ]</code></li>
@@ -1558,8 +1540,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb180-2"><a href="#cb180-2" aria-hidden="true" tabindex="-1"></a>x[x<span class="sc">&gt;</span><span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="subset-data-frames-by-combining-and-keep-desired-columns" class="level3" data-number="3.1.3">
-<h3 data-number="3.1.3" class="anchored" data-anchor-id="subset-data-frames-by-combining-and-keep-desired-columns"><span class="header-section-number">3.1.3</span> Subset Data Frames by combining <code>[]</code> and <code>$</code>, keep desired columns</h3>
+<section id="subset-data-frames-by-combining-and-keep-desired-columns" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="subset-data-frames-by-combining-and-keep-desired-columns"><span class="header-section-number">3.1.2</span> Subset Data Frames by combining <code>[]</code> and <code>$</code>, keep desired columns</h3>
 <ul>
 <li><p>General syntax to filter desired observations (rows) and variables (columns) of data frame:</p></li>
 <li><p><code>df_name[df_name$var_name &lt;condition&gt;, &lt;desired columns&gt;]</code></p></li>
@@ -1578,8 +1560,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb182"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb182-1"><a href="#cb182-1" aria-hidden="true" tabindex="-1"></a>df_school[df_school<span class="sc">$</span>visits_by_110635 <span class="sc">&gt;=</span> <span class="dv">1</span>, <span class="fu">c</span>(<span class="st">"state_code"</span>,<span class="st">"school_type"</span>,<span class="st">"name"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="subset-data-frames-by-combining-and-more-examples" class="level3" data-number="3.1.4">
-<h3 data-number="3.1.4" class="anchored" data-anchor-id="subset-data-frames-by-combining-and-more-examples"><span class="header-section-number">3.1.4</span> Subset Data Frames by combining <code>[]</code> and <code>$</code>, more examples</h3>
+<section id="subset-data-frames-by-combining-and-more-examples" class="level3" data-number="3.1.3">
+<h3 data-number="3.1.3" class="anchored" data-anchor-id="subset-data-frames-by-combining-and-more-examples"><span class="header-section-number">3.1.3</span> Subset Data Frames by combining <code>[]</code> and <code>$</code>, more examples</h3>
 <p>Syntax:</p>
 <ul>
 <li>filter based on one variable:
@@ -1616,8 +1598,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb185-3"><a href="#cb185-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2763</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="logical-operators-for-comparisons" class="level3" data-number="3.1.5">
-<h3 data-number="3.1.5" class="anchored" data-anchor-id="logical-operators-for-comparisons"><span class="header-section-number">3.1.5</span> Logical operators for comparisons</h3>
+<section id="logical-operators-for-comparisons" class="level3" data-number="3.1.4">
+<h3 data-number="3.1.4" class="anchored" data-anchor-id="logical-operators-for-comparisons"><span class="header-section-number">3.1.4</span> Logical operators for comparisons</h3>
 <ul>
 <li>Logical operators to isolate/filter observations of data frame</li>
 </ul>
@@ -1701,8 +1683,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb188-9"><a href="#cb188-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 544</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="subset-data-frames-by-combining-and-na-observations" class="level3" data-number="3.1.6">
-<h3 data-number="3.1.6" class="anchored" data-anchor-id="subset-data-frames-by-combining-and-na-observations"><span class="header-section-number">3.1.6</span> Subset Data Frames by combining <code>[]</code> and <code>$</code>, <code>NA</code> Observations</h3>
+<section id="subset-data-frames-by-combining-and-na-observations" class="level3" data-number="3.1.5">
+<h3 data-number="3.1.5" class="anchored" data-anchor-id="subset-data-frames-by-combining-and-na-observations"><span class="header-section-number">3.1.5</span> Subset Data Frames by combining <code>[]</code> and <code>$</code>, <code>NA</code> Observations</h3>
 <p>Filtering observations of data frame using <code>[]</code> combined with <code>$</code> is more complicated in the presence of missing values (<code>NA</code> values)</p>
 <p>The below we will explain</p>
 <ul>
@@ -1763,8 +1745,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb197-5"><a href="#cb197-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 9941</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="student-exercises-1" class="level3" data-number="3.1.7">
-<h3 data-number="3.1.7" class="anchored" data-anchor-id="student-exercises-1"><span class="header-section-number">3.1.7</span> Student Exercises</h3>
+<section id="student-exercises-1" class="level3" data-number="3.1.6">
+<h3 data-number="3.1.6" class="anchored" data-anchor-id="student-exercises-1"><span class="header-section-number">3.1.6</span> Student Exercises</h3>
 <p>Subsetting Data Frames with <code>[]</code> and <code>$</code>:</p>
 <ol type="1">
 <li><p>Show how many public high schools in California with at least 50% Latinx (hispanic in data) student enrollment from the dataframe df_school.</p></li>
@@ -1783,9 +1765,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb198-4"><a href="#cb198-4" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(df_school_br1)</span>
 <span id="cb198-5"><a href="#cb198-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 713</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</details></section>
-<section id="solution-to-student-exercises" class="level3" data-number="3.1.8">
-<h3 data-number="3.1.8" class="anchored" data-anchor-id="solution-to-student-exercises"><span class="header-section-number">3.1.8</span> Solution to Student Exercises</h3>
 <p>Solution to 2:</p>
 <p><strong>base R</strong> using [] and $</p>
 <div class="cell">
@@ -1799,14 +1778,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb200-4"><a href="#cb200-4" aria-hidden="true" tabindex="-1"></a>              <span class="sc">&amp;</span> df_event<span class="sc">$</span>med_inc <span class="sc">&gt;</span> <span class="dv">30000</span> ), ])</span>
 <span id="cb200-5"><a href="#cb200-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 7784</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-
+</details>
 <p><br></p>
 </section>
 </section>
 <section id="subset-using-subset-function" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="subset-using-subset-function"><span class="header-section-number">3.2</span> Subset using subset() function</h2>
-<section id="subset-function" class="level3" data-number="3.2.1">
-<h3 data-number="3.2.1" class="anchored" data-anchor-id="subset-function"><span class="header-section-number">3.2.1</span> Subset function</h3>
 <p>The <code>subset()</code> is a base R function to “filter” observations from some object <code>x</code></p>
 <ul>
 <li>object <code>x</code> can be a matrix, data frame, list</li>
@@ -1832,9 +1809,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>select</code> indicates columns to select from data frame (if argument is not used default will keep all columns)</li>
 <li><code>drop</code> to preserve original <strong>dimensions</strong> [SKIP]</li>
 </ul>
-</section>
-<section id="subset-function-examples" class="level3" data-number="3.2.2">
-<h3 data-number="3.2.2" class="anchored" data-anchor-id="subset-function-examples"><span class="header-section-number">3.2.2</span> Subset function, examples</h3>
+<section id="subset-function-examples" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="subset-function-examples"><span class="header-section-number">3.2.1</span> Subset function, examples</h3>
 <p>Recall the previous example where we count events at public HS with at least $50k median household income.</p>
 <ul>
 <li><em>Note</em>. <code>subset()</code> automatically excludes rows where condition is <code>NA</code>:</li>
@@ -1927,8 +1903,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb214-3"><a href="#cb214-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 713</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="student-exercises-2" class="level3" data-number="3.2.3">
-<h3 data-number="3.2.3" class="anchored" data-anchor-id="student-exercises-2"><span class="header-section-number">3.2.3</span> Student Exercises</h3>
+<section id="student-exercises-2" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="student-exercises-2"><span class="header-section-number">3.2.2</span> Student Exercises</h3>
 <p>Using <code>subset()</code> from base R:</p>
 <ol type="1">
 <li><p>Create a new dataframe by extracting the columns <code>instnm</code>, <code>event_date</code>, <code>event_type</code> from <code>df_event</code> data frame. And show what columns (variables) are in the newly created dataframe.</p></li>
@@ -2075,9 +2051,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb224"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb224-1"><a href="#cb224-1" aria-hidden="true" tabindex="-1"></a>school_v2_temp <span class="ot">&lt;-</span> school_v2 <span class="sc">%&gt;%</span> </span>
 <span id="cb224-2"><a href="#cb224-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pct_fr_lunch =</span> num_fr_lunch<span class="sc">/</span>total_students) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="base-r-approach-to-creating-new-variables-1" class="level3" data-number="3.3.3">
-<h3 data-number="3.3.3" class="anchored" data-anchor-id="base-r-approach-to-creating-new-variables-1"><span class="header-section-number">3.3.3</span> Base R approach to creating new variables</h3>
 <p>If creating new variable based on the condition/values of input variables, basically the tidyverse equivalent of <code>mutate()</code> <strong>with</strong> <code>if_else()</code> or <code>recode()</code></p>
 <ul>
 <li>Pseudo syntax: <code>df$newvar[logical condition]&lt;- new value</code></li>
@@ -2110,9 +2083,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb226-10"><a href="#cb226-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2           1  2045</span></span>
 <span id="cb226-11"><a href="#cb226-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3          NA   624</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="creating-variables-1" class="level3" data-number="3.3.4">
-<h3 data-number="3.3.4" class="anchored" data-anchor-id="creating-variables-1"><span class="header-section-number">3.3.4</span> Creating variables</h3>
 <p><strong>Task</strong>: Using data frame <code>wwlist</code> and input vars <code>state</code> and <code>firstgen</code>, create a 4-category var with following categories:</p>
 <ul>
 <li>“instate_firstgen”; “instate_nonfirstgen”; “outstate_firstgen”; “outstate_nonfirstgen”</li>
@@ -2139,9 +2109,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb228-8"><a href="#cb228-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 outstate_nonfirstgen 134616</span></span>
 <span id="cb228-9"><a href="#cb228-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 &lt;NA&gt;                  10100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="base-r-approach-to-creating-new-variables-2" class="level3" data-number="3.3.5">
-<h3 data-number="3.3.5" class="anchored" data-anchor-id="base-r-approach-to-creating-new-variables-2"><span class="header-section-number">3.3.5</span> Base R approach to creating new variables</h3>
 <p><strong>Task</strong>: Using <code>wwlist</code> and input vars <code>state</code> and <code>firstgen</code>, create a 4-category var</p>
 <p><strong>base R approach</strong></p>
 <div class="cell">
