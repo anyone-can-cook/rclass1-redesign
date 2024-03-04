@@ -1,5 +1,5 @@
 ---
-title: ""
+title: "Across the tidyverse: processing across rows"
 author: ""
 date: ""
 format: html
@@ -15,28 +15,9 @@ knitr::opts_chunk$set(collapse = TRUE, comment = "#>", highlight = TRUE, message
   #comment = "#>" makes it so results from a code chunk start with "#>"; default is "##"
 ```
 
-```{r, echo=FALSE, include=FALSE}
-#THIS CODE DOWNLOADS THE MOST RECENT VERSION OF THE FILE beamder_header.tex AND SAVES IT TO THE DIRECTORY ONE LEVEL UP FROM THIS .RMD LECTURE FILE
-download.file(url = 'https://raw.githubusercontent.com/anyone-can-cook/rclass1/master/lectures/beamer_header.tex', 
-              destfile = '../beamer_header.tex',
-              mode = 'wb')
-
-```
-
 # Introduction
 
-### Lecture outline
-
-\tableofcontents
-
-```{r, eval=FALSE, echo=FALSE}
-#Use this if you want TOC to show level 2 headings
-\tableofcontents
-#Use this if you don't want TOC to show level 2 headings
-\tableofcontents[subsectionstyle=hide/hide/hide]
-```
-
-### Libraries we will use today
+## Libraries we will use today
 
 "Load" the package we will use today (output omitted)
 
@@ -56,7 +37,7 @@ Note: when we load package, name of package is not in quotes; but when we instal
 -   `install.packages("tidyverse")`
 -   `library(tidyverse)`
 
-### Data we will use today
+## Data we will use today
 
 Data on off-campus recruiting events by public universities
 
@@ -71,38 +52,11 @@ load(url("https://github.com/ozanj/rclass/raw/master/data/recruiting/recruit_eve
 #load("../../data/recruiting/recruit_event_allvars.Rdata")
 ```
 
-### Processing across variables vs. processing across observations
+# `group_by()` and `summarize()`
 
-Visits by UC Berkeley to public high schools
+## Processing across variables vs. processing across observations
 
-```{r, echo=FALSE}
-#df_event %>% count(event_type)
-df_event %>% filter(event_type == "public hs", univ_id == 110635) %>% 
-  mutate(pct_fr_lunch = fr_lunch/total_students_pub) %>% 
-  rename(tot_stu_pub = total_students_pub, state= event_state) %>%
-  select(school_id, state, tot_stu_pub, fr_lunch, pct_fr_lunch, med_inc) %>%
-  slice(1:5)
-```
-
-\medskip
-
-So far, we have focused on \`\`processing across variables''
-
--   Performing calculations across columns (i.e., vars), typically within a row (i.e., observation)
--   Example: percent free-reduced lunch (above)
-
-\medskip
-
-Processing across obs (focus of today's lecture)
-
--   Performing calculations across rows (i.e., obs), often within a column (i.e., variable)
--   Example: Average household income of visited high schools, by state
-
-### Why processing across observations
-
-**Note**
-
--   In today's lecture, I'll use the terms "observations" and "rows" interchangeably
+In today's lecture, I'll use the terms "observations" and "rows" interchangeably
 
 **Creation of analysis datasets often requires calculations across obs**
 
@@ -122,9 +76,34 @@ Example: Want to create a graph that shows number of recruiting events by event 
     -   this variable calculated by counting number of rows in each combination of university and event type
 -   This new data frame object is the input for creating desired graph
 
-# Introduce group_by() and summarize()
 
-### Strategy for teaching processing across obs
+\medskip
+
+So far, we have focused on \`\`processing across variables''
+
+-   Performing calculations across columns (i.e., vars), typically within a row (i.e., observation)
+-   Example: percent free-reduced lunch (above)
+
+\medskip
+
+Visits by UC Berkeley to public high schools
+
+```{r, echo=FALSE}
+#df_event %>% count(event_type)
+df_event %>% filter(event_type == "public hs", univ_id == 110635) %>% 
+  mutate(pct_fr_lunch = fr_lunch/total_students_pub) %>% 
+  rename(tot_stu_pub = total_students_pub, state= event_state) %>%
+  select(school_id, state, tot_stu_pub, fr_lunch, pct_fr_lunch, med_inc) %>%
+  slice(1:5)
+```
+
+__Processing across obs (focus of today's lecture)__
+
+-   Performing calculations across rows (i.e., obs), often within a column (i.e., variable)
+-   Example: Average household income of visited high schools, by state
+
+
+__Strategy for teaching processing across obs__
 
 In `tidyverse` the `group_by()` and `summarize()` functions are the primary means of performing calculations across observations
 
@@ -132,15 +111,13 @@ In `tidyverse` the `group_by()` and `summarize()` functions are the primary mean
 -   `group_by()` typically not very useful by itself
 -   `summarize()` \[with or without `group_by()`\] can be helpful for creating summary statistics that are the inputs for tables or graphs you create
 
-How we'll teach:
+__How we'll teach:__
 
 -   introduce `group_by()` and `summarize()` separately
     -   goal: you understand what each function does
 -   then we'll combine them
 
 ## group_by
-
-### group_by()
 
 ```{r, eval=FALSE, include=FALSE}
 ?group_by
@@ -175,7 +152,6 @@ df_event %>% count(instnm)
 df_event %>% group_by(instnm) %>% count(event_type)
 ```
 
-### `group_by()`
 
 By itself `group_by()` doesn't do much; it just prints data
 
@@ -241,7 +217,7 @@ class(df_event_grp)
 rm(df_event_grp)
 ```
 
-### `group_by()` student exercise
+### Student exercise `group_by()`
 
 1.  Group by "instnm" and get a frequency count.
     -   How many rows and columns do you have? What do the number of rows mean?\
@@ -249,7 +225,9 @@ rm(df_event_grp)
     -   How many rows and columns do you have? What do the number of rows mean?
 3.  **Bonus:** In the same code chunk, group by "instnm" and "event_type", but this time filter for observations where "med_inc" is greater than 75000 and get a frequency count.
 
-### `group_by()` student exercise solutions
+<details>
+
+<summary><strong>Solutions `group_by()`</strong></summary>
 
 1.  Group by "instnm" and get a frequency count.
 
@@ -261,7 +239,6 @@ rm(df_event_grp)
       count() 
     ```
 
-### `group_by()` student exercise solutions
 
 2.  Now group by "instnm" **and** "event_type" and get a frequency count.
 
@@ -273,8 +250,6 @@ rm(df_event_grp)
       count() 
     ```
 
-### `group_by()` student exercise solutions
-
 3.  **Bonus:** Group by "instnm" and "event_type", but this time filter for observations where "med_inc" is greater than 75000 and get a frequency count.
 
 ```{r}
@@ -284,9 +259,13 @@ df_event %>%
   count()
 ```
 
+</details>
+
+<br>
+
 ## summarize()
 
-### `summarize()` function
+__`summarize()` function__
 
 ```{r, eval=FALSE, echo=FALSE}
 ?summarize
@@ -340,7 +319,6 @@ df_event %>% summarize(max_inc=max(med_inc, na.rm = TRUE))
 df_event %>% summarize(max_inc=max(med_inc, na.rm = TRUE)) %>% str()
 ```
 
-### Investigate objects created by `summarize()`
 
 **Example**: Count total number of events AND max value of median income
 
@@ -359,7 +337,6 @@ df_event %>% summarize(
 #df_event %>% summarize(num_events=n(), max_inc=max(med_inc, na.rm = TRUE)) %>% View()
 ```
 
-### Investigate objects created by `summarize()`
 
 **Example**: Count total number of events AND max value of median income
 
@@ -411,7 +388,6 @@ df_event %>% filter(event_state == instst) %>% count() #in state
 df_event %>% filter(event_state != instst) %>% count() #out state
 ```
 
-### Using \[\] operator to filter observations within summarize
 
 Task: calculate mean income for: all events; in-state events; out-of-state events
 
@@ -467,14 +443,16 @@ df_event %>% mutate(non_miss_inc = is.na(med_inc)==0) %>%
   )
 ```
 
-### `summarize()` student exercise
+### Student exercise `summarize()` 
 
 1.  What is the min value of `med_inc` across all events?
     -   Hint: Use min()
 2.  What is the mean value of `fr_lunch` across all events?
     -   Hint: Use mean()
 
-### `summarize()` student exercise
+<details>
+
+<summary><strong>Solutions using `summarize()`</strong></summary>
 
 1.  What is min value of `med_inc` across all events?
 
@@ -483,7 +461,6 @@ df_event %>%
   summarize(min_med_income = min(med_inc, na.rm = TRUE))
 ```
 
-### `summarize()` student exercise
 
 2.  What is the mean value of `fr_lunch` across all events?
 
@@ -494,9 +471,14 @@ df_event %>%
       summarize(mean_fr_lunch = mean(fr_lunch, na.rm = TRUE))
     ```
 
+</details>
+
+<br>
+
+
 # Combining group_by() and summarize()
 
-### Combining `summarize()` and `group_by`
+__Combining `summarize()` and `group_by`__
 
 `summarize()` on ungrouped vs. grouped data:
 
@@ -528,8 +510,6 @@ event_by_univ # print
 rm(event_by_univ)
 ```
 
-### Combining `summarize()` and `group_by`
-
 **Task**
 
 -   Count number of recruiting events by institution and event_type
@@ -546,7 +526,6 @@ rm(event_by_univ)
       #df_event %>% group_by(instnm, event_type) %>% summarize(num_events=n()) %>% View()
     ```
 
-### Combining `summarize()` and `group_by`
 
 **Task**
 
@@ -569,7 +548,6 @@ df_event %>% group_by(instnm, event_type) %>%
     coord_flip() + facet_wrap(~ instnm) 
 ```
 
-### Combining `summarize()` and `group_by`
 
 **Task**. Count number of recruiting events by institution, event_type, and whether event is in- or out-of-state (var=`event_inst`)
 
@@ -591,7 +569,6 @@ df_event %>%
 # silently dropped even with .drop=FALSE.
 ```
 
-### Combining `summarize()` and `group_by`
 
 Make a graph, showing in/out state as fill color of bar
 
@@ -602,8 +579,6 @@ df_event %>% group_by(instnm, event_type, event_inst) %>%
     ylab("Number of events") + xlab("Event type") + geom_col() +
     coord_flip() + facet_wrap(~ instnm) 
 ```
-
-### Combining `summarize()` and `group_by`
 
 **Task**
 
@@ -622,8 +597,6 @@ df_event %>% group_by(instnm, event_type, event_inst) %>%
   ) %>% glimpse()
 ```
 
-### Combining `summarize()` and `group_by`
-
 Recruiting events by UC Berkeley
 
 ```{r, results="hide"}
@@ -640,8 +613,6 @@ event_berk %>% count(event_type)
 ```
 
 ## summarize() and Counts
-
-### `summarize()`: Counts
 
 The count function `n()` takes no arguments and returns the size of the current group
 
@@ -689,7 +660,8 @@ event_berk %>% group_by(event_type) %>%
   )
 ```
 
-### `summarize()` and count student exercise
+
+### `summarize()` and `count()` student exercise
 
 Use one code chunk for this exercise. You could tackle this a step at a time and run the entire code chunk when you have answered all parts of this question. Create your own variable names.
 
@@ -699,7 +671,9 @@ Use one code chunk for this exercise. You could tackle this a step at a time and
     3.  Create a variable that represents the sum of non-missing obs for `med_inc`.\
     4.  **Bonus**: Arrange variable you created representing the count of each `event_type` in descending order.
 
-### `summarize()` and count student exercise SOLUTION
+<details>
+
+<summary><strong>Solutions using `summarize()` and `count()`</strong></summary>
 
 1.  Using the `event_berk` object filter observations where `event_state` is VA and group by `event_type`.
     1.  Using the summarize function, create a variable that represents the count for each `event_type`.\
@@ -716,10 +690,14 @@ event_berk %>%
     n_nonmiss_inc = sum(!is.na(med_inc))) %>%
   arrange(desc(n_events))
 ```
+</details>
+
+<br>
+
 
 ## summarize() and means
 
-### `summarize()`: means
+__`summarize()`: means__
 
 The `mean()` function within `summarize()` calculates means, separately for each group
 
@@ -768,7 +746,9 @@ event_berk %>% group_by(event_inst, event_type) %>% summarize(
     1.  Create vars for number non_missing for these racial/ethnic groups (`pct_white_zip`, `pct_black_zip`, `pct_asian_zip`, `pct_hispanic_zip`, `pct_amerindian_zip`, `pct_nativehawaii_zip`)\
     2.  Create vars for mean percent for each racial/ethnic group
 
-### Student exercise solutions
+<details>
+
+<summary><strong>Solutions</strong></summary>
 
 ```{r}
 event_berk %>% group_by(instnm, event_inst, event_type) %>%
@@ -789,9 +769,12 @@ event_berk %>% group_by(instnm, event_inst, event_type) %>%
   head(6)
 ```
 
-## summarize() and logical vectors, part II
+</details>
 
-### `summarize()`: counts with logical vectors, part II
+<br>
+
+
+## summarize() and logical vectors, part II
 
 Logical vectors (e.g., `is.na()`) useful for counting obs that satisfy some condition
 
@@ -840,11 +823,10 @@ event_berk %>% filter(event_type == "public hs") %>% # filter public hs visits
     p_incgt100k = mean(med_inc>100000, na.rm=TRUE)) # proportion visits to $100K+ commmunities 
 ```
 
-### `summarize()`: logical vectors to count *proportions*
 
 **What if we forgot to put `na.rm=TRUE` in the above task?**
 
-\medskip *\*Task\*\*: separately for in-state/out-of-state, what proportion of visits to public high schools are to communities with median income greater than \$100,000?
+\medskip \*\*Task\*\*: separately for in-state/out-of-state, what proportion of visits to public high schools are to communities with median income greater than \$100,000?
 
 ```{r}
 event_berk %>% filter(event_type == "public hs") %>% # filter public hs visits
@@ -878,9 +860,7 @@ Lots of other functions we can use within `summarize()`
 
 *Note: These functions can also be used on their own or with `mutate()`*
 
-### `summarize()`: Other functions
-
-Maximum value in a group
+__Maximum value in a group__
 
 ```{r}
 max(c(10,50,8))
@@ -896,9 +876,7 @@ event_berk %>% group_by(event_type, event_inst) %>%
   summarize(max_inc = max(med_inc, na.rm = TRUE))
 ```
 
-### `summarize()`: Other functions
-
-Isolate first/last/nth observation in a group
+__Isolate first/last/nth observation in a group__
 
 ```{r, results="hide"}
 x <- c(10,15,20,25,30)
@@ -939,7 +917,10 @@ Identify value of `event_date` for the *nth* event in each by group
     -   the fourth event in each by group
     -   the fifth event in each by group
 
-### Student exercise solution
+<details>
+
+<summary><strong>Student exercise solutions</strong></summary>
+
 
 ```{r}
 event_berk %>% arrange(event_type, event_datetime_start) %>%
@@ -953,10 +934,13 @@ event_berk %>% arrange(event_type, event_datetime_start) %>%
     date_5th= nth(event_date,5))
 
 ```
+</details>
+
+<br>
 
 # Summarize across multiple columns
 
-### What are column-wise operations?
+## What are column-wise operations?
 
 ```{r, eval=FALSE, include=FALSE}
 ?across
@@ -979,17 +963,11 @@ event_berk %>% arrange(event_type, event_datetime_start) %>%
     -   A named list of functions or lambdas, e.g. `list(mean = mean, n_miss = ~sum(is.na(.x)))`
 -   `.names` A glue specification that describes how to name the output columns. Use `{.col}` to stand for the selected column name and `{.fn}` to stand for the name of the function being applied, e.g. "`{.col}_{.fn}`"
 
-### across() affects every variable
+## across() affects every variable
 
 ```{r, eval=FALSE, include=FALSE}
 ?across
 ```
-
-Syntax: `across(.cols, .fns, .names)`
-
--   `.cols` Columns to transform
--   `.fns` Function to apply to each of the selected columns. Some values include:
-    -   A function, e.g. `mean()`; A purr-style lambda, e.g. \~ mean(.x, na.rm = TRUE); A named list of functions or lambdas, e.g. `list(mean = mean, n_miss = ~sum(is.na(.x)))`
 
 **Task**:
 
@@ -1015,18 +993,6 @@ df_event %>%
   summarize(across(c(med_inc, pct_white_zip), ~mean(.x, na.rm = TRUE)))
 ```
 
-### across() affects every variable
-
-```{r, eval=FALSE, include=FALSE}
-?across()
-```
-
-Syntax: `across(.cols, .fns, .names)`
-
--   `.cols` Columns to transform
--   `.fns` Function to apply to each of the selected columns. Some values include:
-    -   A function, e.g. `mean()`; A purr-style lambda, e.g. \~ mean(.x, na.rm = TRUE); A named list of functions or lambdas, e.g. `list(mean = mean, n_miss = ~sum(is.na(.x)))`
-
 **Task**:
 
 -   For U. Pittsburgh (`univ_id = 215293`) events at public and private high schools, caclulate **mean** and **standard deviation** of `med_inc` and `pct_white_zip` for each combination of `event_type` and `event_inst`
@@ -1045,12 +1011,6 @@ df_event %>%
   group_by(event_type,event_inst) %>%
   summarize(across(c(med_inc, pct_white_zip), mean_sd))
 ```
-
-### across() affects every variable
-
-Syntax: `across(.cols, .fns, .names)`
-
--   `.names` A glue specification that describes how to name the output columns. Use `{.col}` to stand for the selected column name and `{.fn}` to stand for the name of the function being applied, e.g. "`{.col}_{.fn}`"
 
 Use this syntax to control variable name suffixes:
 
@@ -1073,8 +1033,6 @@ df_event %>%
   group_by(event_type,event_inst) %>%
   summarize(across(c(med_inc, pct_white_zip), mean_sd, .names = "{.fn}_{.col}"))
 ```
-
-### across() affects every variable
 
 **Task**:
 
@@ -1158,16 +1116,6 @@ class(df_event$event_date)
 ```
 
 -   Although `event_date` is a Date class, it is type double and therefore we can apply `is.double` to the `where()` function to calculate the mean, min, and max.
-
-### across() and where() affects selected variables if they meet a condition
-
-Useful if you want to apply functions to variables that are particular `type` or `class`
-
-Syntax: `across(where(fn)), .fns, .names)`
-
--   `fn` A function that returns TRUE or FALSE
--   `.fns` Function to apply to each of the selected columns. Some values include:
-    -   A function, e.g. `mean()`; A purr-style lambda, e.g. \~ mean(.x, na.rm = TRUE); A named list of functions or lambdas, e.g. `list(mean = mean, n_miss = ~sum(is.na(.x)))`
 
 \medskip
 
@@ -1459,8 +1407,6 @@ df_event %>%
 
 # Attach aggregate measures to your data frame
 
-### Attach aggregate measures to your data frame
-
 We can attach aggregate measures to a data frame by using group_by without summarize()
 
 What do I mean by "attaching aggregate measures to a data frame"?
@@ -1475,8 +1421,6 @@ Steps:
 
 1.  create measure of avg. income across all events without using `group_by()` or `summarize()` and assign as (new) object
 2.  Using object from previous step, create measure of avg. income across by event type using `group_by()` without `summarize()` and assign as new object
-
-### Attach aggregate measures to your data frame
 
 **Task**: Using `event_berk` data frame, create (1) a measure of average income across all events and (2) a measure of average income for each event type
 
@@ -1503,7 +1447,6 @@ str(event_berk_temp)
 event_berk_temp %>% head(5)
 ```
 
-### Attach aggregate measures to your data frame
 
 **Task**: Using `event_berk_temp` from previous question, create a measure that identifies whether `med_inc` associated with the event is higher/lower than average income for all events of that type
 
@@ -1540,7 +1483,10 @@ Steps in task:
 -   Create measure of average pct white for each event_type
 -   Compare whether pct_white_zip is higher or lower than this average
 
-### Student exercise solution
+<details>
+
+<summary><strong>Student exercise solution</strong></summary>
+
 
 Task: is `pct_white_zip` at a particular event higher or lower than the average pct_white_zip for that `event_type`?
 
@@ -1553,3 +1499,6 @@ event_berk_tempv3 <- event_berk %>%
          gt_avg_pctwhite_type = as.integer(pct_white_zip > avg_pct_white)) 
 event_berk_tempv3 %>% head(4)
 ```
+
+</details>
+
