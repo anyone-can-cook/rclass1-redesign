@@ -11,6 +11,7 @@ toc-location: left
 number-sections: true
 editor: visual
 ---
+
 # Introduction
 
 ## Libraries we will use today
@@ -35,7 +36,7 @@ Note: when we load package, name of package is not in quotes; but when we instal
 
 ## Data we are using today
 
-Object `wwlist`
+__Data frame `wwlist`__
 
 -   De-identified list of prospective students purchased by Western Washington University from College Board
 -   We collected these data using public records requests request
@@ -45,21 +46,23 @@ Object `wwlist`
 load(url("https://github.com/ozanj/rclass/raw/master/data/prospect_list/wwlist_merged.RData"))
 ```
 
+__Data frame `df_school_all`__
 
-Data frame `df_school_all` has one obs per US high school and then variables identifying number of visits by particular universities
+- Data frame has one obs per US high school and variables identifying number of visits by particular universities
 
 ```{r}
 load(url("https://github.com/ozanj/rclass/raw/master/data/recruiting/recruit_school_allvars.RData"))
 ```
 
+
 # Creating variables using mutate
 
-## Our plan for learning how to create new variables
+__Our plan for learning how to create new variables__
 
 Recall that `dplyr` package within `tidyverse` provide a set of functions that can be described as "verbs": **subsetting**, **sorting**, and **transforming**
 
 | What we've done            | Where we're going                                      |
-|------------------------|-----------------------------------------------|
+|-------------------------|----------------------------------------------|
 | **Subsetting data**        | **Transforming data**                                  |
 | \- `select()` variables    | \- `mutate()` creates new variables                    |
 | \- `filter()` observations | \- `summarize()` calculates across rows                |
@@ -68,13 +71,13 @@ Recall that `dplyr` package within `tidyverse` provide a set of functions that c
 
 **Today**
 
--   we'll use `mutate()` to create new variables based on calculations across columns within a row
+-   We'll use `mutate()` to create new variables based on calculations across columns within a row
 
 **Next week**
 
--   we'll combine `mutate()` with `summarize()` and `group_by()` to create variables based on calculations across rows
+-   We'll combine `mutate()` with `summarize()` and `group_by()` to create variables based on calculations across rows
 
-### Create new data frame based on `df_school_all`
+__Create new data frame based on `df_school_all`__
 
 Recall, data frame `df_school_all` has one obs per US high school and then variables identifying number of visits by particular universities
 
@@ -118,7 +121,7 @@ glimpse(school_v2)
 
 Description of `mutate()`
 
--   creates new columns (variables) that are functions of existing columns
+-   Creates new columns (variables) that are functions of existing columns
 -   After creating a new variable using `mutate()`, every row of data is retained
 -   `mutate()` works best with pipes `%>%`
 
@@ -513,7 +516,7 @@ school_v2 %>%
 ?recode
 ```
 
-**Description**: Recode values of a variable
+**Description**: Recodes values of a variable
 
 **Usage (i.e., syntax)**
 
@@ -558,7 +561,7 @@ str(wwlist$school_category) # character variable
 wwlist %>% count(school_category) 
 ```
 
-Recode
+__Recode__
 
 ```{r, results="hide"}
 wwlist_temp <- wwlist %>% select(school_category) %>% 
@@ -641,6 +644,8 @@ wwlist_temp %>% count(school_catv2)
 wwlist %>% count(school_category)
 rm(wwlist_temp)
 ```
+
+### Student exercise using `recode()` within `mutate()`
 
 ```{r, results="hide"}
 load(url("https://github.com/ozanj/rclass/raw/master/data/recruiting/recruit_event_somevars.RData"))
@@ -792,18 +797,18 @@ school_v2 %>% filter(is.na(school_type)) %>% count()
 
     -   "instate_public"; "instate_private"; "outstate_public"; "outstate_private"
 
-    ```{r}
-    school_v2_temp <- school_v2 %>% select(state_code,school_type) %>%
-      mutate(state_type = case_when(
-        state_code == "CA" & school_type == "public"  ~ "instate_public",
-        state_code == "CA" & school_type == "private" ~ "instate_private",
-        state_code != "CA" & school_type == "public" ~ "outstate_public",
-        state_code != "CA" & school_type == "private" ~ "outstate_private")
-      )
+```{r}
+school_v2_temp <- school_v2 %>% select(state_code,school_type) %>%
+  mutate(state_type = case_when(
+    state_code == "CA" & school_type == "public"  ~ "instate_public",
+    state_code == "CA" & school_type == "private" ~ "instate_private",
+    state_code != "CA" & school_type == "public" ~ "outstate_public",
+    state_code != "CA" & school_type == "private" ~ "outstate_private")
+  )
 
-    school_v2_temp %>% count(state_type)
-    #school_v2_temp %>% filter(is.na(state_code)) %>% count(state_type) #no missing
-    #school_v2_temp %>% filter(is.na(school_type)) %>% count(state_type) #no missing
-    ```
+school_v2_temp %>% count(state_type)
+#school_v2_temp %>% filter(is.na(state_code)) %>% count(state_type) #no missing
+#school_v2_temp %>% filter(is.na(school_type)) %>% count(state_type) #no missing
+```
 
 </details>
