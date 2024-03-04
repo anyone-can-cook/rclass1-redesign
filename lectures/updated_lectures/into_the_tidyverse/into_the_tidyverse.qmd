@@ -1,8 +1,10 @@
 ---
-title: "Into the tidyverse: pipes, dplyr, and variable creation"
+title: "Into the tidyverse: dplyr, select, filter, and pipes"
 author: ""
 date: ""
-format: html
+format: 
+  html:
+    self-contained: true
 toc: true
 toc-depth: 2
 toc-location: left
@@ -38,7 +40,7 @@ Note: when we load package, name of package is not in quotes; but when we instal
 -   `install.packages("tidyverse")`
 -   `library(tidyverse)`
 
-## Data for lecture sections on select(), filter(), and arrange() functions
+## Data for sections on `select()`, `filter()`, and `arrange()` functions
 
 **Load .Rdata data frames, `df_event` and `df_school`**
 
@@ -62,7 +64,7 @@ load(url("https://github.com/ozanj/rclass/raw/master/data/recruiting/recruit_sch
 #load("../../data/recruiting/recruit_school_somevars.Rdata")
 ```
 
-## Data for lecture sections on pipes and mutate() function
+## Data for sections on pipes `%>%` and `mutate()` function
 
 **Load .Rdata data frame `wwlist`, "prospects" purchased by Western Washington U.**
 
@@ -112,13 +114,11 @@ Variables on `wwlist`
     -   e.g., `fr_lunch` is number of students on free/reduced lunch
     -   note: bad merge between prospect-level data and school-level data
 
-    ```{r, results="hide"}
-    names(wwlist)
-    str(wwlist)
-    glimpse(wwlist) # tidyverse function, similar to str()
-    ```
-
-### Data frame `wwlist`, "prospects" purchased by Western Washington U.
+```{r, results="hide"}
+names(wwlist)
+str(wwlist)
+glimpse(wwlist) # tidyverse function, similar to str()
+```
 
 Variable `firstgen` identifies whether prospect is a first-generation college student
 
@@ -155,10 +155,10 @@ filter(wwlist, firstgen == "Y")
 | Today                      | Upcoming weeks                                         |
 |------------------------|-----------------------------------------------|
 | **Subsetting data**        | **Transforming data**                                  |
-| `select()` variables      | `mutate()` creates new variables                      |
-| `filter()` observations | `summarize()` calculates across rows                |
-| **Sorting data**           | `group_by()` to calculate across rows within groups |
-| `arrange()`             |                                                        |
+| \- `select()` variables    | \- `mutate()` creates new variables                    |
+| \- `filter()` observations | \- `summarize()` calculates across rows                |
+| **Sorting data**           | \- `group_by()` to calculate across rows within groups |
+| \- `arrange()`             |                                                        |
 
 All `dplyr` verbs (i.e., functions) work as follows
 
@@ -169,7 +169,7 @@ All `dplyr` verbs (i.e., functions) work as follows
 
 ## select() variables
 
-__Select variables using `select()` function__
+**Select variables using `select()` function**
 
 Printing observations is key to investigating data, but datasets often have hundreds, thousands of variables
 
@@ -184,7 +184,6 @@ Without **assignment** (`<-`), `select()` by itself simply prints selected vars
 #?select
 select(df_event,instnm,event_date,event_type,event_state,med_inc)
 ```
-
 
 Recall that all `dplyr` functions (e.g., `select()`) return a new data frame object
 
@@ -211,7 +210,6 @@ glimpse(df_event)
 glimpse(select(df_event,instnm,event_date,event_type,event_state,med_inc))
 ```
 
-
 With **assignment** (`<-`), `select()` creates a new object containing only the variables you specify
 
 ```{r}
@@ -221,7 +219,7 @@ event_small <- select(df_event,instnm,event_date,event_type,event_state,
 glimpse(event_small)
 ```
 
-__Select helper functions__
+**Select helper functions**
 
 `select()` can use "helper functions" `starts_with()`, `contains()`, and `ends_with()` to choose columns
 
@@ -276,9 +274,49 @@ names(rename_event)
 rm(rename_event)
 ```
 
+## `count()` function
+
+\medskip `count()` function from `dplyr` package counts the number of obs by group
+
+```{r, eval=FALSE, echo=FALSE}
+?count
+```
+
+**Syntax** \[see help file for full syntax\]
+
+-   `count(x,...)`
+
+**Arguments** \[see help file for full arguments\]
+
+-   `x`: an object, often a data frame
+-   `...`: variables to group by
+
+Examples of using `count()`
+
+-   Without vars in `...` argument, counts number of obs in object
+
+```{r, results="hide"}
+count(df_school)
+  # df_school %>% count() # same as above but using pipes
+str(count(df_school))
+  # #df_school %>% count() %>% str() # same as above but using pipes
+```
+
+-   With vars in `...` argument, counts number of obs per variable value
+
+    -   This is the best way to create frequency table, better than `table()`
+    -   note: by default, `count()` always shows `NAs` \[this is good!\]
+
+    ```{r, results="hide"}
+    count(df_school,school_type)
+      # df_school %>% count(school_type) # same as above but using pipes
+    str(count(df_school,school_type))
+      # df_school %>% count(school_type) %>% str() # same as above but using pipes
+    ```
+
 ## filter() rows
 
-__The `filter()` function__
+**The `filter()` function**
 
 `filter()` allows you to **select observations** based on values of variables
 
@@ -308,7 +346,7 @@ nrow(df_school)
 nrow(filter(df_school,visits_by_110635 == 1))
 ```
 
-__The `filter()` function, base R equivalents__
+**The `filter()` function, base R equivalents**
 
 **Task**: Count the number of high schools that received 1 visit from UC Berkeley.
 
@@ -336,7 +374,7 @@ nrow(df_school[df_school$visits_by_110635 == 1, ])
 nrow(subset(df_school, visits_by_110635 == 1))
 ```
 
-__Filter, character variables__
+**Filter, character variables**
 
 Use single quotes `''` or double quotes `""` to refer to values of character variables
 
@@ -367,7 +405,7 @@ filter(df_school,visits_by_100751 == 1, visits_by_110635 == 1,
        school_type == "private", state_code == "CA") 
 ```
 
-__Filter by multiple conditions, base R equivalents__
+**Filter by multiple conditions, base R equivalents**
 
 **Task**: Count the number of private high schools in CA that received 1 visit each from UC Berkeley and University of Alabama.
 
@@ -422,46 +460,6 @@ logical operators useful for: filter obs w/ `filter()`; create variables w/ `mut
 
 !["Boolean" operations, x=left circle, y=right circle, from Wichkam (2018)](transform-logical.png){width="40%"}
 
-### Aside: `count()` function
-
-\medskip `count()` function from `dplyr` package counts the number of obs by group
-
-```{r, eval=FALSE, echo=FALSE}
-?count
-```
-
-**Syntax** \[see help file for full syntax\]
-
--   `count(x,...)`
-
-**Arguments** \[see help file for full arguments\]
-
--   `x`: an object, often a data frame
--   `...`: variables to group by
-
-Examples of using `count()`
-
--   Without vars in `...` argument, counts number of obs in object
-
-```{r, results="hide"}
-count(df_school)
-  # df_school %>% count() # same as above but using pipes
-str(count(df_school))
-  # #df_school %>% count() %>% str() # same as above but using pipes
-```
-
--   With vars in `...` argument, counts number of obs per variable value
-
-    -   This is the best way to create frequency table, better than `table()`
-    -   note: by default, `count()` always shows `NAs` \[this is good!\]
-
-    ```{r, results="hide"}
-    count(df_school,school_type)
-      # df_school %>% count(school_type) # same as above but using pipes
-    str(count(df_school,school_type))
-      # df_school %>% count(school_type) %>% str() # same as above but using pipes
-    ```
-
 ### Filters and comparisons, Demonstration
 
 Schools visited by Bama (100751) and/or Berkeley (110635)\bigskip
@@ -491,8 +489,6 @@ subset(df_school,visits_by_100751 >= 1 |
          visits_by_110635 >= 1) # using subset()
 ```
 
-### Filters and comparisons, Demonstration (cont.)
-
 Apply `count()` function on top of `filter()` function to count the number of observations that satisfy criteria
 
 -   Avoids printing individual observations\medskip
@@ -520,8 +516,6 @@ count(filter(df_school, school_type == "public", pct_black >= 50,
 count(filter(df_school, school_type == "public", pct_black >= 50, 
              state_code == "AL", visits_by_100751 >= 1))
 ```
-
-### Filters and comparisons, `>=` (cont.)
 
 Number of public high schools that are at least 50% White in Alabama compared to number of schools that received visit by Bama:\medskip
 
@@ -618,7 +612,9 @@ Task
 
 -   Create a filter to identify all the high schools that recieved 1 visit from UC Berkeley (110635) AND 1 visit from CU Boulder (126614)\[output omitted\]
 
-### Solution
+<details>
+
+<summary><strong>Solutions</strong></summary>
 
 ```{r, results="hide"}
 filter(df_school,visits_by_110635 == 1, visits_by_126614==1)
@@ -634,6 +630,10 @@ berk_boulder <- filter(df_school,visits_by_110635 == 1, visits_by_126614==1)
 count(berk_boulder)
 ```
 
+</details>
+
+<br>
+
 ### Exercises
 
 Use the data from df_event, which has one observation for each off-campus recruiting event a university attends
@@ -645,7 +645,9 @@ Use the data from df_event, which has one observation for each off-campus recrui
 5.  Count the number of recruiting events by Pitt at public high schools not located in PA where median income is greater than or equal to 100,000\
 6.  Count the number of out-of-state recruiting events by Pitt at private high schools or public high schools with median income of at least 100,000
 
-### Solution
+<details>
+
+<summary><strong>Solutions</strong></summary>
 
 1.  Count the number of events attended by the University of Pittsburgh (Pitt) `univ_id == 215293`
 
@@ -662,8 +664,6 @@ count(filter(df_event, univ_id == 215293, event_type == "private hs" |
                event_type == "public hs"))
 ```
 
-### Solution
-
 3.  Count the number of recruiting events by Pitt at public or private high schools located in the state of PA
 
 ```{r}
@@ -677,8 +677,6 @@ count(filter(df_event, univ_id == 215293, event_type == "private hs" |
 count(filter(df_event, univ_id == 215293, event_type == "public hs",
              event_state != "PA", med_inc < 100000))
 ```
-
-### Solution
 
 5.  Count the number of recruiting events by Pitt at public high schools not located in PA where median income is greater than or equal to 100,000
 
@@ -694,6 +692,10 @@ count(filter(df_event, univ_id == 215293, event_state != "PA",
              (event_type == "public hs" & med_inc >= 100000) |
                event_type == "private hs"))
 ```
+
+</details>
+
+<br>
 
 ## arrange() rows (i.e., sort rows)
 
@@ -721,9 +723,7 @@ df_event <- arrange(df_event, event_date)
 df_event
 ```
 
-### `arrange()` function
-
-Ascending and descending order
+**Ascending and descending order**
 
 -   `arrange()` sorts in **ascending** order by default
 -   use `desc()` to sort a column by descending order
@@ -772,15 +772,15 @@ Use the data from df_event, which has one observation for each off-campus recrui
 2.  Select four variables in total and sort ascending by "univ_id" and descending by "event_date"\
 3.  Now using the same variables from above, sort by `is.na` to put missing values in "school_id" first
 
-### Solution
+<details>
+
+<summary><strong>Solutions</strong></summary>
 
 1.  Sort ascending by "univ_id" and descending by "event_date"\
 
 ```{r}
 arrange(df_event, univ_id, desc(event_date))
 ```
-
-### Solution
 
 2.  Select four variables in total and sort ascending by "univ_id" and descending by "event_date"\
 
@@ -789,8 +789,6 @@ select(arrange(df_event, univ_id, desc(event_date)), univ_id, event_date,
        instnm, event_type)
 ```
 
-### Solution
-
 3.  Select the variables "univ_id", "event_date", and "school_id" and sort by `is.na` to put missing values in "school_id" first.
 
 ```{r}
@@ -798,9 +796,13 @@ select(arrange(df_event, univ_id, desc(event_date), desc(is.na(school_id))),
        univ_id, event_date, school_id)
 ```
 
+</details>
+
+<br>
+
 # Pipes
 
-### What are "pipes", %\>%
+## What are "pipes", %\>%
 
 **Pipes** are a means of performing multiple steps in a single line of code
 
@@ -811,8 +813,6 @@ select(arrange(df_event, univ_id, desc(event_date), desc(is.na(school_id))),
 ```{r, eval = FALSE}
 ?magrittr::`%>%`
 ```
-
-### What are "pipes", %\>%
 
 pipe syntax: `LHS %>% RHS`
 
@@ -836,8 +836,6 @@ mean(1:10) # calculate mean without pipes
 -   no pipe: (1) write function; (2) data object `1:10` is 1st argument of `mean()`
 -   pipe: (1) write data object; (2) "pipe" (verb) object as 1st argument of `mean()`
 
-### What are "pipes", %\>%
-
 \medskip
 
 Intuitive mnemonic device for understanding pipes
@@ -854,15 +852,13 @@ wwlist %>% filter(firstgen == "Y")
 
 below code in words:
 
--   start with `wwlist` **and then** select a few vars **and then** filter **and then** sort **and then** investigate structre of object
+-   start with `wwlist` **and then** select a few vars **and then** filter **and then** sort **and then** investigate the structure of object
 
 ```{r}
 wwlist %>% select(firstgen, state, med_inc_zip) %>% 
   filter(firstgen == "Y", state == "WA") %>% 
   arrange(desc(med_inc_zip)) %>% str()
 ```
-
-### More intuition on the pipe operator, `%>%`
 
 Example: apply "structure" function `str()` to `wwlist` with and without pipes
 
@@ -886,7 +882,7 @@ wwlist %>% select(firstgen, state, med_inc_zip) %>%
   arrange(desc(med_inc_zip)) %>% str()
 ```
 
-### Compare data tasks, with and without pipes
+## Compare data tasks, with and without pipes
 
 Task: Using object `wwlist` print data for "first-gen" prospects (`firstgen == "Y"`)
 
@@ -904,8 +900,6 @@ Comparing the two approaches:
 -   In "pipes" approach, you don't specify object `wwlist` as first argument in `filter()`
     -   Why? Because `%>%` "pipes" the object to the left of the `%>%` operator into the function to the right of the `%>%` operator
 
-### Compare data tasks, with and without pipes
-
 **Task**: Using object `wwlist`, print data for "first-gen" prospects for selected variables
 
 ```{r, results='hide'}
@@ -915,7 +909,7 @@ select(filter(wwlist, firstgen == "Y"), state, hs_city, sex)
 wwlist %>% filter(firstgen == "Y") %>% select(state, hs_city, sex)
 ```
 
-Comparing the two approaches:
+__Comparing the two approaches:__
 
 -   In the "without pipes" approach, code is written "inside out"
     -   The first step in the task -- identifying the object -- is the innermost part of code
@@ -935,9 +929,9 @@ wwlist %>% filter(firstgen == "Y") %>% str()
 wwlist %>% filter(firstgen == "Y") %>% select(state, hs_city, sex) %>% str()
 ```
 
-### Aside: `count()` function
+## `count()` function with pipes `%>%`
 
-\medskip `count()` function from `dplyr` package counts the number of obs by group
+\medskip Recall `count()` function from `dplyr` package counts the number of obs by group
 
 ```{r, eval=FALSE, echo=FALSE}
 ?count
@@ -967,13 +961,13 @@ wwlist %>% count() %>% str()
     -   This is the best way to create frequency table, better than `table()`
     -   note: by default, `count()` always shows `NAs` \[this is good!\]
 
-    ```{r, results="hide"}
-    count(wwlist,school_category)
-    wwlist %>% count(school_category)
-    wwlist %>% count(school_category) %>% str()
-    ```
+```{r, results="hide"}
+count(wwlist,school_category)
+wwlist %>% count(school_category)
+wwlist %>% count(school_category) %>% str()
+```
 
-### pipe operators and new lines
+## pipe operators and new lines
 
 \medskip Often want to insert line breaks to make long line of code more readable
 
@@ -1004,11 +998,11 @@ wwlist %>% filter(firstgen == "Y")
   %>% count(sex)
 ```
 
-### The power of pipes
+## The power of pipes
 
 You might be thinking, "what's the big deal?"
 
-**TasK**:
+**Task**:
 
 -   in one line of code, modify `wwlist` and create bar chart that counts number of prospects purchased by race/ethnicity, separately for in-state vs. out-of-state
 
@@ -1034,9 +1028,7 @@ wwlist %>%  filter(is.na(state)==0) %>% # drop obs where variable state missing
     geom_col() +  coord_flip() + facet_wrap(~ out_state) 
 ```
 
-### The power of pipes
-
-**TasK**:
+**Task**:
 
 -   in one line of code, modify `wwlist` and create bar chart of median income (in zip-code) of prospects purchased by race/ethnicity, separately for in-state vs. out-of-state
 
@@ -1062,8 +1054,6 @@ wwlist %>%  filter(is.na(state)==0) %>% # drop obs where variable state missing
     geom_col() +  coord_flip() + facet_wrap(~ ethn_race) # plot
 ```
 
-### The power of pipes
-
 Example R script from Ben Skinner, which creates analysis data for [Skinner (2018)](https://link.springer.com/article/10.1007%2Fs11162-018-9507-1)
 
 -   [Link to R script](https://github.com/btskinner/colchoice_rep/blob/master/scripts/makedata.r)
@@ -1079,7 +1069,7 @@ Other relevant links
 -   [Link to Skinner's personal website](https://www.btskinner.io/)
     -   A lot of cool stuff here
 
-### Which objects and functions are pipeable
+## Which objects and functions are pipeable
 
 Which objects and functions are "pipeable" (i.e., work with pipes)
 
@@ -1125,8 +1115,6 @@ With pipes
 wwlist %>% filter(firstgen == "Y", state == "WA") %>% count()
 ```
 
-### Do task with and without pipes \[STUDENTS WORK ON THEIR OWN\]
-
 **Task**: frequency table of `school_type` for non first-gen prospects from WA
 
 **Without pipes**
@@ -1159,7 +1147,9 @@ wwlist %>% filter(firstgen == "N", state == "WA") %>% count(school_type)
 
 Once finished you can `rm(wwlist_temp)`
 
-### Solution to exercises with pipes
+<details>
+
+<summary><strong>Solutions pipes `%>%`</strong></summary>
 
 1.  Using object `wwlist` select the following variables (state, firstgen, ethn_code) and assign them to object `wwlist_temp`
 
@@ -1168,8 +1158,6 @@ wwlist_temp <- wwlist %>%
   select(state, firstgen, ethn_code) 
 ```
 
-### Solution to exercises with pipes
-
 2.  Using the object you just created `wwlist_temp`, create a frequency table of `ethn_code` for first-gen prospects from California.
 
 ```{r}
@@ -1177,8 +1165,6 @@ wwlist_temp <- wwlist %>%
 wwlist_temp %>%
   filter(firstgen == "Y", state == "CA") %>% count(ethn_code)
 ```
-
-### Solution to exercises with pipes
 
 3.  **Bonus**: Try doing question 1 and 2 together.
 
@@ -1194,9 +1180,13 @@ wwlist %>%
 rm(wwlist_temp)
 ```
 
+</details>
+
+<br>
+
 # Creating variables using mutate
 
-### Our plan for learning how to create new variables
+## Our plan for learning how to create new variables
 
 Recall that `dplyr` package within `tidyverse` provide a set of functions that can be described as "verbs": **subsetting**, **sorting**, and **transforming**
 
@@ -1224,8 +1214,6 @@ Data frame `df_school_all` has one obs per US high school and then variables ide
 load(url("https://github.com/ozanj/rclass/raw/master/data/recruiting/recruit_school_allvars.RData"))
 names(df_school_all)
 ```
-
-### Create new data frame based on `df_school_all`
 
 Create new version of data frame, called `school_v2`, which we'll use to introduce how to create new variables
 
@@ -1259,8 +1247,6 @@ glimpse(school_v2)
 
 ## Introduce mutate() function
 
-### Introduce `mutate()` function
-
 `mutate()` is **tidyverse** approach to creating variables (not **Base R** approach)
 
 Description of `mutate()`
@@ -1286,7 +1272,7 @@ school_sml %>%
 rm(school_sml) 
 ```
 
-### Investigate `mutate()` syntax
+**Investigate `mutate()` syntax**
 
 ```{r, eval=FALSE, echo=FALSE}
 ?mutate
@@ -1310,8 +1296,6 @@ rm(school_sml)
 **Value**
 
 -   returns a (data frame) object that contains the original input data frame and new variables that were created by `mutate()`
-
-### Investigate `mutate()` syntax
 
 ```{r, eval=FALSE, echo=FALSE}
 ?mutate
@@ -1344,8 +1328,6 @@ school_v2 %>%
   mutate(public = if_else(school_type == "public", 1, 0))
 ```
 
-### Introduce `mutate()` function
-
 New variable not retained unless we **assign** `<-` it to an object (existing or new)
 
 \medskip
@@ -1371,9 +1353,7 @@ rm(school_v2_temp)
 
 ```
 
-### `mutate()` can create multiple variables at once
-
-`mutate()` can create multiple variables at once
+## `mutate()` to create multiple variables at once
 
 ```{r, results='hide'}
 school_v2 %>% 
@@ -1402,7 +1382,7 @@ school_v2 %>%
          avg_pct_prof_math_read = (pct_prof_math + pct_prof_read)/2) 
 ```
 
-### `mutate()`, removing variables created by `mutate()`
+## `mutate()`, removing variables created by `mutate()`
 
 Within `mutate()` use syntax `var_name = NULL` to remove variable from data frame
 
@@ -1446,7 +1426,9 @@ school_v2 %>%
 
 4.  Using `school_v2`, using `mutate()` combined with `is.na()` create a dichotomous indicator variable `med_inc_na` that identifies whether `med_inc` is missing (`NA`) or not. And then use syntax `count(var_name)` to create frequency table of variable `med_inc_na`. How many observations are missing?
 
-### Solutions for exercise using mutate()
+<details>
+
+<summary><strong>Solutions for exercise using `mutate()`</strong></summary>
 
 1.  Using the object `school_v2`, select the following variables (`num_prof_math`, `num_took_math`, `num_prof_read`, `num_took_read`) and create a measure of percent proficient in math `pct_prof_math` and percent proficient in reading `pct_prof_read`.
 
@@ -1457,8 +1439,6 @@ school_v2 %>%
          pct_prof_read = num_prof_read/num_took_read) 
 ```
 
-### Solutions for exercise using mutate()
-
 2.  Now using the code for question 1, filter schools where at least 50% of students are proficient in math **&** reading.
 
 ```{r}
@@ -1468,8 +1448,6 @@ school_v2 %>%
          pct_prof_read = num_prof_read/num_took_read) %>%
   filter(pct_prof_math >= 0.5 & pct_prof_read >= 0.5) 
 ```
-
-### Solutions for exercise using mutate()
 
 3.  Count the number of schools from question 2.
 
@@ -1482,8 +1460,6 @@ school_v2 %>%
   count()
 ```
 
-### Solutions for exercise using mutate()
-
 4.  Using `school_v2`, using `mutate()` combined with `is.na()` create a dichotomous indicator variable `med_inc_na` that identifies whether `med_inc` is missing (`NA`) or not. And then use syntax `count(var_name)` to create frequency table of variable `med_inc_na`. How many observations are missing?
 
 ```{r}
@@ -1491,6 +1467,10 @@ school_v2 %>%
   mutate(med_inc_na = is.na(med_inc)) %>%
   count(med_inc_na)
 ```
+
+</details>
+
+<br>
 
 ## Using if_else() function within mutate()
 
@@ -1563,8 +1543,6 @@ school_v2 %>% select(med_inc) %>%
   count(inc_gt_100k) # note how NA values of med_inc treated
 ```
 
-### Using `if_else()` within `mutate()`
-
 **Task**:
 
 -   Create 0/1 indicator if school has median income greater than \$100,000.
@@ -1594,8 +1572,6 @@ school_v2 %>% select(med_inc) %>%
   count(inc_gt_100k) 
 ```
 
-### Using `if_else()` function within `mutate()`
-
 **Task**
 
 -   Create 0/1 indicator variable `nonmiss_math` which indicates whether school has non-missing values for the variable `num_took_math`
@@ -1622,7 +1598,9 @@ school_v2 %>% select(num_took_math) %>%
 2.  Create 0/1 indicator `berkeley_and_irvine` of whether a school got at least one visit from UC Berkeley **AND** from UC Irvine.\
 3.  Create 0/1 indicator `berkeley_or_irvine` of whether a school got at least one visit from UC Berkeley **OR** from UC Irvine.
 
-### Exercise`if_else()` solutions
+<details>
+
+<summary><strong>Solutions `if_else()`</strong></summary>
 
 1.  Using the object `school_v2`, create 0/1 indicator variable `in_state_berkeley` that equals `1` if the high school is in the same state as UC Berkeley (i.e., `state_code=="CA"`).
 
@@ -1634,8 +1612,6 @@ school_v2 %>% filter(is.na(state_code)) %>% count() # investigate input var
 school_v2 %>% mutate(in_state_berkeley=if_else(state_code=="CA",1,0)) %>%
   count(in_state_berkeley)
 ```
-
-### Exercise`if_else()` solutions
 
 2.  Create 0/1 indicator `berkeley_and_irvine` of whether a school got at least one visit from UC Berkeley **AND** from UC Irvine.
 
@@ -1652,8 +1628,6 @@ school_v2 %>%
   count(berkeley_and_irvine)
 ```
 
-### Exercise`if_else()` solutions
-
 3.  Create 0/1 indicator `berkeley_or_irvine` of whether a school got at least one visit from UC Berkeley **OR** from UC Irvine.
 
 ```{r, results="hide"}
@@ -1662,9 +1636,11 @@ school_v2 %>%
   count(berkeley_or_irvine)
 ```
 
-## Using recode() function within mutate()
+</details>
 
-### Using `recode()` function within `mutate()`
+<br>
+
+## Using recode() function within mutate()
 
 ```{r, eval=FALSE, echo=FALSE}
 ?recode
@@ -1733,8 +1709,6 @@ wwlist_temp %>% count(school_catv2)
 rm(wwlist_temp)
 ```
 
-### Using `recode()` within `mutate()`
-
 **Task**: Create `school_catv2` based on `school_category` with these categories:
 
 -   "regular"; "alternative"; "special"; "vocational"
@@ -1758,8 +1732,6 @@ wwlist %>% count(school_category)
 rm(wwlist_temp)
 ```
 
-### Using `recode()` within `mutate()`
-
 **Task**: Create `school_catv2` based on `school_category` with these categories:
 
 -   "regular"; "alternative"; "special"; "vocational"
@@ -1780,8 +1752,6 @@ wwlist_temp %>% count(school_catv2)
 wwlist %>% count(school_category)
 rm(wwlist_temp)
 ```
-
-### Using `recode()` within `mutate()`
 
 **Task**: Create `school_catv2` based on `school_category` with these categories:
 
@@ -1805,8 +1775,6 @@ wwlist %>% count(school_category)
 rm(wwlist_temp)
 ```
 
-### Student exercise using `recode()` within `mutate()`
-
 ```{r, results="hide"}
 load(url("https://github.com/ozanj/rclass/raw/master/data/recruiting/recruit_event_somevars.RData"))
 names(df_event)
@@ -1816,7 +1784,9 @@ names(df_event)
     -   `1` for "2yr college"; `2` for "4yr college"; `3` for "other"; `4` for "private hs"; `5` for "public hs"
 2.  This time use the `.default` argument to assign the value `5` for "public hs"
 
-### Exercise using `recode()` within `mutate()` solutions
+<details>
+
+<summary><strong>Solutions using `recode()` within `mutate()`</strong></summary>
 
 Check input variable
 
@@ -1825,8 +1795,6 @@ names(df_event)
 str(df_event$event_type)
 df_event %>% count(event_type)
 ```
-
-### Exercise using `recode()` within `mutate()` solutions
 
 1.  Using object `df_event`, assign new object `df_event_temp` and create a numeric variable `event_typev2` based on `event_type` with these categories:
     -   `1` for "2yr college"; `2` for "4yr college"; `3` for "other"; `4` for "private hs"; `5` for "public hs"
@@ -1846,8 +1814,6 @@ df_event_temp %>% count(event_typev2)
 df_event %>% count(event_type)
 ```
 
-### Exercise using `recode()` within `mutate()` solutions
-
 2.  This time assign the value use the `.default` argument to assign the value `5` for "public hs"
 
 ```{r, results="hide"}
@@ -1864,9 +1830,11 @@ df_event_temp %>% count(event_typev2)
 df_event %>% count(event_type)
 ```
 
-## Using case_when() function within mutate()
+</details>
 
-### Using `case_when()` function within `mutate()`
+<br>
+
+## Using case_when() function within mutate()
 
 ```{r, eval=FALSE, echo=FALSE}
 ?case_when
@@ -1898,8 +1866,6 @@ wwlist_temp <- wwlist %>% select(state,firstgen) %>%
 str(wwlist_temp$state_gen)
 wwlist_temp %>% count(state_gen)
 ```
-
-### Using `case_when()` function within `mutate()`
 
 **Task**: Using data frame `wwlist` and input vars `state` and `firstgen`, create a 4-category var
 
@@ -1940,7 +1906,9 @@ wwlist_temp %>% filter(is.na(firstgen) | is.na(state)) %>% count(state_gen)
     -   "instate_public"; "instate_private"; "outstate_public"; "outstate_private"
     -   Note: We are referring to CA as in-state for this example
 
-### Exercise using `case_when()` within `mutate()` solution
+<details>
+
+<summary><strong>Solutions using `case_when()` within `mutate()`</strong></summary>
 
 Investigate
 
@@ -1952,8 +1920,6 @@ school_v2 %>% filter(is.na(state_code)) %>% count()
 count(school_v2,school_type)
 school_v2 %>% filter(is.na(school_type)) %>% count()
 ```
-
-### Exercise using `case_when()` within `mutate()` solution
 
 1.  Using the object `school_v2` and input vars `school_type`, and `state_code` , create a 4-category var `state_type` with following categories:
 
@@ -1972,3 +1938,5 @@ school_v2 %>% filter(is.na(school_type)) %>% count()
     #school_v2_temp %>% filter(is.na(state_code)) %>% count(state_type) #no missing
     #school_v2_temp %>% filter(is.na(school_type)) %>% count(state_type) #no missing
     ```
+
+</details>
