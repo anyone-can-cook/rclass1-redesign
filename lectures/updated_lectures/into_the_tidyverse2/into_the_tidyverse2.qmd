@@ -1,5 +1,5 @@
 ---
-title: "Into the tidyverse part II: variable creation using mutuate"
+title: "Into the tidyverse part II: variable creation using mutate"
 author: ""
 date: ""
 format: 
@@ -11,6 +11,46 @@ toc-location: left
 number-sections: true
 editor: visual
 ---
+# Introduction
+
+## Libraries we will use today
+
+"Load" the package we will use today (output omitted)
+
+-   **you must run this code chunk**
+
+```{r, message=FALSE}
+library(tidyverse)
+```
+
+If package not yet installed, then must install before you load. Install in "console" rather than .qmd file
+
+-   Generic syntax: `install.packages("package_name")`
+-   Install "tidyverse": `install.packages("tidyverse")`
+
+Note: when we load package, name of package is not in quotes; but when we install package, name of package is in quotes:
+
+-   `install.packages("tidyverse")`
+-   `library(tidyverse)`
+
+## Data we are using today
+
+Object `wwlist`
+
+-   De-identified list of prospective students purchased by Western Washington University from College Board
+-   We collected these data using public records requests request
+
+```{r}
+#load prospect list data
+load(url("https://github.com/ozanj/rclass/raw/master/data/prospect_list/wwlist_merged.RData"))
+```
+
+
+Data frame `df_school_all` has one obs per US high school and then variables identifying number of visits by particular universities
+
+```{r}
+load(url("https://github.com/ozanj/rclass/raw/master/data/recruiting/recruit_school_allvars.RData"))
+```
 
 # Creating variables using mutate
 
@@ -36,10 +76,9 @@ Recall that `dplyr` package within `tidyverse` provide a set of functions that c
 
 ### Create new data frame based on `df_school_all`
 
-Data frame `df_school_all` has one obs per US high school and then variables identifying number of visits by particular universities
+Recall, data frame `df_school_all` has one obs per US high school and then variables identifying number of visits by particular universities
 
 ```{r}
-load(url("https://github.com/ozanj/rclass/raw/master/data/recruiting/recruit_school_allvars.RData"))
 names(df_school_all)
 ```
 
