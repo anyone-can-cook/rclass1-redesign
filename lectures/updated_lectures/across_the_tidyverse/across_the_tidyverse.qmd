@@ -52,15 +52,13 @@ load(url("https://github.com/ozanj/rclass/raw/master/data/recruiting/recruit_eve
 #load("../../data/recruiting/recruit_event_allvars.Rdata")
 ```
 
-# `group_by()` and `summarize()`
+## What we are doing today
 
-## Processing across variables vs. processing across observations
+__Processing across variables vs. processing across observations__
 
-In today's lecture, I'll use the terms "observations" and "rows" interchangeably
+In today's lecture, I'll use the terms "observations" and "rows" interchangeably. Creation of analysis datasets often requires calculations across obs.
 
-**Creation of analysis datasets often requires calculations across obs**
-
-Examples:
+**Examples:**
 
 -   You have a dataset with one observation per student-term and want to create a variable of credits attempted per term
 -   You have a dataset with one observation per student-term and want to create a variable of GPA for the semester or cumulative GPA for all semesters
@@ -116,6 +114,8 @@ __How we'll teach:__
 -   introduce `group_by()` and `summarize()` separately
     -   goal: you understand what each function does
 -   then we'll combine them
+
+# `group_by()` and `summarize()`
 
 ## group_by
 

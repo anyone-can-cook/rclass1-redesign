@@ -84,12 +84,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#libraries-we-will-use-today" id="toc-libraries-we-will-use-today" class="nav-link" data-scroll-target="#libraries-we-will-use-today"><span class="header-section-number">1.1</span> Libraries we will use today</a></li>
   <li><a href="#data-we-will-use-today" id="toc-data-we-will-use-today" class="nav-link" data-scroll-target="#data-we-will-use-today"><span class="header-section-number">1.2</span> Data we will use today</a></li>
+  <li><a href="#what-we-are-doing-today" id="toc-what-we-are-doing-today" class="nav-link" data-scroll-target="#what-we-are-doing-today"><span class="header-section-number">1.3</span> What we are doing today</a></li>
   </ul></li>
   <li><a href="#group_by-and-summarize" id="toc-group_by-and-summarize" class="nav-link" data-scroll-target="#group_by-and-summarize"><span class="header-section-number">2</span> <code>group_by()</code> and <code>summarize()</code></a>
   <ul class="collapse">
-  <li><a href="#processing-across-variables-vs.-processing-across-observations" id="toc-processing-across-variables-vs.-processing-across-observations" class="nav-link" data-scroll-target="#processing-across-variables-vs.-processing-across-observations"><span class="header-section-number">2.1</span> Processing across variables vs.&nbsp;processing across observations</a></li>
-  <li><a href="#group_by" id="toc-group_by" class="nav-link" data-scroll-target="#group_by"><span class="header-section-number">2.2</span> group_by</a></li>
-  <li><a href="#summarize" id="toc-summarize" class="nav-link" data-scroll-target="#summarize"><span class="header-section-number">2.3</span> summarize()</a></li>
+  <li><a href="#group_by" id="toc-group_by" class="nav-link" data-scroll-target="#group_by"><span class="header-section-number">2.1</span> group_by</a></li>
+  <li><a href="#summarize" id="toc-summarize" class="nav-link" data-scroll-target="#summarize"><span class="header-section-number">2.2</span> summarize()</a></li>
   </ul></li>
   <li><a href="#combining-group_by-and-summarize" id="toc-combining-group_by-and-summarize" class="nav-link" data-scroll-target="#combining-group_by-and-summarize"><span class="header-section-number">3</span> Combining group_by() and summarize()</a>
   <ul class="collapse">
@@ -166,14 +166,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#load("../../data/recruiting/recruit_event_allvars.Rdata")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-</section>
-<section id="group_by-and-summarize" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> <code>group_by()</code> and <code>summarize()</code></h1>
-<section id="processing-across-variables-vs.-processing-across-observations" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="processing-across-variables-vs.-processing-across-observations"><span class="header-section-number">2.1</span> Processing across variables vs.&nbsp;processing across observations</h2>
-<p>In today’s lecture, I’ll use the terms “observations” and “rows” interchangeably</p>
-<p><strong>Creation of analysis datasets often requires calculations across obs</strong></p>
-<p>Examples:</p>
+<section id="what-we-are-doing-today" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="what-we-are-doing-today"><span class="header-section-number">1.3</span> What we are doing today</h2>
+<p><strong>Processing across variables vs.&nbsp;processing across observations</strong></p>
+<p>In today’s lecture, I’ll use the terms “observations” and “rows” interchangeably. Creation of analysis datasets often requires calculations across obs.</p>
+<p><strong>Examples:</strong></p>
 <ul>
 <li>You have a dataset with one observation per student-term and want to create a variable of credits attempted per term</li>
 <li>You have a dataset with one observation per student-term and want to create a variable of GPA for the semester or cumulative GPA for all semesters</li>
@@ -227,8 +224,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>then we’ll combine them</li>
 </ul>
 </section>
-<section id="group_by" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="group_by"><span class="header-section-number">2.2</span> group_by</h2>
+</section>
+<section id="group_by-and-summarize" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> <code>group_by()</code> and <code>summarize()</code></h1>
+<section id="group_by" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="group_by"><span class="header-section-number">2.1</span> group_by</h2>
 <p><strong>Description</strong>: “<code>group_by()</code> takes an existing data frame and converts it into a grouped data frame where operations are performed”by group”. <code>ungroup()</code> removes grouping.”</p>
 <ul>
 <li>part of <strong>dplyr</strong> package within <strong>tidyverse</strong>; not part of <strong>Base R</strong></li>
@@ -283,8 +283,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>df_event <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(univ_id, event_type) <span class="sc">%&gt;%</span> <span class="fu">count</span>() <span class="sc">%&gt;%</span> <span class="fu">glimpse</span>()</span>
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="co">#df_event %&gt;% group_by(univ_id, event_type) %&gt;% count() %&gt;% View()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="grouping-not-retained-unless-you-assign-it" class="level3" data-number="2.2.1">
-<h3 data-number="2.2.1" class="anchored" data-anchor-id="grouping-not-retained-unless-you-assign-it"><span class="header-section-number">2.2.1</span> Grouping not retained unless you <strong>assign</strong> it</h3>
+<section id="grouping-not-retained-unless-you-assign-it" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="grouping-not-retained-unless-you-assign-it"><span class="header-section-number">2.1.1</span> Grouping not retained unless you <strong>assign</strong> it</h3>
 <p>Below, we’ll use <code>class()</code> function to show whether data frame is grouped</p>
 <ul>
 <li>will talk more about <code>class()</code> next week, but for now, just think of it as a function that provides information about an object</li>
@@ -304,8 +304,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "grouped_df" "tbl_df"     "tbl"        "data.frame"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="un-grouping-an-object" class="level3" data-number="2.2.2">
-<h3 data-number="2.2.2" class="anchored" data-anchor-id="un-grouping-an-object"><span class="header-section-number">2.2.2</span> Un-grouping an object</h3>
+<section id="un-grouping-an-object" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="un-grouping-an-object"><span class="header-section-number">2.1.2</span> Un-grouping an object</h3>
 <p>Use <code>ungroup(object)</code> to un-group grouped data</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(df_event_grp)</span>
@@ -316,8 +316,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(df_event_grp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="student-exercise-group_by" class="level3" data-number="2.2.3">
-<h3 data-number="2.2.3" class="anchored" data-anchor-id="student-exercise-group_by"><span class="header-section-number">2.2.3</span> Student exercise <code>group_by()</code></h3>
+<section id="student-exercise-group_by" class="level3" data-number="2.1.3">
+<h3 data-number="2.1.3" class="anchored" data-anchor-id="student-exercise-group_by"><span class="header-section-number">2.1.3</span> Student exercise <code>group_by()</code></h3>
 <ol type="1">
 <li>Group by “instnm” and get a frequency count.
 <ul>
@@ -416,8 +416,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><br></p>
 </section>
 </section>
-<section id="summarize" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="summarize"><span class="header-section-number">2.3</span> summarize()</h2>
+<section id="summarize" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="summarize"><span class="header-section-number">2.2</span> summarize()</h2>
 <p><strong><code>summarize()</code> function</strong></p>
 <p><strong>Description</strong>: <code>summarize()</code> calculates across rows; then collapses into single row</p>
 <ul>
@@ -444,8 +444,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Standalone functions called <em>within</em> <code>summarize()</code>, e.g., <code>mean()</code>, <code>n()</code></li>
 <li>e.g., count function <code>n()</code> takes no arguments; returns number of rows in group</li>
 </ul>
-<section id="investigate-objects-created-by-summarize" class="level3" data-number="2.3.1">
-<h3 data-number="2.3.1" class="anchored" data-anchor-id="investigate-objects-created-by-summarize"><span class="header-section-number">2.3.1</span> Investigate objects created by <code>summarize()</code></h3>
+<section id="investigate-objects-created-by-summarize" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="investigate-objects-created-by-summarize"><span class="header-section-number">2.2.1</span> Investigate objects created by <code>summarize()</code></h3>
 <p><strong>Example</strong>: Count total number of events</p>
 <ul>
 <li>function <code>n()</code> from <code>dplyr</code> package (<code>dplyr::n</code>) returns the size of the current group</li>
@@ -507,8 +507,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">num_events=</span><span class="fu">n</span>(),<span class="at">max_inc=</span><span class="fu">max</span>(med_inc, <span class="at">na.rm =</span> <span class="cn">FALSE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="takeaways-summarize" class="level3" data-number="2.3.2">
-<h3 data-number="2.3.2" class="anchored" data-anchor-id="takeaways-summarize"><span class="header-section-number">2.3.2</span> <strong>Takeaways</strong>, <code>summarize()</code></h3>
+<section id="takeaways-summarize" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="takeaways-summarize"><span class="header-section-number">2.2.2</span> <strong>Takeaways</strong>, <code>summarize()</code></h3>
 <ul>
 <li>By default, objects created by <code>summarize()</code> are data frames that contain variables created within <code>summarize()</code> and one observation [per “by group”]</li>
 <li>most “helper” functions (e.g., <code>max()</code>, <code>mean()</code> have option <code>na.rm</code> to keep/remove missing obs before performing calculations)
@@ -529,8 +529,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(event_temp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="using-operator-to-filter-observations-within-summarize" class="level3" data-number="2.3.3">
-<h3 data-number="2.3.3" class="anchored" data-anchor-id="using-operator-to-filter-observations-within-summarize"><span class="header-section-number">2.3.3</span> Using [] operator to filter observations within summarize</h3>
+<section id="using-operator-to-filter-observations-within-summarize" class="level3" data-number="2.2.3">
+<h3 data-number="2.2.3" class="anchored" data-anchor-id="using-operator-to-filter-observations-within-summarize"><span class="header-section-number">2.2.3</span> Using [] operator to filter observations within summarize</h3>
 <p>Imagine we want to calculate avg. income, separately for in-state vs.&nbsp;out-of-state visits</p>
 <ul>
 <li>first, make sure we can identify in vs.&nbsp;out-state (output omitted)</li>
@@ -573,8 +573,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 </ul>
 </section>
-<section id="using-summarize-to-create-descriptive-statistics-table" class="level3" data-number="2.3.4">
-<h3 data-number="2.3.4" class="anchored" data-anchor-id="using-summarize-to-create-descriptive-statistics-table"><span class="header-section-number">2.3.4</span> Using <code>summarize()</code> to create descriptive statistics table</h3>
+<section id="using-summarize-to-create-descriptive-statistics-table" class="level3" data-number="2.2.4">
+<h3 data-number="2.2.4" class="anchored" data-anchor-id="using-summarize-to-create-descriptive-statistics-table"><span class="header-section-number">2.2.4</span> Using <code>summarize()</code> to create descriptive statistics table</h3>
 <p>Often helpful to use <code>summarize()</code> to calculate summary statistics that are the basis for a table of descriptive statistics</p>
 <p><strong>Task</strong>: create a table of descriptive statistics about variable <code>med_inc</code></p>
 <ul>
@@ -604,8 +604,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="student-exercise-summarize" class="level3" data-number="2.3.5">
-<h3 data-number="2.3.5" class="anchored" data-anchor-id="student-exercise-summarize"><span class="header-section-number">2.3.5</span> Student exercise <code>summarize()</code></h3>
+<section id="student-exercise-summarize" class="level3" data-number="2.2.5">
+<h3 data-number="2.2.5" class="anchored" data-anchor-id="student-exercise-summarize"><span class="header-section-number">2.2.5</span> Student exercise <code>summarize()</code></h3>
 <ol type="1">
 <li>What is the min value of <code>med_inc</code> across all events?
 <ul>
