@@ -346,32 +346,16 @@ nrow(df_school)
 nrow(filter(df_school,visits_by_110635 == 1))
 ```
 
-**The `filter()` function, base R equivalents**
+**The `filter()` function**
 
 **Task**: Count the number of high schools that received 1 visit from UC Berkeley.
 
 \bigskip
 
-**\[tidyverse\]** Using `filter()`:\smallskip
+**\[dplyr\]** Using `filter()`:\smallskip
 
 ```{r}
 nrow(filter(df_school, visits_by_110635 == 1))
-```
-
-\bigskip
-
-**\[base R\]** Using `[]` and `$`:\smallskip
-
-```{r}
-nrow(df_school[df_school$visits_by_110635 == 1, ])
-```
-
-\bigskip
-
-**\[base R\]** Using `subset()`:\smallskip
-
-```{r}
-nrow(subset(df_school, visits_by_110635 == 1))
 ```
 
 **Filter, character variables**
@@ -405,13 +389,13 @@ filter(df_school,visits_by_100751 == 1, visits_by_110635 == 1,
        school_type == "private", state_code == "CA") 
 ```
 
-**Filter by multiple conditions, base R equivalents**
+**Filter by multiple conditions**
 
 **Task**: Count the number of private high schools in CA that received 1 visit each from UC Berkeley and University of Alabama.
 
 \medskip
 
-**\[tidyverse\]** Using `filter()`:\smallskip
+Using `filter()`:
 
 ```{r}
 nrow(filter(df_school, visits_by_100751 == 1, visits_by_110635 == 1, 
@@ -419,24 +403,6 @@ nrow(filter(df_school, visits_by_100751 == 1, visits_by_110635 == 1,
 ```
 
 \medskip
-
-**\[base R\]** Using `[]` and `$`:\smallskip
-
-```{r}
-nrow(df_school[df_school$visits_by_100751 == 1 &
-                 df_school$visits_by_110635 == 1 &
-                 df_school$school_type == "private" &
-                 df_school$state_code == "CA", ])
-```
-
-\medskip
-
-**\[base R\]** Using `subset()`:\smallskip
-
-```{r}
-nrow(subset(df_school, visits_by_100751 == 1 & visits_by_110635 == 1 &
-            school_type == "private" & state_code == "CA"))
-```
 
 ### Logical operators for comparisons
 
@@ -468,12 +434,6 @@ Schools visited by Bama (100751) and/or Berkeley (110635)\bigskip
 # Berkeley AND Bama
 filter(df_school,visits_by_100751 >= 1, visits_by_110635 >= 1) 
 filter(df_school,visits_by_100751 >= 1 & visits_by_110635 >= 1) # same same
-
-df_school[df_school$visits_by_100751 >= 1 &
-            df_school$visits_by_110635 >= 1, ] # using [] and $
-
-subset(df_school,visits_by_100751 >= 1 &
-         visits_by_110635 >= 1) # using subset()
 ```
 
 \bigskip
@@ -482,11 +442,6 @@ subset(df_school,visits_by_100751 >= 1 &
 # Berkeley OR Bama
 filter(df_school,visits_by_100751 >= 1 | visits_by_110635 >= 1)
 
-df_school[df_school$visits_by_100751 >= 1 |
-            df_school$visits_by_110635 >= 1, ] # using [] and $
-
-subset(df_school,visits_by_100751 >= 1 |
-         visits_by_110635 >= 1) # using subset()
 ```
 
 Apply `count()` function on top of `filter()` function to count the number of observations that satisfy criteria
@@ -501,7 +456,7 @@ count(filter(df_school, visits_by_100751 >= 1 & visits_by_110635 >= 1))
 count(filter(df_school, visits_by_100751 >= 1 | visits_by_110635 >= 1))
 ```
 
--   Note: You could also use any of the base R equivalents from the previous slide
+-   Note: You could also use any of the base R equivalents from the Base R lecture
 
 ### Filters and comparisons, `>=`
 
@@ -1184,14 +1139,24 @@ rm(wwlist_temp)
 
 <br>
 
+
 # Creating variables using mutate
 
-## Our plan for learning how to create new variables
+We will load the data frame __`df_school_all`__. This data frame is based on data from the recruiting project. It contains one observation per US high school and variables identifying the number of visits by particular universities. 
+
+__Data frame `df_school_all`__
+
+```{r}
+load(url("https://github.com/ozanj/rclass/raw/master/data/recruiting/recruit_school_allvars.RData"))
+```
+
+
+__Our plan for learning how to create new variables__
 
 Recall that `dplyr` package within `tidyverse` provide a set of functions that can be described as "verbs": **subsetting**, **sorting**, and **transforming**
 
 | What we've done            | Where we're going                                      |
-|------------------------|-----------------------------------------------|
+|-------------------------|----------------------------------------------|
 | **Subsetting data**        | **Transforming data**                                  |
 | \- `select()` variables    | \- `mutate()` creates new variables                    |
 | \- `filter()` observations | \- `summarize()` calculates across rows                |
@@ -1200,18 +1165,17 @@ Recall that `dplyr` package within `tidyverse` provide a set of functions that c
 
 **Today**
 
--   we'll use `mutate()` to create new variables based on calculations across columns within a row
+-   We'll use `mutate()` to create new variables based on calculations across columns within a row
 
 **Next week**
 
--   we'll combine `mutate()` with `summarize()` and `group_by()` to create variables based on calculations across rows
+-   We'll combine `mutate()` with `summarize()` and `group_by()` to create variables based on calculations across rows
 
-### Create new data frame based on `df_school_all`
+__Create new data frame based on `df_school_all`__
 
-Data frame `df_school_all` has one obs per US high school and then variables identifying number of visits by particular universities
+Recall, data frame `df_school_all` has one obs per US high school and then variables identifying number of visits by particular universities
 
 ```{r}
-load(url("https://github.com/ozanj/rclass/raw/master/data/recruiting/recruit_school_allvars.RData"))
 names(df_school_all)
 ```
 
@@ -1251,7 +1215,7 @@ glimpse(school_v2)
 
 Description of `mutate()`
 
--   creates new columns (variables) that are functions of existing columns
+-   Creates new columns (variables) that are functions of existing columns
 -   After creating a new variable using `mutate()`, every row of data is retained
 -   `mutate()` works best with pipes `%>%`
 
@@ -1300,6 +1264,9 @@ rm(school_sml)
 ```{r, eval=FALSE, echo=FALSE}
 ?mutate
 ```
+
+
+<!-- BREAK DOWN THE EXAMPLE HERE, INTRODUCE MUTATE USING A SIMPLE EXAMPLE -->
 
 **Can create variables using standard mathematical or logical operators** \[output omitted\]
 
@@ -1646,7 +1613,7 @@ school_v2 %>%
 ?recode
 ```
 
-**Description**: Recode values of a variable
+**Description**: Recodes values of a variable
 
 **Usage (i.e., syntax)**
 
@@ -1691,7 +1658,7 @@ str(wwlist$school_category) # character variable
 wwlist %>% count(school_category) 
 ```
 
-Recode
+__Recode__
 
 ```{r, results="hide"}
 wwlist_temp <- wwlist %>% select(school_category) %>% 
@@ -1774,6 +1741,8 @@ wwlist_temp %>% count(school_catv2)
 wwlist %>% count(school_category)
 rm(wwlist_temp)
 ```
+
+### Student exercise using `recode()` within `mutate()`
 
 ```{r, results="hide"}
 load(url("https://github.com/ozanj/rclass/raw/master/data/recruiting/recruit_event_somevars.RData"))
@@ -1925,18 +1894,18 @@ school_v2 %>% filter(is.na(school_type)) %>% count()
 
     -   "instate_public"; "instate_private"; "outstate_public"; "outstate_private"
 
-    ```{r}
-    school_v2_temp <- school_v2 %>% select(state_code,school_type) %>%
-      mutate(state_type = case_when(
-        state_code == "CA" & school_type == "public"  ~ "instate_public",
-        state_code == "CA" & school_type == "private" ~ "instate_private",
-        state_code != "CA" & school_type == "public" ~ "outstate_public",
-        state_code != "CA" & school_type == "private" ~ "outstate_private")
-      )
+```{r}
+school_v2_temp <- school_v2 %>% select(state_code,school_type) %>%
+  mutate(state_type = case_when(
+    state_code == "CA" & school_type == "public"  ~ "instate_public",
+    state_code == "CA" & school_type == "private" ~ "instate_private",
+    state_code != "CA" & school_type == "public" ~ "outstate_public",
+    state_code != "CA" & school_type == "private" ~ "outstate_private")
+  )
 
-    school_v2_temp %>% count(state_type)
-    #school_v2_temp %>% filter(is.na(state_code)) %>% count(state_type) #no missing
-    #school_v2_temp %>% filter(is.na(school_type)) %>% count(state_type) #no missing
-    ```
+school_v2_temp %>% count(state_type)
+#school_v2_temp %>% filter(is.na(state_code)) %>% count(state_type) #no missing
+#school_v2_temp %>% filter(is.na(school_type)) %>% count(state_type) #no missing
+```
 
 </details>
