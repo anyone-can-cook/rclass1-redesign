@@ -840,7 +840,7 @@ str_c(TRUE, 1.5, 2L, "X")
 
 When multiple vectors are provided, they are joined together element-wise, recycling the elements of the shorter vectors:
 
-```{r, warning = FALSE}
+```{r, warning = FALSE, eval=FALSE}
 str_c("#", c("a", "b", "c", "d"), c(1, 2, 3), c(TRUE, FALSE))
 
 # Specifying both `sep` and `collapse`
