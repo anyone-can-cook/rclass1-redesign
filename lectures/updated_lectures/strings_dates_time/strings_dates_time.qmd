@@ -55,7 +55,7 @@ We will use `rtweet` to pull Twitter data from the PAC-12 universities. We will 
 # Load previously pulled Twitter data
 # p12_full_df <- readRDS("p12_dataset.RDS")
 p12_full_df <- readRDS(url("https://github.com/anyone-can-cook/rclass1/raw/master/data/twitter/p12_dataset.RDS", "rb"))
-glimpse(p12_full_df)
+#glimpse(p12_full_df)
 
 p12_df <- p12_full_df %>% select("user_id", "created_at", "screen_name", "text", "location")
 head(p12_df)
@@ -85,11 +85,11 @@ What is an **object**?
 
 Basic **data structures**:
 
--   [Atomic vectors](#atomtic-vectors)
+-   [Atomic vectors](#atomic-vectors)
 -   [Lists](#lists)
     -   [Dataframes](#dataframes)
 
-## Atomtic vectors {#atomtic-vectors}
+## Atomic vectors {#atomtic-vectors}
 
 What are **atomic vectors**?
 
@@ -97,52 +97,45 @@ What are **atomic vectors**?
 -   Elements must be of the same data type (i.e., *homogeneous*)
 -   The `class()` and `typeof()` a vector describes the elements it contains
 
-<br>
 
-<details>
-
-<summary>**Example**: Investigating logical vectors</summary>
+**Example**: Create a tibble to investigate atomic vectors
 
 ```{r}
-v <- c(TRUE, FALSE, FALSE, TRUE)
-str(v)
-class(v)
-typeof(v)
+#create a tibble with columns or variables of different atomic vectors 
+v <- tibble(l = c(TRUE, FALSE, FALSE, TRUE),
+            n = c(1, 3, 5, 7),
+            i = c(1L, 3L, 5L, 7L),
+            c = c("a", "b", "c", "d"))
+
+str(v$l)
+class(v$l)
+typeof(v$l)
 ```
 
-</details>
-
-<br>
 
 <details>
 
 <summary>**Example**: Investigating numeric vectors</summary>
 
 ```{r}
-v <- c(1, 3, 5, 7)
-str(v)
-class(v)
-typeof(v)
+str(v$n)
+class(v$n)
+typeof(v$n)
 ```
 
 </details>
-
-<br>
 
 <details>
 
 <summary>**Example**: Investigating integer vectors</summary>
 
 ```{r}
-v <- c(1L, 3L, 5L, 7L)
-str(v)
-class(v)
-typeof(v)
+str(v$i)
+class(v$i)
+typeof(v$i)
 ```
 
 </details>
-
-<br>
 
 <details>
 
@@ -151,13 +144,13 @@ typeof(v)
 Each element in a `character` vector is a **string** (covered in next section):
 
 ```{r}
-v <- c("a", "b", "c", "d")
-str(v)
-class(v)
-typeof(v)
+str(v$c)
+class(v$c)
+typeof(v$c)
 ```
 
 </details>
+
 
 ## Lists {#lists}
 
@@ -168,11 +161,9 @@ What are **lists**?
     -   Elements can be atomic vectors or even other lists
 -   The `class()` and `typeof()` a list is `list`
 
-<br>
 
-<details>
 
-<summary>**Example**: Investigating heterogeneous lists</summary>
+**Example**: Investigating heterogeneous lists
 
 ```{r}
 l <- list(2.5, "abc", TRUE, c(1L, 2L, 3L))
@@ -181,9 +172,6 @@ class(l)
 typeof(l)
 ```
 
-</details>
-
-<br>
 
 <details>
 
@@ -198,7 +186,7 @@ typeof(l)
 
 </details>
 
-### Dataframes {#dataframes}
+## Dataframes {#dataframes}
 
 What are **dataframes**?
 
@@ -210,8 +198,6 @@ What are **dataframes**?
 -   Dataframes can be created using the function `data.frame()`
 -   The `class()` of a dataframe is `data.frame`
 -   The `typeof()` a dataframe is `list`
-
-<br>
 
 <details>
 
@@ -245,9 +231,7 @@ Functions for converting between types:
 
 <br>
 
-<details>
-
-<summary>**Example**: Using `as.logical()` to convert to `logical`</summary>
+**Convert to `logical` using `as.logical()`**
 
 Character vector coerced to logical vector:
 
@@ -263,13 +247,9 @@ Numeric vector coerced to logical vector:
 as.logical(c(0, 0.0, 1, -1, 20, 5.5))
 ```
 
-</details>
-
 <br>
 
-<details>
-
-<summary>**Example**: Using `as.numeric()` to convert to `numeric`</summary>
+**Convert to `numeric` using `as.numeric()`**
 
 Logical vector coerced to numeric vector:
 
@@ -286,13 +266,9 @@ Character vector coerced to numeric vector:
 as.numeric(c("0", "007", "2.5", "abc", "."))
 ```
 
-</details>
-
 <br>
 
-<details>
-
-<summary>**Example**: Using `as.integer()` to convert to `integer`</summary>
+**Convert to `integer` using `as.integer()`**
 
 Logical vector coerced to integer vector:
 
@@ -316,13 +292,9 @@ Numeric vector coerced to integer vector:
 as.integer(c(0, 2.1, 10.5, 8.8, -1.8))
 ```
 
-</details>
-
 <br>
 
-<details>
-
-<summary>**Example**: Using `as.character()` to convert to `character`</summary>
+**Convert to `character` using `as.character()`**
 
 Logical vector coerced to character vector:
 
@@ -342,13 +314,9 @@ Integer vector coerced to character vector:
 as.character(c(-2L, 0L, 10L))
 ```
 
-</details>
-
 <br>
 
-<details>
-
-<summary>**Example**: Using `as.list()` to convert to `list`</summary>
+**Convert to `list` using `as.list()`**
 
 Atomic vectors coerced to list:
 
@@ -363,13 +331,9 @@ as.list(c("a", "b", "c"))
 as.list(1:3)
 ```
 
-</details>
-
 <br>
 
-<details>
-
-<summary>**Example**: Using `as.data.frame()` to convert to `data.frame`</summary>
+**Convert to `data.frame` using `as.data.frame()`**
 
 Lists coerced to dataframe:
 
@@ -383,15 +347,12 @@ df <- as.data.frame(l, stringsAsFactors = F)
 str(df)
 ```
 
-</details>
-
-<br>
 
 <details>
 
 <summary>**Example**: Practical example of converting type</summary>
 
-When working with data, it may be helpful to label values for certain variables. Data files often come with a codebook that defines how values are coded. Let's look at an example of labeling values and how converting data type may come into play.
+When working with data, it may be helpful to label values for certain variables. Data files often come with a code book that defines how values are coded. Let's look at an example of labeling values and how converting data type may come into play.
 
 We'll look at the `FIPS` variable from the [Integrated Postsecondary Education Data System (IPEDS)](https://nces.ed.gov/ipeds/use-the-data) data. The [state FIPS code](https://en.wikipedia.org/wiki/Federal_Information_Processing_Standard_state_code#FIPS_state_codes) is a numeric code that identifies a state. For example, `1` is the FIPS code for `Alabama`, `2` is the FIPS code for `Alaska`, etc. We'll want to label each numeric value in the `FIPS` column with the corresponding state name.
 
