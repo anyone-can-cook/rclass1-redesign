@@ -1,6 +1,6 @@
 ---
 title: 'XXX: Course title here'
-format: docx
+format: html
 toc: true
 toc-depth: 3
 toc-location: left
@@ -330,7 +330,7 @@ __AI in the classroom__
   - 
 
 
-# Campus resources [CONSIDER CREATING A TABLE TO MINIMIZE SPACE]
+# Campus resources 
 
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
@@ -341,8 +341,8 @@ Description <- c("As a student, you may experience a range of issues that can ca
                  "The Dashew Center provides a range of programs to promote cross-cultural learning, language improvement, and cultural adjustment. Their programs include trips in the LA area, performances, and on-campus events and workshops.",
                  "This program provides a safe space for undergraduate and graduate undocument students. USP supports the UndocuBruin community through personalized services and resources, programs, and workshops.",
                  "UCLA Students with Dependents provides support to UCLA studens who are parents, guardians, and caregivers. Some of their services include: Information, referrals, and support to navigate UCLA (childcare, family housing, financial aid, Access to information about resources within the larger community, On-site application and verification for CalFresh (food stamps) & MediCal and assistance with Cal Works/GAIN, A quiet study space, Family friendly graduation celebration in June",
-                 "",
-                 "", 
+                 "UCLA Be Well Bruin is committed to increasing students' access and awareness of health and well-being resources on campus. They provide a search tool to find resources related to physical, academic, emotional, financial, social, and basic needs.",
+                 "UCLA Library DataSquad is a team of undergraduate students offering consultations in coding, data cleaning and manipulation, data visualization, and statistical analysis in R, Python, Tableau, and SQL.", 
                  "UCLA Student Legal Services provides a range of legal support to all registered and enrolled UCLA students. Some of their services include: Landlord/Tenant Relations (Including challenges during COVID), Accident and Injury Problems, Domestic Violence and Harassment, Divorces, and Other Family Law matter",
                  "UCLA is committed to maintaining a campus community that provides the stronget possible support for the intellectual and personal growth of all its members- students, faculty, and staff. Acts intended to create a hostile climate are unacceptable.")
 Contact <- c("To speak directly with a counselor 24/7 at (310) 825-0768, if an emergency call 911 \nLocated in the Wooden Center West \nWebsite: https://www.caps.ucla.edu",
@@ -368,7 +368,7 @@ ft3 <- ft3 %>%
   width(width = 2) %>%
   width(j = "Resource", width = 1.5, unit = "in") %>%
   width(j = "Description", width = 3.5, unit = "in") %>%
-  bg(bg = "#8569B8", part = "header") %>% #3173C9, #8569B8
+  bg(bg = "#D3D2D4", part = "header") %>% #3173C9, #8569B8
   bold(bold = TRUE, part = "header") %>%
   color(color= "white", part = "header") %>%
   hline(border = std_b) %>%
@@ -383,17 +383,42 @@ ft3
 
 ## Campus maps 
 
-**Lactation Rooms** 
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 
-- [Map to lactation rooms on campus](https://map.ucla.edu/?f=5)  
+Map <- c("ucla-lactation-map.png", "ucla-gender-inclusive-restroom-map.png", "ucla-accessibility-map.png")
+Resource <- c("Lactation Rooms", "Gender-Inclusive Restrooms", "Campus Accessibility")
+Link <- c("https://chr.ucla.edu/benefits/support-nursing-mothers-at-work", "https://lgbtq.ucla.edu/file/1500b7f1-7c6b-4c1b-9bbe-12674dd23f67", "https://map.ucla.edu/downloads/pdf/Access_Oct_2020.pdf")
 
-**Gender-Inclusive Restrooms**  
+resource <- tibble(Map, Resource, Link)
 
-- [Gender-Inclusive Restrooms](https://lgbtq.ucla.edu/file/1500b7f1-7c6b-4c1b-9bbe-12674dd23f67)  
+ft4 <- flextable(resource)
 
-**Campus accessibility**  
+#horizontal lines
+std_b <- fp_border(color="#E4E8EE", style = "dashed")
+#header border
+head_b <- fp_border(style = "solid", color = "#E4E8EE", width=.5)
 
-- [Campus accessibility map](https://map.ucla.edu/downloads/pdf/Access_Oct_2020.pdf)
+ft4 <- ft4 %>% 
+  width(width = 2) %>%
+  width(j = "Resource", width = 1.5, unit = "in") %>%
+  width(j = "Link", width = 3.5, unit = "in") %>%
+  bg(bg = "#D3D2D4", part = "header") %>% #3173C9, #8569B8
+  bold(bold = TRUE, part = "header") %>%
+  color(color= "white", part = "header") %>%
+  hline(border = std_b) %>%
+  hline(border = head_b, part = "header") %>%
+  hline_top(border = head_b, part = "header")
+
+ft4 <- colformat_image(
+  ft4,
+  i = c(1,2,3),
+  j = "Map", width = 1, height = 1.25
+)
+
+
+ft4
+
+```
 
 
 ## Title IX Resources
