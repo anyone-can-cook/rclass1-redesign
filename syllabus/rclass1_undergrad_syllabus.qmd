@@ -1,6 +1,6 @@
 ---
 title: 'XXX: Course title here'
-format: html
+format: docx
 toc: true
 toc-depth: 3
 toc-location: left
@@ -56,18 +56,16 @@ ft
 
 # Course description
 
-The primary goals of this course are (1) to teach fundamental skills of "data management," which are important regardless of which programming language is used, and (2) to develop a strong foundation in the R programming language. The course is designed for students who never thought they would become programmers. No prior experience with R is required. For goal (1), most statistics courses teach you how to analyze data that are ready for analysis. In real research projects, data management -- the process of cleaning, manipulating, and integrating datasets in order to create analysis datasets -- is often more challenging than conducting analyses. For goal (2), R is a free, open-source, object-oriented programming language. R is the most popular language for statistical analysis and one of the most popular languages for "data science" applications (e.g., web-scraping, interactive maps, network analysis).  Students will become proficient in data management and R programming through weekly problem sets, which will be completed in groups.
+The primary goals of this course are (1) to teach fundamental skills of "data management," which are important regardless of which programming language is used, and (2) to develop a strong foundation in the R programming language. The course is designed for students who never thought they would become programmers. No prior experience with R is required. For goal (1), most statistics courses teach you how to analyze data that are ready for analysis. In real research projects, data management -- the process of cleaning, manipulating, and integrating datasets in order to create analysis datasets -- is often more challenging than conducting analyses. For goal (2), R is a free, open-source, object-oriented programming language. R is arguably the most popular language for statistical analysis and one of the most popular languages for graphics and data visualizations (e.g., web-scraping, interactive maps, network analysis) compared to other open-source languages. Students will become proficient in data management and R programming through weekly problem sets, which will be completed in groups.
 
+This class is created in collaboration with [UCLA's DataX initiative](https://datax.ucla.edu/) in an effort to make data science accessible to the the UCLA community. The DataX initiative encourages interdisciplinary research, scholarship, and innovation centering on the application of "data science and critical social, ethical, and data justice research and pedagogy." The course aims to provide a welcoming space for all learners interested in working with data and the implications of how it is used and for what purpose. 
 
-[LANGUAGE ABOUT DATAX]
-
-https://datax.ucla.edu/
 
 ## Extended description
 
-Data management consists of acquiring, investigating, cleaning, combining, and manipulating data. Most statistics courses teach you how to analyze data that are ready for analysis. In real research projects, cleaning the data and creating analysis datasets is often more time consuming than conducting analyses. This course teaches the fundamental data management and data manipulation skills necessary for creating analysis datasets.
+Data management consists of acquiring, investigating, cleaning, combining, and manipulating data. Most statistics courses teach you how to analyze data that are ready for analysis. In real research projects, cleaning the data and creating analysis datasets is often more time consuming than conducting analyses. This course teaches the fundamental data management and data manipulation skills necessary for creating analysis datasets particularly in social science research in asking questions that inform our social world (e.g., social relationships, policies impacting communities, administrative data for organizational change, etc.).
 
-The course will be taught using R, a free, open-source programming language. R has become the most popular language for statistical analysis, surpassing SPSS, Stata, and SAS. What differentiates R from these other languages is the thousands of open-source "libraries" created by R users. R is one of the most popular languages for "data science" because R libraries have been created for web-scraping, mapping, network analysis, etc.  By learning R you can be confident that you know a programming language that can run any modeling technique you might need and has amazing capabilities for data collection and data visualization. By learning the fundamentals of R in this course, you will be "one step away" from web-scraping, network analysis, interactive maps, quantitative text analysis, or whatever other data science application you are interested in.
+The course will use R, a free, open-source programming language. R has become the most popular language for statistical analysis, surpassing SPSS, Stata, and SAS. What differentiates R from these other languages is the thousands of open-source "libraries" created by R users. R is one of the most popular languages for "data science" because R libraries have been created for web-scraping, mapping, network analysis, etc.  By learning R you can be confident that you know a programming language that can run any modeling technique you might need and has amazing capabilities for data collection and data visualization. By learning the fundamentals of R in this course, you will be "one step away" from web-scraping, network analysis, interactive maps, quantitative text analysis, or whatever other data science application you are interested in.
 
 The data management and programming skills you learn in this course will transfer to other object-oriented programming languages (e.g., Python).
 
@@ -78,7 +76,11 @@ Recommended prerequisites (encourage, **but not required**)
 - One prior introductory statistics course (e.g., undergraduate-level stats course)
 - Proficiency in general computer skills is helpful, (e.g., downloading files from the internet, renaming files, saving them to a folder of your choosing, finding this folder on your computer, etc).
 
-## Instructor
+# Office hours
+
+The instructor's and teaching assistants' weekly office hours are listed below. If you would like to schedule a 1:1 appointment with someone from the instructional team, please email them 48 hours in advance.   
+
+## Instructional team
 
 **Instructor Name**  
 
@@ -107,6 +109,7 @@ Recommended prerequisites (encourage, **but not required**)
   - Zoom office hours: 
   - And by appointment
   
+
 
 # Course learning goals
 
@@ -333,7 +336,7 @@ __AI in the classroom__
 # Campus resources 
 
 
-```{r echo=FALSE, message=FALSE, warning=FALSE}
+```{r echo=FALSE, message=FALSE, warning=FALSE, tidy=TRUE, tidy.opts=list(width.cutoff=60)}
 
 Resource <- c("Counseling and Psychological Services (CAPS)","LGBTQ Resource Center", "International Students", "Undocumented Students Program", "Students with Dependents","Be Well Program", "Data Squad", "Student Legal Services", "Discrimination")
 Description <- c("As a student, you may experience a range of issues that can cause barriers to learning, such as strained relationships, increased anxiety, alcohol/drug problems, depression, difficulty concentrating, and/or lack of motivation that may lead to diminished academic performance or reduce your ability to participate in daily activities.",
@@ -362,19 +365,19 @@ ft3 <- flextable(resource)
 #horizontal lines
 std_b <- fp_border(color="#E4E8EE", style = "dashed")
 #header border
-head_b <- fp_border(style = "solid", color = "#E4E8EE", width=.5)
+#head_b <- fp_border(style = "solid", color = "#E4E8EE", width=.5)
 
 ft3 <- ft3 %>% 
-  width(width = 2) %>%
+  #width(width = 2) %>%
   width(j = "Resource", width = 1.5, unit = "in") %>%
-  width(j = "Description", width = 3.5, unit = "in") %>%
-  bg(bg = "#D3D2D4", part = "header") %>% #3173C9, #8569B8
+  width(j = "Description", width = 3, unit = "in") %>%
+  width(j = "Contact", width = 1.5, unit = "in") %>%
+  #bg(bg = "#D3D2D4", part = "header") %>% #3173C9, #8569B8
   bold(bold = TRUE, part = "header") %>%
-  color(color= "white", part = "header") %>%
-  hline(border = std_b) %>%
-  hline(border = head_b, part = "header") %>%
-  hline_top(border = head_b, part = "header")
-
+  #color(color= "white", part = "header") %>%
+  hline(border = std_b) #%>%
+  #hline(border = head_b, part = "header") %>%
+  #hline_top(border = head_b, part = "header")
 
 ft3
 
@@ -396,18 +399,18 @@ ft4 <- flextable(resource)
 #horizontal lines
 std_b <- fp_border(color="#E4E8EE", style = "dashed")
 #header border
-head_b <- fp_border(style = "solid", color = "#E4E8EE", width=.5)
+#head_b <- fp_border(style = "solid", color = "#E4E8EE", width=.5)
 
 ft4 <- ft4 %>% 
   width(width = 2) %>%
-  width(j = "Resource", width = 1.5, unit = "in") %>%
-  width(j = "Link", width = 3.5, unit = "in") %>%
-  bg(bg = "#D3D2D4", part = "header") %>% #3173C9, #8569B8
+  width(j = "Resource", width = 1, unit = "in") %>%
+  width(j = "Link", width = 3, unit = "in") %>%
+  #bg(bg = "#D3D2D4", part = "header") %>% #3173C9, #8569B8
   bold(bold = TRUE, part = "header") %>%
-  color(color= "white", part = "header") %>%
-  hline(border = std_b) %>%
-  hline(border = head_b, part = "header") %>%
-  hline_top(border = head_b, part = "header")
+  #color(color= "white", part = "header") %>%
+  hline(border = std_b)# %>%
+  #hline(border = head_b, part = "header") %>%
+ # hline_top(border = head_b, part = "header")
 
 ft4 <- colformat_image(
   ft4,
