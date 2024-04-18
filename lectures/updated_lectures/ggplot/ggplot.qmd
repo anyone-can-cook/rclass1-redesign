@@ -28,7 +28,7 @@ library(labelled)
 library(RColorBrewer)
 ```
 
-Resources used to create this lecture:
+**Resources used to create this lecture:**
 
 -   https://r4ds.had.co.nz/data-visualisation.html
 -   https://cfss.uchicago.edu/notes/grammar-of-graphics/#data-and-mapping
@@ -36,9 +36,11 @@ Resources used to create this lecture:
 -   http://r-statistics.co/Complete-Ggplot2-Tutorial-Part1-With-R-Code.html
 -   https://ggplot2-book.org/
 
-**ggplot cheatsheet**: It may be helpful to familiarize yourself with this cheatsheet and use it as a reference point for review and practice after going through the lecture.
+**ggplot cheatsheet**:
 
 -   https://www.maths.usyd.edu.au/u/UG/SM/STAT3022/r/current/Misc/data-visualization-2.1.pdf
+
+It may be helpful to familiarize yourself with this cheatsheet and use it as a reference point for review and practice after going through the lecture.
 
 ## Datasets we will use
 
@@ -87,8 +89,6 @@ els %>% glimpse()
 ```
 
 </details>
-
-<br>
 
 <details>
 
@@ -174,7 +174,7 @@ df_els_stu_allobs_fac %>%
 
 # Concepts
 
-Basic definitions:
+**Basic definitions:**
 
 -   Grammar
     -   "The fundamental principles or rules of an art or science" (Oxford English dictionary)
@@ -188,7 +188,7 @@ Basic definitions:
     -   **Aesthetic mappings** (**mappings**) are visual elements of the plot determined by values of specific variables (e.g., a scatterplot where the color of each point depends on the value of the variable `race`)
     -   In the context of visualization using ggplot, all **mappings** are **aesthetic mappings** but not all **aesthetics** are **aesthetic mappings** (i.e., determined by variable values). For example, when creating a scatterplot you may specify that the color of each point be blue.
 
-The seven parameters of the layered grammar of graphics consists of:
+**The seven parameters of the layered grammar of graphics consists of:**
 
 -   Five layers
     -   A dataset (**data**)
@@ -219,7 +219,7 @@ ggplot(data = <DATA>, mapping = aes(<MAPPINGS>)) +
 
 What does Wickham mean by **layers**? (from "[Telling Stories with Data Using the Grammar of Graphics](https://codewords.recurse.com/issues/six/telling-stories-with-data-using-the-grammar-of-graphics)" by Liz Sander)
 
--   In the grammar of a language, words have different parts of speach (e.g., noun, verb, adjective), with each part of speech performing a different role in a sentence
+-   In the grammar of a language, words have different parts of speech (e.g., noun, verb, adjective), with each part of speech performing a different role in a sentence
 -   The layered grammar of graphics decomposes a graphic into different **layers**
     -   "These are layers in a literal sense – you can think of them as transparency sheets for an overhead projector, each containing a piece of the graphic, which can be arranged and combined in a variety of ways."
 
