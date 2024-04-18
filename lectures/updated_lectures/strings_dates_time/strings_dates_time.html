@@ -728,10 +728,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </details>
-<p><br></p>
 <details>
 <summary>
-<strong>Example</strong>: Using <code>str_length()</code> on character vector
+<strong>Example</strong>: Using <code>str_length()</code> on a character vector
 </summary>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_length</span>(<span class="fu">c</span>(<span class="st">"cats"</span>, <span class="st">"in"</span>, <span class="st">"hat"</span>))</span>
@@ -743,7 +742,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </details>
-<p><br></p>
 <details>
 <summary>
 <strong>Example</strong>: Using <code>str_length()</code> on other vectors coercible to character
@@ -764,7 +762,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1 3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </details>
-<p><br></p>
 <details>
 <summary>
 <strong>Example</strong>: Using <code>str_length()</code> on dataframe column
@@ -1098,11 +1095,10 @@ str_c(s1,s2, sep = "~", collapse = NULL)
 </div>
 <p>Note that we can also use any other single element input (other than string) that can be coerced to character:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_c</span>(<span class="cn">TRUE</span>, <span class="fl">1.5</span>, 2L, <span class="st">"X"</span>)</span>
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_c</span>(<span class="cn">TRUE</span>, <span class="fl">1.5</span>, 2L, <span class="st">"X"</span>) </span>
 <span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "TRUE1.52X"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </details>
-<p><br></p>
 <details>
 <summary>
 <strong>Example</strong>: Using <code>str_c()</code> on vectors of different lengths
@@ -1115,7 +1111,6 @@ str_c(s1,s2, sep = "~", collapse = NULL)
 <span id="cb91-4"><a href="#cb91-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str_c</span>(<span class="st">"#"</span>, <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"d"</span>), <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>), <span class="at">sep =</span> <span class="st">"~"</span>, <span class="at">collapse =</span> <span class="st">"|"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </details>
-<p><br></p>
 <details>
 <summary>
 <strong>Example</strong>: Using <code>str_c()</code> on dataframe columns
@@ -1237,7 +1232,6 @@ str_c(s1,s2, sep = "~", collapse = NULL)
 <span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "bcdef" "2"     "RU"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </details>
-<p><br></p>
 <details>
 <summary>
 <strong>Example</strong>: Using <code>str_sub()</code> to replace strings
@@ -1270,7 +1264,6 @@ str_c(s1,s2, sep = "~", collapse = NULL)
 <span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_sub</span>(<span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"AB"</span>, <span class="st">"ABC"</span>, <span class="st">"ABCD"</span>, <span class="st">"ABCDE"</span>)) <span class="ot">&lt;-</span> <span class="st">"*"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </details>
-<p><br></p>
 <details>
 <summary>
 <strong>Example</strong>: Using <code>str_sub()</code> on dataframe column
@@ -1334,7 +1327,6 @@ str_c(s1,s2, sep = "~", collapse = NULL)
 <span id="cb109-5"><a href="#cb109-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "USER_ID"     "CREATED_AT"  "SCREEN_NAME" "TEXT"        "LOCATION"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </details>
-<p><br></p>
 <details>
 <summary>
 <strong>Example</strong>: Using <code>str_to_lower()</code> to turn strings to lowercase
@@ -1351,7 +1343,6 @@ str_c(s1,s2, sep = "~", collapse = NULL)
 <span id="cb111-5"><a href="#cb111-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "user_id"     "created_at"  "screen_name" "text"        "location"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </details>
-<p><br></p>
 <details>
 <summary>
 <strong>Example</strong>: Using <code>str_sort()</code> to sort character vector
@@ -1371,7 +1362,6 @@ str_c(s1,s2, sep = "~", collapse = NULL)
 <span id="cb114-4"><a href="#cb114-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "user_id"     "text"        "screen_name" "location"    "created_at"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </details>
-<p><br></p>
 <details>
 <summary>
 <strong>Example</strong>: Using <code>str_trim()</code> to trim whitespace from string
@@ -1390,7 +1380,6 @@ str_c(s1,s2, sep = "~", collapse = NULL)
 <span id="cb117-4"><a href="#cb117-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "\nABC" " XYZ"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </details>
-<p><br></p>
 <details>
 <summary>
 <strong>Example</strong>: Using <code>str_pad()</code> to pad string with character
@@ -1433,8 +1422,7 @@ str_c(s1,s2, sep = "~", collapse = NULL)
 </ul>
 <section id="creating-datetime-objects" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="creating-datetime-objects"><span class="header-section-number">5.1</span> Creating date/time objects</h2>
-<section id="creating-datetime-objects-by-parsing-input" class="level3" data-number="5.1.1">
-<h3 data-number="5.1.1" class="anchored" data-anchor-id="creating-datetime-objects-by-parsing-input"><span class="header-section-number">5.1.1</span> Creating date/time objects by parsing input</h3>
+<p><strong>Creating date/time objects by parsing input</strong></p>
 <p>Functions that create date/time objects <strong>by parsing character or numeric input</strong>:</p>
 <ul>
 <li>Create <code>Date</code> object: <code>ymd()</code>, <code>ydm()</code>, <code>mdy()</code>, <code>myd()</code>, <code>dmy()</code>, <code>dym()</code>
@@ -1485,28 +1473,27 @@ str_c(s1,s2, sep = "~", collapse = NULL)
 <span id="cb125-4"><a href="#cb125-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 18262</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </details>
-<p><br></p>
 <details>
 <summary>
 <strong>Example</strong>: Creating <code>POSIXct</code> object from character or numeric input
 </summary>
 <p>The <code>lubridate</code> functions are flexible and can parse AM/PM in various formats:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb126"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">mdy_h</span>(<span class="st">"12/31/2019 11pm"</span>)</span>
+<div class="sourceCode cell-code" id="cb126"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">mdy_h</span>(<span class="st">"12/31/2023 11pm"</span>)</span>
 <span id="cb126-2"><a href="#cb126-2" aria-hidden="true" tabindex="-1"></a>dt</span>
-<span id="cb126-3"><a href="#cb126-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "2019-12-31 23:00:00 UTC"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb126-3"><a href="#cb126-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "2023-12-31 23:00:00 UTC"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode cell-code" id="cb127"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb127-2"><a href="#cb127-2" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">mdy_hm</span>(<span class="st">"12/31/2019 11:59 pm"</span>)</span>
+<span id="cb127-2"><a href="#cb127-2" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">mdy_hm</span>(<span class="st">"12/31/2023 11:59 pm"</span>)</span>
 <span id="cb127-3"><a href="#cb127-3" aria-hidden="true" tabindex="-1"></a>dt</span>
-<span id="cb127-4"><a href="#cb127-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "2019-12-31 23:59:00 UTC"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb127-4"><a href="#cb127-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "2023-12-31 23:59:00 UTC"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode cell-code" id="cb128"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb128-2"><a href="#cb128-2" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">mdy_hms</span>(<span class="st">"12/31/2019 11:59:59 PM"</span>)</span>
+<span id="cb128-2"><a href="#cb128-2" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">mdy_hms</span>(<span class="st">"12/31/2023 11:59:59 PM"</span>)</span>
 <span id="cb128-3"><a href="#cb128-3" aria-hidden="true" tabindex="-1"></a>dt</span>
-<span id="cb128-4"><a href="#cb128-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "2019-12-31 23:59:59 UTC"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb128-4"><a href="#cb128-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "2023-12-31 23:59:59 UTC"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode cell-code" id="cb129"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb129-2"><a href="#cb129-2" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">ymd_hms</span>(<span class="dv">20191231235959</span>)</span>
+<span id="cb129-2"><a href="#cb129-2" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">ymd_hms</span>(<span class="dv">20231231235959</span>)</span>
 <span id="cb129-3"><a href="#cb129-3" aria-hidden="true" tabindex="-1"></a>dt</span>
-<span id="cb129-4"><a href="#cb129-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "2019-12-31 23:59:59 UTC"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb129-4"><a href="#cb129-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "2023-12-31 23:59:59 UTC"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br> Investigate the <code>POSIXct</code> object:</p>
 <div class="cell">
@@ -1517,7 +1504,7 @@ str_c(s1,s2, sep = "~", collapse = NULL)
 <div class="sourceCode cell-code" id="cb132"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb132-2"><a href="#cb132-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of seconds since January 1, 1970</span></span>
 <span id="cb132-3"><a href="#cb132-3" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(dt)</span>
-<span id="cb132-4"><a href="#cb132-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1577836799</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb132-4"><a href="#cb132-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1704067199</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br> We can also create a <code>POSIXct</code> object from a date function by providing a timezone. The time would default to midnight:</p>
 <div class="cell">
@@ -1530,7 +1517,6 @@ str_c(s1,s2, sep = "~", collapse = NULL)
 <span id="cb134-4"><a href="#cb134-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1577836800</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </details>
-<p><br></p>
 <details>
 <summary>
 <strong>Example</strong>: Creating <code>Date</code> objects from dataframe column
@@ -1556,7 +1542,6 @@ str_c(s1,s2, sep = "~", collapse = NULL)
 <span id="cb135-17"><a href="#cb135-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ℹ 318 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </details>
-<p><br></p>
 <details>
 <summary>
 <strong>Example</strong>: Creating <code>POSIXct</code> objects from dataframe column
@@ -1582,9 +1567,7 @@ str_c(s1,s2, sep = "~", collapse = NULL)
 <span id="cb136-17"><a href="#cb136-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ℹ 318 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </details>
-</section>
-<section id="creating-datetime-objects-from-individual-components" class="level3" data-number="5.1.2">
-<h3 data-number="5.1.2" class="anchored" data-anchor-id="creating-datetime-objects-from-individual-components"><span class="header-section-number">5.1.2</span> Creating date/time objects from individual components</h3>
+<p><strong>Creating date/time objects from individual components</strong></p>
 <p>Functions that create date/time objects <strong>from various date/time components</strong>:</p>
 <ul>
 <li>Create <code>Date</code> object: <code>make_date()</code>
@@ -1619,19 +1602,17 @@ str_c(s1,s2, sep = "~", collapse = NULL)
 <span id="cb139-5"><a href="#cb139-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "2020-01-01"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </details>
-<p><br></p>
 <details>
 <summary>
 <strong>Example</strong>: Creating <code>POSIXct</code> object from individual components
 </summary>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb140"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb140-1"><a href="#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inputs should be numeric</span></span>
-<span id="cb140-2"><a href="#cb140-2" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">make_datetime</span>(<span class="dv">2019</span>, <span class="dv">12</span>, <span class="dv">31</span>, <span class="dv">23</span>, <span class="dv">59</span>, <span class="dv">59</span>)</span>
+<span id="cb140-2"><a href="#cb140-2" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">make_datetime</span>(<span class="dv">2023</span>, <span class="dv">12</span>, <span class="dv">31</span>, <span class="dv">23</span>, <span class="dv">59</span>, <span class="dv">59</span>)</span>
 <span id="cb140-3"><a href="#cb140-3" aria-hidden="true" tabindex="-1"></a>d</span>
-<span id="cb140-4"><a href="#cb140-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "2019-12-31 23:59:59 UTC"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb140-4"><a href="#cb140-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "2023-12-31 23:59:59 UTC"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </details>
-<p><br></p>
 <details>
 <summary>
 <strong>Example</strong>: Creating <code>Date</code> objects from dataframe columns
@@ -1657,7 +1638,6 @@ str_c(s1,s2, sep = "~", collapse = NULL)
 <span id="cb141-17"><a href="#cb141-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ℹ 318 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </details>
-<p><br></p>
 <details>
 <summary>
 <strong>Example</strong>: Creating <code>POSIXct</code> objects from dataframe columns
@@ -1688,7 +1668,6 @@ str_c(s1,s2, sep = "~", collapse = NULL)
 <span id="cb142-22"><a href="#cb142-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ℹ 318 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </details>
-</section>
 </section>
 <section id="datetime-object-components" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="datetime-object-components"><span class="header-section-number">5.2</span> Date/time object components</h2>
@@ -1725,15 +1704,15 @@ str_c(s1,s2, sep = "~", collapse = NULL)
 </summary>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb143"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb143-1"><a href="#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create datetime for New Year's Eve</span></span>
-<span id="cb143-2"><a href="#cb143-2" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">make_datetime</span>(<span class="dv">2019</span>, <span class="dv">12</span>, <span class="dv">31</span>, <span class="dv">23</span>, <span class="dv">59</span>, <span class="dv">59</span>)</span>
+<span id="cb143-2"><a href="#cb143-2" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">make_datetime</span>(<span class="dv">2023</span>, <span class="dv">12</span>, <span class="dv">31</span>, <span class="dv">23</span>, <span class="dv">59</span>, <span class="dv">59</span>)</span>
 <span id="cb143-3"><a href="#cb143-3" aria-hidden="true" tabindex="-1"></a>dt</span>
-<span id="cb143-4"><a href="#cb143-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "2019-12-31 23:59:59 UTC"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb143-4"><a href="#cb143-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "2023-12-31 23:59:59 UTC"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode cell-code" id="cb144"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb144-1"><a href="#cb144-1" aria-hidden="true" tabindex="-1"></a>dt <span class="sc">%&gt;%</span> <span class="fu">class</span>()</span>
 <span id="cb144-2"><a href="#cb144-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "POSIXct" "POSIXt"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode cell-code" id="cb145"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb145-1"><a href="#cb145-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb145-2"><a href="#cb145-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Get date</span></span>
 <span id="cb145-3"><a href="#cb145-3" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span>(dt)</span>
-<span id="cb145-4"><a href="#cb145-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "2019-12-31"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb145-4"><a href="#cb145-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "2023-12-31"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode cell-code" id="cb146"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb146-1"><a href="#cb146-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb146-2"><a href="#cb146-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Get hour</span></span>
 <span id="cb146-3"><a href="#cb146-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hour</span>(dt)</span>
@@ -1745,22 +1724,21 @@ str_c(s1,s2, sep = "~", collapse = NULL)
 <div class="sourceCode cell-code" id="cb148"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb148-1"><a href="#cb148-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb148-2"><a href="#cb148-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Day of the week (3 = Tuesday)</span></span>
 <span id="cb148-3"><a href="#cb148-3" aria-hidden="true" tabindex="-1"></a><span class="fu">wday</span>(dt)</span>
-<span id="cb148-4"><a href="#cb148-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb148-4"><a href="#cb148-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode cell-code" id="cb149"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb149-1"><a href="#cb149-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb149-2"><a href="#cb149-2" aria-hidden="true" tabindex="-1"></a><span class="fu">year</span>(dt)</span>
-<span id="cb149-3"><a href="#cb149-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2019</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb149-3"><a href="#cb149-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2023</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </details>
-<p><br></p>
 <details>
 <summary>
 <strong>Example</strong>: Setting date/time components
 </summary>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb150"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb150-1"><a href="#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create datetime for New Year's Eve</span></span>
-<span id="cb150-2"><a href="#cb150-2" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">make_datetime</span>(<span class="dv">2019</span>, <span class="dv">12</span>, <span class="dv">31</span>, <span class="dv">23</span>, <span class="dv">59</span>, <span class="dv">59</span>)</span>
+<span id="cb150-2"><a href="#cb150-2" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">make_datetime</span>(<span class="dv">2023</span>, <span class="dv">12</span>, <span class="dv">31</span>, <span class="dv">23</span>, <span class="dv">59</span>, <span class="dv">59</span>)</span>
 <span id="cb150-3"><a href="#cb150-3" aria-hidden="true" tabindex="-1"></a>dt</span>
-<span id="cb150-4"><a href="#cb150-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "2019-12-31 23:59:59 UTC"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb150-4"><a href="#cb150-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "2023-12-31 23:59:59 UTC"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode cell-code" id="cb151"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb151-1"><a href="#cb151-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb151-2"><a href="#cb151-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Get week of year</span></span>
 <span id="cb151-3"><a href="#cb151-3" aria-hidden="true" tabindex="-1"></a><span class="fu">week</span>(dt)</span>
@@ -1771,17 +1749,16 @@ str_c(s1,s2, sep = "~", collapse = NULL)
 <span id="cb152-4"><a href="#cb152-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb152-5"><a href="#cb152-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Date now moved from New Year's Eve to Christmas Eve</span></span>
 <span id="cb152-6"><a href="#cb152-6" aria-hidden="true" tabindex="-1"></a>dt</span>
-<span id="cb152-7"><a href="#cb152-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "2019-12-24 23:59:59 UTC"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb152-7"><a href="#cb152-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "2023-12-24 23:59:59 UTC"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode cell-code" id="cb153"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb153-1"><a href="#cb153-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb153-2"><a href="#cb153-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Set day to Christmas Day</span></span>
 <span id="cb153-3"><a href="#cb153-3" aria-hidden="true" tabindex="-1"></a><span class="fu">day</span>(dt) <span class="ot">&lt;-</span> <span class="dv">25</span></span>
 <span id="cb153-4"><a href="#cb153-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb153-5"><a href="#cb153-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Date now moved from Christmas Eve to Christmas Day</span></span>
 <span id="cb153-6"><a href="#cb153-6" aria-hidden="true" tabindex="-1"></a>dt</span>
-<span id="cb153-7"><a href="#cb153-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "2019-12-25 23:59:59 UTC"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb153-7"><a href="#cb153-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "2023-12-25 23:59:59 UTC"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </details>
-<p><br></p>
 <details>
 <summary>
 <strong>Example</strong>: Getting date/time components from dataframe column
@@ -1834,8 +1811,7 @@ str_c(s1,s2, sep = "~", collapse = NULL)
 <li>Example: Daylight savings time ends at the beginning of November and we gain an hour - this extra hour is <em>added</em> when determining the <strong>duration</strong> between October 23 to November 22</li>
 </ul></li>
 </ul>
-<section id="time-spans-using-lubridate" class="level3" data-number="5.3.1">
-<h3 data-number="5.3.1" class="anchored" data-anchor-id="time-spans-using-lubridate"><span class="header-section-number">5.3.1</span> Time spans using <code>lubridate</code></h3>
+<p><strong>Time spans using <code>lubridate</code></strong></p>
 <p>Using the <code>lubridate</code> package for time spans:</p>
 <ul>
 <li><strong>Interval</strong>
@@ -1886,11 +1862,11 @@ str_c(s1,s2, sep = "~", collapse = NULL)
 </summary>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb158"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb158-1"><a href="#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use `Sys.timezone()` to get timezone for your location (time is midnight by default)</span></span>
-<span id="cb158-2"><a href="#cb158-2" aria-hidden="true" tabindex="-1"></a>scorpio_start <span class="ot">&lt;-</span> <span class="fu">ymd</span>(<span class="st">"2019-10-23"</span>, <span class="at">tz =</span> <span class="fu">Sys.timezone</span>())</span>
-<span id="cb158-3"><a href="#cb158-3" aria-hidden="true" tabindex="-1"></a>scorpio_end <span class="ot">&lt;-</span> <span class="fu">ymd</span>(<span class="st">"2019-11-22"</span>, <span class="at">tz =</span> <span class="fu">Sys.timezone</span>())</span>
+<span id="cb158-2"><a href="#cb158-2" aria-hidden="true" tabindex="-1"></a>scorpio_start <span class="ot">&lt;-</span> <span class="fu">ymd</span>(<span class="st">"2023-10-23"</span>, <span class="at">tz =</span> <span class="fu">Sys.timezone</span>())</span>
+<span id="cb158-3"><a href="#cb158-3" aria-hidden="true" tabindex="-1"></a>scorpio_end <span class="ot">&lt;-</span> <span class="fu">ymd</span>(<span class="st">"2023-11-22"</span>, <span class="at">tz =</span> <span class="fu">Sys.timezone</span>())</span>
 <span id="cb158-4"><a href="#cb158-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb158-5"><a href="#cb158-5" aria-hidden="true" tabindex="-1"></a>scorpio_start</span>
-<span id="cb158-6"><a href="#cb158-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "2019-10-23 PDT"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb158-6"><a href="#cb158-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "2023-10-23 PDT"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode cell-code" id="cb159"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb159-1"><a href="#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="co"># These datetime objects have class `POSIXct`</span></span>
 <span id="cb159-2"><a href="#cb159-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(scorpio_start)</span>
 <span id="cb159-3"><a href="#cb159-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "POSIXct" "POSIXt"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1899,7 +1875,7 @@ str_c(s1,s2, sep = "~", collapse = NULL)
 <span id="cb160-3"><a href="#cb160-3" aria-hidden="true" tabindex="-1"></a>scorpio_interval <span class="ot">&lt;-</span> scorpio_start <span class="sc">%--%</span> scorpio_end  <span class="co"># or `interval(scorpio_start, scorpio_end)`</span></span>
 <span id="cb160-4"><a href="#cb160-4" aria-hidden="true" tabindex="-1"></a>scorpio_interval <span class="ot">&lt;-</span> <span class="fu">interval</span>(scorpio_start, scorpio_end)</span>
 <span id="cb160-5"><a href="#cb160-5" aria-hidden="true" tabindex="-1"></a>scorpio_interval</span>
-<span id="cb160-6"><a href="#cb160-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2019-10-23 PDT--2019-11-22 PST</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb160-6"><a href="#cb160-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2023-10-23 PDT--2023-11-22 PST</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode cell-code" id="cb161"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb161-1"><a href="#cb161-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb161-2"><a href="#cb161-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The object has class `Interval`</span></span>
 <span id="cb161-3"><a href="#cb161-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(scorpio_interval)</span>
@@ -1910,7 +1886,6 @@ str_c(s1,s2, sep = "~", collapse = NULL)
 <span id="cb162-2"><a href="#cb162-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2595600</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </details>
-<p><br></p>
 <details>
 <summary>
 <strong>Example</strong>: Working with period
@@ -1932,14 +1907,13 @@ str_c(s1,s2, sep = "~", collapse = NULL)
 <div class="cell">
 <div class="sourceCode cell-code" id="cb165"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb165-1"><a href="#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Start datetime for Scorpio birthdays (time is midnight)</span></span>
 <span id="cb165-2"><a href="#cb165-2" aria-hidden="true" tabindex="-1"></a>scorpio_start</span>
-<span id="cb165-3"><a href="#cb165-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "2019-10-23 PDT"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb165-3"><a href="#cb165-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "2023-10-23 PDT"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode cell-code" id="cb166"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb166-1"><a href="#cb166-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb166-2"><a href="#cb166-2" aria-hidden="true" tabindex="-1"></a><span class="co"># After adding 30 day period, we get the expected end datetime (time is midnight)</span></span>
 <span id="cb166-3"><a href="#cb166-3" aria-hidden="true" tabindex="-1"></a>scorpio_start <span class="sc">+</span> <span class="fu">days</span>(<span class="dv">30</span>)</span>
-<span id="cb166-4"><a href="#cb166-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "2019-11-22 PST"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb166-4"><a href="#cb166-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "2023-11-22 PST"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </details>
-<p><br></p>
 <details>
 <summary>
 <strong>Example</strong>: Working with duration
@@ -1970,20 +1944,19 @@ str_c(s1,s2, sep = "~", collapse = NULL)
 <div class="cell">
 <div class="sourceCode cell-code" id="cb171"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb171-1"><a href="#cb171-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Start datetime for Scorpio birthdays (time is midnight)</span></span>
 <span id="cb171-2"><a href="#cb171-2" aria-hidden="true" tabindex="-1"></a>scorpio_start</span>
-<span id="cb171-3"><a href="#cb171-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "2019-10-23 PDT"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb171-3"><a href="#cb171-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "2023-10-23 PDT"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode cell-code" id="cb172"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb172-1"><a href="#cb172-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb172-2"><a href="#cb172-2" aria-hidden="true" tabindex="-1"></a><span class="co"># After adding 30 day duration, we do not get the expected end datetime</span></span>
 <span id="cb172-3"><a href="#cb172-3" aria-hidden="true" tabindex="-1"></a><span class="co"># `ddays(30)` adds the number of seconds in 30 standard 24-hr days, but one of the days has 25 hours</span></span>
 <span id="cb172-4"><a href="#cb172-4" aria-hidden="true" tabindex="-1"></a>scorpio_start <span class="sc">+</span> <span class="fu">ddays</span>(<span class="dv">30</span>)</span>
-<span id="cb172-5"><a href="#cb172-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "2019-11-21 23:00:00 PST"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb172-5"><a href="#cb172-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "2023-11-21 23:00:00 PST"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode cell-code" id="cb173"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb173-1"><a href="#cb173-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb173-2"><a href="#cb173-2" aria-hidden="true" tabindex="-1"></a><span class="co"># We need to add the additional 1 hour of physical time that elapsed during this time span</span></span>
 <span id="cb173-3"><a href="#cb173-3" aria-hidden="true" tabindex="-1"></a>scorpio_start <span class="sc">+</span> <span class="fu">ddays</span>(<span class="dv">30</span>) <span class="sc">+</span> <span class="fu">dhours</span>(<span class="dv">1</span>)</span>
-<span id="cb173-4"><a href="#cb173-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "2019-11-22 PST"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb173-4"><a href="#cb173-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "2023-11-22 PST"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </details>
 <p><br></p>
-</section>
 </section>
 </section>
 <section id="appendix" class="level1" data-number="6">
@@ -2041,7 +2014,6 @@ str_c(s1,s2, sep = "~", collapse = NULL)
 <span id="cb177-2"><a href="#cb177-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Single quote ' within double quotes does not need escaping</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </details>
-<p><br></p>
 <details>
 <summary>
 <strong>Example</strong>: Escaping double quotes
@@ -2063,7 +2035,6 @@ str_c(s1,s2, sep = "~", collapse = NULL)
 <span id="cb180-2"><a href="#cb180-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Double quote " within single quotes does not need escaping</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </details>
-<p><br></p>
 <details>
 <summary>
 <strong>Example</strong>: Escaping double quotes within double quotes
@@ -2079,7 +2050,6 @@ str_c(s1,s2, sep = "~", collapse = NULL)
 <span id="cb182-2"><a href="#cb182-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; I called my mom and she said "Echale ganas!"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </details>
-<p><br></p>
 <details>
 <summary>
 <strong>Example</strong>: Escaping backslashes
@@ -2096,7 +2066,6 @@ str_c(s1,s2, sep = "~", collapse = NULL)
 <span id="cb184-2"><a href="#cb184-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; The executable is located in C:\Program Files\Git\bin</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </details>
-<p><br></p>
 <details>
 <summary>
 <strong>Example</strong>: Other special characters
@@ -2113,9 +2082,7 @@ str_c(s1,s2, sep = "~", collapse = NULL)
 <span id="cb186-3"><a href="#cb186-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; C    D</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </details>
-<p><br></p>
-<section id="escape-special-characters-using-twitter-data" class="level3" data-number="6.1.1">
-<h3 data-number="6.1.1" class="anchored" data-anchor-id="escape-special-characters-using-twitter-data"><span class="header-section-number">6.1.1</span> Escape special characters using Twitter data</h3>
+<p><strong>Escape special characters using Twitter data</strong></p>
 <p>Let’s take a look at some tweets from our PAC-12 universities.</p>
 <ul>
 <li>Let’s start by grabbing observations 1-3 from the <code>text</code> column.</li>
@@ -2140,7 +2107,6 @@ str_c(s1,s2, sep = "~", collapse = NULL)
 <span id="cb188-7"><a href="#cb188-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb188-8"><a href="#cb188-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Tweet a pic of how you are social distancing w/ the hashtag #CougsContain &amp;amp; tag @WSUPullman #GoCougs https://t.co/EltXDy1tPt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><br></p>
 <details>
 <summary>
 <strong>Example</strong>: Escaping double quotes using Twitter data
@@ -2167,7 +2133,6 @@ str_c(s1,s2, sep = "~", collapse = NULL)
 </div></li>
 </ul>
 </details>
-</section>
 </section>
 </section>
 
