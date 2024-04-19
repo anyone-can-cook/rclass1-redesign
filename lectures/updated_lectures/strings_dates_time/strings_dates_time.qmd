@@ -780,7 +780,6 @@ str_c(TRUE, 1.5, 2L, "X")
 
 </details>
 
-
 <details>
 
 <summary>**Example**: Using `str_c()` on vectors of different lengths</summary>
@@ -1049,7 +1048,7 @@ Why use date/time objects?
 
 ## Creating date/time objects
 
-__Creating date/time objects by parsing input__
+**Creating date/time objects by parsing input**
 
 Functions that create date/time objects **by parsing character or numeric input**:
 
@@ -1138,7 +1137,6 @@ as.numeric(dt)  # Note that this is indeed 1 sec after the previous example
 
 </details>
 
-
 <details>
 
 <summary>**Example**: Creating `Date` objects from dataframe column</summary>
@@ -1152,7 +1150,6 @@ p12_datetime_df %>% select(created_at, dt_chr, date_chr) %>%
 ```
 
 </details>
-
 
 <details>
 
@@ -1168,7 +1165,7 @@ p12_datetime_df %>% select(created_at, dt_chr) %>%
 
 </details>
 
-__Creating date/time objects from individual components__
+**Creating date/time objects from individual components**
 
 Functions that create date/time objects **from various date/time components**:
 
@@ -1213,7 +1210,6 @@ d
 
 </details>
 
-
 <details>
 
 <summary>**Example**: Creating `Date` objects from dataframe columns</summary>
@@ -1227,7 +1223,6 @@ p12_datetime_df %>% select(created_at, dt_chr, yr_chr, mth_chr, day_chr) %>%
 ```
 
 </details>
-
 
 <details>
 
@@ -1361,7 +1356,7 @@ p12_datetime_df %>% select(created_at) %>%
 -   **Durations** track the passage of physical time, which deviates from clock time when irregularities occur
     -   Example: Daylight savings time ends at the beginning of November and we gain an hour - this extra hour is *added* when determining the **duration** between October 23 to November 22
 
-__Time spans using `lubridate`__
+**Time spans using `lubridate`**
 
 Using the `lubridate` package for time spans:
 
@@ -1422,7 +1417,6 @@ as.numeric(scorpio_interval)
 
 </details>
 
-
 <details>
 
 <summary>**Example**: Working with period</summary>
@@ -1449,7 +1443,6 @@ scorpio_start + days(30)
 ```
 
 </details>
-
 
 <details>
 
@@ -1575,7 +1568,6 @@ writeLines(my_string)
 
 </details>
 
-
 <details>
 
 <summary>**Example**: Escaping double quotes within double quotes</summary>
@@ -1592,7 +1584,6 @@ writeLines(my_string)
 ```
 
 </details>
-
 
 <details>
 
@@ -1613,7 +1604,6 @@ writeLines(my_string)
 
 </details>
 
-
 <details>
 
 <summary>**Example**: Other special characters</summary>
@@ -1631,7 +1621,7 @@ writeLines(my_string)
 
 </details>
 
-__Escape special characters using Twitter data__
+**Escape special characters using Twitter data**
 
 Let's take a look at some tweets from our PAC-12 universities.
 
@@ -1647,7 +1637,6 @@ p12_df$text[1:3]
 ```{r}
 writeLines(p12_df$text[1:3])
 ```
-
 
 <details>
 
