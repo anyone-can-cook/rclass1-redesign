@@ -1,8 +1,13 @@
 ---
 title: 'XXX: Course title here'
-format: docx
+format:
+  html:
+    grid: 
+      sidebar-width: 300px
+      body-width: 1100px
+      margin-width: 100px
 toc: true
-toc-depth: 3
+#toc-depth: 3
 toc-location: left
 number-sections: true
 fig_caption: yes
@@ -57,6 +62,9 @@ ft
 # Course description
 
 The primary goals of this course are (1) to teach fundamental skills of "data management," which are important regardless of which programming language is used, and (2) to develop a strong foundation in the R programming language. The course is designed for students who never thought they would become programmers. No prior experience with R is required. For goal (1), most statistics courses teach you how to analyze data that are ready for analysis. In real research projects, data management -- the process of cleaning, manipulating, and integrating datasets in order to create analysis datasets -- is often more challenging than conducting analyses. For goal (2), R is a free, open-source, object-oriented programming language. R is arguably the most popular language for statistical analysis and one of the most popular languages for graphics and data visualizations (e.g., web-scraping, interactive maps, network analysis) compared to other open-source languages. Students will become proficient in data management and R programming through weekly problem sets, which will be completed in groups.
+
+
+**DataX Initiative**
 
 This class is created in collaboration with [UCLA's DataX initiative](https://datax.ucla.edu/) in an effort to make data science accessible to the the UCLA community. The DataX initiative encourages interdisciplinary research, scholarship, and innovation centering on the application of "data science and critical social, ethical, and data justice research and pedagogy." The course aims to provide a welcoming space for all learners interested in working with data and the implications of how it is used and for what purpose. 
 
@@ -343,20 +351,20 @@ Description <- c("As a student, you may experience a range of issues that can ca
                  "The LGBTQ resource center provides a range of education and advocacy services supporting intersectional identity development. It fosters unity; wellness; and an open, safe, inclusive environment for lesbian, gay, bisexual, intersex, transgender, queer, asexual, questioning, and same-gender-loving students, their families, and the entire campus community.",
                  "The Dashew Center provides a range of programs to promote cross-cultural learning, language improvement, and cultural adjustment. Their programs include trips in the LA area, performances, and on-campus events and workshops.",
                  "This program provides a safe space for undergraduate and graduate undocument students. USP supports the UndocuBruin community through personalized services and resources, programs, and workshops.",
-                 "UCLA Students with Dependents provides support to UCLA studens who are parents, guardians, and caregivers. Some of their services include: Information, referrals, and support to navigate UCLA (childcare, family housing, financial aid, Access to information about resources within the larger community, On-site application and verification for CalFresh (food stamps) & MediCal and assistance with Cal Works/GAIN, A quiet study space, Family friendly graduation celebration in June",
+                 "UCLA Students with Dependents provides support to UCLA studens who are parents, guardians, and caregivers. Some of their services include: \n Information, referrals, and support to navigate UCLA (childcare, family housing, financial aid, Access to information about resources within the larger community, On-site application and verification for CalFresh (food stamps) & MediCal and assistance with Cal Works/GAIN, A quiet study space, Family friendly graduation celebration in June",
                  "UCLA Be Well Bruin is committed to increasing students' access and awareness of health and well-being resources on campus. They provide a search tool to find resources related to physical, academic, emotional, financial, social, and basic needs.",
                  "UCLA Library DataSquad is a team of undergraduate students offering consultations in coding, data cleaning and manipulation, data visualization, and statistical analysis in R, Python, Tableau, and SQL.", 
-                 "UCLA Student Legal Services provides a range of legal support to all registered and enrolled UCLA students. Some of their services include: Landlord/Tenant Relations (Including challenges during COVID), Accident and Injury Problems, Domestic Violence and Harassment, Divorces, and Other Family Law matter",
+                 "UCLA Student Legal Services provides a range of legal support to all registered and enrolled UCLA students. Some of their services include: Landlord/Tenant Relations (Including challenges during COVID), Accident and Injury Problem, Domestic Violence and Harassment, Divorces & Other Family Law matters",
                  "UCLA is committed to maintaining a campus community that provides the stronget possible support for the intellectual and personal growth of all its members- students, faculty, and staff. Acts intended to create a hostile climate are unacceptable.")
-Contact <- c("To speak directly with a counselor 24/7 at (310) 825-0768, if an emergency call 911 \nLocated in the Wooden Center West \nWebsite: https://www.caps.ucla.edu",
-             "Email: lgbt@lgbt.ucla.edu \n Located in the Student Activities Center \nWebsite: https://www.lgbt.ucla.edu/",
-             "Website: https://www.internationalcenter.ucla.edu/",
-             "Email: usp@saonet.ucla.edu \nWebsite: https://www.usp.ucla.edu/ ",
-             "Website: https://www.swd.ucla.edu/",
-             "Website: https://bewellbruin.ucla.edu/",
-             "Website: https://www.library.ucla.edu/about/programs/ucla-library-datasquad/", 
-             "Website: http://www.studentlegal.ucla.edu/index.php",
-             "Website: https://equity.ucla.edu/report-an-incident/")
+Contact <- c("To speak directly with a counselor 24/7 at (310) 825-0768, if an emergency call 911 \nLocated in the Wooden Center West \nWebsite: \nhttps://www.caps.ucla.edu",
+             "Email: lgbt@lgbt.ucla.edu \n Located in the Student Activities Center \nWebsite: \nhttps://www.lgbt.ucla.edu/",
+             "Website: \nhttps://www.internationalcenter.ucla.edu/",
+             "Email: usp@saonet.ucla.edu \nWebsite: \nhttps://www.usp.ucla.edu/ ",
+             "Website: \nhttps://www.swd.ucla.edu/",
+             "Website: \nhttps://bewellbruin.ucla.edu/",
+             "Website: \nhttps://www.library.ucla.edu/about/programs/ucla-library-datasquad/", 
+             "Website: \nhttp://www.studentlegal.ucla.edu/index.php",
+             "Website: \nhttps://equity.ucla.edu/report-an-incident/")
 
 resource <- tibble(Resource, Description, Contact)
 
@@ -369,9 +377,9 @@ std_b <- fp_border(color="#E4E8EE", style = "dashed")
 
 ft3 <- ft3 %>% 
   #width(width = 2) %>%
-  width(j = "Resource", width = 1.5, unit = "in") %>%
-  width(j = "Description", width = 3, unit = "in") %>%
-  width(j = "Contact", width = 1.5, unit = "in") %>%
+  #width(j = "Resource", width = 1, unit = "in") %>%
+  #width(j = "Description", width = 4, unit = "in") %>%
+  #width(j = "Contact", width = 3, unit = "in") %>%
   #bg(bg = "#D3D2D4", part = "header") %>% #3173C9, #8569B8
   bold(bold = TRUE, part = "header") %>%
   #color(color= "white", part = "header") %>%
@@ -379,6 +387,8 @@ ft3 <- ft3 %>%
   #hline(border = head_b, part = "header") %>%
   #hline_top(border = head_b, part = "header")
 
+
+ft3 <- autofit(ft3)
 ft3
 
 
