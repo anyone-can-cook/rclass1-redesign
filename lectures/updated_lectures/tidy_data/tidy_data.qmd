@@ -46,7 +46,9 @@ Creating analysis datasets often require **changing the organizational structure
 
 Two common ways to change organizational structure of data:
 
-1.  Use `group_by()` to perform calculations separately within groups and then use `summarise()` to create an object with one observation per group. Examples:
+1.  Use `group_by()` to perform calculations separately within groups and then use `summarise()` to create an object with one observation per group. 
+
+**Examples:**
     -   Creating objects containing summary statistics that are basis for tables and graphs
     -   Creating student-transcript level GPA variable from student-transcript-course level data
 2.  **Reshape** your data -- called **tidying** in the R tidyverse world -- by transforming columns (variables) into rows (observations) and vice versa
@@ -83,7 +85,7 @@ Wickham (2014) distinguishes between **data structure** (*layout*) and **data se
 **Dataset structure** refers to the "physical layout" of a dataset.
 
 -   Typically, datasets are "rectangular **tables** made up of **rows** and **columns**"
--   A **cell** is the intersection of one column and one row (think cells in Microsoft Excel)
+-   A **cell** is the intersection of one column and one row (think cells in Microsoft Excel or Google sheets)
 
 There are many alternative data structures to present the same underlying data.
 
@@ -236,7 +238,7 @@ What does above output tell us?
 -   Note: `2*5127+3*1824==` `r format(round(2*5127+3*1824),nsmall=0, big.mark=",")` which is the number of observations in `ipeds_hc_temp`
 -   **Conclusion**: the variable `unitid` does not uniquely identify rows in the data frame `ipeds_hc_temp`
 
-<br> Second, Let's investigate whether the comination of `unitid` and `lstudy` uniquely identifies rows in data frame `ipeds_hc_temp`
+<br> Second, Let's investigate whether the combination of `unitid` and `lstudy` uniquely identifies rows in data frame `ipeds_hc_temp`.
 
 ```{r}
 ipeds_hc_temp %>% # start with data frame object ipeds_hc_temp
