@@ -8,6 +8,8 @@ toc-depth: 2
 toc-location: left
 number-sections: true
 editor: visual
+bibliography: rclass1_bib.bib
+csl: apa.csl
 ---
 
 ```{r global options, include = FALSE}
@@ -157,13 +159,13 @@ We can also specify the *levels* of a factor variable to control the order in wh
 ```{r}
 df_els_stu_allobs_fac$f1race <- factor(
   df_els_stu_allobs_fac$f1race, 
-  levels = c('White, non-Hispanic', 
+  levels = c('Amer. Indian/Alaska Native, non-Hispanic',
              'Black or African American, non-Hispanic', 
              'Asian, Hawaii/Pac. Islander,non-Hispanic', 
-             'Amer. Indian/Alaska Native, non-Hispanic', 
              'More than one race, non-Hispanic', 
              'Hispanic, race specified', 
-             'Hispanic, no race specified')
+             'Hispanic, no race specified',
+             'White, non-Hispanic')
 )
 
 df_els_stu_allobs_fac %>% 
@@ -199,7 +201,7 @@ df_els_stu_allobs_fac %>%
 -   A coordinate system (**coord**)
 -   A faceting scheme (**facets**)
 
-`ggplot2` -- part of `tidyverse` -- is an R package to create graphics and `ggplot()` is a function within the `ggplot2` package.
+`ggplot2` is an R package in the tidyverse suite used to create graphics. We use the `ggplot()` function to create graphs.
 
 > "In practice, you rarely need to supply all seven parameters to make a graph because ggplot2 will provide useful defaults for everything except the data, the mappings, and the geom function." [@RN4564, chapter 3]
 
@@ -231,7 +233,7 @@ The five layers of the grammar of graphics:
 -   [Geometric object](#geometric-objects-geoms) (**geom**)
 -   [Position adjustment](#position-adjustment-position) (**position**)
 
-### Dataset (**data**) {#dataset-data}
+## Dataset (**data**) {#dataset-data}
 
 **Data** defines the information to be visualized.
 
@@ -243,7 +245,7 @@ The five layers of the grammar of graphics:
 els %>% select(stu_id, bys34a, f3ern2011, f1sex) %>% head(10)
 ```
 
-### Set of aesthetic mappings (**mappings**) {#set-of-aesthetic-mappings-mappings}
+## Set of aesthetic mappings (**mappings**) {#set-of-aesthetic-mappings-mappings}
 
 **Mapping** defines how variables in a dataset are applied (mapped) to a graphic.
 
@@ -282,7 +284,7 @@ els %>%
   geom_bar(width = 0.6)
 ```
 
-### Statistical transformation (**stat**) {#statistical-transformation-stat}
+## Statistical transformation (**stat**) {#statistical-transformation-stat}
 
 A **statistical transformation** transforms the underlying data before plotting it. Different types of plots (i.e., `geom_*()`) will use a different transformation by default so we often do not need to explicitly specify it.
 
@@ -318,7 +320,7 @@ els %>%
   geom_bar(width = 0.6)
 ```
 
-### Geometric objects (**geoms**) {#geometric-objects-geoms}
+## Geometric objects (**geoms**) {#geometric-objects-geoms}
 
 Graphs visually display data, using **geometric objects** like a point, line, bar, etc.
 
@@ -331,7 +333,7 @@ Graphs visually display data, using **geometric objects** like a point, line, ba
 -   We can plot the same underlying data using different geoms (e.g., bar chart vs. pie chart)
 -   A single graph can layer multiple geoms (e.g., scatterplot with a "line of best fit" layered on top)
 
-### Position adjustment (**position**) {#position-adjustment-position}
+## Position adjustment (**position**) {#position-adjustment-position}
 
 **Position adjustment** adjusts the position of visual elements in the plot so that these visual elements do not overlap with one another in ways that make the plot difficult to interpret.
 
@@ -874,20 +876,53 @@ ggplot(data = els_v2, aes(x = f2evratt)) +
 -   Additionally, we can use pipes to filter values of `f2evratt` before plotting:
 
 ```{r}
-els_v2 %>% filter(f2evratt %in% c('No','Yes')) %>% ggplot(aes(x = f2evratt)) +
-  geom_bar()
+
+#check variable f2evratt
+typeof(els_v2$f2evratt)
+class(els_v2$f2evratt)
+str(els_v2$f2evratt)
+attributes(els_v2$f2evratt)$levels
+
+#new factor var
+els_v2$attend_coll_fac <- factor(els_v2$f2evratt,
+                                 labels = c("Survey component legitimate skip/NA", "Nonrespondent", "Item legitimate skip/NA", "No", "Yes"))
+
+#check variable
+els_v2 %>%
+  count(attend_coll_fac)
+
+els_v2 %>%
+  count(f2evratt)
+
+typeof(els_v2$attend_coll_fac)
+class(els_v2$attend_coll_fac)
+
+#els_v2 %>% filter(f2evratt %in% c('No','Yes')) %>% ggplot(aes(x = f2evratt)) +
+#  geom_bar()
+
+els_v2 %>% filter(attend_coll_fac %in% c('No','Yes')) %>% ggplot(aes(x = attend_coll_fac)) +
+ geom_bar()
 ```
 
 ***Method 2***: Create bar chart using `geom_col()`
 
 ```{r}
+#els_v2 %>% 
+  # filter to remove missing values
+#  filter(f2evratt %in% c('No','Yes')) %>% 
+  # use count() to create summary statistics object
+#  count(f2evratt) %>%
+  # plot summary statistic object
+#  ggplot(aes(x=f2evratt, y=n)) + geom_col()
+
 els_v2 %>% 
   # filter to remove missing values
-  filter(f2evratt %in% c('No','Yes')) %>% 
+  filter(attend_coll_fac %in% c('No','Yes')) %>% 
   # use count() to create summary statistics object
-  count(f2evratt) %>%
+  count(attend_coll_fac) %>%
   # plot summary statistic object
-  ggplot(aes(x=f2evratt, y=n)) + geom_col()
+  ggplot(aes(x=attend_coll_fac, y=n)) + geom_col()
+
 ```
 
 </details>
@@ -1644,11 +1679,13 @@ The steps for saving a plot:
 -   Create the plot
 -   Close the file with `dev.off()`
 
+- *Note*: You have to run the code chuck or lines together for the code to work
+
 **Example**: Exporting plot using `pdf()`
 
 ```{r, eval = FALSE}
 # Open the file
-pdf('Rplot.pdf')
+pdf('Rplot.pdf') #indicating the file type "pdf" and the name of the file "Rplot.pdf"
 
 # Create the plot
 ggplot(data = mpg, aes(x = displ, y = hwy, color = class)) + 
