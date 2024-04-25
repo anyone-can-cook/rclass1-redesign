@@ -1675,11 +1675,14 @@ There are also various R functions, including `jpeg()`, `png()`, `svg()`, and `p
 The steps for saving a plot:
 
 -   Use one of the R functions to open a file
+
     -   Optional arguments include `height` and `width` for specifying image dimension
+
 -   Create the plot
+
 -   Close the file with `dev.off()`
 
-- *Note*: You have to run the code chuck or lines together for the code to work
+-   *Note*: You have to run the code chuck or lines together for the code to work
 
 **Example**: Exporting plot using `pdf()`
 
