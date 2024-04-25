@@ -3,9 +3,13 @@ title: "Introduction to R"
 author: ""
 date: ""
 format: 
-  html:
+   html:
+    grid: 
+      sidebar-width: 300px
+      body-width: 1100px
+      margin-width: 100px
     toc: true
-    toc-depth: 2
+    #toc-depth: 2
     toc-location: left
     number-sections: true
     theme: default
@@ -15,7 +19,7 @@ format:
 
 ```{r, echo=FALSE, include=FALSE}
 # Download images
-imgs <- c('fp1.JPG', 'fp2.JPG', 'data-structures-overview.png', 'pane_layout.png')
+imgs <- c('fp1.JPG', 'fp2.JPG', 'data-structures-overview.png', 'pane_layout_23.jpeg')
 
 for (i in imgs) {
   if(!file.exists(i)){
@@ -82,7 +86,8 @@ library(tidyverse)
 
 "[RStudio](https://www.rstudio.com/products/rstudio/features/) is an integrated development environment (IDE) for R. It includes a console, syntax-highlighting editor that supports direct code execution, as well as tools for plotting, history, debugging and workspace management."
 
-![](pane_layout.png){width="60%"}
+[Pane Layout from RStudio User Guide](https://docs.posit.co/ide/user/ide/guide/ui/ui-panes.html)
+![](pane_layout_23.jpeg)
 
 ## R Markdown
 
@@ -316,6 +321,32 @@ animals <- c("lions", "tigers", "bears", "oh my") # create object called animals
 animals
 ```
 
+<br> 
+
+__Formal classification of vectors in R__
+
+Here, I introduce the classification of vectors by Grolemund and Wickham
+
+There are two broad types of vectors
+
+1.  **Atomic vectors**. An object that contains elements. Six "types" of atomic vectors:
+    -   **logical**, **integer**, **double**, **character**, **complex**, and **raw**.
+        -   **Integer** and **double** vectors are collectively known as **numeric** vectors.
+2.  **Lists**. Like atomic vectors, lists are objects that contain elements
+    -   elements within a list may be atomic vectors
+    -   elements within a list may also be other lists; that is lists can contain other lists
+
+One difference between atomic vectors and lists: **homogeneous** vs. **heterogeneous** elements
+
+-   atomic vectors are **homogeneous**: all elements within atomic vector must be of the same type
+-   lists can be **heterogeneous**: e.g., one element can be an integer and another element can be character
+
+
+__Visual representation of the Grolemund and Wickham classification__
+
+![Overview of data structures (Grolemund and Wickham, 2018, chapter 20)](data-structures-overview.png){width="60%"}
+
+
 __Student task__
 
 Either in the R console or within the R markdown file, do the following:
@@ -362,29 +393,8 @@ When printing object `v3` numbers were printed with quotations around them (e.g.
 -->
 ```
 
-__Formal classification of vectors in R__
 
-Here, I introduce the classification of vectors by Grolemund and Wickham
-
-There are two broad types of vectors
-
-1.  **Atomic vectors**. An object that contains elements. Six "types" of atomic vectors:
-    -   **logical**, **integer**, **double**, **character**, **complex**, and **raw**.
-        -   **Integer** and **double** vectors are collectively known as **numeric** vectors.
-2.  **Lists**. Like atomic vectors, lists are objects that contain elements
-    -   elements within a list may be atomic vectors
-    -   elements within a list may also be other lists; that is lists can contain other lists
-
-One difference between atomic vectors and lists: **homogeneous** vs. **heterogeneous** elements
-
--   atomic vectors are **homogeneous**: all elements within atomic vector must be of the same type
--   lists can be **heterogeneous**: e.g., one element can be an integer and another element can be character
-
-__Formal classification of vectors in R__
-
-Visual representation of the Grolemund and Wickham classification
-
-![Overview of data structures (Grolemund and Wickham, 2018, chapter 20)](data-structures-overview.png){width="60%"}
+## Atomic vectors
 
 __Developing an intuitive understanding of vector types__
 
@@ -395,7 +405,7 @@ __Developing an intuitive understanding of vector types__
 
 Problem with this classification:
 
--   Not conceptually intutive
+-   Not conceptually intuitive
 -   Technically, lists are a type of vector, but people often think of atomic vectors and lists as fundamentally different things
 
 **Classification used by my R maven Ben Skinner**:
@@ -403,9 +413,27 @@ Problem with this classification:
 -   data **type**: logical, numeric (integer and double), character, etc.
 -   data **structure**: vector, list, matrix, etc.
 
-I find Skinner's classification more intuitive conceptually. However, it isn't completely consistent with how R and R functions think about objects
+I find Skinner's classification more intuitive conceptually. However, it isn't completely consistent with how R and R functions think about objects. 
 
-## Atomic vectors
+
+```{r, echo=FALSE, message=FALSE}
+library(kableExtra); library(tidyverse)
+
+Type <- c("double (or numeric)","integer", "logical", "character", "complex", "raw")
+Example <- c('-0.5, 120.9, 5.0','-1L, 3L, 5L', 'TRUE, FALSE', '"California", "New York"', '-5+11i, 3+4i, 0+3i', '01, ff')
+Comment <- c('Floating point numbers with double precision', '"Long" integers', 'Boolean', 'Text', 'Real+imaginary numbers', 'Raw bytes (as hexadecimal)')
+
+
+dt <- tibble(Type, Example, Comment)
+
+
+dt %>%
+  kbl(caption = "Table 1. The six types of atomic vectors in R: double, integer, logical, character, complex, and raw") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"))
+```
+[Atomic Vectors table adapted from (DiSCDown, Introduction to Programming with R, Chapter 4 Vectors)](https://discdown.org/rprogramming/vectors.html)
+
+<br>
 
 __"Length" of an atomic vector is the number of elements__
 
@@ -1379,6 +1407,8 @@ colnames(a) <- a_names # assign names to columns
 a
 ```
 
+<!-- Code not working, unable to open the connection to the github data file
+
 __Practical example of matrices: Network data of recruiting visits from colleges to high schools__
 
 For this example, don't worry about understanding the code
@@ -1390,12 +1420,12 @@ Object `g_2mode_privu` contains:
 -   off-campus recruiting visits from private colleges/universities to private high schools
 -   load `g_2mode_privu`
 
-```{r, include = FALSE, results="hide"}
+```{r, include = FALSE, results="hide", eval=FALSE}
 #install.packages("igraph") # install igraph package
 library(igraph) # load igraph package
 ```
 
-```{r, results = "hide"}
+```{r, results = "hide", eval=FALSE}
 # load igraph object of visits by private colleges/universities to private high schools
 load(url("https://github.com/cyouh95/recruiting-chapter/raw/master/data/g_2mode_privu.rda"))
 ```
@@ -1404,14 +1434,14 @@ load(url("https://github.com/cyouh95/recruiting-chapter/raw/master/data/g_2mode_
 
 __Investigate object `g_2mode_privu`__
 
-```{r}
+```{r eval=FALSE}
 typeof(g_2mode_privu) # igraph package stores network data as type = list
 class(g_2mode_privu) # class = igraph
 ```
 
 The "vertices" consist of colleges and high schools
 
-```{r}
+```{r, eval=FALSE}
 vcount(g_2mode_privu) # 1356 "nodes" or "vertices"
 table(V(g_2mode_privu)$type) # 1330 private high schools; 26 private colleges/universities
 ```
@@ -1420,7 +1450,7 @@ An "edge" occurs when two vertices are connected to one another
 
 -   in `g_2mode_privu`, an edge occurs when a particular college visits a particular high school
 
-```{r}
+```{r, eval=FALSE}
 ecount(g_2mode_privu)
 ```
 
@@ -1433,7 +1463,7 @@ An igraph object (type = list; class = igraph) can be decomposed into:
 
 Create a data frame of vertex attributes
 
-```{r, results="hide"}
+```{r, results="hide", eval=FALSE}
 df_attr <- as_data_frame(x = g_2mode_privu, what = "vertices")
 
 typeof(df_attr) # type = list
@@ -1442,14 +1472,14 @@ class(df_attr) # data.frame
 str(df_attr)
 ```
 
-```{r, include = FALSE, results="hide"}
+```{r, include = FALSE, results="hide", eval=FALSE}
 #install.packages("tidyverse")
 library(tidyverse) # load tidyverse package
 ```
 
 __Examine data frame of vertex attributes__
 
-```{r, results = "hide"}
+```{r, results = "hide", eval=FALSE}
 #df_attr %>% glimpse()
 # vertices = universities
 df_attr %>% filter(type == TRUE) %>% select(unitid,univ_name_ipeds,state_code_ipeds, classification_ipeds)
@@ -1464,7 +1494,7 @@ __Examine individual variables within data frame__
 
 -   takeaway: invidividual variables within data frame are vectors!
 
-```{r, results = "hide"}
+```{r, results = "hide", eval=FALSE}
 typeof(df_attr$name_pss) # vector of type = character
 str(df_attr$name_pss) # length of vector is number of obs
 
@@ -1474,14 +1504,14 @@ str(df_attr$total_enrolled_pss)
 
 __Create adjacency matrix of which colleges visited which high schools__
 
-```{r}
+```{r, eval=FALSE}
 adj_mat <- as_adjacency_matrix(graph = g_2mode_privu, type = "both", 
                                sparse = FALSE)
 ```
 
 __Investigate adjacency matrix__
 
-```{r}
+```{r, eval=FALSE}
 typeof(adj_mat) # a numeric "double" object
 class(adj_mat) # matrix class
 #str(adj_mat) # 1,356 rows by 1,356 columns
@@ -1491,14 +1521,14 @@ __Print a few cells, visits by colleges (columns) to high schools (rows)__
 
 -   colleges: "`139658`" = Emory University; "`147767`" = Northwestern University; "`152080`" = University of Notre Dame
 
-```{r}
+```{r, eval=FALSE}
 #syntax: object_name[<rows to print>,<columns to print>]
 adj_mat[c("00000226","00000237","00000714"),c("139658","147767","152080")]
 ```
 
 __Plot the 2-mode network__
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, eval=FALSE}
 plot(
   x = g_2mode_privu, 
   vertex.label = if_else(V(g_2mode_privu)$type, V(g_2mode_privu)$univ_abbrev_ipeds, ""),
@@ -1510,3 +1540,4 @@ plot(
   margin = -.6
 )
 ```
+-->

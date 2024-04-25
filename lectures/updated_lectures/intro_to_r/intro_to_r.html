@@ -69,6 +69,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="intro_to_r_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="intro_to_r_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 
+<script src="intro_to_r_files/libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="intro_to_r_files/libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
 
 </head>
 
@@ -79,7 +82,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
-  <ul class="collapse">
+  <ul>
   <li><a href="#what-is-r-why-r" id="toc-what-is-r-why-r" class="nav-link active" data-scroll-target="#what-is-r-why-r"><span class="header-section-number">1</span> What is R? Why R?</a>
   <ul class="collapse">
   <li><a href="#base-r-vs.-r-packages" id="toc-base-r-vs.-r-packages" class="nav-link" data-scroll-target="#base-r-vs.-r-packages"><span class="header-section-number">1.1</span> Base R vs.&nbsp;R packages</a></li>
@@ -212,7 +215,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="rstudio" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="rstudio"><span class="header-section-number">1.2</span> RStudio</h2>
 <p>“<a href="https://www.rstudio.com/products/rstudio/features/">RStudio</a> is an integrated development environment (IDE) for R. It includes a console, syntax-highlighting editor that supports direct code execution, as well as tools for plotting, history, debugging and workspace management.”</p>
-<p><img src="pane_layout.png" class="img-fluid" style="width:60.0%"></p>
+<p><a href="https://docs.posit.co/ide/user/ide/guide/ui/ui-panes.html">Pane Layout from RStudio User Guide</a> <img src="pane_layout_23.jpeg" class="img-fluid"></p>
 </section>
 <section id="r-markdown" class="level2" data-number="1.3">
 <h2 data-number="1.3" class="anchored" data-anchor-id="r-markdown"><span class="header-section-number">1.3</span> R Markdown</h2>
@@ -499,6 +502,36 @@ Object "type" refers to how the object is stored internally by R
 <pre><code>[1] "lions"  "tigers" "bears"  "oh my" </code></pre>
 </div>
 </div>
+<p><br></p>
+<p><strong>Formal classification of vectors in R</strong></p>
+<p>Here, I introduce the classification of vectors by Grolemund and Wickham</p>
+<p>There are two broad types of vectors</p>
+<ol type="1">
+<li><strong>Atomic vectors</strong>. An object that contains elements. Six “types” of atomic vectors:
+<ul>
+<li><strong>logical</strong>, <strong>integer</strong>, <strong>double</strong>, <strong>character</strong>, <strong>complex</strong>, and <strong>raw</strong>.
+<ul>
+<li><strong>Integer</strong> and <strong>double</strong> vectors are collectively known as <strong>numeric</strong> vectors.</li>
+</ul></li>
+</ul></li>
+<li><strong>Lists</strong>. Like atomic vectors, lists are objects that contain elements
+<ul>
+<li>elements within a list may be atomic vectors</li>
+<li>elements within a list may also be other lists; that is lists can contain other lists</li>
+</ul></li>
+</ol>
+<p>One difference between atomic vectors and lists: <strong>homogeneous</strong> vs.&nbsp;<strong>heterogeneous</strong> elements</p>
+<ul>
+<li>atomic vectors are <strong>homogeneous</strong>: all elements within atomic vector must be of the same type</li>
+<li>lists can be <strong>heterogeneous</strong>: e.g., one element can be an integer and another element can be character</li>
+</ul>
+<p><strong>Visual representation of the Grolemund and Wickham classification</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="data-structures-overview.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption class="figure-caption">Overview of data structures (Grolemund and Wickham, 2018, chapter 20)</figcaption>
+</figure>
+</div>
 <p><strong>Student task</strong></p>
 <p>Either in the R console or within the R markdown file, do the following:</p>
 <ol type="1">
@@ -544,36 +577,9 @@ When printing object `v3` numbers were printed with quotations around them (e.g.
 
 - Why? A vector must be only one "type" (numeric, character, or logical). You can’t mix modes in the same vector.
 -->
-<p><strong>Formal classification of vectors in R</strong></p>
-<p>Here, I introduce the classification of vectors by Grolemund and Wickham</p>
-<p>There are two broad types of vectors</p>
-<ol type="1">
-<li><strong>Atomic vectors</strong>. An object that contains elements. Six “types” of atomic vectors:
-<ul>
-<li><strong>logical</strong>, <strong>integer</strong>, <strong>double</strong>, <strong>character</strong>, <strong>complex</strong>, and <strong>raw</strong>.
-<ul>
-<li><strong>Integer</strong> and <strong>double</strong> vectors are collectively known as <strong>numeric</strong> vectors.</li>
-</ul></li>
-</ul></li>
-<li><strong>Lists</strong>. Like atomic vectors, lists are objects that contain elements
-<ul>
-<li>elements within a list may be atomic vectors</li>
-<li>elements within a list may also be other lists; that is lists can contain other lists</li>
-</ul></li>
-</ol>
-<p>One difference between atomic vectors and lists: <strong>homogeneous</strong> vs.&nbsp;<strong>heterogeneous</strong> elements</p>
-<ul>
-<li>atomic vectors are <strong>homogeneous</strong>: all elements within atomic vector must be of the same type</li>
-<li>lists can be <strong>heterogeneous</strong>: e.g., one element can be an integer and another element can be character</li>
-</ul>
-<p><strong>Formal classification of vectors in R</strong></p>
-<p>Visual representation of the Grolemund and Wickham classification</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="data-structures-overview.png" class="img-fluid figure-img" style="width:60.0%"></p>
-<figcaption class="figure-caption">Overview of data structures (Grolemund and Wickham, 2018, chapter 20)</figcaption>
-</figure>
-</div>
+</section>
+<section id="atomic-vectors" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="atomic-vectors"><span class="header-section-number">3.5</span> Atomic vectors</h2>
 <p><strong>Developing an intuitive understanding of vector types</strong></p>
 <p><strong>Grolemund and Wickham classification</strong>:</p>
 <ol type="1">
@@ -582,7 +588,7 @@ When printing object `v3` numbers were printed with quotations around them (e.g.
 </ol>
 <p>Problem with this classification:</p>
 <ul>
-<li>Not conceptually intutive</li>
+<li>Not conceptually intuitive</li>
 <li>Technically, lists are a type of vector, but people often think of atomic vectors and lists as fundamentally different things</li>
 </ul>
 <p><strong>Classification used by my R maven Ben Skinner</strong>:</p>
@@ -590,10 +596,57 @@ When printing object `v3` numbers were printed with quotations around them (e.g.
 <li>data <strong>type</strong>: logical, numeric (integer and double), character, etc.</li>
 <li>data <strong>structure</strong>: vector, list, matrix, etc.</li>
 </ul>
-<p>I find Skinner’s classification more intuitive conceptually. However, it isn’t completely consistent with how R and R functions think about objects</p>
-</section>
-<section id="atomic-vectors" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="atomic-vectors"><span class="header-section-number">3.5</span> Atomic vectors</h2>
+<p>I find Skinner’s classification more intuitive conceptually. However, it isn’t completely consistent with how R and R functions think about objects.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-striped table-hover table-condensed table-sm small" data-quarto-postprocess="true">
+<caption>Table 1. The six types of atomic vectors in R: double, integer, logical, character, complex, and raw</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Type</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Example</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">double (or numeric)</td>
+<td style="text-align: left;">-0.5, 120.9, 5.0</td>
+<td style="text-align: left;">Floating point numbers with double precision</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">integer</td>
+<td style="text-align: left;">-1L, 3L, 5L</td>
+<td style="text-align: left;">"Long" integers</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">logical</td>
+<td style="text-align: left;">TRUE, FALSE</td>
+<td style="text-align: left;">Boolean</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">character</td>
+<td style="text-align: left;">"California", "New York"</td>
+<td style="text-align: left;">Text</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">complex</td>
+<td style="text-align: left;">-5+11i, 3+4i, 0+3i</td>
+<td style="text-align: left;">Real+imaginary numbers</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">raw</td>
+<td style="text-align: left;">01, ff</td>
+<td style="text-align: left;">Raw bytes (as hexadecimal)</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<p><a href="https://discdown.org/rprogramming/vectors.html">Atomic Vectors table adapted from (DiSCDown, Introduction to Programming with R, Chapter 4 Vectors)</a></p>
+<p><br></p>
 <p><strong>“Length” of an atomic vector is the number of elements</strong></p>
 <p>For remainder of lecture, I’ll use the term <strong>vector</strong> to refer to atomic vectors</p>
 <p>Use <code>length()</code> function to examine vector length</p>
@@ -1488,12 +1541,11 @@ Hornet Sportabout 18.7   8 175</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb246"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb246-1"><a href="#cb246-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "data-structures-overview.png" "fp1.JPG"                     
- [3] "fp2.JPG"                      "intro_to_r_files"            
- [5] "intro_to_r.html"              "intro_to_r.pdf"              
- [7] "intro_to_r.qmd"               "intro_to_r.rmarkdown"        
- [9] "intro_to_r.Rmd"               "intro_to_r.tex"              
-[11] "pane_layout.png"              "test.txt"                    </code></pre>
+<pre><code>[1] "data-structures-overview.png" "fp1.JPG"                     
+[3] "fp2.JPG"                      "intro_to_r_files"            
+[5] "intro_to_r.html"              "intro_to_r.qmd"              
+[7] "intro_to_r.rmarkdown"         "pane_layout_23.jpeg"         
+[9] "pane_layout.png"             </code></pre>
 </div>
 </div>
 <p><strong>Working directory, “Code chunks” vs.&nbsp;“console” and “R scripts”</strong></p>
@@ -1505,12 +1557,11 @@ Hornet Sportabout 18.7   8 175</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb250"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb250-1"><a href="#cb250-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "data-structures-overview.png" "fp1.JPG"                     
- [3] "fp2.JPG"                      "intro_to_r_files"            
- [5] "intro_to_r.html"              "intro_to_r.pdf"              
- [7] "intro_to_r.qmd"               "intro_to_r.rmarkdown"        
- [9] "intro_to_r.Rmd"               "intro_to_r.tex"              
-[11] "pane_layout.png"              "test.txt"                    </code></pre>
+<pre><code>[1] "data-structures-overview.png" "fp1.JPG"                     
+[3] "fp2.JPG"                      "intro_to_r_files"            
+[5] "intro_to_r.html"              "intro_to_r.qmd"              
+[7] "intro_to_r.rmarkdown"         "pane_layout_23.jpeg"         
+[9] "pane_layout.png"             </code></pre>
 </div>
 </div>
 <p>When you run code from the <strong>R Console</strong> or an <strong>R Script</strong>, the working directory is your R Project directory (we’ll cover this in the next section).</p>
@@ -1947,128 +1998,178 @@ c  1  0 NA NA
 d  0  1  0 NA</code></pre>
 </div>
 </div>
-<p><strong>Practical example of matrices: Network data of recruiting visits from colleges to high schools</strong></p>
-<p>For this example, don’t worry about understanding the code</p>
-<ul>
-<li>We will explain this code over coming weeks</li>
-</ul>
-<p>Object <code>g_2mode_privu</code> contains:</p>
-<ul>
-<li>off-campus recruiting visits from private colleges/universities to private high schools</li>
-<li>load <code>g_2mode_privu</code></li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb279"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb279-1"><a href="#cb279-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load igraph object of visits by private colleges/universities to private high schools</span></span>
-<span id="cb279-2"><a href="#cb279-2" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>(<span class="st">"https://github.com/cyouh95/recruiting-chapter/raw/master/data/g_2mode_privu.rda"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><br></p>
-<p><strong>Investigate object <code>g_2mode_privu</code></strong></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb280"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb280-1"><a href="#cb280-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(g_2mode_privu) <span class="co"># igraph package stores network data as type = list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "list"</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb282"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb282-1"><a href="#cb282-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(g_2mode_privu) <span class="co"># class = igraph</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "igraph"</code></pre>
-</div>
-</div>
-<p>The “vertices” consist of colleges and high schools</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb284"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb284-1"><a href="#cb284-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vcount</span>(g_2mode_privu) <span class="co"># 1356 "nodes" or "vertices"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1356</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb286"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb286-1"><a href="#cb286-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">V</span>(g_2mode_privu)<span class="sc">$</span>type) <span class="co"># 1330 private high schools; 26 private colleges/universities</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-FALSE  TRUE 
- 1330    26 </code></pre>
-</div>
-</div>
-<p>An “edge” occurs when two vertices are connected to one another</p>
-<ul>
-<li>in <code>g_2mode_privu</code>, an edge occurs when a particular college visits a particular high school</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb288"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb288-1"><a href="#cb288-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ecount</span>(g_2mode_privu)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 7310</code></pre>
-</div>
-</div>
-<p><br></p>
-<p>An igraph object (type = list; class = igraph) can be decomposed into:</p>
-<ul>
-<li>a dataframe that contains characteristics (referred to as “attributes” in network literature) of the vertices</li>
-<li>a matrix that identifies whether two vertices are connected by an edge</li>
-</ul>
-<p>Create a data frame of vertex attributes</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb290"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb290-1"><a href="#cb290-1" aria-hidden="true" tabindex="-1"></a>df_attr <span class="ot">&lt;-</span> <span class="fu">as_data_frame</span>(<span class="at">x =</span> g_2mode_privu, <span class="at">what =</span> <span class="st">"vertices"</span>)</span>
-<span id="cb290-2"><a href="#cb290-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb290-3"><a href="#cb290-3" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(df_attr) <span class="co"># type = list</span></span>
-<span id="cb290-4"><a href="#cb290-4" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(df_attr) <span class="co"># length = number of variables</span></span>
-<span id="cb290-5"><a href="#cb290-5" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(df_attr) <span class="co"># data.frame</span></span>
-<span id="cb290-6"><a href="#cb290-6" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df_attr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>Examine data frame of vertex attributes</strong></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb291"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb291-1"><a href="#cb291-1" aria-hidden="true" tabindex="-1"></a><span class="co">#df_attr %&gt;% glimpse()</span></span>
-<span id="cb291-2"><a href="#cb291-2" aria-hidden="true" tabindex="-1"></a><span class="co"># vertices = universities</span></span>
-<span id="cb291-3"><a href="#cb291-3" aria-hidden="true" tabindex="-1"></a>df_attr <span class="sc">%&gt;%</span> <span class="fu">filter</span>(type <span class="sc">==</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(unitid,univ_name_ipeds,state_code_ipeds, classification_ipeds)</span>
-<span id="cb291-4"><a href="#cb291-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb291-5"><a href="#cb291-5" aria-hidden="true" tabindex="-1"></a><span class="co"># vertices = high schools</span></span>
-<span id="cb291-6"><a href="#cb291-6" aria-hidden="true" tabindex="-1"></a>df_attr <span class="sc">%&gt;%</span> <span class="fu">filter</span>(type <span class="sc">==</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(ppin,name_pss,city_pss, state_code_pss)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><br></p>
-<p><strong>Examine individual variables within data frame</strong></p>
-<ul>
-<li>takeaway: invidividual variables within data frame are vectors!</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb292"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb292-1"><a href="#cb292-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(df_attr<span class="sc">$</span>name_pss) <span class="co"># vector of type = character</span></span>
-<span id="cb292-2"><a href="#cb292-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df_attr<span class="sc">$</span>name_pss) <span class="co"># length of vector is number of obs</span></span>
-<span id="cb292-3"><a href="#cb292-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb292-4"><a href="#cb292-4" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(df_attr<span class="sc">$</span>total_enrolled_pss) <span class="co"># vector of type = integer</span></span>
-<span id="cb292-5"><a href="#cb292-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df_attr<span class="sc">$</span>total_enrolled_pss)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>Create adjacency matrix of which colleges visited which high schools</strong></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb293"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb293-1"><a href="#cb293-1" aria-hidden="true" tabindex="-1"></a>adj_mat <span class="ot">&lt;-</span> <span class="fu">as_adjacency_matrix</span>(<span class="at">graph =</span> g_2mode_privu, <span class="at">type =</span> <span class="st">"both"</span>, </span>
-<span id="cb293-2"><a href="#cb293-2" aria-hidden="true" tabindex="-1"></a>                               <span class="at">sparse =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>Investigate adjacency matrix</strong></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb294"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb294-1"><a href="#cb294-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(adj_mat) <span class="co"># a numeric "double" object</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "double"</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb296"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb296-1"><a href="#cb296-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(adj_mat) <span class="co"># matrix class</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "matrix" "array" </code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb298"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb298-1"><a href="#cb298-1" aria-hidden="true" tabindex="-1"></a><span class="co">#str(adj_mat) # 1,356 rows by 1,356 columns</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>Print a few cells, visits by colleges (columns) to high schools (rows)</strong></p>
-<ul>
-<li>colleges: “<code>139658</code>” = Emory University; “<code>147767</code>” = Northwestern University; “<code>152080</code>” = University of Notre Dame</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb299"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb299-1"><a href="#cb299-1" aria-hidden="true" tabindex="-1"></a><span class="co">#syntax: object_name[&lt;rows to print&gt;,&lt;columns to print&gt;]</span></span>
-<span id="cb299-2"><a href="#cb299-2" aria-hidden="true" tabindex="-1"></a>adj_mat[<span class="fu">c</span>(<span class="st">"00000226"</span>,<span class="st">"00000237"</span>,<span class="st">"00000714"</span>),<span class="fu">c</span>(<span class="st">"139658"</span>,<span class="st">"147767"</span>,<span class="st">"152080"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>         139658 147767 152080
-00000226      1      0      0
-00000237      0      0      1
-00000714      0      1      1</code></pre>
-</div>
-</div>
-<p><strong>Plot the 2-mode network</strong></p>
-<div class="cell">
-<div class="cell-output-display">
-<p><img src="intro_to_r_files/figure-html/unnamed-chunk-166-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
+
+<!-- Code not working, unable to open the connection to the github data file
+
+__Practical example of matrices: Network data of recruiting visits from colleges to high schools__
+
+For this example, don't worry about understanding the code
+
+-   We will explain this code over coming weeks
+
+Object `g_2mode_privu` contains:
+
+-   off-campus recruiting visits from private colleges/universities to private high schools
+-   load `g_2mode_privu`
+
+
+
+
+::: {.cell}
+
+```{.r .cell-code}
+# load igraph object of visits by private colleges/universities to private high schools
+load(url("https://github.com/cyouh95/recruiting-chapter/raw/master/data/g_2mode_privu.rda"))
+```
+:::
+
+
+<br>
+
+__Investigate object `g_2mode_privu`__
+
+
+::: {.cell}
+
+```{.r .cell-code}
+typeof(g_2mode_privu) # igraph package stores network data as type = list
+class(g_2mode_privu) # class = igraph
+```
+:::
+
+
+The "vertices" consist of colleges and high schools
+
+
+::: {.cell}
+
+```{.r .cell-code}
+vcount(g_2mode_privu) # 1356 "nodes" or "vertices"
+table(V(g_2mode_privu)$type) # 1330 private high schools; 26 private colleges/universities
+```
+:::
+
+
+An "edge" occurs when two vertices are connected to one another
+
+-   in `g_2mode_privu`, an edge occurs when a particular college visits a particular high school
+
+
+::: {.cell}
+
+```{.r .cell-code}
+ecount(g_2mode_privu)
+```
+:::
+
+
+<br>
+
+An igraph object (type = list; class = igraph) can be decomposed into:
+
+-   a dataframe that contains characteristics (referred to as "attributes" in network literature) of the vertices
+-   a matrix that identifies whether two vertices are connected by an edge
+
+Create a data frame of vertex attributes
+
+
+::: {.cell}
+
+```{.r .cell-code}
+df_attr <- as_data_frame(x = g_2mode_privu, what = "vertices")
+
+typeof(df_attr) # type = list
+length(df_attr) # length = number of variables
+class(df_attr) # data.frame
+str(df_attr)
+```
+:::
+
+
+
+
+__Examine data frame of vertex attributes__
+
+
+::: {.cell}
+
+```{.r .cell-code}
+#df_attr %>% glimpse()
+# vertices = universities
+df_attr %>% filter(type == TRUE) %>% select(unitid,univ_name_ipeds,state_code_ipeds, classification_ipeds)
+
+# vertices = high schools
+df_attr %>% filter(type == FALSE) %>% select(ppin,name_pss,city_pss, state_code_pss)
+```
+:::
+
+
+<br>
+
+__Examine individual variables within data frame__
+
+-   takeaway: invidividual variables within data frame are vectors!
+
+
+::: {.cell}
+
+```{.r .cell-code}
+typeof(df_attr$name_pss) # vector of type = character
+str(df_attr$name_pss) # length of vector is number of obs
+
+typeof(df_attr$total_enrolled_pss) # vector of type = integer
+str(df_attr$total_enrolled_pss)
+```
+:::
+
+
+__Create adjacency matrix of which colleges visited which high schools__
+
+
+::: {.cell}
+
+```{.r .cell-code}
+adj_mat <- as_adjacency_matrix(graph = g_2mode_privu, type = "both", 
+                               sparse = FALSE)
+```
+:::
+
+
+__Investigate adjacency matrix__
+
+
+::: {.cell}
+
+```{.r .cell-code}
+typeof(adj_mat) # a numeric "double" object
+class(adj_mat) # matrix class
+#str(adj_mat) # 1,356 rows by 1,356 columns
+```
+:::
+
+
+__Print a few cells, visits by colleges (columns) to high schools (rows)__
+
+-   colleges: "`139658`" = Emory University; "`147767`" = Northwestern University; "`152080`" = University of Notre Dame
+
+
+::: {.cell}
+
+```{.r .cell-code}
+#syntax: object_name[<rows to print>,<columns to print>]
+adj_mat[c("00000226","00000237","00000714"),c("139658","147767","152080")]
+```
+:::
+
+
+__Plot the 2-mode network__
+
+
+::: {.cell}
+
+:::
+
+-->
 </section>
 </section>
 
