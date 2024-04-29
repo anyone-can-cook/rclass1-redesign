@@ -101,12 +101,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#preview-of-lecture-on-objects" id="toc-preview-of-lecture-on-objects" class="nav-link" data-scroll-target="#preview-of-lecture-on-objects"><span class="header-section-number">3.1</span> Preview of lecture on objects</a></li>
   <li><a href="#assignment" id="toc-assignment" class="nav-link" data-scroll-target="#assignment"><span class="header-section-number">3.2</span> Assignment</a></li>
   <li><a href="#objects" id="toc-objects" class="nav-link" data-scroll-target="#objects"><span class="header-section-number">3.3</span> Objects</a></li>
-  <li><a href="#vectors" id="toc-vectors" class="nav-link" data-scroll-target="#vectors"><span class="header-section-number">3.4</span> Vectors</a></li>
-  <li><a href="#atomic-vectors" id="toc-atomic-vectors" class="nav-link" data-scroll-target="#atomic-vectors"><span class="header-section-number">3.5</span> Atomic vectors</a></li>
-  <li><a href="#sequences" id="toc-sequences" class="nav-link" data-scroll-target="#sequences"><span class="header-section-number">3.6</span> Sequences</a></li>
-  <li><a href="#vectorized-math" id="toc-vectorized-math" class="nav-link" data-scroll-target="#vectorized-math"><span class="header-section-number">3.7</span> Vectorized math</a></li>
-  <li><a href="#lists" id="toc-lists" class="nav-link" data-scroll-target="#lists"><span class="header-section-number">3.8</span> Lists</a></li>
-  <li><a href="#main-takeaways-about-atomic-vectors-and-lists" id="toc-main-takeaways-about-atomic-vectors-and-lists" class="nav-link" data-scroll-target="#main-takeaways-about-atomic-vectors-and-lists"><span class="header-section-number">3.9</span> Main takeaways about atomic vectors and lists</a></li>
+  <li><a href="#atomic-vectors" id="toc-atomic-vectors" class="nav-link" data-scroll-target="#atomic-vectors"><span class="header-section-number">3.4</span> (Atomic) Vectors</a>
+  <ul class="collapse">
+  <li><a href="#length-function-to-get-the-number-of-elements" id="toc-length-function-to-get-the-number-of-elements" class="nav-link" data-scroll-target="#length-function-to-get-the-number-of-elements"><span class="header-section-number">3.4.1</span> length() function to get the number of elements</a></li>
+  <li><a href="#typeof-function-to-get-the-data-type-of-a-vector" id="toc-typeof-function-to-get-the-data-type-of-a-vector" class="nav-link" data-scroll-target="#typeof-function-to-get-the-data-type-of-a-vector"><span class="header-section-number">3.4.2</span> typeof() function to get the data type of a vector</a></li>
+  <li><a href="#named-vectors" id="toc-named-vectors" class="nav-link" data-scroll-target="#named-vectors"><span class="header-section-number">3.4.3</span> Named vectors</a></li>
+  </ul></li>
+  <li><a href="#sequences" id="toc-sequences" class="nav-link" data-scroll-target="#sequences"><span class="header-section-number">3.5</span> Sequences</a></li>
+  <li><a href="#vectorized-math" id="toc-vectorized-math" class="nav-link" data-scroll-target="#vectorized-math"><span class="header-section-number">3.6</span> Vectorized math</a></li>
+  <li><a href="#lists" id="toc-lists" class="nav-link" data-scroll-target="#lists"><span class="header-section-number">3.7</span> Lists</a></li>
+  <li><a href="#main-takeaways-about-atomic-vectors-and-lists" id="toc-main-takeaways-about-atomic-vectors-and-lists" class="nav-link" data-scroll-target="#main-takeaways-about-atomic-vectors-and-lists"><span class="header-section-number">3.8</span> Main takeaways about atomic vectors and lists</a></li>
   </ul></li>
   <li><a href="#using-r-functions" id="toc-using-r-functions" class="nav-link" data-scroll-target="#using-r-functions"><span class="header-section-number">4</span> Using R functions</a>
   <ul class="collapse">
@@ -473,39 +477,17 @@ Object "type" refers to how the object is stored internally by R
 
 -->
 </section>
-<section id="vectors" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="vectors"><span class="header-section-number">3.4</span> Vectors</h2>
-<p>The fundamental data structure in R is the “vector”</p>
+<section id="atomic-vectors" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="atomic-vectors"><span class="header-section-number">3.4</span> (Atomic) Vectors</h2>
+<p><strong>The fundamental data structure in R is the “vector”</strong></p>
 <ul>
 <li>A vector is a collection of values</li>
 <li>The individual values within a vector are called “elements”</li>
 <li>Values in a vector can be numeric, character (e.g., “Apple”), or some other <em>type</em></li>
 </ul>
-<p>Below we use the combine function <code>c()</code> to create a numeric vector that contains three elements</p>
-<ul>
-<li>Help file says that <code>c()</code> “combines values into a vector or list”</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#?c # to see help file for the c() "combine" function</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">9</span>) <span class="co"># create object called x, which is a vector with three elements </span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># (each an integer)</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>x <span class="co"># print object x</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4 7 9</code></pre>
-</div>
-</div>
-<p>Vector where the elements are characters</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>animals <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"lions"</span>, <span class="st">"tigers"</span>, <span class="st">"bears"</span>, <span class="st">"oh my"</span>) <span class="co"># create object called animals</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>animals</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "lions"  "tigers" "bears"  "oh my" </code></pre>
-</div>
-</div>
-<p><br></p>
 <p><strong>Formal classification of vectors in R</strong></p>
 <p>Here, I introduce the classification of vectors by Grolemund and Wickham</p>
-<p>There are two broad types of vectors</p>
+<p>There are two broad types of <strong>vectors</strong></p>
 <ol type="1">
 <li><strong>Atomic vectors</strong>. An object that contains elements. Six “types” of atomic vectors:
 <ul>
@@ -520,87 +502,10 @@ Object "type" refers to how the object is stored internally by R
 <li>elements within a list may also be other lists; that is lists can contain other lists</li>
 </ul></li>
 </ol>
-<p>One difference between atomic vectors and lists: <strong>homogeneous</strong> vs.&nbsp;<strong>heterogeneous</strong> elements</p>
-<ul>
-<li>atomic vectors are <strong>homogeneous</strong>: all elements within atomic vector must be of the same type</li>
-<li>lists can be <strong>heterogeneous</strong>: e.g., one element can be an integer and another element can be character</li>
-</ul>
-<p><strong>Visual representation of the Grolemund and Wickham classification</strong></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="data-structures-overview.png" class="img-fluid figure-img" style="width:60.0%"></p>
-<figcaption class="figure-caption">Overview of data structures (Grolemund and Wickham, 2018, chapter 20)</figcaption>
-</figure>
-</div>
-<p><strong>Student task</strong></p>
-<p>Either in the R console or within the R markdown file, do the following:</p>
-<ol type="1">
-<li>Create a vector called <code>v1</code> with three elements, where all the elements are numbers. Then print the values.</li>
-<li>Create a vector called <code>v2</code> with four elements, where all the elements are characters (i.e., enclosed in single ’’ or double “” quotes). Then print the values.</li>
-<li>Create a vector called <code>v3</code> with five elements, where some elements are numeric and some elements are characters. Then print the values.</li>
-</ol>
-<details>
-<summary>
-<strong>Solutions</strong>
-</summary>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) </span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co"># create a vector called v1 with three elements</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co"># all the elements are numbers</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>v1 <span class="co"># print value</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1 2 3</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"d"</span>) </span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co"># create a vector called v2 with four elements</span></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co"># all the elements are characters</span></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>v2 <span class="co"># print value</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "a" "b" "c" "d"</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>v3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="st">"a"</span>, <span class="st">"b"</span>) </span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="co"># create a vector called v3 with five element</span></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co"># some elements are numeric and some elements are characters</span></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>v3 <span class="co"># print value</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "1" "2" "3" "a" "b"</code></pre>
-</div>
-</div>
-</details>
-<p><br></p>
-<!--
-When printing object `v3` numbers were printed with quotations around them (e.g., `"1"`), because they are stored as "characters" 
-
-- Why? A vector must be only one "type" (numeric, character, or logical). You can’t mix modes in the same vector.
--->
-</section>
-<section id="atomic-vectors" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="atomic-vectors"><span class="header-section-number">3.5</span> Atomic vectors</h2>
-<p><strong>Developing an intuitive understanding of vector types</strong></p>
-<p><strong>Grolemund and Wickham classification</strong>:</p>
-<ol type="1">
-<li><strong>Atomic vectors</strong>. six “types”: logical, integer, double, character, complex, raw.</li>
-<li><strong>Lists</strong></li>
-</ol>
-<p>Problem with this classification:</p>
-<ul>
-<li>Not conceptually intuitive</li>
-<li>Technically, lists are a type of vector, but people often think of atomic vectors and lists as fundamentally different things</li>
-</ul>
-<p><strong>Classification used by my R maven Ben Skinner</strong>:</p>
-<ul>
-<li>data <strong>type</strong>: logical, numeric (integer and double), character, etc.</li>
-<li>data <strong>structure</strong>: vector, list, matrix, etc.</li>
-</ul>
-<p>I find Skinner’s classification more intuitive conceptually. However, it isn’t completely consistent with how R and R functions think about objects.</p>
+<p><strong>Table 1. The six types of atomic vectors in R: double, integer, logical, character, complex, and raw</strong></p>
 <div class="cell">
 <div class="cell-output-display">
 <table class="table table-striped table-hover table-condensed table-sm small" data-quarto-postprocess="true">
-<caption>Table 1. The six types of atomic vectors in R: double, integer, logical, character, complex, and raw</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">Type</th>
@@ -647,6 +552,117 @@ When printing object `v3` numbers were printed with quotations around them (e.g.
 </div>
 <p><a href="https://discdown.org/rprogramming/vectors.html">Atomic Vectors table adapted from (DiSCDown, Introduction to Programming with R, Chapter 4 Vectors)</a></p>
 <p><br></p>
+<p><strong>Visual representation of the Grolemund and Wickham classification</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="data-structures-overview.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption class="figure-caption">Overview of data structures (Grolemund and Wickham, 2018, chapter 20)</figcaption>
+</figure>
+</div>
+<p>One difference between atomic vectors and lists: <strong>homogeneous</strong> vs.&nbsp;<strong>heterogeneous</strong> elements</p>
+<ul>
+<li>atomic vectors are <strong>homogeneous</strong>: all elements within atomic vector must be of the same type</li>
+<li>lists can be <strong>heterogeneous</strong>: e.g., one element can be an integer and another element can be character</li>
+</ul>
+<p><br></p>
+<p><strong>Intuitive approach to vectors used by Dr.&nbsp;Ben Skinner</strong>:</p>
+<ul>
+<li>data <strong>type</strong>: logical, numeric (integer and double), character, etc.</li>
+<li>data <strong>structure</strong>: vector, list, matrix, etc.</li>
+</ul>
+<p>I find Skinner’s classification more intuitive conceptually. However, it isn’t completely consistent with how R and R functions think about objects. <br></p>
+<p><br> <strong>Let’s practice creating simple vectors</strong></p>
+<p>Below we use the combine function <code>c()</code> to create a numeric vector that contains three elements</p>
+<ul>
+<li>Help file says that <code>c()</code> “combines values into a vector or list”</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#?c # to see help file for the c() "combine" function</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">9</span>) <span class="co"># create object called x, which is a vector with three elements </span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># (each an integer)</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>x <span class="co"># print object x</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4 7 9</code></pre>
+</div>
+</div>
+<p>Vector where the elements are characters</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>animals <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"lions"</span>, <span class="st">"tigers"</span>, <span class="st">"bears"</span>, <span class="st">"oh my"</span>) <span class="co"># create object called animals</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>animals</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "lions"  "tigers" "bears"  "oh my" </code></pre>
+</div>
+</div>
+<p><br> <strong>Student task</strong></p>
+<p>Either in the R console or within the R markdown file, do the following:</p>
+<ol type="1">
+<li>Create a vector called <code>v1</code> with three elements, where all the elements are numbers. Then print the values.</li>
+<li>Create a vector called <code>v2</code> with four elements, where all the elements are characters (i.e., enclosed in single ’’ or double “” quotes). Then print the values.</li>
+<li>Create a vector called <code>v3</code> with five elements, where some elements are numeric and some elements are characters. Then print the values.</li>
+</ol>
+<details>
+<summary>
+<strong>Solutions</strong>
+</summary>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) </span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co"># create a vector called v1 with three elements</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co"># all the elements are numbers</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>v1 <span class="co"># print value</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 2 3</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"d"</span>) </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co"># create a vector called v2 with four elements</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co"># all the elements are characters</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>v2 <span class="co"># print value</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "a" "b" "c" "d"</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>v3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="st">"a"</span>, <span class="st">"b"</span>) </span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="co"># create a vector called v3 with five element</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co"># some elements are numeric and some elements are characters</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>v3 <span class="co"># print value</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "1" "2" "3" "a" "b"</code></pre>
+</div>
+</div>
+</details>
+<p><br></p>
+<!--
+When printing object `v3` numbers were printed with quotations around them (e.g., `"1"`), because they are stored as "characters" 
+
+- Why? A vector must be only one "type" (numeric, character, or logical). You can’t mix modes in the same vector.
+-->
+<!--
+## Atomic vectors
+
+__Developing an intuitive understanding of vector types__
+
+**Grolemund and Wickham classification**:
+
+1.  **Atomic vectors**. six "types": logical, integer, double, character, complex, raw.
+2.  **Lists**
+
+Problem with this classification:
+
+-   Not conceptually intuitive
+-   Technically, lists are a type of vector, but people often think of atomic vectors and lists as fundamentally different things
+
+**Classification used by my R maven Ben Skinner**:
+
+-   data **type**: logical, numeric (integer and double), character, etc.
+-   data **structure**: vector, list, matrix, etc.
+
+I find Skinner's classification more intuitive conceptually. However, it isn't completely consistent with how R and R functions think about objects. 
+
+-->
+<section id="length-function-to-get-the-number-of-elements" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="length-function-to-get-the-number-of-elements"><span class="header-section-number">3.4.1</span> length() function to get the number of elements</h3>
 <p><strong>“Length” of an atomic vector is the number of elements</strong></p>
 <p>For remainder of lecture, I’ll use the term <strong>vector</strong> to refer to atomic vectors</p>
 <p>Use <code>length()</code> function to examine vector length</p>
@@ -682,7 +698,9 @@ When printing object `v3` numbers were printed with quotations around them (e.g.
 <pre><code>[1] 1</code></pre>
 </div>
 </div>
-<p><strong>Data type of a vector</strong></p>
+</section>
+<section id="typeof-function-to-get-the-data-type-of-a-vector" class="level3" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="typeof-function-to-get-the-data-type-of-a-vector"><span class="header-section-number">3.4.2</span> typeof() function to get the data type of a vector</h3>
 <p>The “type” of an atomic vector refers to the elements within the vector.</p>
 <p>While there are six “types” of atomic vectors, we’ll focus on the following types:</p>
 <ul>
@@ -854,7 +872,9 @@ When printing object `v3` numbers were printed with quotations around them (e.g.
 <pre><code>[1] "character"</code></pre>
 </div>
 </div>
-<p><strong>Named vectors</strong></p>
+</section>
+<section id="named-vectors" class="level3" data-number="3.4.3">
+<h3 data-number="3.4.3" class="anchored" data-anchor-id="named-vectors"><span class="header-section-number">3.4.3</span> Named vectors</h3>
 <p>All vectors can be “named” (i.e., name individual elements within vector)</p>
 <p>Example of creating an unnamed vector</p>
 <ul>
@@ -887,8 +907,9 @@ When printing object `v3` numbers were printed with quotations around them (e.g.
 </div>
 </div>
 </section>
-<section id="sequences" class="level2" data-number="3.6">
-<h2 data-number="3.6" class="anchored" data-anchor-id="sequences"><span class="header-section-number">3.6</span> Sequences</h2>
+</section>
+<section id="sequences" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="sequences"><span class="header-section-number">3.5</span> Sequences</h2>
 <p>(Loose) definition: a sequence is a set of numbers in ascending or descending order</p>
 <p>A vector containing a “sequence” of numbers (e.g., 1, 2, 3) can be created using the colon operator <code>:</code> with the notation <code>start:end</code></p>
 <div class="cell">
@@ -929,8 +950,8 @@ When printing object `v3` numbers were printed with quotations around them (e.g.
 </div>
 </div>
 </section>
-<section id="vectorized-math" class="level2" data-number="3.7">
-<h2 data-number="3.7" class="anchored" data-anchor-id="vectorized-math"><span class="header-section-number">3.7</span> Vectorized math</h2>
+<section id="vectorized-math" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="vectorized-math"><span class="header-section-number">3.6</span> Vectorized math</h2>
 <p>Most mathematical operations operate on each element of the vector</p>
 <ul>
 <li>e.g., add a single value to a vector and that value will be added to each element of the vector</li>
@@ -964,8 +985,8 @@ When printing object `v3` numbers were printed with quotations around them (e.g.
 </div>
 </div>
 </section>
-<section id="lists" class="level2" data-number="3.8">
-<h2 data-number="3.8" class="anchored" data-anchor-id="lists"><span class="header-section-number">3.8</span> Lists</h2>
+<section id="lists" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="lists"><span class="header-section-number">3.7</span> Lists</h2>
 <p><strong>Lists</strong></p>
 <p>What is a <strong>list</strong>?</p>
 <ul>
@@ -1275,8 +1296,8 @@ Hornet Sportabout 18.7   8 175</code></pre>
 </div>
 </div>
 </section>
-<section id="main-takeaways-about-atomic-vectors-and-lists" class="level2" data-number="3.9">
-<h2 data-number="3.9" class="anchored" data-anchor-id="main-takeaways-about-atomic-vectors-and-lists"><span class="header-section-number">3.9</span> Main takeaways about atomic vectors and lists</h2>
+<section id="main-takeaways-about-atomic-vectors-and-lists" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="main-takeaways-about-atomic-vectors-and-lists"><span class="header-section-number">3.8</span> Main takeaways about atomic vectors and lists</h2>
 <p>Basic data stuctures</p>
 <ol type="1">
 <li><strong>(Atomic) vectors</strong>: <strong>logical</strong>, <strong>integer</strong>, <strong>double</strong>, <strong>character</strong>.

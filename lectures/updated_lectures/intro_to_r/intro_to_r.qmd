@@ -295,13 +295,70 @@ Object "type" refers to how the object is stored internally by R
 -->
 ```
 
-## Vectors
+## (Atomic) Vectors
 
-The fundamental data structure in R is the "vector"
+__The fundamental data structure in R is the "vector"__
 
 -   A vector is a collection of values
 -   The individual values within a vector are called "elements"
 -   Values in a vector can be numeric, character (e.g., "Apple"), or some other *type*
+
+__Formal classification of vectors in R__
+
+Here, I introduce the classification of vectors by Grolemund and Wickham
+
+There are two broad types of **vectors**
+
+1.  **Atomic vectors**. An object that contains elements. Six "types" of atomic vectors:
+    -   **logical**, **integer**, **double**, **character**, **complex**, and **raw**.
+        -   **Integer** and **double** vectors are collectively known as **numeric** vectors.
+2.  **Lists**. Like atomic vectors, lists are objects that contain elements
+    -   elements within a list may be atomic vectors
+    -   elements within a list may also be other lists; that is lists can contain other lists
+
+**Table 1. The six types of atomic vectors in R: double, integer, logical, character, complex, and raw**
+```{r, echo=FALSE, message=FALSE}
+library(kableExtra); library(tidyverse)
+
+Type <- c("double (or numeric)","integer", "logical", "character", "complex", "raw")
+Example <- c('-0.5, 120.9, 5.0','-1L, 3L, 5L', 'TRUE, FALSE', '"California", "New York"', '-5+11i, 3+4i, 0+3i', '01, ff')
+Comment <- c('Floating point numbers with double precision', '"Long" integers', 'Boolean', 'Text', 'Real+imaginary numbers', 'Raw bytes (as hexadecimal)')
+
+
+dt <- tibble(Type, Example, Comment)
+
+
+dt %>%
+  kbl() %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"))
+```
+[Atomic Vectors table adapted from (DiSCDown, Introduction to Programming with R, Chapter 4 Vectors)](https://discdown.org/rprogramming/vectors.html)
+
+<br>
+
+__Visual representation of the Grolemund and Wickham classification__
+
+![Overview of data structures (Grolemund and Wickham, 2018, chapter 20)](data-structures-overview.png){width="60%"}
+
+
+One difference between atomic vectors and lists: **homogeneous** vs. **heterogeneous** elements
+
+-   atomic vectors are **homogeneous**: all elements within atomic vector must be of the same type
+-   lists can be **heterogeneous**: e.g., one element can be an integer and another element can be character
+
+
+<br>
+
+**Intuitive approach to vectors used by Dr. Ben Skinner**:
+
+-   data **type**: logical, numeric (integer and double), character, etc.
+-   data **structure**: vector, list, matrix, etc.
+
+I find Skinner's classification more intuitive conceptually. However, it isn't completely consistent with how R and R functions think about objects. 
+ <br>
+ 
+<br>
+__Let's practice creating simple vectors__
 
 Below we use the combine function `c()` to create a numeric vector that contains three elements
 
@@ -321,32 +378,7 @@ animals <- c("lions", "tigers", "bears", "oh my") # create object called animals
 animals
 ```
 
-<br> 
-
-__Formal classification of vectors in R__
-
-Here, I introduce the classification of vectors by Grolemund and Wickham
-
-There are two broad types of vectors
-
-1.  **Atomic vectors**. An object that contains elements. Six "types" of atomic vectors:
-    -   **logical**, **integer**, **double**, **character**, **complex**, and **raw**.
-        -   **Integer** and **double** vectors are collectively known as **numeric** vectors.
-2.  **Lists**. Like atomic vectors, lists are objects that contain elements
-    -   elements within a list may be atomic vectors
-    -   elements within a list may also be other lists; that is lists can contain other lists
-
-One difference between atomic vectors and lists: **homogeneous** vs. **heterogeneous** elements
-
--   atomic vectors are **homogeneous**: all elements within atomic vector must be of the same type
--   lists can be **heterogeneous**: e.g., one element can be an integer and another element can be character
-
-
-__Visual representation of the Grolemund and Wickham classification__
-
-![Overview of data structures (Grolemund and Wickham, 2018, chapter 20)](data-structures-overview.png){width="60%"}
-
-
+<br>
 __Student task__
 
 Either in the R console or within the R markdown file, do the following:
@@ -393,7 +425,7 @@ When printing object `v3` numbers were printed with quotations around them (e.g.
 -->
 ```
 
-
+<!--
 ## Atomic vectors
 
 __Developing an intuitive understanding of vector types__
@@ -415,27 +447,12 @@ Problem with this classification:
 
 I find Skinner's classification more intuitive conceptually. However, it isn't completely consistent with how R and R functions think about objects. 
 
-
-```{r, echo=FALSE, message=FALSE}
-library(kableExtra); library(tidyverse)
-
-Type <- c("double (or numeric)","integer", "logical", "character", "complex", "raw")
-Example <- c('-0.5, 120.9, 5.0','-1L, 3L, 5L', 'TRUE, FALSE', '"California", "New York"', '-5+11i, 3+4i, 0+3i', '01, ff')
-Comment <- c('Floating point numbers with double precision', '"Long" integers', 'Boolean', 'Text', 'Real+imaginary numbers', 'Raw bytes (as hexadecimal)')
+-->
 
 
-dt <- tibble(Type, Example, Comment)
+### length() function to get the number of elements 
 
-
-dt %>%
-  kbl(caption = "Table 1. The six types of atomic vectors in R: double, integer, logical, character, complex, and raw") %>%
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed"))
-```
-[Atomic Vectors table adapted from (DiSCDown, Introduction to Programming with R, Chapter 4 Vectors)](https://discdown.org/rprogramming/vectors.html)
-
-<br>
-
-__"Length" of an atomic vector is the number of elements__
+**"Length" of an atomic vector is the number of elements**
 
 For remainder of lecture, I'll use the term **vector** to refer to atomic vectors
 
@@ -459,7 +476,8 @@ length(z)
 length("Tommy")
 ```
 
-__Data type of a vector__
+
+### typeof() function to get the data type of a vector
 
 The "type" of an atomic vector refers to the elements within the vector.
 
@@ -577,7 +595,7 @@ typeof(c(TRUE,TRUE,NA,1.5))
 typeof(c(TRUE,TRUE,NA,1.5,"howdy!"))
 ```
 
-__Named vectors__
+### Named vectors
 
 All vectors can be "named" (i.e., name individual elements within vector)
 
