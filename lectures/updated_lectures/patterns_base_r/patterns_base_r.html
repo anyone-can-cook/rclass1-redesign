@@ -79,26 +79,95 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
-  <ul class="collapse">
+  <ul>
   <li><a href="#investigate-objects-base-r" id="toc-investigate-objects-base-r" class="nav-link active" data-scroll-target="#investigate-objects-base-r"><span class="header-section-number">1</span> Investigate objects, base R</a>
   <ul class="collapse">
-  <li><a href="#functions-to-describe-objects" id="toc-functions-to-describe-objects" class="nav-link" data-scroll-target="#functions-to-describe-objects"><span class="header-section-number">1.1</span> Functions to describe objects</a></li>
-  <li><a href="#variables-names" id="toc-variables-names" class="nav-link" data-scroll-target="#variables-names"><span class="header-section-number">1.2</span> Variables names</a></li>
-  <li><a href="#view-and-print-data" id="toc-view-and-print-data" class="nav-link" data-scroll-target="#view-and-print-data"><span class="header-section-number">1.3</span> View and print data</a></li>
-  <li><a href="#missing-values" id="toc-missing-values" class="nav-link" data-scroll-target="#missing-values"><span class="header-section-number">1.4</span> Missing values</a></li>
+  <li><a href="#functions-to-describe-objects" id="toc-functions-to-describe-objects" class="nav-link" data-scroll-target="#functions-to-describe-objects"><span class="header-section-number">1.1</span> Functions to describe objects</a>
+  <ul class="collapse">
+  <li><a href="#listing-objects" id="toc-listing-objects" class="nav-link" data-scroll-target="#listing-objects"><span class="header-section-number">1.1.1</span> Listing objects</a></li>
+  <li><a href="#objects-currently-open-in-your-r-session" id="toc-objects-currently-open-in-your-r-session" class="nav-link" data-scroll-target="#objects-currently-open-in-your-r-session"><span class="header-section-number">1.1.2</span> Objects currently open in your R session</a></li>
+  <li><a href="#base-r-functions-to-describe-objects-typeof" id="toc-base-r-functions-to-describe-objects-typeof" class="nav-link" data-scroll-target="#base-r-functions-to-describe-objects-typeof"><span class="header-section-number">1.1.3</span> Base R functions to describe objects, <code>typeof()</code></a></li>
+  <li><a href="#base-r-functions-to-describe-objects-length" id="toc-base-r-functions-to-describe-objects-length" class="nav-link" data-scroll-target="#base-r-functions-to-describe-objects-length"><span class="header-section-number">1.1.4</span> Base R functions to describe objects, <code>length()</code></a></li>
+  <li><a href="#base-r-functions-to-describe-objects-str" id="toc-base-r-functions-to-describe-objects-str" class="nav-link" data-scroll-target="#base-r-functions-to-describe-objects-str"><span class="header-section-number">1.1.5</span> Base R functions to describe objects, <code>str()</code></a></li>
+  <li><a href="#base-r-functions-to-describe-objects-ncol-and-nrow" id="toc-base-r-functions-to-describe-objects-ncol-and-nrow" class="nav-link" data-scroll-target="#base-r-functions-to-describe-objects-ncol-and-nrow"><span class="header-section-number">1.1.6</span> Base R functions to describe objects, <code>ncol()</code> and <code>nrow()</code></a></li>
+  <li><a href="#base-r-functions-to-describe-objects-dim" id="toc-base-r-functions-to-describe-objects-dim" class="nav-link" data-scroll-target="#base-r-functions-to-describe-objects-dim"><span class="header-section-number">1.1.7</span> Base R functions to describe objects, <code>dim()</code></a></li>
+  </ul></li>
+  <li><a href="#variables-names" id="toc-variables-names" class="nav-link" data-scroll-target="#variables-names"><span class="header-section-number">1.2</span> Variables names</a>
+  <ul class="collapse">
+  <li><a href="#names-function" id="toc-names-function" class="nav-link" data-scroll-target="#names-function"><span class="header-section-number">1.2.1</span> <code>names()</code> function</a></li>
+  <li><a href="#applying-names-function-to-a-data-frame" id="toc-applying-names-function-to-a-data-frame" class="nav-link" data-scroll-target="#applying-names-function-to-a-data-frame"><span class="header-section-number">1.2.2</span> Applying <code>names()</code> function to a data frame</a></li>
+  <li><a href="#variable-names" id="toc-variable-names" class="nav-link" data-scroll-target="#variable-names"><span class="header-section-number">1.2.3</span> Variable names</a></li>
+  </ul></li>
+  <li><a href="#view-and-print-data" id="toc-view-and-print-data" class="nav-link" data-scroll-target="#view-and-print-data"><span class="header-section-number">1.3</span> View and print data</a>
+  <ul class="collapse">
+  <li><a href="#viewing-and-printing-data-frames" id="toc-viewing-and-printing-data-frames" class="nav-link" data-scroll-target="#viewing-and-printing-data-frames"><span class="header-section-number">1.3.1</span> Viewing and printing, data frames</a></li>
+  <li><a href="#viewing-and-printing-data-frames-1" id="toc-viewing-and-printing-data-frames-1" class="nav-link" data-scroll-target="#viewing-and-printing-data-frames-1"><span class="header-section-number">1.3.2</span> Viewing and printing, data frames</a></li>
+  <li><a href="#viewing-and-printing-variables-within-data-frames" id="toc-viewing-and-printing-variables-within-data-frames" class="nav-link" data-scroll-target="#viewing-and-printing-variables-within-data-frames"><span class="header-section-number">1.3.3</span> Viewing and printing, variables within data frames</a></li>
+  <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise"><span class="header-section-number">1.3.4</span> Exercise</a></li>
+  </ul></li>
+  <li><a href="#missing-values" id="toc-missing-values" class="nav-link" data-scroll-target="#missing-values"><span class="header-section-number">1.4</span> Missing values</a>
+  <ul class="collapse">
+  <li><a href="#missing-values-1" id="toc-missing-values-1" class="nav-link" data-scroll-target="#missing-values-1"><span class="header-section-number">1.4.1</span> Missing values</a></li>
+  <li><a href="#missing-values-are-contagious" id="toc-missing-values-are-contagious" class="nav-link" data-scroll-target="#missing-values-are-contagious"><span class="header-section-number">1.4.2</span> Missing values are “contagious”</a></li>
+  <li><a href="#functions-and-missing-values-example-table" id="toc-functions-and-missing-values-example-table" class="nav-link" data-scroll-target="#functions-and-missing-values-example-table"><span class="header-section-number">1.4.3</span> Functions and missing values example, <code>table()</code></a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#subsetting-using-subset-operators" id="toc-subsetting-using-subset-operators" class="nav-link" data-scroll-target="#subsetting-using-subset-operators"><span class="header-section-number">2</span> Subsetting using subset operators</a>
   <ul class="collapse">
-  <li><a href="#subset-atomic-vectors-using" id="toc-subset-atomic-vectors-using" class="nav-link" data-scroll-target="#subset-atomic-vectors-using"><span class="header-section-number">2.1</span> Subset atomic vectors using []</a></li>
-  <li><a href="#subsetting-listsdata-frames-using" id="toc-subsetting-listsdata-frames-using" class="nav-link" data-scroll-target="#subsetting-listsdata-frames-using"><span class="header-section-number">2.2</span> Subsetting lists/data frames using []</a></li>
-  <li><a href="#subsetting-listsdata-frames-using-and" id="toc-subsetting-listsdata-frames-using-and" class="nav-link" data-scroll-target="#subsetting-listsdata-frames-using-and"><span class="header-section-number">2.3</span> Subsetting lists/data frames using [[]] and $</a></li>
+  <li><a href="#subsetting-to-extract-elements" id="toc-subsetting-to-extract-elements" class="nav-link" data-scroll-target="#subsetting-to-extract-elements"><span class="header-section-number">2.0.1</span> Subsetting to Extract Elements</a></li>
+  <li><a href="#wichham-refers-to-number-of-dimensions-in-r-objects" id="toc-wichham-refers-to-number-of-dimensions-in-r-objects" class="nav-link" data-scroll-target="#wichham-refers-to-number-of-dimensions-in-r-objects"><span class="header-section-number">2.0.2</span> Wichham refers to number of “dimensions” in R objects</a></li>
+  <li><a href="#subset-atomic-vectors-using" id="toc-subset-atomic-vectors-using" class="nav-link" data-scroll-target="#subset-atomic-vectors-using"><span class="header-section-number">2.1</span> Subset atomic vectors using []</a>
+  <ul class="collapse">
+  <li><a href="#using-positive-integers-to-return-elements-at-specified-positions-subset-atomic-vectors-using" id="toc-using-positive-integers-to-return-elements-at-specified-positions-subset-atomic-vectors-using" class="nav-link" data-scroll-target="#using-positive-integers-to-return-elements-at-specified-positions-subset-atomic-vectors-using"><span class="header-section-number">2.1.1</span> 1. Using positive integers to return elements at specified positions (subset atomic vectors using [])</a></li>
+  <li><a href="#using-negative-integers-to-exclude-elements-at-specified-positions-subset-atomic-vectors-using" id="toc-using-negative-integers-to-exclude-elements-at-specified-positions-subset-atomic-vectors-using" class="nav-link" data-scroll-target="#using-negative-integers-to-exclude-elements-at-specified-positions-subset-atomic-vectors-using"><span class="header-section-number">2.1.2</span> 2. Using negative integers to exclude elements at specified positions (subset atomic vectors using [])</a></li>
+  <li><a href="#using-logicals-to-return-elements-where-corresponding-logical-is-true-subset-atomic-vectors-using" id="toc-using-logicals-to-return-elements-where-corresponding-logical-is-true-subset-atomic-vectors-using" class="nav-link" data-scroll-target="#using-logicals-to-return-elements-where-corresponding-logical-is-true-subset-atomic-vectors-using"><span class="header-section-number">2.1.3</span> 3. Using logicals to return elements where corresponding logical is <code>TRUE</code> (subset atomic vectors using [])</a></li>
+  <li><a href="#empty-returns-original-vector-subset-atomic-vectors-using" id="toc-empty-returns-original-vector-subset-atomic-vectors-using" class="nav-link" data-scroll-target="#empty-returns-original-vector-subset-atomic-vectors-using"><span class="header-section-number">2.1.4</span> 4. Empty <code>[]</code> returns original vector (subset atomic vectors using [])</a></li>
+  <li><a href="#zero-vector-0-subset-atomic-vectors-using" id="toc-zero-vector-0-subset-atomic-vectors-using" class="nav-link" data-scroll-target="#zero-vector-0-subset-atomic-vectors-using"><span class="header-section-number">2.1.5</span> 5. Zero vector [0] (subset atomic vectors using [])</a></li>
+  <li><a href="#if-vector-is-named-character-vectors-to-return-elements-with-matching-names-subset-atomic-vectors-using" id="toc-if-vector-is-named-character-vectors-to-return-elements-with-matching-names-subset-atomic-vectors-using" class="nav-link" data-scroll-target="#if-vector-is-named-character-vectors-to-return-elements-with-matching-names-subset-atomic-vectors-using"><span class="header-section-number">2.1.6</span> 6. If vector is named, character vectors to return elements with matching names (subset atomic vectors using [])</a></li>
+  </ul></li>
+  <li><a href="#subsetting-listsdata-frames-using" id="toc-subsetting-listsdata-frames-using" class="nav-link" data-scroll-target="#subsetting-listsdata-frames-using"><span class="header-section-number">2.2</span> Subsetting lists/data frames using []</a>
+  <ul class="collapse">
+  <li><a href="#subsetting-data-frames-using-to-extract-columns-variables-based-on-element-position" id="toc-subsetting-data-frames-using-to-extract-columns-variables-based-on-element-position" class="nav-link" data-scroll-target="#subsetting-data-frames-using-to-extract-columns-variables-based-on-element-position"><span class="header-section-number">2.2.1</span> Subsetting data frames using [] to extract columns (variables) based on element position</a></li>
+  <li><a href="#subsetting-data-frames-to-extract-columns-variables-and-rows-observations-based-on-positionality" id="toc-subsetting-data-frames-to-extract-columns-variables-and-rows-observations-based-on-positionality" class="nav-link" data-scroll-target="#subsetting-data-frames-to-extract-columns-variables-and-rows-observations-based-on-positionality"><span class="header-section-number">2.2.2</span> Subsetting Data Frames to extract columns (variables) and rows (observations) based on positionality</a></li>
+  <li><a href="#use-to-extract-data-frame-columns-based-on-variable-names" id="toc-use-to-extract-data-frame-columns-based-on-variable-names" class="nav-link" data-scroll-target="#use-to-extract-data-frame-columns-based-on-variable-names"><span class="header-section-number">2.2.3</span> Use [] to extract data frame columns based on variable names</a></li>
+  <li><a href="#student-exercises" id="toc-student-exercises" class="nav-link" data-scroll-target="#student-exercises"><span class="header-section-number">2.2.4</span> Student exercises</a></li>
+  </ul></li>
+  <li><a href="#subsetting-listsdata-frames-using-and" id="toc-subsetting-listsdata-frames-using-and" class="nav-link" data-scroll-target="#subsetting-listsdata-frames-using-and"><span class="header-section-number">2.3</span> Subsetting lists/data frames using [[]] and $</a>
+  <ul class="collapse">
+  <li><a href="#subset-single-element-from-object-using-operator-atomic-vectors" id="toc-subset-single-element-from-object-using-operator-atomic-vectors" class="nav-link" data-scroll-target="#subset-single-element-from-object-using-operator-atomic-vectors"><span class="header-section-number">2.3.1</span> Subset single element from object using [[]] operator, atomic vectors</a></li>
+  <li><a href="#subsetting-lists-using-vs.-introduce-train-metaphor" id="toc-subsetting-lists-using-vs.-introduce-train-metaphor" class="nav-link" data-scroll-target="#subsetting-lists-using-vs.-introduce-train-metaphor"><span class="header-section-number">2.3.2</span> Subsetting lists using <code>[]</code> vs.&nbsp;<code>[[]]</code>, introduce “train metaphor”</a></li>
+  <li><a href="#subset-lists-using-vs.-deepen-understanding-of" id="toc-subset-lists-using-vs.-deepen-understanding-of" class="nav-link" data-scroll-target="#subset-lists-using-vs.-deepen-understanding-of"><span class="header-section-number">2.3.3</span> Subset lists using <code>[]</code> vs.&nbsp;<code>[[]]</code>, deepen understanding of <code>[]</code></a></li>
+  <li><a href="#general-rules-of-applying-vs-to-nested-objects" id="toc-general-rules-of-applying-vs-to-nested-objects" class="nav-link" data-scroll-target="#general-rules-of-applying-vs-to-nested-objects"><span class="header-section-number">2.3.4</span> General rules of applying <code>[]</code> vs <code>[[]]</code> to (nested) objects</a></li>
+  <li><a href="#subset-listsdata-frames-using" id="toc-subset-listsdata-frames-using" class="nav-link" data-scroll-target="#subset-listsdata-frames-using"><span class="header-section-number">2.3.5</span> Subset lists/data frames using $</a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#appendix" id="toc-appendix" class="nav-link" data-scroll-target="#appendix"><span class="header-section-number">3</span> Appendix</a>
   <ul class="collapse">
-  <li><a href="#subset-data-frames-by-combining-and" id="toc-subset-data-frames-by-combining-and" class="nav-link" data-scroll-target="#subset-data-frames-by-combining-and"><span class="header-section-number">3.1</span> Subset Data frames by combining [] and $</a></li>
-  <li><a href="#subset-using-subset-function" id="toc-subset-using-subset-function" class="nav-link" data-scroll-target="#subset-using-subset-function"><span class="header-section-number">3.2</span> Subset using subset() function</a></li>
-  <li><a href="#creating-variables" id="toc-creating-variables" class="nav-link" data-scroll-target="#creating-variables"><span class="header-section-number">3.3</span> Creating variables</a></li>
-  <li><a href="#sorting-data" id="toc-sorting-data" class="nav-link" data-scroll-target="#sorting-data"><span class="header-section-number">3.4</span> Sorting data</a></li>
+  <li><a href="#subset-data-frames-by-combining-and" id="toc-subset-data-frames-by-combining-and" class="nav-link" data-scroll-target="#subset-data-frames-by-combining-and"><span class="header-section-number">3.1</span> Subset Data frames by combining [] and $</a>
+  <ul class="collapse">
+  <li><a href="#subset-data-frames-by-combining-and-decompose-syntax" id="toc-subset-data-frames-by-combining-and-decompose-syntax" class="nav-link" data-scroll-target="#subset-data-frames-by-combining-and-decompose-syntax"><span class="header-section-number">3.1.1</span> Subset Data Frames by combining <code>[]</code> and <code>$</code>, decompose syntax</a></li>
+  <li><a href="#subset-data-frames-by-combining-and-keep-desired-columns" id="toc-subset-data-frames-by-combining-and-keep-desired-columns" class="nav-link" data-scroll-target="#subset-data-frames-by-combining-and-keep-desired-columns"><span class="header-section-number">3.1.2</span> Subset Data Frames by combining <code>[]</code> and <code>$</code>, keep desired columns</a></li>
+  <li><a href="#subset-data-frames-by-combining-and-more-examples" id="toc-subset-data-frames-by-combining-and-more-examples" class="nav-link" data-scroll-target="#subset-data-frames-by-combining-and-more-examples"><span class="header-section-number">3.1.3</span> Subset Data Frames by combining <code>[]</code> and <code>$</code>, more examples</a></li>
+  <li><a href="#logical-operators-for-comparisons" id="toc-logical-operators-for-comparisons" class="nav-link" data-scroll-target="#logical-operators-for-comparisons"><span class="header-section-number">3.1.4</span> Logical operators for comparisons</a></li>
+  <li><a href="#subset-data-frames-by-combining-and-na-observations" id="toc-subset-data-frames-by-combining-and-na-observations" class="nav-link" data-scroll-target="#subset-data-frames-by-combining-and-na-observations"><span class="header-section-number">3.1.5</span> Subset Data Frames by combining <code>[]</code> and <code>$</code>, <code>NA</code> Observations</a></li>
+  <li><a href="#student-exercises-1" id="toc-student-exercises-1" class="nav-link" data-scroll-target="#student-exercises-1"><span class="header-section-number">3.1.6</span> Student Exercises</a></li>
+  </ul></li>
+  <li><a href="#subset-using-subset-function" id="toc-subset-using-subset-function" class="nav-link" data-scroll-target="#subset-using-subset-function"><span class="header-section-number">3.2</span> Subset using subset() function</a>
+  <ul class="collapse">
+  <li><a href="#subset-function-examples" id="toc-subset-function-examples" class="nav-link" data-scroll-target="#subset-function-examples"><span class="header-section-number">3.2.1</span> Subset function, examples</a></li>
+  <li><a href="#student-exercises-2" id="toc-student-exercises-2" class="nav-link" data-scroll-target="#student-exercises-2"><span class="header-section-number">3.2.2</span> Student Exercises</a></li>
+  </ul></li>
+  <li><a href="#creating-variables" id="toc-creating-variables" class="nav-link" data-scroll-target="#creating-variables"><span class="header-section-number">3.3</span> Creating variables</a>
+  <ul class="collapse">
+  <li><a href="#create-new-data-frame-based-on-df_school_all" id="toc-create-new-data-frame-based-on-df_school_all" class="nav-link" data-scroll-target="#create-new-data-frame-based-on-df_school_all"><span class="header-section-number">3.3.1</span> Create new data frame based on <code>df_school_all</code></a></li>
+  <li><a href="#base-r-approach-to-creating-new-variables" id="toc-base-r-approach-to-creating-new-variables" class="nav-link" data-scroll-target="#base-r-approach-to-creating-new-variables"><span class="header-section-number">3.3.2</span> Base R approach to creating new variables</a></li>
+  </ul></li>
+  <li><a href="#sorting-data" id="toc-sorting-data" class="nav-link" data-scroll-target="#sorting-data"><span class="header-section-number">3.4</span> Sorting data</a>
+  <ul class="collapse">
+  <li><a href="#base-r-sort-for-vectors" id="toc-base-r-sort-for-vectors" class="nav-link" data-scroll-target="#base-r-sort-for-vectors"><span class="header-section-number">3.4.1</span> Base R <code>sort()</code> for vectors</a></li>
+  <li><a href="#base-r-order-for-dataframes" id="toc-base-r-order-for-dataframes" class="nav-link" data-scroll-target="#base-r-order-for-dataframes"><span class="header-section-number">3.4.2</span> Base R <code>order()</code> for dataframes</a></li>
+  <li><a href="#example-sorting" id="toc-example-sorting" class="nav-link" data-scroll-target="#example-sorting"><span class="header-section-number">3.4.3</span> Example, sorting</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -392,7 +461,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>Example, get names (of atomic vector)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">v1=</span><span class="dv">1</span>,<span class="at">v2=</span><span class="dv">2</span>,<span class="dv">3</span>,<span class="at">v4=</span><span class="st">"hi!"</span>) <span class="co"># named atomic vector</span></span>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">v1 =</span> <span class="dv">1</span>,<span class="at">v2 =</span> <span class="dv">2</span>, <span class="dv">3</span> ,<span class="at">v4 =</span> <span class="st">"hi!"</span>) <span class="co"># named atomic vector</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>a </span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    v1    v2          v4 </span></span>
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   "1"   "2"   "3" "hi!"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -593,7 +662,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="viewing-and-printing-variables-within-data-frames" class="level3" data-number="1.3.3">
 <h3 data-number="1.3.3" class="anchored" data-anchor-id="viewing-and-printing-variables-within-data-frames"><span class="header-section-number">1.3.3</span> Viewing and printing, variables within data frames</h3>
-<p>Recall that:</p>
+<p><strong>Recall that:</strong></p>
 <ul>
 <li><code>obj_name$var_name</code> print specifics elements (i.e., variables) of a data frame</li>
 </ul>
@@ -612,7 +681,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>each element of a variable is the value of the variable for one observation</li>
 </ul>
-<p>Print specific elements (i.e., observations) of variable based on element position</p>
+<p><strong>Print specific elements (i.e., observations) of variable based on element position</strong></p>
 <ul>
 <li>syntax: <code>obj_name$var_name[&lt;element position&gt;]</code></li>
 <li>vectors don’t have “rows” or “columns”; they just have elements</li>
@@ -624,10 +693,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>df_event<span class="sc">$</span>event_type[<span class="dv">6</span><span class="sc">:</span><span class="dv">10</span>] <span class="co"># print obs 6-10 of variable "event_type"</span></span>
 <span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "private hs" "private hs" "public hs"  "private hs" "public hs"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="viewing-and-printing-variables-within-data-frames-1" class="level3" data-number="1.3.4">
-<h3 data-number="1.3.4" class="anchored" data-anchor-id="viewing-and-printing-variables-within-data-frames-1"><span class="header-section-number">1.3.4</span> Viewing and printing, variables within data frames</h3>
-<p>Print specific elements (i.e., observations) of variable based on element position</p>
+<p><strong>Print specific elements (i.e., observations) of variable based on element position</strong></p>
 <ul>
 <li>syntax: <code>obj_name$var_name[&lt;element position&gt;]</code></li>
 </ul>
@@ -642,7 +708,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>df_event<span class="sc">$</span>zip[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)] <span class="co"># print obs 5 of variable for event zip code</span></span>
 <span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "01002" "01020" "01027"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Print specific elements of multiple variables using combine function <code>c()</code></p>
+<p><strong>Print specific elements of multiple variables using combine function <code>c()</code></strong></p>
 <ul>
 <li>syntax: <code>c(obj_name$var1_name[&lt;element position&gt;], obj_name$var2_name[&lt;element position&gt;],...)</code></li>
 <li>Example: print first five observations of variables <code>"event_state"</code> and <code>"event_type"</code></li>
@@ -653,8 +719,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [7] "public hs" "public hs" "public hs" "public hs"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="exercise" class="level3" data-number="1.3.5">
-<h3 data-number="1.3.5" class="anchored" data-anchor-id="exercise"><span class="header-section-number">1.3.5</span> Exercise</h3>
+<section id="exercise" class="level3" data-number="1.3.4">
+<h3 data-number="1.3.4" class="anchored" data-anchor-id="exercise"><span class="header-section-number">1.3.4</span> Exercise</h3>
 <p>Printing exercise using the df_school data frame</p>
 <ol type="1">
 <li>Use the <code>obj_name[&lt;rows&gt;,&lt;cols&gt;]</code> syntax to print the first 5 rows and 3 columns of the <code>df_school</code> data frame</li>
