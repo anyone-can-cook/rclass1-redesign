@@ -260,6 +260,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
 <li>COME BACK TO THIS</li>
 </ul>
+<!--
+sources:
+https://www.youtube.com/watch?v=z4813fLJzAU
+* Streamline interactive dashboards
+https://www.youtube.com/watch?v=H1zaP4po1ss
+* 
+
+-->
 </section>
 <section id="why-learn-r-r-can-do-a-lot-of-stuff" class="level2" data-number="1.5">
 <h2 data-number="1.5" class="anchored" data-anchor-id="why-learn-r-r-can-do-a-lot-of-stuff"><span class="header-section-number">1.5</span> Why learn R? R can do a lot of stuff!</h2>
@@ -430,6 +438,7 @@ This class is for anyone who wants to work with data, that is people who want to
 <li><p>More intuitively, I think objects as anything I assign values to</p>
 <ul>
 <li>For example, below, <code>a</code> and <code>b</code> are the names of objects I assigned values to</li>
+</ul></li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">5</span></span>
@@ -442,8 +451,9 @@ This class is for anyone who wants to work with data, that is people who want to
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "yay!"</code></pre>
 </div>
-</div></li>
-<li><p>Ben Skinner (R maven) says “Objects are like boxes in which we can put things: data, functions, and even other objects.”</p></li>
+</div>
+<ul>
+<li>Ben Skinner (R maven) says “Objects are like boxes in which we can put things: data, functions, and even other objects.”</li>
 </ul>
 <p>Many commercial statistical software packages (e.g., SPSS, Stata) operate on datasets, which consist of rows of observations and columns of variables</p>
 <ul>
@@ -1124,14 +1134,14 @@ I find Skinner's classification more intuitive conceptually. However, it isn't c
   ..$ : num 3</code></pre>
 </div>
 </div>
-<p>The first element of list is a numeric vector with length=2</p>
+<p>The <strong>first element</strong> of list is a numeric vector with length=2</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb163"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb163-1"><a href="#cb163-1" aria-hidden="true" tabindex="-1"></a>x1[[<span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 2</code></pre>
 </div>
 </div>
-<p>The second element is a list with length=2</p>
+<p>The <strong>second element</strong> is a list with length=2</p>
 <ul>
 <li>first element is character vector with length=1</li>
 <li>second element is character vector with length=1</li>
@@ -1146,7 +1156,7 @@ I find Skinner's classification more intuitive conceptually. However, it isn't c
 [1] "orange"</code></pre>
 </div>
 </div>
-<p>The third element is a list with length=3</p>
+<p>The <strong>third element</strong> is a list with length=3</p>
 <ul>
 <li>first element is numeric vector with length=1</li>
 <li>second element is numeric vector with length=1</li>

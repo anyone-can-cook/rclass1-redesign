@@ -1174,6 +1174,8 @@ When working w/ data frames, functions that calculate things expect to be workin
 ```{r}
 mean(df_event[['med_inc']], na.rm = TRUE)
 # mean(df_event['med_inc'], na.rm = TRUE) # by contrast, this doesn't work
+str(df_event['med_inc'])
+str(df_event[['med_inc']])
 ```
 
 ### Subset lists/data frames using \$

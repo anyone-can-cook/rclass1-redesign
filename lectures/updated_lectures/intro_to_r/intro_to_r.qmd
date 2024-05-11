@@ -48,7 +48,7 @@ I don't find this definition particularly helpful. I think of *R* as:
 
 ## Base R vs. R packages
 
-__Base R__
+**Base R**
 
 -   When you install R, you automatically install the ["Base R"](https://stat.ethz.ch/R-manual/R-devel/library/base/html/00Index.html) set of functions
 -   Example of a few of the functions in in Base R:
@@ -56,8 +56,7 @@ __Base R__
     -   `print()` function
     -   `setwd()` function
 
-
-__R packages__
+**R packages**
 
 -   an R "package" (or "library") is a collection of (related) functions developed by the R community
 -   Examples of R packages:
@@ -68,7 +67,7 @@ __R packages__
 -   **All** R packages are free!
 -   Often a package we install may be a collection of packages (e.g., `tidyverse`) and/or may depend on other packages, which will be automatically installed for you
 
-__Installing and Loading R packages__
+**Installing and Loading R packages**
 
 You only need to install a package once. To install an R package use `install.package()` function.
 
@@ -86,8 +85,7 @@ library(tidyverse)
 
 "[RStudio](https://www.rstudio.com/products/rstudio/features/) is an integrated development environment (IDE) for R. It includes a console, syntax-highlighting editor that supports direct code execution, as well as tools for plotting, history, debugging and workspace management."
 
-[Pane Layout from RStudio User Guide](https://docs.posit.co/ide/user/ide/guide/ui/ui-panes.html)
-![](pane_layout_23.jpeg)
+[Pane Layout from RStudio User Guide](https://docs.posit.co/ide/user/ide/guide/ui/ui-panes.html) ![](pane_layout_23.jpeg)
 
 ## R Markdown
 
@@ -106,21 +104,36 @@ How we will be using R Markdown in this class
 -   All lectures created using R Markdown
 -   You will use R Markdown to complete homework assignments
 
-
 After this class you might:
 
 -   never use Microsoft Word again!
 -   Use R Markdown to create: papers for class; presentations; journal manuscripts; your dissertation; etc.
+-   VIDEO ON WHAT IS R MARKDOWN: <https://www.youtube.com/watch?v=asHhuHRxhvo>
 
 ## Quarto (.qmd)
 
 [Quarto](https://quarto.org/)
 
-- Quarto is..... 
-- TEXT HERE ABOUT QUARTO
-- HOW & WHY WE WILL BE USING QUARTO FOR THIS CLASS  
-- COME BACK TO THIS
+-   Quarto is.....
+-   TEXT HERE ABOUT QUARTO
+-   HOW & WHY WE WILL BE USING QUARTO FOR THIS CLASS\
+-   COME BACK TO THIS
 
+```{=html}
+<!--
+sources:
+https://www.youtube.com/watch?v=z4813fLJzAU
+* Streamline interactive dashboards
+https://www.youtube.com/watch?v=cB2wu79Ar6o
+* Quarto is the updated version of R markdown which allows you to embed code into a document you are creating
+* Essentially a word processor 
+* Compatible with markdown
+* Slide presentations using revealjs, two ## for name of slide, insert code chunks, set incremental: true for pauses on slides for bullet point and numbered lists  . . . for manual pauses in slide 
+* good for referencing tables/figs
+* easy for bibliographies 
+
+-->
+```
 ## Why learn R? R can do a lot of stuff!
 
 How we have used R+RStudio+RMarkdown in our research team
@@ -181,7 +194,6 @@ This class is for anyone who wants to work with data, that is people who want to
 
 -->
 ```
-
 # Executing R commands
 
 ## R as a calculator
@@ -198,7 +210,7 @@ Three ways to execute commands in R
 
 1.  Type/copy commands directly into the "console"
 2.  \`code chunks' in RMarkdown (.Rmd & .QMD files)
-    -   Can execute one command at a time, one chunk at a time, or "knit" the entire    
+    -   Can execute one command at a time, one chunk at a time, or "knit" the entire\
     -   **Cmd/Ctrl + Enter**: execute highlighted line(s) within chunk
     -   **Cmd/Ctrl + Shift + k**: "knit" entire document
 3.  R scripts (.R files)
@@ -231,7 +243,6 @@ Three ways to execute commands in R
     -   `object_name <- object_values`
     -   good practice to put a space before and after assignment operator
 
-
 ```{r}
 # Create an object and assign value
 a <- 5
@@ -243,8 +254,7 @@ b
 
 ## Objects
 
-
-R is an "object-oriented" programming language (like Python, JavaScript). So, what is an __object__?
+R is an "object-oriented" programming language (like Python, JavaScript). So, what is an **object**?
 
 -   formal computer science definitions are confusing because they require knowledge of concepts we haven't introduced yet
 
@@ -252,12 +262,12 @@ R is an "object-oriented" programming language (like Python, JavaScript). So, wh
 
     -   For example, below, `a` and `b` are the names of objects I assigned values to
 
-    ```{r}
-    a <- 5
-    a
-    b <- "yay!"
-    b
-    ```
+```{r}
+a <- 5
+a
+b <- "yay!"
+b
+```
 
 -   Ben Skinner (R maven) says "Objects are like boxes in which we can put things: data, functions, and even other objects."
 
@@ -294,16 +304,15 @@ Object "type" refers to how the object is stored internally by R
 
 -->
 ```
-
 ## (Atomic) Vectors
 
-__The fundamental data structure in R is the "vector"__
+**The fundamental data structure in R is the "vector"**
 
 -   A vector is a collection of values
 -   The individual values within a vector are called "elements"
 -   Values in a vector can be numeric, character (e.g., "Apple"), or some other *type*
 
-__Formal classification of vectors in R__
+**Formal classification of vectors in R**
 
 Here, I introduce the classification of vectors by Grolemund and Wickham
 
@@ -317,6 +326,7 @@ There are two broad types of **vectors**
     -   elements within a list may also be other lists; that is lists can contain other lists
 
 **Table 1. The six types of atomic vectors in R: double, integer, logical, character, complex, and raw**
+
 ```{r, echo=FALSE, message=FALSE}
 library(kableExtra); library(tidyverse)
 
@@ -332,20 +342,19 @@ dt %>%
   kbl() %>%
   kable_styling(bootstrap_options = c("striped", "hover", "condensed"))
 ```
+
 [Atomic Vectors table adapted from (DiSCDown, Introduction to Programming with R, Chapter 4 Vectors)](https://discdown.org/rprogramming/vectors.html)
 
 <br>
 
-__Visual representation of the Grolemund and Wickham classification__
+**Visual representation of the Grolemund and Wickham classification**
 
 ![Overview of data structures (Grolemund and Wickham, 2018, chapter 20)](data-structures-overview.png){width="60%"}
-
 
 One difference between atomic vectors and lists: **homogeneous** vs. **heterogeneous** elements
 
 -   atomic vectors are **homogeneous**: all elements within atomic vector must be of the same type
 -   lists can be **heterogeneous**: e.g., one element can be an integer and another element can be character
-
 
 <br>
 
@@ -354,11 +363,9 @@ One difference between atomic vectors and lists: **homogeneous** vs. **heterogen
 -   data **type**: logical, numeric (integer and double), character, etc.
 -   data **structure**: vector, list, matrix, etc.
 
-I find Skinner's classification more intuitive conceptually. However, it isn't completely consistent with how R and R functions think about objects. 
- <br>
- 
-<br>
-__Let's practice creating simple vectors__
+I find Skinner's classification more intuitive conceptually. However, it isn't completely consistent with how R and R functions think about objects. <br>
+
+<br> **Let's practice creating simple vectors**
 
 Below we use the combine function `c()` to create a numeric vector that contains three elements
 
@@ -378,8 +385,7 @@ animals <- c("lions", "tigers", "bears", "oh my") # create object called animals
 animals
 ```
 
-<br>
-__Student task__
+<br> **Student task**
 
 Either in the R console or within the R markdown file, do the following:
 
@@ -387,9 +393,9 @@ Either in the R console or within the R markdown file, do the following:
 2.  Create a vector called `v2` with four elements, where all the elements are characters (i.e., enclosed in single '' or double "" quotes). Then print the values.
 3.  Create a vector called `v3` with five elements, where some elements are numeric and some elements are characters. Then print the values.
 
+<details>
 
-<details><summary><strong>Solutions</strong></summary>
-
+<summary><strong>Solutions</strong></summary>
 
 ```{r}
 v1 <- c(1, 2, 3) 
@@ -412,10 +418,9 @@ v3 <- c(1, 2, 3, "a", "b")
 v3 # print value
 ```
 
-
 </details>
-<br>
 
+<br>
 
 ```{=html}
 <!--
@@ -424,7 +429,7 @@ When printing object `v3` numbers were printed with quotations around them (e.g.
 - Why? A vector must be only one "type" (numeric, character, or logical). You can’t mix modes in the same vector.
 -->
 ```
-
+```{=html}
 <!--
 ## Atomic vectors
 
@@ -448,9 +453,8 @@ Problem with this classification:
 I find Skinner's classification more intuitive conceptually. However, it isn't completely consistent with how R and R functions think about objects. 
 
 -->
-
-
-### length() function to get the number of elements 
+```
+### length() function to get the number of elements
 
 **"Length" of an atomic vector is the number of elements**
 
@@ -475,7 +479,6 @@ z <- 5
 length(z)
 length("Tommy")
 ```
-
 
 ### typeof() function to get the data type of a vector
 
@@ -503,7 +506,7 @@ animals
 typeof(animals)
 ```
 
-__Data type of a vector, numeric__
+**Data type of a vector, numeric**
 
 Numeric vectors can be "integer" (e.g., 5) or "double" (e.g., 5.5)
 
@@ -525,7 +528,7 @@ typeof(5)
 typeof(5L)
 ```
 
-__Data type of a vector, character__
+**Data type of a vector, character**
 
 In contrast to "numeric" data types which are used to store numbers, the "character" data type is used to store **strings** of text.
 
@@ -551,7 +554,7 @@ c2
 typeof(c2)
 ```
 
-__Data type of a vector, logical__
+**Data type of a vector, logical**
 
 Logical vectors can take three possible values: `TRUE`, `FALSE`, `NA`
 
@@ -572,7 +575,7 @@ length(log)
 
 We'll learn more about logical vectors later
 
-__All elements in (atomic) vector must have same data type.__
+**All elements in (atomic) vector must have same data type.**
 
 Atomic vectors are **homogenous**;
 
@@ -665,10 +668,9 @@ c(1,1,1)+c(1,0,2)
 c(1,1,1)*c(1,0,2)
 ```
 
-
 ## Lists
 
-__Lists__
+**Lists**
 
 What is a **list**?
 
@@ -680,7 +682,7 @@ What is a **list**?
 
 Lists are more complicated than vectors; today we'll just provide a basic introduction
 
-__Create lists using `list()` function__
+**Create lists using `list()` function**
 
 Create a vector (for comparison purposes)
 
@@ -699,7 +701,7 @@ length(b)
 b # print list is awkward
 ```
 
-__Investigate structure of lists using `str()` function__
+**Investigate structure of lists using `str()` function**
 
 When investigating lists, `str()` is better than printing the list
 
@@ -719,7 +721,7 @@ length(c)
 str(c) # 2 elements; element 1=vector w/ length=2; element 2=vector w/length=3
 ```
 
-__Elements within lists can have different data types__
+**Elements within lists can have different data types**
 
 Lists are **heterogeneous**
 
@@ -740,39 +742,39 @@ typeof(a)
 str(a)
 ```
 
-__Lists can contain other lists__
+**Lists can contain other lists**
 
 ```{r}
 x1 <- list(c(1,2), list("apple", "orange"), list(1, 2, 3))
 str(x1)
 ```
 
-The __first element__ of list is a numeric vector with length=2  
+The **first element** of list is a numeric vector with length=2
+
 ```{r}
 x1[[1]]
 ```
 
-The __second element__ is a list with length=2  
+The **second element** is a list with length=2
 
-  -   first element is character vector with length=1
-  -   second element is character vector with length=1
-  
+-   first element is character vector with length=1
+-   second element is character vector with length=1
+
 ```{r}
 x1[[2]]
 ```
 
-The __third element__ is a list with length=3  
+The **third element** is a list with length=3
 
-  -   first element is numeric vector with length=1
-  -   second element is numeric vector with length=1
-  -   third element is numeric vector with length=1
-  
+-   first element is numeric vector with length=1
+-   second element is numeric vector with length=1
+-   third element is numeric vector with length=1
+
 ```{r}
 x1[[3]]
 ```
 
-
-__You can name each element in the list__
+**You can name each element in the list**
 
 ```{r}
 x2 <- list(a=c(1,2), b=list("apple", "orange"), c=list(1, 2, 3))
@@ -786,7 +788,7 @@ names(x2) # has names
 names(x1) # no names
 ```
 
-__Access individual elements in a "named" list__
+**Access individual elements in a "named" list**
 
 Syntax: `list_name$element_name`
 
@@ -805,7 +807,7 @@ length(x2$c)
 
 Note: We'll spend more time practicing "accessing elements of a list" in upcoming weeks
 
-__Compare structure of list to structure of element within a list__
+**Compare structure of list to structure of element within a list**
 
 ```{r}
 str(x2)
@@ -813,7 +815,7 @@ str(x2)
 str(x2$c)
 ```
 
-__A DATASET IS JUST A LIST!!!!!__
+**A DATASET IS JUST A LIST!!!!!**
 
 A data frame is a list with the following characteristics:
 
@@ -840,7 +842,7 @@ head(df, n=4) # print first few rows
 
 Additionally, data frames have "attributes"; we'll discuss those in upcoming weeks
 
-__A data frame is a named list__
+**A data frame is a named list**
 
 ```{r}
 head(df, n= 5)
@@ -870,7 +872,7 @@ Basic data stuctures
 2.  **Lists**:
     -   Data type can differ across elements
 
-__Takeaways__
+**Takeaways**
 
 -   These concepts are difficult; ok to feel confused
 -   I will reinforce these concepts throughout the course
@@ -1043,11 +1045,10 @@ sum(10,5,10,20,NA,na.rm=TRUE)
 
 ## Directories and filepaths (skim)
 
-__Directories and filepaths__
+**Directories and filepaths**
 
 -   Goal: Give you a very brief overview of "directories" (i.e., folders) and "filepaths" (tells you where folder is located) in R
 -   For the most part, this course won't require extensive knowledge of working with filepaths. But the second course in this sequence will.
-
 
 **(Current) Working directory**
 
@@ -1068,7 +1069,7 @@ getwd()
 list.files()
 ```
 
-__Working directory, "Code chunks" vs. "console" and "R scripts"__
+**Working directory, "Code chunks" vs. "console" and "R scripts"**
 
 When you run **code chunks** in RMarkdown files (.Rmd), the working directory is set to the filepath where the .Rmd file is stored
 
@@ -1085,7 +1086,7 @@ Command `getwd()` shows current working directory
 getwd()
 ```
 
-__Absolute vs. relative filepath__
+**Absolute vs. relative filepath**
 
 **Absolute file path**: The absolute file path is the complete list of directories needed to locate a file or folder.\
 `setwd("/Users/pm/Desktop/rclass1/lectures/intro_to_r")`
@@ -1098,7 +1099,7 @@ __Absolute vs. relative filepath__
 ```
 
 | **Key** | **Description**                                                    |
-|------------------|------------------------------------------------------|
+|-------------------|-----------------------------------------------------|
 | \~      | tilde is a shortcut for user's home directory (mine is my name pm) |
 | ../     | moves up a level                                                   |
 | ../../  | moves up two level                                                 |
@@ -1117,7 +1118,7 @@ setwd('../')
 getwd()
 ```
 
-__Exercise__
+**Exercise**
 
 1.  Let's create a folder on our desktop and name it red\
 2.  Inside the red folder, create two subfolders named orange and yellow\
@@ -1129,18 +1130,20 @@ You should have 1 folder on your desktop called red. Inside the red folder you h
 
 Here is a visual of how it should look...
 
-__File path visual__
+**File path visual**
 
 ![](fp1.JPG){width="200px"} ![](fp2.JPG){width="200px"}
 
-__Exercise continued__
+**Exercise continued**
 
 Let's say we want to get to the green folder using the absolute file path.\
 1. View your current working directory `getwd()`\
 2. Set your working directory to the green folder using the absolute file path\
 3. Now set your working directory to the orange folder using the relative file path (hint: use `../`)
 
-<details><summary><strong>Solutions</strong></summary>
+<details>
+
+<summary><strong>Solutions</strong></summary>
 
 \[Solution for Mac users\]
 
@@ -1153,16 +1156,17 @@ getwd()
 ```
 
 </details>
-<br> 
+
+<br>
 
 ## Create "R project"
 
-__What is an R project?__
+**What is an R project?**
 
 -   Helps you keep all files for a project in one place
 -   When you open an R project, the file-path of your current working directory is automatically set to the file-path of your R-project
 
-__How to create an "R project"__
+**How to create an "R project"**
 
 1.  In RStudio, click on "File" \>\> "New Project" \>\> "Existing Directory" \>\> "New Project"
 2.  "Browse" to find folder where you want in which you want to save the ".Rproj" folder you just saved
@@ -1180,7 +1184,7 @@ Using R Project
 -   As you will see in the future (EDUC260B), this will make it easy to collaborate with colleagues
     -   you will be able to run the exact same scripts on different computers!
 
-__Next, you follow these steps__
+**Next, you follow these steps**
 
 -   You can add any additional sub-folders you want to the "rclass1" folder
     -   e.g., "syllabus", "resources"
@@ -1189,7 +1193,7 @@ __Next, you follow these steps__
 
 ## R Markdown
 
-__What is R Markdown__
+**What is R Markdown**
 
 -   R Markdown documents embed R code, output associated with R code, and text into one document
 -   An R Markdown document is a "'Living' document that updates every time you compile \["knit"\] it"
@@ -1201,7 +1205,7 @@ __What is R Markdown__
 
 *This slide borrows from Darin Christensen*
 
-__How people use R Markdown__
+**How people use R Markdown**
 
 R Markdown creates many types of static and dynamic/interactive documents
 
@@ -1218,7 +1222,7 @@ How we will be using R Markdown files in this class:
 -   Lectures we write are .Rmd files, where the output style will `html_document`(can also be `beamer_presentation` or `word_document`)
     -   `beamer_presentation` is essentially a PDF document, where each page is a slide
 
-__Creating R Markdown documents__
+**Creating R Markdown documents**
 
 **Do this with a partner**
 
@@ -1246,7 +1250,7 @@ Approach for creating a RMarkdown document.
 #Don't worry about this. Ozan's notes
 ```
 
-__Components of a .Rmd file__
+**Components of a .Rmd file**
 
 An R Markdown (.Rmd) file consists of several parts
 
@@ -1288,7 +1292,7 @@ Comment on default settings for RStudio:
 -   When you knit entire .Rmd file, "objects" created within .Rmd file will not be available after file compiles
 -   When you run code chunk (or selected lines in chunk), objects created by lines you run will be in your "environment" until you remove them or quit R session
 
-__Output types of .Rmd file__
+**Output types of .Rmd file**
 
 Common/important output types:
 
@@ -1309,7 +1313,7 @@ Common/important output types:
     -   Lectures for this class created with *beamer_presentation* output
     -   Note: YAML header includes `beamer_header.tex` file, which creates some formatting rules and additional commands
 
-__Learning more about R Markdown__
+**Learning more about R Markdown**
 
 Resources
 
@@ -1332,6 +1336,7 @@ How you will learn R Markdown
     -   You will submit .Rmd file AND output of compiled file
     -   For next week, you will submit homework as html_document output
 
+````{=html}
 <!--
 ## Directory structure for this class
 
@@ -1359,10 +1364,11 @@ What is beamer_header.tex?
 -   If you don't have beamer_header.tex saved to appropriate place, you can download it here [LINK](https://github.com/anyone-can-cook/rclass1/blob/master/lectures/beamer_header.tex)
 -   Note: we may revise beamer_header.tex as we work out formatting bugs
 -->
+````
 
 ## Matrices \[optional\]
 
-__Matrices__
+**Matrices**
 
 A **matrix** is a collection of elements arranged in a two-dimensional rectangular layout
 
@@ -1380,7 +1386,7 @@ m <- matrix(
 m # print matrix m
 ```
 
-__Investigate matrix `m`__
+**Investigate matrix `m`**
 
 ```{r}
 typeof(m) # type = "double"
@@ -1390,7 +1396,7 @@ class(m) # class = matrix; more on class later
 
 <br>
 
-__Like atomic vectors, matrices are homogenous data structures__
+**Like atomic vectors, matrices are homogenous data structures**
 
 ```{r}
 m2 <- matrix( 
@@ -1403,7 +1409,7 @@ m2 <- matrix(
 m2
 ```
 
-__Investigate matrix `m`__
+**Investigate matrix `m`**
 
 ```{r}
 typeof(m2) # type = "character"
@@ -1412,12 +1418,12 @@ str(m2) # type = character; has two rows and three columns
 
 <br>
 
-__Why are data frames based on lists rather than matrices?__
+**Why are data frames based on lists rather than matrices?**
 
 -   a matrix is a homogenous data structure, so you couldn't have both a numeric variable and a character variable
 -   a list is a heterogeneous data structure, allowing for variables of different underlying data types
 
-__How are matrices used in R__
+**How are matrices used in R**
 
 -   the underlying code for statistical models uses matrices (e.g., covariance matrix, matrix of regression coefficients)
 -   For most data manipulation tasks, matrices used much less frequently than vectors and lists
@@ -1441,6 +1447,7 @@ colnames(a) <- a_names # assign names to columns
 a
 ```
 
+````{=html}
 <!-- Code not working, unable to open the connection to the github data file
 
 __Practical example of matrices: Network data of recruiting visits from colleges to high schools__
@@ -1575,3 +1582,4 @@ plot(
 )
 ```
 -->
+````
