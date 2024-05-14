@@ -87,53 +87,98 @@ library(tidyverse)
 
 [Pane Layout from RStudio User Guide](https://docs.posit.co/ide/user/ide/guide/ui/ui-panes.html) ![](pane_layout_23.jpeg)
 
-## R Markdown
+## Markdown
 
-[R Markdown](https://rmarkdown.rstudio.com/)
+-   **What is Markdown?**
 
--   R Markdown is a file format -- R Markdown files have the extension **.Rmd** -- that can create many kinds of static and dynamic documents
--   From [RStudio](https://rmarkdown.rstudio.com/articles_intro.html)
-    -   "R Markdown is a file format for making dynamic documents with R. An R Markdown document is written in markdown (an easy-to-write plain text format) and contains chunks of embedded R code"
--   Examples of static documents
-    -   PDF documents, PDF presentations, MS word documents
--   Examples of dynamic documents
-    -   html presentations, interactive dashboards, etc.
+    -   Markdown is a set of rules that define how the layout and presentation of text and images appear in a document. One of the most popular markup languages is HTML. For example, when you go to a website, there are certain sections like a header, navigation bar, specific headings, color schemes, font styles, etc.  
+    -   The [Markdown language](https://daringfireball.net/projects/markdown/) was created by John Gruber in 2004.
 
-How we will be using R Markdown in this class
+-   **How is Markdown different than a WYSIWYG (WIZ--ee--wig) editor?**
 
--   All lectures created using R Markdown
--   You will use R Markdown to complete homework assignments
+    -   What you see is what you get (WYSIWYG) editing software enables you to point and click to make changes to the format, text, and images in a document and view the changes immediately (e.g., Microsoft Word, Google Docs).
 
-After this class you might:
+    -   In a Markdown file, you use Markdown syntax to format text and images.
 
--   never use Microsoft Word again!
--   Use R Markdown to create: papers for class; presentations; journal manuscripts; your dissertation; etc.
--   VIDEO ON WHAT IS R MARKDOWN: <https://www.youtube.com/watch?v=asHhuHRxhvo>
+- **Example Markdown syntax:**
+
+  ## Level two heading  
+    
+  ### Level three heading  
+    
+  * Bullet point  
+    
+  **Bold text**  
+    
+  _italics_
+
+- **What is markdown used for?**
+
+    - HTML or PDF documents
+    - Websites
+    - Note taking (Obsidian)
+    - Books
+    - Presentations and more
+    
+See [The Markdown Guide](https://www.markdownguide.org/getting-started/) for more on Markdown. 
+
 
 ## Quarto (.qmd)
 
-[Quarto](https://quarto.org/)
+- **What is Quarto?** 
 
--   Quarto is.....
--   TEXT HERE ABOUT QUARTO
--   HOW & WHY WE WILL BE USING QUARTO FOR THIS CLASS\
--   COME BACK TO THIS
+    - From [What can I use Quarto for?](https://quarto.org/docs/faq/rmarkdown.html#what-can-i-use-quarto-for)
+    
+       -   "Quarto is an open-source scientific and technical publishing system built on Pandoc. You can weave together narrative text and code to produce elegantly formatted output as documents, web pages, blog posts, books and more."
+       
+    - Think of a Quarto file with the extension .qmd as a document written in Markdown syntax that embeds R code (Markdown + R code). 
+    
+    - The integration of Quarto in R is relatively new and builds off of **R Markdown**. 
+    
+        - From [RStudio](https://rmarkdown.rstudio.com/articles_intro.html): "R Markdown is a file format for making dynamic documents with R. An R Markdown document is written in markdown (an easy-to-write plain text format) and contains chunks of embedded R code."
+        
+        - Similar to Quarto, for the last ten years, R users have relied on R Markdown to produce static and dynamic documents. However, "Quarto is a multi-language, next generation version of R Markdown from Posit, with many new new features and capabilities. Like R Markdown, Quarto uses knitr to execute R code, and is therefore able to render most existing Rmd files without modification." From [Quarto](https://quarto.org/).
+        
+        
+    - **Key Takeaways**:
+    
+      - Quarto does not depend on R; therefore, anyone using Python, Javascript, Julia, etc., can create documents with Quarto (.qmd) and collaborate on projects much more easily.
+      
+      - The Quarto visual editor in R Studio provides a WYSIWYG editing interface, making document creation seamless. 
+      
+      - Quarto works with R Markdown and has additional features, making it easier to use. 
+      
+-  **What is Quarto used for?**
 
-```{=html}
-<!--
-sources:
-https://www.youtube.com/watch?v=z4813fLJzAU
-* Streamline interactive dashboards
-https://www.youtube.com/watch?v=cB2wu79Ar6o
-* Quarto is the updated version of R markdown which allows you to embed code into a document you are creating
-* Essentially a word processor 
-* Compatible with markdown
-* Slide presentations using revealjs, two ## for name of slide, insert code chunks, set incremental: true for pauses on slides for bullet point and numbered lists  . . . for manual pauses in slide 
-* good for referencing tables/figs
-* easy for bibliographies 
+    - HTML, PDF, MS Word documents  
+    - Presentations in Revealjs, Powerpoint, and Beamer
+    - Markdown (GitHub)
+    - Wikis
 
--->
+- **How we will be using Quarto in this class**
+
+    -   All lectures created using Quarto (.qmd) file extension
+    -   You will use Quarto to complete homework assignments
+
+- **After this class you might:**
+
+    -   never use Microsoft Word again!
+    -   Use Quarto to create: papers for class; presentations; journal manuscripts; your dissertation; etc.
+    
+
+- **Further Reading:**
+
+    - Markdown Guide, Basic Syntax: https://www.markdownguide.org/basic-syntax/
+    - A Brief History of R Markdown: https://slides.yihui.org/2021-Brazilian-R-Day.html#1
+    - R Markdown the Definitive Guide: https://bookdown.org/yihui/rmarkdown/
+    - RStudio User Guide Quarto visual editor: https://docs.posit.co/ide/user/ide/guide/documents/visual-editor.html
+    
+ADD IMAGE
+
+```{python}
+print("Hello print")
 ```
+
 ## Why learn R? R can do a lot of stuff!
 
 How we have used R+RStudio+RMarkdown in our research team
@@ -327,7 +372,10 @@ There are two broad types of **vectors**
 
 **Table 1. The six types of atomic vectors in R: double, integer, logical, character, complex, and raw**
 
-```{r, echo=FALSE, message=FALSE}
+```{r}
+#| echo: false
+#| message: false
+
 library(kableExtra); library(tidyverse)
 
 Type <- c("double (or numeric)","integer", "logical", "character", "complex", "raw")
@@ -1099,7 +1147,7 @@ getwd()
 ```
 
 | **Key** | **Description**                                                    |
-|-------------------|-----------------------------------------------------|
+|--------------------------|----------------------------------------------|
 | \~      | tilde is a shortcut for user's home directory (mine is my name pm) |
 | ../     | moves up a level                                                   |
 | ../../  | moves up two level                                                 |

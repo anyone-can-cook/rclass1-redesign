@@ -87,9 +87,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#base-r-vs.-r-packages" id="toc-base-r-vs.-r-packages" class="nav-link" data-scroll-target="#base-r-vs.-r-packages"><span class="header-section-number">1.1</span> Base R vs.&nbsp;R packages</a></li>
   <li><a href="#rstudio" id="toc-rstudio" class="nav-link" data-scroll-target="#rstudio"><span class="header-section-number">1.2</span> RStudio</a></li>
-  <li><a href="#r-markdown" id="toc-r-markdown" class="nav-link" data-scroll-target="#r-markdown"><span class="header-section-number">1.3</span> R Markdown</a></li>
-  <li><a href="#quarto-.qmd" id="toc-quarto-.qmd" class="nav-link" data-scroll-target="#quarto-.qmd"><span class="header-section-number">1.4</span> Quarto (.qmd)</a></li>
-  <li><a href="#why-learn-r-r-can-do-a-lot-of-stuff" id="toc-why-learn-r-r-can-do-a-lot-of-stuff" class="nav-link" data-scroll-target="#why-learn-r-r-can-do-a-lot-of-stuff"><span class="header-section-number">1.5</span> Why learn R? R can do a lot of stuff!</a></li>
+  <li><a href="#markdown" id="toc-markdown" class="nav-link" data-scroll-target="#markdown"><span class="header-section-number">1.3</span> Markdown</a></li>
+  <li><a href="#quarto-.qmd" id="toc-quarto-.qmd" class="nav-link" data-scroll-target="#quarto-.qmd"><span class="header-section-number">1.5</span> Quarto (.qmd)</a></li>
+  <li><a href="#why-learn-r-r-can-do-a-lot-of-stuff" id="toc-why-learn-r-r-can-do-a-lot-of-stuff" class="nav-link" data-scroll-target="#why-learn-r-r-can-do-a-lot-of-stuff"><span class="header-section-number">1.6</span> Why learn R? R can do a lot of stuff!</a></li>
   </ul></li>
   <li><a href="#executing-r-commands" id="toc-executing-r-commands" class="nav-link" data-scroll-target="#executing-r-commands"><span class="header-section-number">2</span> Executing R commands</a>
   <ul class="collapse">
@@ -125,7 +125,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#directories-and-filepaths-skim" id="toc-directories-and-filepaths-skim" class="nav-link" data-scroll-target="#directories-and-filepaths-skim"><span class="header-section-number">5.1</span> Directories and filepaths (skim)</a></li>
   <li><a href="#create-r-project" id="toc-create-r-project" class="nav-link" data-scroll-target="#create-r-project"><span class="header-section-number">5.2</span> Create “R project”</a></li>
-  <li><a href="#r-markdown-1" id="toc-r-markdown-1" class="nav-link" data-scroll-target="#r-markdown-1"><span class="header-section-number">5.3</span> R Markdown</a></li>
+  <li><a href="#r-markdown" id="toc-r-markdown" class="nav-link" data-scroll-target="#r-markdown"><span class="header-section-number">5.3</span> R Markdown</a></li>
   <li><a href="#comment-running-r-code-chunks-vs.-knit-entire-.rmd-file" id="toc-comment-running-r-code-chunks-vs.-knit-entire-.rmd-file" class="nav-link" data-scroll-target="#comment-running-r-code-chunks-vs.-knit-entire-.rmd-file"><span class="header-section-number">5.4</span> Comment: Running R code chunks vs.&nbsp;“knit” entire .Rmd file</a></li>
   <li><a href="#matrices-optional" id="toc-matrices-optional" class="nav-link" data-scroll-target="#matrices-optional"><span class="header-section-number">5.5</span> Matrices [optional]</a></li>
   </ul></li>
@@ -221,56 +221,97 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>“<a href="https://www.rstudio.com/products/rstudio/features/">RStudio</a> is an integrated development environment (IDE) for R. It includes a console, syntax-highlighting editor that supports direct code execution, as well as tools for plotting, history, debugging and workspace management.”</p>
 <p><a href="https://docs.posit.co/ide/user/ide/guide/ui/ui-panes.html">Pane Layout from RStudio User Guide</a> <img src="pane_layout_23.jpeg" class="img-fluid"></p>
 </section>
-<section id="r-markdown" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="r-markdown"><span class="header-section-number">1.3</span> R Markdown</h2>
-<p><a href="https://rmarkdown.rstudio.com/">R Markdown</a></p>
+<section id="markdown" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="markdown"><span class="header-section-number">1.3</span> Markdown</h2>
 <ul>
-<li>R Markdown is a file format – R Markdown files have the extension <strong>.Rmd</strong> – that can create many kinds of static and dynamic documents</li>
-<li>From <a href="https://rmarkdown.rstudio.com/articles_intro.html">RStudio</a>
+<li><p><strong>What is Markdown?</strong></p>
 <ul>
-<li>“R Markdown is a file format for making dynamic documents with R. An R Markdown document is written in markdown (an easy-to-write plain text format) and contains chunks of embedded R code”</li>
+<li>Markdown is a set of rules that define how the layout and presentation of text and images appear in a document. One of the most popular markup languages is HTML. For example, when you go to a website, there are certain sections like a header, navigation bar, specific headings, color schemes, font styles, etc.<br>
+</li>
+<li>The <a href="https://daringfireball.net/projects/markdown/">Markdown language</a> was created by John Gruber in 2004.</li>
 </ul></li>
-<li>Examples of static documents
+<li><p><strong>How is Markdown different than a WYSIWYG (WIZ–ee–wig) editor?</strong></p>
 <ul>
-<li>PDF documents, PDF presentations, MS word documents</li>
+<li><p>What you see is what you get (WYSIWYG) editing software enables you to point and click to make changes to the format, text, and images in a document and view the changes immediately (e.g., Microsoft Word, Google Docs).</p></li>
+<li><p>In a Markdown file, you use Markdown syntax to format text and images.</p></li>
 </ul></li>
-<li>Examples of dynamic documents
+<li><p><strong>Example Markdown syntax:</strong></p>
+<h2 id="level-two-heading" data-number="1.4" class="anchored"><span class="header-section-number">1.4</span> Level two heading</h2>
+<h3 id="level-three-heading" data-number="1.4.1" class="anchored"><span class="header-section-number">1.4.1</span> Level three heading</h3>
 <ul>
-<li>html presentations, interactive dashboards, etc.</li>
+<li>Bullet point</li>
+</ul>
+<p><strong>Bold text</strong></p>
+<p><em>italics</em></p></li>
+<li><p><strong>What is markdown used for?</strong></p>
+<ul>
+<li>HTML or PDF documents</li>
+<li>Websites</li>
+<li>Note taking (Obsidian)</li>
+<li>Books</li>
+<li>Presentations and more</li>
 </ul></li>
 </ul>
-<p>How we will be using R Markdown in this class</p>
+<p>See <a href="https://www.markdownguide.org/getting-started/">The Markdown Guide</a> for more on Markdown.</p>
+</section>
+<section id="quarto-.qmd" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="quarto-.qmd"><span class="header-section-number">1.5</span> Quarto (.qmd)</h2>
 <ul>
-<li>All lectures created using R Markdown</li>
-<li>You will use R Markdown to complete homework assignments</li>
-</ul>
-<p>After this class you might:</p>
+<li><p><strong>What is Quarto?</strong></p>
+<ul>
+<li><p>From <a href="https://quarto.org/docs/faq/rmarkdown.html#what-can-i-use-quarto-for">What can I use Quarto for?</a></p>
+<ul>
+<li>“Quarto is an open-source scientific and technical publishing system built on Pandoc. You can weave together narrative text and code to produce elegantly formatted output as documents, web pages, blog posts, books and more.”</li>
+</ul></li>
+<li><p>Think of a Quarto file with the extension .qmd as a document written in Markdown syntax that embeds R code (Markdown + R code).</p></li>
+<li><p>The integration of Quarto in R is relatively new and builds off of <strong>R Markdown</strong>.</p>
+<ul>
+<li><p>From <a href="https://rmarkdown.rstudio.com/articles_intro.html">RStudio</a>: “R Markdown is a file format for making dynamic documents with R. An R Markdown document is written in markdown (an easy-to-write plain text format) and contains chunks of embedded R code.”</p></li>
+<li><p>Similar to Quarto, for the last ten years, R users have relied on R Markdown to produce static and dynamic documents. However, “Quarto is a multi-language, next generation version of R Markdown from Posit, with many new new features and capabilities. Like R Markdown, Quarto uses knitr to execute R code, and is therefore able to render most existing Rmd files without modification.” From <a href="https://quarto.org/">Quarto</a>.</p></li>
+</ul></li>
+<li><p><strong>Key Takeaways</strong>:</p>
+<ul>
+<li><p>Quarto does not depend on R; therefore, anyone using Python, Javascript, Julia, etc., can create documents with Quarto (.qmd) and collaborate on projects much more easily.</p></li>
+<li><p>The Quarto visual editor in R Studio provides a WYSIWYG editing interface, making document creation seamless.</p></li>
+<li><p>Quarto works with R Markdown and has additional features, making it easier to use.</p></li>
+</ul></li>
+</ul></li>
+<li><p><strong>What is Quarto used for?</strong></p>
+<ul>
+<li>HTML, PDF, MS Word documents<br>
+</li>
+<li>Presentations in Revealjs, Powerpoint, and Beamer</li>
+<li>Markdown (GitHub)</li>
+<li>Wikis</li>
+</ul></li>
+<li><p><strong>How we will be using Quarto in this class</strong></p>
+<ul>
+<li>All lectures created using Quarto (.qmd) file extension</li>
+<li>You will use Quarto to complete homework assignments</li>
+</ul></li>
+<li><p><strong>After this class you might:</strong></p>
 <ul>
 <li>never use Microsoft Word again!</li>
-<li>Use R Markdown to create: papers for class; presentations; journal manuscripts; your dissertation; etc.</li>
-</ul>
-</section>
-<section id="quarto-.qmd" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="quarto-.qmd"><span class="header-section-number">1.4</span> Quarto (.qmd)</h2>
-<p><a href="https://quarto.org/">Quarto</a></p>
+<li>Use Quarto to create: papers for class; presentations; journal manuscripts; your dissertation; etc.</li>
+</ul></li>
+<li><p><strong>Further Reading:</strong></p>
 <ul>
-<li>Quarto is…..</li>
-<li>TEXT HERE ABOUT QUARTO</li>
-<li>HOW &amp; WHY WE WILL BE USING QUARTO FOR THIS CLASS<br>
-</li>
-<li>COME BACK TO THIS</li>
+<li>Markdown Guide, Basic Syntax: https://www.markdownguide.org/basic-syntax/</li>
+<li>A Brief History of R Markdown: https://slides.yihui.org/2021-Brazilian-R-Day.html#1</li>
+<li>R Markdown the Definitive Guide: https://bookdown.org/yihui/rmarkdown/</li>
+<li>RStudio User Guide Quarto visual editor: https://docs.posit.co/ide/user/ide/guide/documents/visual-editor.html</li>
+</ul></li>
 </ul>
-<!--
-sources:
-https://www.youtube.com/watch?v=z4813fLJzAU
-* Streamline interactive dashboards
-https://www.youtube.com/watch?v=H1zaP4po1ss
-* 
-
--->
+<p>ADD IMAGE</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hello print"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Hello print</code></pre>
+</div>
+</div>
 </section>
-<section id="why-learn-r-r-can-do-a-lot-of-stuff" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="why-learn-r-r-can-do-a-lot-of-stuff"><span class="header-section-number">1.5</span> Why learn R? R can do a lot of stuff!</h2>
+<section id="why-learn-r-r-can-do-a-lot-of-stuff" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="why-learn-r-r-can-do-a-lot-of-stuff"><span class="header-section-number">1.6</span> Why learn R? R can do a lot of stuff!</h2>
 <p>How we have used R+RStudio+RMarkdown in our research team</p>
 <ul>
 <li>Stuff traditional statistical software (e.g., SPSS, Stata) can do
@@ -343,15 +384,15 @@ This class is for anyone who wants to work with data, that is people who want to
 <section id="r-as-a-calculator" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="r-as-a-calculator"><span class="header-section-number">2.1</span> R as a calculator</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span><span class="sc">+</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span><span class="sc">+</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 7</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span><span class="sc">*</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span><span class="sc">*</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 30</code></pre>
 </div>
@@ -377,11 +418,11 @@ This class is for anyone who wants to work with data, that is people who want to
 </ul></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span><span class="sc">+</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span><span class="sc">+</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 7</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span><span class="sc">*</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span><span class="sc">*</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 30</code></pre>
 </div>
@@ -417,14 +458,14 @@ This class is for anyone who wants to work with data, that is people who want to
 </ul></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an object and assign value</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an object and assign value</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="st">"yay!"</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="st">"yay!"</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "yay!"</code></pre>
 </div>
@@ -441,13 +482,13 @@ This class is for anyone who wants to work with data, that is people who want to
 </ul></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="st">"yay!"</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="st">"yay!"</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "yay!"</code></pre>
 </div>
@@ -587,18 +628,18 @@ Object "type" refers to how the object is stored internally by R
 <li>Help file says that <code>c()</code> “combines values into a vector or list”</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#?c # to see help file for the c() "combine" function</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">9</span>) <span class="co"># create object called x, which is a vector with three elements </span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># (each an integer)</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>x <span class="co"># print object x</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#?c # to see help file for the c() "combine" function</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">9</span>) <span class="co"># create object called x, which is a vector with three elements </span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co"># (each an integer)</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>x <span class="co"># print object x</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4 7 9</code></pre>
 </div>
 </div>
 <p>Vector where the elements are characters</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>animals <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"lions"</span>, <span class="st">"tigers"</span>, <span class="st">"bears"</span>, <span class="st">"oh my"</span>) <span class="co"># create object called animals</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>animals</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>animals <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"lions"</span>, <span class="st">"tigers"</span>, <span class="st">"bears"</span>, <span class="st">"oh my"</span>) <span class="co"># create object called animals</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>animals</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "lions"  "tigers" "bears"  "oh my" </code></pre>
 </div>
@@ -615,28 +656,28 @@ Object "type" refers to how the object is stored internally by R
 <strong>Solutions</strong>
 </summary>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) </span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co"># create a vector called v1 with three elements</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co"># all the elements are numbers</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>v1 <span class="co"># print value</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co"># create a vector called v1 with three elements</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co"># all the elements are numbers</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>v1 <span class="co"># print value</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 2 3</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"d"</span>) </span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co"># create a vector called v2 with four elements</span></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co"># all the elements are characters</span></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>v2 <span class="co"># print value</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"d"</span>) </span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="co"># create a vector called v2 with four elements</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co"># all the elements are characters</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>v2 <span class="co"># print value</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "a" "b" "c" "d"</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>v3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="st">"a"</span>, <span class="st">"b"</span>) </span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="co"># create a vector called v3 with five element</span></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co"># some elements are numeric and some elements are characters</span></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>v3 <span class="co"># print value</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>v3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="st">"a"</span>, <span class="st">"b"</span>) </span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="co"># create a vector called v3 with five element</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co"># some elements are numeric and some elements are characters</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>v3 <span class="co"># print value</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "1" "2" "3" "a" "b"</code></pre>
 </div>
@@ -677,33 +718,33 @@ I find Skinner's classification more intuitive conceptually. However, it isn't c
 <p>For remainder of lecture, I’ll use the term <strong>vector</strong> to refer to atomic vectors</p>
 <p>Use <code>length()</code> function to examine vector length</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">9</span>)</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">9</span>)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4 7 9</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>animals <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"lions"</span>, <span class="st">"tigers"</span>, <span class="st">"bears"</span>, <span class="st">"oh my"</span>)</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>animals</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>animals <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"lions"</span>, <span class="st">"tigers"</span>, <span class="st">"bears"</span>, <span class="st">"oh my"</span>)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>animals</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "lions"  "tigers" "bears"  "oh my" </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(animals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(animals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4</code></pre>
 </div>
 </div>
 <p>A single number (or a single string/character) is a vector with <code>length==1</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="st">"Tommy"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="st">"Tommy"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
 </div>
@@ -724,28 +765,28 @@ I find Skinner's classification more intuitive conceptually. However, it isn't c
 </ul>
 <p>Use <code>typeof()</code> function to examine vector type</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4 7 9</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "double"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.5</span>, <span class="fl">1.6</span>)</span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.5</span>, <span class="fl">1.6</span>)</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.5 1.6</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "double"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>animals</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>animals</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "lions"  "tigers" "bears"  "oh my" </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(animals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(animals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "character"</code></pre>
 </div>
@@ -753,29 +794,29 @@ I find Skinner's classification more intuitive conceptually. However, it isn't c
 <p><strong>Data type of a vector, numeric</strong></p>
 <p>Numeric vectors can be “integer” (e.g., 5) or “double” (e.g., 5.5)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="fl">1.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="fl">1.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "double"</code></pre>
 </div>
 </div>
 <p>R stores numbers as doubles by default.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4 7 9</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "double"</code></pre>
 </div>
 </div>
 <p>To make an integer, place an <code>L</code> after the number:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "double"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(5L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(5L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "integer"</code></pre>
 </div>
@@ -791,28 +832,28 @@ I find Skinner's classification more intuitive conceptually. However, it isn't c
 <li>the text within quotes is the “string”</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>c1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"cat"</span>,<span class="st">'cash'</span>,<span class="st">'candy cane'</span>)</span>
-<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>c1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>c1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"cat"</span>,<span class="st">'cash'</span>,<span class="st">'candy cane'</span>)</span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>c1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "cat"        "cash"       "candy cane"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(c1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(c1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "character"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(c1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(c1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3</code></pre>
 </div>
 </div>
 <p>Numeric values can also be stored as strings</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>c2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"1"</span>,<span class="st">"2"</span>,<span class="st">"3"</span>)</span>
-<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>c2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>c2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"1"</span>,<span class="st">"2"</span>,<span class="st">"3"</span>)</span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>c2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "1" "2" "3"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(c2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(c2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "character"</code></pre>
 </div>
@@ -824,28 +865,28 @@ I find Skinner's classification more intuitive conceptually. However, it isn't c
 <li>Don’t worry about <code>NA</code> for now</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "logical"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="st">"TRUE"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="st">"TRUE"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "character"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">FALSE</span>,<span class="cn">NA</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">FALSE</span>,<span class="cn">NA</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "logical"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">FALSE</span>,<span class="cn">NA</span>,<span class="st">"FALSE"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">FALSE</span>,<span class="cn">NA</span>,<span class="st">"FALSE"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "character"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>log <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">TRUE</span>,<span class="cn">FALSE</span>,<span class="cn">NA</span>,<span class="cn">FALSE</span>)</span>
-<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(log)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>log <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">TRUE</span>,<span class="cn">FALSE</span>,<span class="cn">NA</span>,<span class="cn">FALSE</span>)</span>
+<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(log)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "logical"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(log)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(log)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5</code></pre>
 </div>
@@ -863,21 +904,21 @@ I find Skinner's classification more intuitive conceptually. However, it isn't c
 <li>logical &lt; integer &lt; double &lt; character</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">TRUE</span>,<span class="cn">NA</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">TRUE</span>,<span class="cn">NA</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "logical"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="co"># recall L after an integer forces type to be integer </span></span>
-<span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a><span class="co"># rather than double</span></span>
-<span id="cb90-3"><a href="#cb90-3" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">TRUE</span>,<span class="cn">NA</span>,1L)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="co"># recall L after an integer forces type to be integer </span></span>
+<span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a><span class="co"># rather than double</span></span>
+<span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">TRUE</span>,<span class="cn">NA</span>,1L)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "integer"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">TRUE</span>,<span class="cn">NA</span>,<span class="fl">1.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">TRUE</span>,<span class="cn">NA</span>,<span class="fl">1.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "double"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">TRUE</span>,<span class="cn">NA</span>,<span class="fl">1.5</span>,<span class="st">"howdy!"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">TRUE</span>,<span class="cn">NA</span>,<span class="fl">1.5</span>,<span class="st">"howdy!"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "character"</code></pre>
 </div>
@@ -891,26 +932,26 @@ I find Skinner's classification more intuitive conceptually. However, it isn't c
 <li>the <code>str()</code> function “compactly display[s] the internal structure of an R object” [from help file]; very useful for describing objects</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="co">#?str</span></span>
-<span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="st">"hi!"</span>)</span>
-<span id="cb96-3"><a href="#cb96-3" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="co">#?str</span></span>
+<span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="st">"hi!"</span>)</span>
+<span id="cb98-3"><a href="#cb98-3" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "1"   "2"   "3"   "hi!"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> chr [1:4] "1" "2" "3" "hi!"</code></pre>
 </div>
 </div>
 <p>Example of creating a named vector</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">a=</span><span class="dv">1</span>,<span class="at">b=</span><span class="dv">2</span>,<span class="dv">3</span>,<span class="at">c=</span><span class="st">"hi!"</span>)</span>
-<span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">a=</span><span class="dv">1</span>,<span class="at">b=</span><span class="dv">2</span>,<span class="dv">3</span>,<span class="at">c=</span><span class="st">"hi!"</span>)</span>
+<span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    a     b           c 
   "1"   "2"   "3" "hi!" </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> Named chr [1:4] "1" "2" "3" "hi!"
  - attr(*, "names")= chr [1:4] "a" "b" "" "c"</code></pre>
@@ -923,38 +964,38 @@ I find Skinner's classification more intuitive conceptually. However, it isn't c
 <p>(Loose) definition: a sequence is a set of numbers in ascending or descending order</p>
 <p>A vector containing a “sequence” of numbers (e.g., 1, 2, 3) can be created using the colon operator <code>:</code> with the notation <code>start:end</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span><span class="dv">5</span><span class="sc">:</span><span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span><span class="dv">5</span><span class="sc">:</span><span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] -5 -4 -3 -2 -1  0  1  2  3  4  5</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span><span class="sc">:-</span><span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span><span class="sc">:-</span><span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  5  4  3  2  1  0 -1 -2 -3 -4 -5</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a>s<span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span> <span class="co">#same as this: s&lt;- c(1:10)</span></span>
-<span id="cb108-2"><a href="#cb108-2" aria-hidden="true" tabindex="-1"></a>s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a>s<span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span> <span class="co">#same as this: s&lt;- c(1:10)</span></span>
+<span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a>s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(s)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(s)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 10</code></pre>
 </div>
 </div>
 <p>Creating sequences using <code>seq()</code> function - basic syntax [with default values]:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">1</span>, <span class="at">by =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">1</span>, <span class="at">by =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">10</span>,<span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">10</span>,<span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 10 11 12 13 14 15</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">from=</span><span class="dv">10</span>,<span class="at">to=</span><span class="dv">15</span>,<span class="at">by=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">from=</span><span class="dv">10</span>,<span class="at">to=</span><span class="dv">15</span>,<span class="at">by=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 10 11 12 13 14 15</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">from=</span><span class="dv">100</span>,<span class="at">to=</span><span class="dv">150</span>,<span class="at">by=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">from=</span><span class="dv">100</span>,<span class="at">to=</span><span class="dv">150</span>,<span class="at">by=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 100 110 120 130 140 150</code></pre>
 </div>
@@ -967,15 +1008,15 @@ I find Skinner's classification more intuitive conceptually. However, it isn't c
 <li>e.g., add a single value to a vector and that value will be added to each element of the vector</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 2 3</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">3</span><span class="fl">+.5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">3</span><span class="fl">+.5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.5 2.5 3.5</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)<span class="sc">*</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)<span class="sc">*</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2 4 6</code></pre>
 </div>
@@ -985,11 +1026,11 @@ I find Skinner's classification more intuitive conceptually. However, it isn't c
 <li>e.g., for addition: add element 1 of vector 1 to element 1 of vector 2, add element 2 of vector 1 to element 2 of vector 2, etc.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>)<span class="sc">+</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>)<span class="sc">+</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2 1 3</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>)<span class="sc">*</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>)<span class="sc">*</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 0 2</code></pre>
 </div>
@@ -1012,28 +1053,28 @@ I find Skinner's classification more intuitive conceptually. However, it isn't c
 <p><strong>Create lists using <code>list()</code> function</strong></p>
 <p>Create a vector (for comparison purposes)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
-<span id="cb129-2"><a href="#cb129-2" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb131"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb131-1"><a href="#cb131-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
+<span id="cb131-2"><a href="#cb131-2" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "double"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb131"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb131-1"><a href="#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb133"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb133-1"><a href="#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3</code></pre>
 </div>
 </div>
 <p>Create a list</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb133"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb133-1"><a href="#cb133-1" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
-<span id="cb133-2"><a href="#cb133-2" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb135"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb135-1"><a href="#cb135-1" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
+<span id="cb135-2"><a href="#cb135-2" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "list"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb135"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb135-1"><a href="#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb137"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb137-1"><a href="#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb137"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb137-1"><a href="#cb137-1" aria-hidden="true" tabindex="-1"></a>b <span class="co"># print list is awkward</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb139"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb139-1"><a href="#cb139-1" aria-hidden="true" tabindex="-1"></a>b <span class="co"># print list is awkward</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
 [1] 1
@@ -1048,16 +1089,16 @@ I find Skinner's classification more intuitive conceptually. However, it isn't c
 <p><strong>Investigate structure of lists using <code>str()</code> function</strong></p>
 <p>When investigating lists, <code>str()</code> is better than printing the list</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb139"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb139-1"><a href="#cb139-1" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
-<span id="cb139-2"><a href="#cb139-2" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb141"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb141-1"><a href="#cb141-1" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
+<span id="cb141-2"><a href="#cb141-2" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "list"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb141"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb141-1"><a href="#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb143"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb143-1"><a href="#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb143"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb143-1"><a href="#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(b) <span class="co"># 3 elements, each element is a numeric vector w/ length=1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb145"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb145-1"><a href="#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(b) <span class="co"># 3 elements, each element is a numeric vector w/ length=1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>List of 3
  $ : num 1
@@ -1067,16 +1108,16 @@ I find Skinner's classification more intuitive conceptually. However, it isn't c
 </div>
 <p>Each element of a list can be a vector of different length (i.e., different number of elements)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb145"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb145-1"><a href="#cb145-1" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>),<span class="fu">c</span>(<span class="sc">-</span><span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">3</span>))</span>
-<span id="cb145-2"><a href="#cb145-2" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb147"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb147-1"><a href="#cb147-1" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>),<span class="fu">c</span>(<span class="sc">-</span><span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">3</span>))</span>
+<span id="cb147-2"><a href="#cb147-2" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "list"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb147"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb147-1"><a href="#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb149"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb149-1"><a href="#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb149"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb149-1"><a href="#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(c) <span class="co"># 2 elements; element 1=vector w/ length=2; element 2=vector w/length=3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb151"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb151-1"><a href="#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(c) <span class="co"># 2 elements; element 1=vector w/ length=2; element 2=vector w/length=3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>List of 2
  $ : num [1:2] 3 4
@@ -1089,16 +1130,16 @@ I find Skinner's classification more intuitive conceptually. However, it isn't c
 <li>data types can differ across elements within a list</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb151"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb151-1"><a href="#cb151-1" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="st">"apple"</span>)</span>
-<span id="cb151-2"><a href="#cb151-2" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb153"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb153-1"><a href="#cb153-1" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="st">"apple"</span>)</span>
+<span id="cb153-2"><a href="#cb153-2" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "list"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb153"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb153-1"><a href="#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb155"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb155-1"><a href="#cb155-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb155"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb155-1"><a href="#cb155-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb157"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb157-1"><a href="#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>List of 3
  $ : num 1
@@ -1108,20 +1149,20 @@ I find Skinner's classification more intuitive conceptually. However, it isn't c
 </div>
 <p>Vectors are <strong>homogeneous</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb157"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb157-1"><a href="#cb157-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="st">"apple"</span>)</span>
-<span id="cb157-2"><a href="#cb157-2" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb159"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb159-1"><a href="#cb159-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="st">"apple"</span>)</span>
+<span id="cb159-2"><a href="#cb159-2" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "character"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb159"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb159-1"><a href="#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb161"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb161-1"><a href="#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> chr [1:3] "1" "2" "apple"</code></pre>
 </div>
 </div>
 <p><strong>Lists can contain other lists</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb161"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb161-1"><a href="#cb161-1" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="fu">list</span>(<span class="st">"apple"</span>, <span class="st">"orange"</span>), <span class="fu">list</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span>
-<span id="cb161-2"><a href="#cb161-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb163"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb163-1"><a href="#cb163-1" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="fu">list</span>(<span class="st">"apple"</span>, <span class="st">"orange"</span>), <span class="fu">list</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span>
+<span id="cb163-2"><a href="#cb163-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>List of 3
  $ : num [1:2] 1 2
@@ -1136,7 +1177,7 @@ I find Skinner's classification more intuitive conceptually. However, it isn't c
 </div>
 <p>The <strong>first element</strong> of list is a numeric vector with length=2</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb163"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb163-1"><a href="#cb163-1" aria-hidden="true" tabindex="-1"></a>x1[[<span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb165"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb165-1"><a href="#cb165-1" aria-hidden="true" tabindex="-1"></a>x1[[<span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 2</code></pre>
 </div>
@@ -1147,7 +1188,7 @@ I find Skinner's classification more intuitive conceptually. However, it isn't c
 <li>second element is character vector with length=1</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb165"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb165-1"><a href="#cb165-1" aria-hidden="true" tabindex="-1"></a>x1[[<span class="dv">2</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb167"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb167-1"><a href="#cb167-1" aria-hidden="true" tabindex="-1"></a>x1[[<span class="dv">2</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
 [1] "apple"
@@ -1163,7 +1204,7 @@ I find Skinner's classification more intuitive conceptually. However, it isn't c
 <li>third element is numeric vector with length=1</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb167"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb167-1"><a href="#cb167-1" aria-hidden="true" tabindex="-1"></a>x1[[<span class="dv">3</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb169"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb169-1"><a href="#cb169-1" aria-hidden="true" tabindex="-1"></a>x1[[<span class="dv">3</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
 [1] 1
@@ -1177,8 +1218,8 @@ I find Skinner's classification more intuitive conceptually. However, it isn't c
 </div>
 <p><strong>You can name each element in the list</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb169"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb169-1"><a href="#cb169-1" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="at">b=</span><span class="fu">list</span>(<span class="st">"apple"</span>, <span class="st">"orange"</span>), <span class="at">c=</span><span class="fu">list</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span>
-<span id="cb169-2"><a href="#cb169-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb171"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb171-1"><a href="#cb171-1" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="at">b=</span><span class="fu">list</span>(<span class="st">"apple"</span>, <span class="st">"orange"</span>), <span class="at">c=</span><span class="fu">list</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span>
+<span id="cb171-2"><a href="#cb171-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>List of 3
  $ a: num [1:2] 1 2
@@ -1193,11 +1234,11 @@ I find Skinner's classification more intuitive conceptually. However, it isn't c
 </div>
 <p><code>names()</code> function shows names of elements in the list</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb171"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb171-1"><a href="#cb171-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(x2) <span class="co"># has names</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb173"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb173-1"><a href="#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(x2) <span class="co"># has names</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "a" "b" "c"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb173"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb173-1"><a href="#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(x1) <span class="co"># no names</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb175"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb175-1"><a href="#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(x1) <span class="co"># no names</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>NULL</code></pre>
 </div>
@@ -1205,32 +1246,32 @@ I find Skinner's classification more intuitive conceptually. However, it isn't c
 <p><strong>Access individual elements in a “named” list</strong></p>
 <p>Syntax: <code>list_name$element_name</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb175"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb175-1"><a href="#cb175-1" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a=</span><span class="dv">1</span>, <span class="at">b=</span><span class="fu">list</span>(<span class="st">"apple"</span>, <span class="st">"orange"</span>), <span class="at">c=</span><span class="fu">list</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span>
-<span id="cb175-2"><a href="#cb175-2" aria-hidden="true" tabindex="-1"></a>x2<span class="sc">$</span>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb177"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb177-1"><a href="#cb177-1" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a=</span><span class="dv">1</span>, <span class="at">b=</span><span class="fu">list</span>(<span class="st">"apple"</span>, <span class="st">"orange"</span>), <span class="at">c=</span><span class="fu">list</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span>
+<span id="cb177-2"><a href="#cb177-2" aria-hidden="true" tabindex="-1"></a>x2<span class="sc">$</span>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb177"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb177-1"><a href="#cb177-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(x2<span class="sc">$</span>a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb179"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb179-1"><a href="#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(x2<span class="sc">$</span>a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "double"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb179"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb179-1"><a href="#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(x2<span class="sc">$</span>a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb181"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb181-1"><a href="#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(x2<span class="sc">$</span>a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb181"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb181-1"><a href="#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(x2<span class="sc">$</span>b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb183"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb183-1"><a href="#cb183-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(x2<span class="sc">$</span>b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "list"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb183"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb183-1"><a href="#cb183-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(x2<span class="sc">$</span>b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb185"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb185-1"><a href="#cb185-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(x2<span class="sc">$</span>b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb185"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb185-1"><a href="#cb185-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(x2<span class="sc">$</span>c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb187"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb187-1"><a href="#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(x2<span class="sc">$</span>c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "list"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb187"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb187-1"><a href="#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(x2<span class="sc">$</span>c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb189"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb189-1"><a href="#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(x2<span class="sc">$</span>c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3</code></pre>
 </div>
@@ -1238,7 +1279,7 @@ I find Skinner's classification more intuitive conceptually. However, it isn't c
 <p>Note: We’ll spend more time practicing “accessing elements of a list” in upcoming weeks</p>
 <p><strong>Compare structure of list to structure of element within a list</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb189"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb189-1"><a href="#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb191"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb191-1"><a href="#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>List of 3
  $ a: num 1
@@ -1250,7 +1291,7 @@ I find Skinner's classification more intuitive conceptually. However, it isn't c
   ..$ : num 2
   ..$ : num 3</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb191"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb191-1"><a href="#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x2<span class="sc">$</span>c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb193"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb193-1"><a href="#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x2<span class="sc">$</span>c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>List of 3
  $ : num 1
@@ -1281,11 +1322,11 @@ I find Skinner's classification more intuitive conceptually. However, it isn't c
 </ul></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb193"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb193-1"><a href="#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb195"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb195-1"><a href="#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "mpg" "cyl" "hp" </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb195"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb195-1"><a href="#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df, <span class="at">n=</span><span class="dv">4</span>) <span class="co"># print first few rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb197"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb197-1"><a href="#cb197-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df, <span class="at">n=</span><span class="dv">4</span>) <span class="co"># print first few rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                mpg cyl  hp
 Mazda RX4      21.0   6 110
@@ -1297,7 +1338,7 @@ Hornet 4 Drive 21.4   6 110</code></pre>
 <p>Additionally, data frames have “attributes”; we’ll discuss those in upcoming weeks</p>
 <p><strong>A data frame is a named list</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb197"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb197-1"><a href="#cb197-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df, <span class="at">n=</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb199"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb199-1"><a href="#cb199-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df, <span class="at">n=</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                   mpg cyl  hp
 Mazda RX4         21.0   6 110
@@ -1306,19 +1347,19 @@ Datsun 710        22.8   4  93
 Hornet 4 Drive    21.4   6 110
 Hornet Sportabout 18.7   8 175</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb199"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb199-1"><a href="#cb199-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb201"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb201-1"><a href="#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "list"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb201"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb201-1"><a href="#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb203"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb203-1"><a href="#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "mpg" "cyl" "hp" </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb203"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb203-1"><a href="#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(df) <span class="co"># length=number of variables</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb205"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb205-1"><a href="#cb205-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(df) <span class="co"># length=number of variables</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb205"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb205-1"><a href="#cb205-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb207"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb207-1"><a href="#cb207-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   32 obs. of  3 variables:
  $ mpg: num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
@@ -1332,15 +1373,15 @@ Hornet Sportabout 18.7   8 175</code></pre>
 <li>These variables are vectors with length equal to the number of rows/observations</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb207"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb207-1"><a href="#cb207-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(df<span class="sc">$</span>mpg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb209"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb209-1"><a href="#cb209-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(df<span class="sc">$</span>mpg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "double"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb209"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb209-1"><a href="#cb209-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(df<span class="sc">$</span>mpg) <span class="co"># length=number of rows/obs</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb211"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb211-1"><a href="#cb211-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(df<span class="sc">$</span>mpg) <span class="co"># length=number of rows/obs</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 32</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb211"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb211-1"><a href="#cb211-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df<span class="sc">$</span>mpg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb213"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb213-1"><a href="#cb213-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df<span class="sc">$</span>mpg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> num [1:32] 21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...</code></pre>
 </div>
@@ -1400,20 +1441,20 @@ Hornet Sportabout 18.7   8 175</code></pre>
 <li><strong>return</strong>. Returns numeric vector of length=1; value is sum of input vector</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb213"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb213-1"><a href="#cb213-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb215"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb215-1"><a href="#cb215-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb215"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb215-1"><a href="#cb215-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="fu">sum</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>))) <span class="co"># type of object created by sum()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb217"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb217-1"><a href="#cb217-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="fu">sum</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>))) <span class="co"># type of object created by sum()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "double"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb217"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb217-1"><a href="#cb217-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">sum</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>))) <span class="co"># length of object created by sum()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb219"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb219-1"><a href="#cb219-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">sum</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>))) <span class="co"># length of object created by sum()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb219"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb219-1"><a href="#cb219-1" aria-hidden="true" tabindex="-1"></a><span class="co">#sum(c(TRUE,TRUE,FALSE))</span></span>
-<span id="cb219-2"><a href="#cb219-2" aria-hidden="true" tabindex="-1"></a><span class="co">#typeof(sum(c(TRUE,TRUE,FALSE))); length(sum(c(TRUE,TRUE,FALSE)))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb221"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb221-1"><a href="#cb221-1" aria-hidden="true" tabindex="-1"></a><span class="co">#sum(c(TRUE,TRUE,FALSE))</span></span>
+<span id="cb221-2"><a href="#cb221-2" aria-hidden="true" tabindex="-1"></a><span class="co">#typeof(sum(c(TRUE,TRUE,FALSE))); length(sum(c(TRUE,TRUE,FALSE)))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="function-syntax" class="level2" data-number="4.2">
@@ -1438,7 +1479,7 @@ Hornet Sportabout 18.7   8 175</code></pre>
 </ul></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb220"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb220-1"><a href="#cb220-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">10</span>,<span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb222"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb222-1"><a href="#cb222-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">10</span>,<span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 10 11 12 13 14 15</code></pre>
 </div>
@@ -1452,11 +1493,11 @@ Hornet Sportabout 18.7   8 175</code></pre>
 <li>when you call the function, you need to assign values to these arguments; but you usually don’t have to specify the name of the argument</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb222"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb222-1"><a href="#cb222-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">from=</span><span class="dv">10</span>, <span class="at">to=</span><span class="dv">20</span>, <span class="at">by=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb224"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb224-1"><a href="#cb224-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">from=</span><span class="dv">10</span>, <span class="at">to=</span><span class="dv">20</span>, <span class="at">by=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 10 12 14 16 18 20</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb224"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb224-1"><a href="#cb224-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb226"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb226-1"><a href="#cb226-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 10 12 14 16 18 20</code></pre>
 </div>
@@ -1467,15 +1508,15 @@ Hornet Sportabout 18.7   8 175</code></pre>
 <li>e.g., partial list of default values for <code>seq()</code>: <code>seq(from=1, to=1, by=1)</code></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb226"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb226-1"><a href="#cb226-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb228"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb228-1"><a href="#cb228-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb228"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb228-1"><a href="#cb228-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">to=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb230"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb230-1"><a href="#cb230-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">to=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb230"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb230-1"><a href="#cb230-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">10</span>) <span class="co"># R assigned value of 10 to "to" rather than "from" or "by"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb232"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb232-1"><a href="#cb232-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">10</span>) <span class="co"># R assigned value of 10 to "to" rather than "from" or "by"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
 </div>
@@ -1485,7 +1526,7 @@ Hornet Sportabout 18.7   8 175</code></pre>
 <h2 data-number="4.4" class="anchored" data-anchor-id="function-arguments-the-na.rm-argument"><span class="header-section-number">4.4</span> Function arguments, the <code>na.rm</code> argument</h2>
 <p>When R performs a calculation and an input has value <code>NA</code>, output value is <code>NA</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb232"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb232-1"><a href="#cb232-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span><span class="sc">+</span><span class="dv">4</span><span class="sc">+</span><span class="cn">NA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb234"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb234-1"><a href="#cb234-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span><span class="sc">+</span><span class="dv">4</span><span class="sc">+</span><span class="cn">NA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] NA</code></pre>
 </div>
@@ -1499,11 +1540,11 @@ Hornet Sportabout 18.7   8 175</code></pre>
 <li>e.g., default values for <code>sum()</code> function: <code>sum(..., na.rm = FALSE)</code></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb234"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb234-1"><a href="#cb234-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="cn">NA</span>), <span class="at">na.rm =</span> <span class="cn">FALSE</span>) <span class="co"># default value</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb236"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb236-1"><a href="#cb236-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="cn">NA</span>), <span class="at">na.rm =</span> <span class="cn">FALSE</span>) <span class="co"># default value</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] NA</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb236"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb236-1"><a href="#cb236-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="cn">NA</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb238"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb238-1"><a href="#cb238-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="cn">NA</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] NA</code></pre>
 </div>
@@ -1511,7 +1552,7 @@ Hornet Sportabout 18.7   8 175</code></pre>
 <li><p>if you specify, <code>na.rm = TRUE</code>, <code>NA</code> values removed prior to calculation</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb238"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb238-1"><a href="#cb238-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="cn">NA</span>), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb240"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb240-1"><a href="#cb240-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="cn">NA</span>), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6</code></pre>
 </div>
@@ -1521,8 +1562,8 @@ Hornet Sportabout 18.7   8 175</code></pre>
 <h2 data-number="4.5" class="anchored" data-anchor-id="help-files-for-functions"><span class="header-section-number">4.5</span> Help files for functions</h2>
 <p>To see help file on a function, type <code>?function_name</code> without parentheses</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb240"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb240-1"><a href="#cb240-1" aria-hidden="true" tabindex="-1"></a>?sum</span>
-<span id="cb240-2"><a href="#cb240-2" aria-hidden="true" tabindex="-1"></a>?seq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb242"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb242-1"><a href="#cb242-1" aria-hidden="true" tabindex="-1"></a>?sum</span>
+<span id="cb242-2"><a href="#cb242-2" aria-hidden="true" tabindex="-1"></a>?seq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Contents of help files</strong></p>
 <ul>
@@ -1549,8 +1590,8 @@ Hornet Sportabout 18.7   8 175</code></pre>
 <h2 data-number="4.6" class="anchored" data-anchor-id="function-arguments-the-dot-dot-dot-...-argument"><span class="header-section-number">4.6</span> Function arguments, the dot-dot-dot (<code>...</code>) argument</h2>
 <p>On help file for many functions, you will see an argument called <code>...</code>, referred to as the “dot-dot-dot” argument</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb241"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb241-1"><a href="#cb241-1" aria-hidden="true" tabindex="-1"></a>?sum</span>
-<span id="cb241-2"><a href="#cb241-2" aria-hidden="true" tabindex="-1"></a>?seq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb243"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb243-1"><a href="#cb243-1" aria-hidden="true" tabindex="-1"></a>?sum</span>
+<span id="cb243-2"><a href="#cb243-2" aria-hidden="true" tabindex="-1"></a>?seq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>“Dot-dot-dot” arguments have several uses. What you should know for now:</p>
 <ul>
@@ -1564,18 +1605,18 @@ Hornet Sportabout 18.7   8 175</code></pre>
 <li><code>...</code> used to allow a function to take an arbitrary number of arguments:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb242"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb242-1"><a href="#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Here, sum function takes 1 un-named argument, specifically c(10,5,NA)</span></span>
-<span id="cb242-2"><a href="#cb242-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">5</span>,<span class="cn">NA</span>),<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb244"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb244-1"><a href="#cb244-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Here, sum function takes 1 un-named argument, specifically c(10,5,NA)</span></span>
+<span id="cb244-2"><a href="#cb244-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">5</span>,<span class="cn">NA</span>),<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 15</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb244"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb244-1"><a href="#cb244-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Here the sum function takes 3 un-named arguments</span></span>
-<span id="cb244-2"><a href="#cb244-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">10</span>,<span class="dv">5</span>,<span class="cn">NA</span>,<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb246"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb246-1"><a href="#cb246-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Here the sum function takes 3 un-named arguments</span></span>
+<span id="cb246-2"><a href="#cb246-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">10</span>,<span class="dv">5</span>,<span class="cn">NA</span>,<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 15</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb246"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb246-1"><a href="#cb246-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Here the sum function takes 5 un-named arguments</span></span>
-<span id="cb246-2"><a href="#cb246-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">10</span>,<span class="dv">5</span>,<span class="dv">10</span>,<span class="dv">20</span>,<span class="cn">NA</span>,<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb248"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb248-1"><a href="#cb248-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Here the sum function takes 5 un-named arguments</span></span>
+<span id="cb248-2"><a href="#cb248-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">10</span>,<span class="dv">5</span>,<span class="dv">10</span>,<span class="dv">20</span>,<span class="cn">NA</span>,<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 45</code></pre>
 </div>
@@ -1599,18 +1640,18 @@ Hornet Sportabout 18.7   8 175</code></pre>
 </ul>
 <p>Function <code>getwd()</code> shows current working directory</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb248"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb248-1"><a href="#cb248-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb250"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb250-1"><a href="#cb250-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "/Users/patriciamartin/Desktop/Github/rclass1-redesign/lectures/updated_lectures/intro_to_r"</code></pre>
 </div>
 </div>
 <p>Command <code>list.files()</code> lists all files located in working directory</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb250"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb250-1"><a href="#cb250-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb252"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb252-1"><a href="#cb252-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "/Users/patriciamartin/Desktop/Github/rclass1-redesign/lectures/updated_lectures/intro_to_r"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb252"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb252-1"><a href="#cb252-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb254"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb254-1"><a href="#cb254-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "data-structures-overview.png" "fp1.JPG"                     
 [3] "fp2.JPG"                      "intro_to_r_files"            
@@ -1622,11 +1663,11 @@ Hornet Sportabout 18.7   8 175</code></pre>
 <p><strong>Working directory, “Code chunks” vs.&nbsp;“console” and “R scripts”</strong></p>
 <p>When you run <strong>code chunks</strong> in RMarkdown files (.Rmd), the working directory is set to the filepath where the .Rmd file is stored</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb254"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb254-1"><a href="#cb254-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb256"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb256-1"><a href="#cb256-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "/Users/patriciamartin/Desktop/Github/rclass1-redesign/lectures/updated_lectures/intro_to_r"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb256"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb256-1"><a href="#cb256-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb258"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb258-1"><a href="#cb258-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "data-structures-overview.png" "fp1.JPG"                     
 [3] "fp2.JPG"                      "intro_to_r_files"            
@@ -1638,7 +1679,7 @@ Hornet Sportabout 18.7   8 175</code></pre>
 <p>When you run code from the <strong>R Console</strong> or an <strong>R Script</strong>, the working directory is your R Project directory (we’ll cover this in the next section).</p>
 <p>Command <code>getwd()</code> shows current working directory</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb258"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb258-1"><a href="#cb258-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb260"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb260-1"><a href="#cb260-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "/Users/patriciamartin/Desktop/Github/rclass1-redesign/lectures/updated_lectures/intro_to_r"</code></pre>
 </div>
@@ -1651,8 +1692,8 @@ Hornet Sportabout 18.7   8 175</code></pre>
 <pre><code>        File path shortcuts (Mac)</code></pre>
 <table class="table">
 <colgroup>
-<col style="width: 25%">
-<col style="width: 75%">
+<col style="width: 36%">
+<col style="width: 63%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1677,12 +1718,12 @@ Hornet Sportabout 18.7   8 175</code></pre>
 </table>
 <p>Use relative path to move working directory up one level</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb261"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb261-1"><a href="#cb261-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb263"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb263-1"><a href="#cb263-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "/Users/patriciamartin/Desktop/Github/rclass1-redesign/lectures/updated_lectures/intro_to_r"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb263"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb263-1"><a href="#cb263-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">'../'</span>)</span>
-<span id="cb263-2"><a href="#cb263-2" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb265"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb265-1"><a href="#cb265-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">'../'</span>)</span>
+<span id="cb265-2"><a href="#cb265-2" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "/Users/patriciamartin/Desktop/Github/rclass1-redesign/lectures/updated_lectures"</code></pre>
 </div>
@@ -1711,11 +1752,11 @@ Hornet Sportabout 18.7   8 175</code></pre>
 </summary>
 <p>[Solution for Mac users]</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb265"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb265-1"><a href="#cb265-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span>
-<span id="cb265-2"><a href="#cb265-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"~/Desktop/red/yellow/green"</span>)</span>
-<span id="cb265-3"><a href="#cb265-3" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>() </span>
-<span id="cb265-4"><a href="#cb265-4" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"../../orange"</span>)</span>
-<span id="cb265-5"><a href="#cb265-5" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb267"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb267-1"><a href="#cb267-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span>
+<span id="cb267-2"><a href="#cb267-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"~/Desktop/red/yellow/green"</span>)</span>
+<span id="cb267-3"><a href="#cb267-3" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>() </span>
+<span id="cb267-4"><a href="#cb267-4" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"../../orange"</span>)</span>
+<span id="cb267-5"><a href="#cb267-5" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </details>
 <p><br></p>
@@ -1761,8 +1802,8 @@ Hornet Sportabout 18.7   8 175</code></pre>
 </ul></li>
 </ul>
 </section>
-<section id="r-markdown-1" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="r-markdown-1"><span class="header-section-number">5.3</span> R Markdown</h2>
+<section id="r-markdown" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="r-markdown"><span class="header-section-number">5.3</span> R Markdown</h2>
 <p><strong>What is R Markdown</strong></p>
 <ul>
 <li>R Markdown documents embed R code, output associated with R code, and text into one document</li>
@@ -1835,9 +1876,9 @@ Hornet Sportabout 18.7   8 175</code></pre>
 <li><strong>R code chunks</strong> in body of .Rmd file</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb266"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb266-1"><a href="#cb266-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>)</span>
-<span id="cb266-2"><a href="#cb266-2" aria-hidden="true" tabindex="-1"></a>a</span>
-<span id="cb266-3"><a href="#cb266-3" aria-hidden="true" tabindex="-1"></a>a<span class="dv">-1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb268"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb268-1"><a href="#cb268-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>)</span>
+<span id="cb268-2"><a href="#cb268-2" aria-hidden="true" tabindex="-1"></a>a</span>
+<span id="cb268-3"><a href="#cb268-3" aria-hidden="true" tabindex="-1"></a>a<span class="dv">-1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="4" type="1">
 <li><strong>R output</strong> associated with code chunks</li>
@@ -1950,13 +1991,13 @@ What is beamer_header.tex?
 -   This code creates formatting rules that are applied to all lecture slides
 -   If you go YAML header you will see:
 
-
 ::: {.cell}
 
 ```{.r .cell-code}
     includes:
       in_header: ../beamer_header.tex
 ```
+
 :::
 
 
@@ -1974,14 +2015,14 @@ What is beamer_header.tex?
 <li>Create a matrix named <code>m</code> with 2 rows and 3 columns</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb269"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb269-1"><a href="#cb269-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">matrix</span>( </span>
-<span id="cb269-2"><a href="#cb269-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">7</span>), <span class="co"># the data elements </span></span>
-<span id="cb269-3"><a href="#cb269-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow=</span><span class="dv">2</span>,              <span class="co"># number of rows </span></span>
-<span id="cb269-4"><a href="#cb269-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol=</span><span class="dv">3</span>,              <span class="co"># number of columns </span></span>
-<span id="cb269-5"><a href="#cb269-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span>         <span class="co"># fill matrix by rows </span></span>
-<span id="cb269-6"><a href="#cb269-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb269-7"><a href="#cb269-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb269-8"><a href="#cb269-8" aria-hidden="true" tabindex="-1"></a>m <span class="co"># print matrix m</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb271"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb271-1"><a href="#cb271-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">matrix</span>( </span>
+<span id="cb271-2"><a href="#cb271-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">7</span>), <span class="co"># the data elements </span></span>
+<span id="cb271-3"><a href="#cb271-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow=</span><span class="dv">2</span>,              <span class="co"># number of rows </span></span>
+<span id="cb271-4"><a href="#cb271-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol=</span><span class="dv">3</span>,              <span class="co"># number of columns </span></span>
+<span id="cb271-5"><a href="#cb271-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span>         <span class="co"># fill matrix by rows </span></span>
+<span id="cb271-6"><a href="#cb271-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb271-7"><a href="#cb271-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb271-8"><a href="#cb271-8" aria-hidden="true" tabindex="-1"></a>m <span class="co"># print matrix m</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3]
 [1,]    2    4    3
@@ -1990,15 +2031,15 @@ What is beamer_header.tex?
 </div>
 <p><strong>Investigate matrix <code>m</code></strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb271"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb271-1"><a href="#cb271-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(m) <span class="co"># type = "double"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb273"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb273-1"><a href="#cb273-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(m) <span class="co"># type = "double"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "double"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb273"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb273-1"><a href="#cb273-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(m) <span class="co"># type = numeric; has two rows and three columns</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb275"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb275-1"><a href="#cb275-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(m) <span class="co"># type = numeric; has two rows and three columns</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> num [1:2, 1:3] 2 1 4 5 3 7</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb275"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb275-1"><a href="#cb275-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(m) <span class="co"># class = matrix; more on class later</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb277"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb277-1"><a href="#cb277-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(m) <span class="co"># class = matrix; more on class later</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "matrix" "array" </code></pre>
 </div>
@@ -2006,14 +2047,14 @@ What is beamer_header.tex?
 <p><br></p>
 <p><strong>Like atomic vectors, matrices are homogenous data structures</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb277"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb277-1"><a href="#cb277-1" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">matrix</span>( </span>
-<span id="cb277-2"><a href="#cb277-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>), <span class="co"># the data elements </span></span>
-<span id="cb277-3"><a href="#cb277-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow=</span><span class="dv">2</span>,              <span class="co"># number of rows </span></span>
-<span id="cb277-4"><a href="#cb277-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol=</span><span class="dv">3</span>,              <span class="co"># number of columns </span></span>
-<span id="cb277-5"><a href="#cb277-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span>         <span class="co"># fill matrix by rows </span></span>
-<span id="cb277-6"><a href="#cb277-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb277-7"><a href="#cb277-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb277-8"><a href="#cb277-8" aria-hidden="true" tabindex="-1"></a>m2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb279"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb279-1"><a href="#cb279-1" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">matrix</span>( </span>
+<span id="cb279-2"><a href="#cb279-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>), <span class="co"># the data elements </span></span>
+<span id="cb279-3"><a href="#cb279-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow=</span><span class="dv">2</span>,              <span class="co"># number of rows </span></span>
+<span id="cb279-4"><a href="#cb279-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol=</span><span class="dv">3</span>,              <span class="co"># number of columns </span></span>
+<span id="cb279-5"><a href="#cb279-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span>         <span class="co"># fill matrix by rows </span></span>
+<span id="cb279-6"><a href="#cb279-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb279-7"><a href="#cb279-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb279-8"><a href="#cb279-8" aria-hidden="true" tabindex="-1"></a>m2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3]
 [1,] "2"  "4"  "3" 
@@ -2022,11 +2063,11 @@ What is beamer_header.tex?
 </div>
 <p><strong>Investigate matrix <code>m</code></strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb279"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb279-1"><a href="#cb279-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(m2) <span class="co"># type = "character"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb281"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb281-1"><a href="#cb281-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(m2) <span class="co"># type = "character"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "character"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb281"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb281-1"><a href="#cb281-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(m2) <span class="co"># type = character; has two rows and three columns</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb283"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb283-1"><a href="#cb283-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(m2) <span class="co"># type = character; has two rows and three columns</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> chr [1:2, 1:3] "2" "a" "4" "b" "3" "c"</code></pre>
 </div>
@@ -2048,19 +2089,19 @@ What is beamer_header.tex?
 <li>Create an “adjacency matrix,” which defines whether actors are connected to one another in a social network</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb283"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb283-1"><a href="#cb283-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">matrix</span>( </span>
-<span id="cb283-2"><a href="#cb283-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="cn">NA</span>,<span class="cn">NA</span>,<span class="cn">NA</span>,<span class="cn">NA</span>,</span>
-<span id="cb283-3"><a href="#cb283-3" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>,<span class="cn">NA</span>,<span class="cn">NA</span>,<span class="cn">NA</span>,</span>
-<span id="cb283-4"><a href="#cb283-4" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>,<span class="dv">0</span>,<span class="cn">NA</span>,<span class="cn">NA</span>,</span>
-<span id="cb283-5"><a href="#cb283-5" aria-hidden="true" tabindex="-1"></a>    <span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="cn">NA</span>), <span class="co"># the data elements </span></span>
-<span id="cb283-6"><a href="#cb283-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow=</span><span class="dv">4</span>,              <span class="co"># number of rows </span></span>
-<span id="cb283-7"><a href="#cb283-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol=</span><span class="dv">4</span>,              <span class="co"># number of columns </span></span>
-<span id="cb283-8"><a href="#cb283-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span>         <span class="co"># fill matrix by rows </span></span>
-<span id="cb283-9"><a href="#cb283-9" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb283-10"><a href="#cb283-10" aria-hidden="true" tabindex="-1"></a>a_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"a"</span>,<span class="st">"b"</span>,<span class="st">"c"</span>,<span class="st">"d"</span>) <span class="co"># create vector of actor names</span></span>
-<span id="cb283-11"><a href="#cb283-11" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(a) <span class="ot">&lt;-</span> a_names <span class="co"># assign names to rows</span></span>
-<span id="cb283-12"><a href="#cb283-12" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(a) <span class="ot">&lt;-</span> a_names <span class="co"># assign names to columns</span></span>
-<span id="cb283-13"><a href="#cb283-13" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb285"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb285-1"><a href="#cb285-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">matrix</span>( </span>
+<span id="cb285-2"><a href="#cb285-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="cn">NA</span>,<span class="cn">NA</span>,<span class="cn">NA</span>,<span class="cn">NA</span>,</span>
+<span id="cb285-3"><a href="#cb285-3" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>,<span class="cn">NA</span>,<span class="cn">NA</span>,<span class="cn">NA</span>,</span>
+<span id="cb285-4"><a href="#cb285-4" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>,<span class="dv">0</span>,<span class="cn">NA</span>,<span class="cn">NA</span>,</span>
+<span id="cb285-5"><a href="#cb285-5" aria-hidden="true" tabindex="-1"></a>    <span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="cn">NA</span>), <span class="co"># the data elements </span></span>
+<span id="cb285-6"><a href="#cb285-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow=</span><span class="dv">4</span>,              <span class="co"># number of rows </span></span>
+<span id="cb285-7"><a href="#cb285-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol=</span><span class="dv">4</span>,              <span class="co"># number of columns </span></span>
+<span id="cb285-8"><a href="#cb285-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span>         <span class="co"># fill matrix by rows </span></span>
+<span id="cb285-9"><a href="#cb285-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb285-10"><a href="#cb285-10" aria-hidden="true" tabindex="-1"></a>a_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"a"</span>,<span class="st">"b"</span>,<span class="st">"c"</span>,<span class="st">"d"</span>) <span class="co"># create vector of actor names</span></span>
+<span id="cb285-11"><a href="#cb285-11" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(a) <span class="ot">&lt;-</span> a_names <span class="co"># assign names to rows</span></span>
+<span id="cb285-12"><a href="#cb285-12" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(a) <span class="ot">&lt;-</span> a_names <span class="co"># assign names to columns</span></span>
+<span id="cb285-13"><a href="#cb285-13" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   a  b  c  d
 a NA NA NA NA
@@ -2085,7 +2126,6 @@ Object `g_2mode_privu` contains:
 
 
 
-
 ::: {.cell}
 
 ```{.r .cell-code}
@@ -2094,11 +2134,9 @@ load(url("https://github.com/cyouh95/recruiting-chapter/raw/master/data/g_2mode_
 ```
 :::
 
-
 <br>
 
 __Investigate object `g_2mode_privu`__
-
 
 ::: {.cell}
 
@@ -2108,9 +2146,7 @@ class(g_2mode_privu) # class = igraph
 ```
 :::
 
-
 The "vertices" consist of colleges and high schools
-
 
 ::: {.cell}
 
@@ -2120,11 +2156,9 @@ table(V(g_2mode_privu)$type) # 1330 private high schools; 26 private colleges/un
 ```
 :::
 
-
 An "edge" occurs when two vertices are connected to one another
 
 -   in `g_2mode_privu`, an edge occurs when a particular college visits a particular high school
-
 
 ::: {.cell}
 
@@ -2132,7 +2166,6 @@ An "edge" occurs when two vertices are connected to one another
 ecount(g_2mode_privu)
 ```
 :::
-
 
 <br>
 
@@ -2142,7 +2175,6 @@ An igraph object (type = list; class = igraph) can be decomposed into:
 -   a matrix that identifies whether two vertices are connected by an edge
 
 Create a data frame of vertex attributes
-
 
 ::: {.cell}
 
@@ -2158,9 +2190,7 @@ str(df_attr)
 
 
 
-
 __Examine data frame of vertex attributes__
-
 
 ::: {.cell}
 
@@ -2174,13 +2204,11 @@ df_attr %>% filter(type == FALSE) %>% select(ppin,name_pss,city_pss, state_code_
 ```
 :::
 
-
 <br>
 
 __Examine individual variables within data frame__
 
 -   takeaway: invidividual variables within data frame are vectors!
-
 
 ::: {.cell}
 
@@ -2193,9 +2221,7 @@ str(df_attr$total_enrolled_pss)
 ```
 :::
 
-
 __Create adjacency matrix of which colleges visited which high schools__
-
 
 ::: {.cell}
 
@@ -2205,9 +2231,7 @@ adj_mat <- as_adjacency_matrix(graph = g_2mode_privu, type = "both",
 ```
 :::
 
-
 __Investigate adjacency matrix__
-
 
 ::: {.cell}
 
@@ -2218,11 +2242,9 @@ class(adj_mat) # matrix class
 ```
 :::
 
-
 __Print a few cells, visits by colleges (columns) to high schools (rows)__
 
 -   colleges: "`139658`" = Emory University; "`147767`" = Northwestern University; "`152080`" = University of Notre Dame
-
 
 ::: {.cell}
 
@@ -2232,14 +2254,11 @@ adj_mat[c("00000226","00000237","00000714"),c("139658","147767","152080")]
 ```
 :::
 
-
 __Plot the 2-mode network__
-
 
 ::: {.cell}
 
 :::
-
 -->
 </section>
 </section>
