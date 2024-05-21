@@ -89,96 +89,92 @@ library(tidyverse)
 
 ## Markdown
 
--   **What is Markdown?**
+**What is Markdown?**
 
-    -   Markdown is a set of rules that define how the layout and presentation of text and images appear in a document. One of the most popular markup languages is HTML. For example, when you go to a website, there are certain sections like a header, navigation bar, specific headings, color schemes, font styles, etc.  
-    -   The [Markdown language](https://daringfireball.net/projects/markdown/) was created by John Gruber in 2004.
+-   Markdown is a set of rules that define how the layout and presentation of text and images appear in a document. One of the most popular markup languages is HTML. For example, when you go to a website, there are certain sections like a header, navigation bar, specific headings, color schemes, font styles, etc.  
+-   The [Markdown language](https://daringfireball.net/projects/markdown/) was created by John Gruber in 2004.
 
--   **How is Markdown different than a WYSIWYG (WIZ--ee--wig) editor?**
+**How is Markdown different than a WYSIWYG (WIZ--ee--wig) editor?**
 
-    -   What you see is what you get (WYSIWYG) editing software enables you to point and click to make changes to the format, text, and images in a document and view the changes immediately (e.g., Microsoft Word, Google Docs).
+-   What you see is what you get (WYSIWYG) editing software enables you to point and click to make changes to the format, text, and images in a document and view the changes immediately (e.g., Microsoft Word, Google Docs).
 
-    -   In a Markdown file, you use Markdown syntax to format text and images.
+-   In a Markdown file, you use Markdown syntax to format text and images.
 
-- **Example Markdown syntax:**
+**Example Markdown syntax:**
 
-  ## Level two heading  
-    
-  ### Level three heading  
-    
-  * Bullet point  
-    
-  **Bold text**  
-    
-  _italics_
+## Level two heading  
+  
+### Level three heading  
+  
+* Bullet point  
+  
+**Bold text**  
+  
+_italics_
 
-- **What is markdown used for?**
+**What is markdown used for?**
 
-    - HTML or PDF documents
-    - Websites
-    - Note taking (Obsidian)
-    - Books
-    - Presentations and more
+-   HTML or PDF documents
+-   Websites
+-   Note taking (Obsidian)
+-   Books
+-   Presentations and more
     
 See [The Markdown Guide](https://www.markdownguide.org/getting-started/) for more on Markdown. 
 
 
 ## Quarto (.qmd)
 
-- **What is Quarto?** 
+**What is Quarto?** 
 
-    - From [What can I use Quarto for?](https://quarto.org/docs/faq/rmarkdown.html#what-can-i-use-quarto-for)
+From [How Quarto works in R](https://quarto.org/docs/get-started/hello/images/rstudio-qmd-how-it-works.png)![](rstudio-qmd-how-it-works.png)
+
+-   From [What can I use Quarto for?](https://quarto.org/docs/faq/rmarkdown.html#what-can-i-use-quarto-for)
     
-       -   "Quarto is an open-source scientific and technical publishing system built on Pandoc. You can weave together narrative text and code to produce elegantly formatted output as documents, web pages, blog posts, books and more."
+    -   "Quarto is an open-source scientific and technical publishing system built on Pandoc. You can weave together narrative text and code to produce elegantly formatted output as documents, web pages, blog posts, books and more."
        
-    - Think of a Quarto file with the extension .qmd as a document written in Markdown syntax that embeds R code (Markdown + R code). 
+-   Think of a Quarto file with the extension .qmd as a document written in Markdown syntax that embeds R code (Markdown + R code). 
     
-    - The integration of Quarto in R is relatively new and builds off of **R Markdown**. 
+-   The integration of Quarto in R is relatively new and builds off of **R Markdown**. 
     
-        - From [RStudio](https://rmarkdown.rstudio.com/articles_intro.html): "R Markdown is a file format for making dynamic documents with R. An R Markdown document is written in markdown (an easy-to-write plain text format) and contains chunks of embedded R code."
+    -   From [RStudio](https://rmarkdown.rstudio.com/articles_intro.html): "R Markdown is a file format for making dynamic documents with R. An R Markdown document is written in markdown (an easy-to-write plain text format) and contains chunks of embedded R code."
         
-        - Similar to Quarto, for the last ten years, R users have relied on R Markdown to produce static and dynamic documents. However, "Quarto is a multi-language, next generation version of R Markdown from Posit, with many new new features and capabilities. Like R Markdown, Quarto uses knitr to execute R code, and is therefore able to render most existing Rmd files without modification." From [Quarto](https://quarto.org/).
+-   Similar to Quarto, for the last ten years, R users have relied on R Markdown to produce static and dynamic documents. However, "Quarto is a multi-language, next generation version of R Markdown from Posit, with many new new features and capabilities. Like R Markdown, Quarto uses knitr to execute R code, and is therefore able to render most existing Rmd files without modification." From [Quarto](https://quarto.org/).
         
-        
-    - **Key Takeaways**:
+**Key Takeaways**:
+
+-   Quarto does not depend on R; therefore, anyone using Python, Javascript, Julia, etc., can create documents with Quarto (.qmd) and collaborate on projects much more easily.
+
+-   The Quarto visual editor in R Studio provides a WYSIWYG editing interface, making document creation seamless. 
+
+-   Quarto works with R Markdown and has additional features, making it easier to use. 
+
+**What is Quarto used for?**
+
+-   HTML, PDF, MS Word documents  
+-   Presentations in Revealjs, Powerpoint, and Beamer
+-   Markdown (GitHub)
+-   Wikis
+
+**How we will be using Quarto in this class**
+
+-   All lectures created using Quarto (.qmd) file extension
+-   You will use Quarto to complete homework assignments
+
+**After this class you might:**
+
+-   never use Microsoft Word again!
+-   Use Quarto to create: papers for class; presentations; journal manuscripts; your dissertation; etc.
     
-      - Quarto does not depend on R; therefore, anyone using Python, Javascript, Julia, etc., can create documents with Quarto (.qmd) and collaborate on projects much more easily.
-      
-      - The Quarto visual editor in R Studio provides a WYSIWYG editing interface, making document creation seamless. 
-      
-      - Quarto works with R Markdown and has additional features, making it easier to use. 
-      
--  **What is Quarto used for?**
 
-    - HTML, PDF, MS Word documents  
-    - Presentations in Revealjs, Powerpoint, and Beamer
-    - Markdown (GitHub)
-    - Wikis
+**Further Reading:**
 
-- **How we will be using Quarto in this class**
+-   Markdown Guide, Basic Syntax: https://www.markdownguide.org/basic-syntax/
+-   A Brief History of R Markdown: https://slides.yihui.org/2021-Brazilian-R-Day.html#1
+-   R Markdown the Definitive Guide: https://bookdown.org/yihui/rmarkdown/
+-   RStudio User Guide Quarto visual editor: https://docs.posit.co/ide/user/ide/guide/documents/visual-editor.html
 
-    -   All lectures created using Quarto (.qmd) file extension
-    -   You will use Quarto to complete homework assignments
-
-- **After this class you might:**
-
-    -   never use Microsoft Word again!
-    -   Use Quarto to create: papers for class; presentations; journal manuscripts; your dissertation; etc.
-    
-
-- **Further Reading:**
-
-    - Markdown Guide, Basic Syntax: https://www.markdownguide.org/basic-syntax/
-    - A Brief History of R Markdown: https://slides.yihui.org/2021-Brazilian-R-Day.html#1
-    - R Markdown the Definitive Guide: https://bookdown.org/yihui/rmarkdown/
-    - RStudio User Guide Quarto visual editor: https://docs.posit.co/ide/user/ide/guide/documents/visual-editor.html
-    
-ADD IMAGE
-
-```{python}
-print("Hello print")
-```
-
+<!--
 ## Why learn R? R can do a lot of stuff!
 
 How we have used R+RStudio+RMarkdown in our research team
@@ -201,6 +197,8 @@ How we have used R+RStudio+RMarkdown in our research team
 Some of the other stuff R can create/do:
 
 -   [Websites](https://bookdown.org/yihui/rmarkdown/websites.html); [journals](https://bookdown.org/yihui/rmarkdown/journals.html); [books](https://bookdown.org/); [web-scraping](https://www.analyticsvidhya.com/blog/2017/03/beginners-guide-on-web-scraping-in-r-using-rvest-with-hands-on-knowledge/); network analysis; machine learning/artificial intelligence
+
+-->
 
 ```{=html}
 <!-- 
