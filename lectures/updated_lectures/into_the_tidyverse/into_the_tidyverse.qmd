@@ -3,13 +3,18 @@ title: "Into the tidyverse: dplyr, select, filter, and pipes"
 author: ""
 date: ""
 format: 
-  html:
-    self-contained: true
-toc: true
-toc-depth: 2
-toc-location: left
-number-sections: true
-editor: visual
+   html:
+    grid: 
+      sidebar-width: 300px
+      body-width: 1100px
+      margin-width: 100px
+    toc: true
+    #toc-depth: 2
+    toc-location: left
+    number-sections: true
+    theme: default
+    highlight-style: tango
+    df_print: tibble
 ---
 
 ```{r, echo=FALSE, include=FALSE}
@@ -153,7 +158,7 @@ filter(wwlist, firstgen == "Y")
 -   Wickham describes functions within `dplyr` as a set of "verbs" that fall in the broader categories of **subsetting**, **sorting**, and **transforming**
 
 | Today                      | Upcoming weeks                                         |
-|------------------------|-----------------------------------------------|
+|-------------------------|-----------------------------------------------|
 | **Subsetting data**        | **Transforming data**                                  |
 | \- `select()` variables    | \- `mutate()` creates new variables                    |
 | \- `filter()` observations | \- `summarize()` calculates across rows                |
@@ -276,7 +281,7 @@ rm(rename_event)
 
 ## `count()` function
 
-\medskip `count()` function from `dplyr` package counts the number of obs by group
+\medskip `count()` function from `dplyr` package counts the unique values of one or more variables. 
 
 ```{r, eval=FALSE, echo=FALSE}
 ?count
@@ -561,34 +566,6 @@ count(filter(df_event,event_type == "public hs", is.na(fr_lunch)))
 count(filter(df_event,event_type == "public hs", fr_lunch<50 | is.na(fr_lunch)))
 ```
 
-### Exercise
-
-Task
-
--   Create a filter to identify all the high schools that recieved 1 visit from UC Berkeley (110635) AND 1 visit from CU Boulder (126614)\[output omitted\]
-
-<details>
-
-<summary><strong>Solutions</strong></summary>
-
-```{r, results="hide"}
-filter(df_school,visits_by_110635 == 1, visits_by_126614==1)
-
-nrow(filter(df_school,visits_by_110635 == 1, visits_by_126614==1))
-count(filter(df_school,visits_by_110635 == 1, visits_by_126614==1))
-```
-
--   Must **assign** to create new object based on filter
-
-```{r results="hide"}
-berk_boulder <- filter(df_school,visits_by_110635 == 1, visits_by_126614==1)
-count(berk_boulder)
-```
-
-</details>
-
-<br>
-
 ### Exercises
 
 Use the data from df_event, which has one observation for each off-campus recruiting event a university attends
@@ -864,7 +841,7 @@ select(filter(wwlist, firstgen == "Y"), state, hs_city, sex)
 wwlist %>% filter(firstgen == "Y") %>% select(state, hs_city, sex)
 ```
 
-__Comparing the two approaches:__
+**Comparing the two approaches:**
 
 -   In the "without pipes" approach, code is written "inside out"
     -   The first step in the task -- identifying the object -- is the innermost part of code
@@ -1052,7 +1029,7 @@ as.list(wwlist)  %>% str()
 # as.list(wwlist) %>% filter(firstgen == "Y") %>% str() # error
 ```
 
-### Do task with and without pipes \[STUDENTS WORK ON THEIR OWN\]
+### Practice exercise: Run the following code with and without pipes \[Work through on your own\]
 
 Task:
 
@@ -1139,24 +1116,22 @@ rm(wwlist_temp)
 
 <br>
 
-
 # Creating variables using mutate
 
-We will load the data frame __`df_school_all`__. This data frame is based on data from the recruiting project. It contains one observation per US high school and variables identifying the number of visits by particular universities. 
+We will load the data frame **`df_school_all`**. This data frame is based on data from the recruiting project. It contains one observation per US high school and variables identifying the number of visits by particular universities.
 
-__Data frame `df_school_all`__
+**Data frame `df_school_all`**
 
 ```{r}
 load(url("https://github.com/ozanj/rclass/raw/master/data/recruiting/recruit_school_allvars.RData"))
 ```
 
-
-__Our plan for learning how to create new variables__
+**Our plan for learning how to create new variables**
 
 Recall that `dplyr` package within `tidyverse` provide a set of functions that can be described as "verbs": **subsetting**, **sorting**, and **transforming**
 
 | What we've done            | Where we're going                                      |
-|-------------------------|----------------------------------------------|
+|--------------------------|----------------------------------------------|
 | **Subsetting data**        | **Transforming data**                                  |
 | \- `select()` variables    | \- `mutate()` creates new variables                    |
 | \- `filter()` observations | \- `summarize()` calculates across rows                |
@@ -1171,7 +1146,7 @@ Recall that `dplyr` package within `tidyverse` provide a set of functions that c
 
 -   We'll combine `mutate()` with `summarize()` and `group_by()` to create variables based on calculations across rows
 
-__Create new data frame based on `df_school_all`__
+**Create new data frame based on `df_school_all`**
 
 Recall, data frame `df_school_all` has one obs per US high school and then variables identifying number of visits by particular universities
 
@@ -1264,7 +1239,6 @@ rm(school_sml)
 ```{r, eval=FALSE, echo=FALSE}
 ?mutate
 ```
-
 
 <!-- BREAK DOWN THE EXAMPLE HERE, INTRODUCE MUTATE USING A SIMPLE EXAMPLE -->
 
@@ -1658,7 +1632,7 @@ str(wwlist$school_category) # character variable
 wwlist %>% count(school_category) 
 ```
 
-__Recode__
+**Recode**
 
 ```{r, results="hide"}
 wwlist_temp <- wwlist %>% select(school_category) %>% 
