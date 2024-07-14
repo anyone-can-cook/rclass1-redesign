@@ -1638,22 +1638,6 @@ names(df_school)
 <li>After creating a new variable using <code>mutate()</code>, every row of data is retained</li>
 <li><code>mutate()</code> works best with pipes <code>%&gt;%</code></li>
 </ul>
-<p><strong>Task</strong>:</p>
-<ul>
-<li>Using data frame <code>school_v2</code> create new variable that measures the pct of students on free/reduced lunch (output omitted)</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create new dataset with fewer vars; not necessary to do this</span></span>
-<span id="cb108-2"><a href="#cb108-2" aria-hidden="true" tabindex="-1"></a>school_sml <span class="ot">&lt;-</span> school_v2 <span class="sc">%&gt;%</span> </span>
-<span id="cb108-3"><a href="#cb108-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ncessch, school_type, num_fr_lunch, total_students)</span>
-<span id="cb108-4"><a href="#cb108-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb108-5"><a href="#cb108-5" aria-hidden="true" tabindex="-1"></a><span class="co"># create new var</span></span>
-<span id="cb108-6"><a href="#cb108-6" aria-hidden="true" tabindex="-1"></a>school_sml <span class="sc">%&gt;%</span> </span>
-<span id="cb108-7"><a href="#cb108-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pct_fr_lunch =</span> num_fr_lunch<span class="sc">/</span>total_students) </span>
-<span id="cb108-8"><a href="#cb108-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb108-9"><a href="#cb108-9" aria-hidden="true" tabindex="-1"></a><span class="co"># remove data frame object</span></span>
-<span id="cb108-10"><a href="#cb108-10" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(school_sml) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <p><strong>Investigate <code>mutate()</code> syntax</strong></p>
 <p><strong>Usage (i.e., syntax)</strong></p>
 <ul>
@@ -1680,7 +1664,27 @@ names(df_school)
 <ul>
 <li>returns a (data frame) object that contains the original input data frame and new variables that were created by <code>mutate()</code></li>
 </ul>
-<!-- BREAK DOWN THE EXAMPLE HERE, INTRODUCE MUTATE USING A SIMPLE EXAMPLE -->
+<p><strong>Task</strong>:</p>
+<ul>
+<li>Using data frame <code>school_v2</code> create new variable that measures the pct of students on free/reduced lunch (output omitted)</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create new dataset with fewer vars; not necessary to do this</span></span>
+<span id="cb108-2"><a href="#cb108-2" aria-hidden="true" tabindex="-1"></a>school_sml <span class="ot">&lt;-</span> school_v2 <span class="sc">%&gt;%</span> </span>
+<span id="cb108-3"><a href="#cb108-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ncessch, school_type, num_fr_lunch, total_students)</span>
+<span id="cb108-4"><a href="#cb108-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb108-5"><a href="#cb108-5" aria-hidden="true" tabindex="-1"></a><span class="co">#print obs </span></span>
+<span id="cb108-6"><a href="#cb108-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(school_sml, <span class="dv">10</span>)</span>
+<span id="cb108-7"><a href="#cb108-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb108-8"><a href="#cb108-8" aria-hidden="true" tabindex="-1"></a><span class="co"># create new var</span></span>
+<span id="cb108-9"><a href="#cb108-9" aria-hidden="true" tabindex="-1"></a>school_sml <span class="sc">%&gt;%</span> </span>
+<span id="cb108-10"><a href="#cb108-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pct_fr_lunch =</span> num_fr_lunch<span class="sc">/</span>total_students) </span>
+<span id="cb108-11"><a href="#cb108-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb108-12"><a href="#cb108-12" aria-hidden="true" tabindex="-1"></a><span class="co">#362/501</span></span>
+<span id="cb108-13"><a href="#cb108-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb108-14"><a href="#cb108-14" aria-hidden="true" tabindex="-1"></a><span class="co"># remove data frame object</span></span>
+<span id="cb108-15"><a href="#cb108-15" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(school_sml) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p><strong>Can create variables using standard mathematical or logical operators</strong> [output omitted]</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb109"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="co">#glimpse(school_v2)</span></span>

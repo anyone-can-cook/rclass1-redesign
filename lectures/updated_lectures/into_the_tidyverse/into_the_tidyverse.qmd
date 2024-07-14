@@ -1194,22 +1194,6 @@ Description of `mutate()`
 -   After creating a new variable using `mutate()`, every row of data is retained
 -   `mutate()` works best with pipes `%>%`
 
-**Task**:
-
--   Using data frame `school_v2` create new variable that measures the pct of students on free/reduced lunch (output omitted)
-
-```{r, results='hide'}
-# create new dataset with fewer vars; not necessary to do this
-school_sml <- school_v2 %>% 
-  select(ncessch, school_type, num_fr_lunch, total_students)
-
-# create new var
-school_sml %>% 
-  mutate(pct_fr_lunch = num_fr_lunch/total_students) 
-
-# remove data frame object
-rm(school_sml) 
-```
 
 **Investigate `mutate()` syntax**
 
@@ -1236,11 +1220,30 @@ rm(school_sml)
 
 -   returns a (data frame) object that contains the original input data frame and new variables that were created by `mutate()`
 
-```{r, eval=FALSE, echo=FALSE}
-?mutate
+
+**Task**:
+
+-   Using data frame `school_v2` create new variable that measures the pct of students on free/reduced lunch (output omitted)
+
+```{r, results='hide'}
+# create new dataset with fewer vars; not necessary to do this
+school_sml <- school_v2 %>% 
+  select(ncessch, school_type, num_fr_lunch, total_students)
+
+#print obs 
+head(school_sml, 10)
+
+# create new var
+school_sml %>% 
+  mutate(pct_fr_lunch = num_fr_lunch/total_students) 
+
+#362/501
+
+# remove data frame object
+rm(school_sml) 
+
 ```
 
-<!-- BREAK DOWN THE EXAMPLE HERE, INTRODUCE MUTATE USING A SIMPLE EXAMPLE -->
 
 **Can create variables using standard mathematical or logical operators** \[output omitted\]
 
