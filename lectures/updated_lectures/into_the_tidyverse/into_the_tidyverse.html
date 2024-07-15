@@ -136,15 +136,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#using-if_else-function-within-mutate" id="toc-using-if_else-function-within-mutate" class="nav-link" data-scroll-target="#using-if_else-function-within-mutate"><span class="header-section-number">4.4</span> Using if_else() function within mutate()</a>
   <ul class="collapse">
-  <li><a href="#using-if_else-function-within-mutate-1" id="toc-using-if_else-function-within-mutate-1" class="nav-link" data-scroll-target="#using-if_else-function-within-mutate-1"><span class="header-section-number">4.4.1</span> Using <code>if_else()</code> function within <code>mutate()</code></a></li>
-  <li><a href="#if_else-within-mutate-to-create-01-indicator-variables" id="toc-if_else-within-mutate-to-create-01-indicator-variables" class="nav-link" data-scroll-target="#if_else-within-mutate-to-create-01-indicator-variables"><span class="header-section-number">4.4.2</span> <code>if_else()</code> within <code>mutate()</code> to create 0/1 indicator variables</a></li>
-  <li><a href="#using-if_else-within-mutate" id="toc-using-if_else-within-mutate" class="nav-link" data-scroll-target="#using-if_else-within-mutate"><span class="header-section-number">4.4.3</span> Using <code>if_else()</code> within <code>mutate()</code></a></li>
-  <li><a href="#student-exercises-if_else" id="toc-student-exercises-if_else" class="nav-link" data-scroll-target="#student-exercises-if_else"><span class="header-section-number">4.4.4</span> Student exercises <code>if_else()</code></a></li>
+  <li><a href="#if_else-within-mutate-to-create-01-indicator-variables" id="toc-if_else-within-mutate-to-create-01-indicator-variables" class="nav-link" data-scroll-target="#if_else-within-mutate-to-create-01-indicator-variables"><span class="header-section-number">4.4.1</span> <code>if_else()</code> within <code>mutate()</code> to create 0/1 indicator variables</a></li>
+  <li><a href="#student-exercises-if_else" id="toc-student-exercises-if_else" class="nav-link" data-scroll-target="#student-exercises-if_else"><span class="header-section-number">4.4.2</span> Student exercises <code>if_else()</code></a></li>
   </ul></li>
   <li><a href="#using-recode-function-within-mutate" id="toc-using-recode-function-within-mutate" class="nav-link" data-scroll-target="#using-recode-function-within-mutate"><span class="header-section-number">4.5</span> Using recode() function within mutate()</a>
   <ul class="collapse">
-  <li><a href="#using-recode-function-within-mutate-1" id="toc-using-recode-function-within-mutate-1" class="nav-link" data-scroll-target="#using-recode-function-within-mutate-1"><span class="header-section-number">4.5.1</span> Using <code>recode()</code> function within <code>mutate()</code></a></li>
-  <li><a href="#student-exercise-using-recode-within-mutate" id="toc-student-exercise-using-recode-within-mutate" class="nav-link" data-scroll-target="#student-exercise-using-recode-within-mutate"><span class="header-section-number">4.5.2</span> Student exercise using <code>recode()</code> within <code>mutate()</code></a></li>
+  <li><a href="#student-exercise-using-recode-within-mutate" id="toc-student-exercise-using-recode-within-mutate" class="nav-link" data-scroll-target="#student-exercise-using-recode-within-mutate"><span class="header-section-number">4.5.1</span> Student exercise using <code>recode()</code> within <code>mutate()</code></a></li>
   </ul></li>
   <li><a href="#using-case_when-function-within-mutate" id="toc-using-case_when-function-within-mutate" class="nav-link" data-scroll-target="#using-case_when-function-within-mutate"><span class="header-section-number">4.6</span> Using case_when() function within mutate()</a>
   <ul class="collapse">
@@ -1631,7 +1628,7 @@ names(df_school)
 </div>
 <section id="introduce-mutate-function" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="introduce-mutate-function"><span class="header-section-number">4.1</span> Introduce mutate() function</h2>
-<p><code>mutate()</code> is <strong>tidyverse</strong> approach to creating variables (not <strong>Base R</strong> approach)</p>
+<p><code>mutate()</code> is <strong>dplyr</strong> approach to creating variables (not <strong>Base R</strong> approach)</p>
 <p>Description of <code>mutate()</code></p>
 <ul>
 <li>Creates new columns (variables) that are functions of existing columns</li>
@@ -1883,8 +1880,6 @@ names(df_school)
 </section>
 <section id="using-if_else-function-within-mutate" class="level2" data-number="4.4">
 <h2 data-number="4.4" class="anchored" data-anchor-id="using-if_else-function-within-mutate"><span class="header-section-number">4.4</span> Using if_else() function within mutate()</h2>
-<section id="using-if_else-function-within-mutate-1" class="level3" data-number="4.4.1">
-<h3 data-number="4.4.1" class="anchored" data-anchor-id="using-if_else-function-within-mutate-1"><span class="header-section-number">4.4.1</span> Using <code>if_else()</code> function within <code>mutate()</code></h3>
 <p><strong>Description</strong></p>
 <ul>
 <li>if <code>&lt;condition&gt;</code> <code>TRUE</code>, assign value; if <code>&lt;condition&gt;</code> <code>FALSE</code> assign value</li>
@@ -1915,9 +1910,8 @@ names(df_school)
 <span id="cb122-2"><a href="#cb122-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">got_visit_berkeley =</span> <span class="fu">if_else</span>(visits_by_berkeley<span class="sc">&gt;</span><span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb122-3"><a href="#cb122-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(got_visit_berkeley)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="if_else-within-mutate-to-create-01-indicator-variables" class="level3" data-number="4.4.2">
-<h3 data-number="4.4.2" class="anchored" data-anchor-id="if_else-within-mutate-to-create-01-indicator-variables"><span class="header-section-number">4.4.2</span> <code>if_else()</code> within <code>mutate()</code> to create 0/1 indicator variables</h3>
+<section id="if_else-within-mutate-to-create-01-indicator-variables" class="level3" data-number="4.4.1">
+<h3 data-number="4.4.1" class="anchored" data-anchor-id="if_else-within-mutate-to-create-01-indicator-variables"><span class="header-section-number">4.4.1</span> <code>if_else()</code> within <code>mutate()</code> to create 0/1 indicator variables</h3>
 <p>We often create dichotomous (0/1) indicator variables of whether something happened (or whether something is TRUE)</p>
 <ul>
 <li>Variables that are of substantive interest to project
@@ -1929,9 +1923,6 @@ names(df_school)
 <li>e.g., indicator of whether an observation is missing/non-missing for a particular variable</li>
 </ul></li>
 </ul>
-</section>
-<section id="using-if_else-within-mutate" class="level3" data-number="4.4.3">
-<h3 data-number="4.4.3" class="anchored" data-anchor-id="using-if_else-within-mutate"><span class="header-section-number">4.4.3</span> Using <code>if_else()</code> within <code>mutate()</code></h3>
 <p><strong>Task</strong></p>
 <ul>
 <li>Create 0/1 indicator if school has median income greater than $100,000</li>
@@ -1987,13 +1978,13 @@ names(df_school)
 <ul>
 <li>Create 0/1 indicator variable <code>nonmiss_math</code> which indicates whether school has non-missing values for the variable <code>num_took_math</code>
 <ul>
-<li>note: <code>num_took_math</code> refers to number of students at school that took state math proficiency test</li>
+<li>note: <code>num_took_math</code> refers to number of students at a school that took state math proficiency test</li>
 </ul></li>
 </ul>
 <p>Usually a good to investigate “input” variables before creating analysis vars</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb126"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a>school_v2 <span class="sc">%&gt;%</span> <span class="fu">count</span>(num_took_math) <span class="co"># this isn't very helpful</span></span>
-<span id="cb126-2"><a href="#cb126-2" aria-hidden="true" tabindex="-1"></a>school_v2 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">is.na</span>(num_took_math)) <span class="sc">%&gt;%</span> <span class="fu">count</span>(num_took_math) <span class="co"># shows number of obs w/ missing med_inc</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb126-2"><a href="#cb126-2" aria-hidden="true" tabindex="-1"></a>school_v2 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">is.na</span>(num_took_math)) <span class="sc">%&gt;%</span> <span class="fu">count</span>(num_took_math) <span class="co"># shows number of obs w/ missing num_took_math</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Create variable</p>
 <div class="cell">
@@ -2007,8 +1998,8 @@ names(df_school)
 <span id="cb127-8"><a href="#cb127-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2            1 17198</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="student-exercises-if_else" class="level3" data-number="4.4.4">
-<h3 data-number="4.4.4" class="anchored" data-anchor-id="student-exercises-if_else"><span class="header-section-number">4.4.4</span> Student exercises <code>if_else()</code></h3>
+<section id="student-exercises-if_else" class="level3" data-number="4.4.2">
+<h3 data-number="4.4.2" class="anchored" data-anchor-id="student-exercises-if_else"><span class="header-section-number">4.4.2</span> Student exercises <code>if_else()</code></h3>
 <ol type="1">
 <li>Using the object <code>school_v2</code>, create 0/1 indicator variable <code>in_state_berkeley</code> that equals <code>1</code> if the high school is in the same state as UC Berkeley (i.e., <code>state_code=="CA"</code>).<br>
 </li>
@@ -2085,8 +2076,7 @@ names(df_school)
 <span id="cb131-9"><a href="#cb131-9" aria-hidden="true" tabindex="-1"></a>wwlist_temp <span class="sc">%&gt;%</span> <span class="fu">count</span>(public_school) <span class="co"># note the NAs</span></span>
 <span id="cb131-10"><a href="#cb131-10" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(wwlist_temp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="using-recode-function-within-mutate-1" class="level3" data-number="4.5.1">
-<h3 data-number="4.5.1" class="anchored" data-anchor-id="using-recode-function-within-mutate-1"><span class="header-section-number">4.5.1</span> Using <code>recode()</code> function within <code>mutate()</code></h3>
+<p><br></p>
 <p>Recoding <code>school_type</code> could have been accomplished using <code>if_else()</code></p>
 <ul>
 <li>Use <code>recode()</code> when new variable has more than two categories</li>
@@ -2181,9 +2171,8 @@ names(df_school)
 <span id="cb136-13"><a href="#cb136-13" aria-hidden="true" tabindex="-1"></a>wwlist <span class="sc">%&gt;%</span> <span class="fu">count</span>(school_category)</span>
 <span id="cb136-14"><a href="#cb136-14" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(wwlist_temp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="student-exercise-using-recode-within-mutate" class="level3" data-number="4.5.2">
-<h3 data-number="4.5.2" class="anchored" data-anchor-id="student-exercise-using-recode-within-mutate"><span class="header-section-number">4.5.2</span> Student exercise using <code>recode()</code> within <code>mutate()</code></h3>
+<section id="student-exercise-using-recode-within-mutate" class="level3" data-number="4.5.1">
+<h3 data-number="4.5.1" class="anchored" data-anchor-id="student-exercise-using-recode-within-mutate"><span class="header-section-number">4.5.1</span> Student exercise using <code>recode()</code> within <code>mutate()</code></h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb137"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb137-1"><a href="#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>(<span class="st">"https://github.com/ozanj/rclass/raw/master/data/recruiting/recruit_event_somevars.RData"</span>))</span>
 <span id="cb137-2"><a href="#cb137-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df_event)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2261,7 +2250,7 @@ names(df_school)
 <li>The right hand side (RHS) provides the replacement value.</li>
 </ul></li>
 </ul>
-<p><strong>Example task</strong>: Using data frame <code>wwlist</code> and input vars <code>state</code> and <code>firstgen</code>, create a 4-category var with following categories:</p>
+<p><strong>Task</strong>: Using data frame <code>wwlist</code> and input vars <code>state</code> and <code>firstgen</code>, create a 4-category var with following categories:</p>
 <ul>
 <li>“instate_firstgen”; “instate_nonfirstgen”; “outstate_firstgen”; “outstate_nonfirstgen”</li>
 </ul>
@@ -2276,7 +2265,6 @@ names(df_school)
 <span id="cb141-8"><a href="#cb141-8" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(wwlist_temp<span class="sc">$</span>state_gen)</span>
 <span id="cb141-9"><a href="#cb141-9" aria-hidden="true" tabindex="-1"></a>wwlist_temp <span class="sc">%&gt;%</span> <span class="fu">count</span>(state_gen)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>Task</strong>: Using data frame <code>wwlist</code> and input vars <code>state</code> and <code>firstgen</code>, create a 4-category var</p>
 <p>Let’s take a closer look at how values of inputs are coded into values of outputs</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb142"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb142-1"><a href="#cb142-1" aria-hidden="true" tabindex="-1"></a>wwlist <span class="sc">%&gt;%</span> <span class="fu">select</span>(state,firstgen) <span class="sc">%&gt;%</span> <span class="fu">str</span>()</span>

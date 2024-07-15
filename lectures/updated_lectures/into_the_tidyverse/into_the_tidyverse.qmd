@@ -1186,7 +1186,7 @@ glimpse(school_v2)
 
 ## Introduce mutate() function
 
-`mutate()` is **tidyverse** approach to creating variables (not **Base R** approach)
+`mutate()` is **dplyr** approach to creating variables (not **Base R** approach)
 
 Description of `mutate()`
 
@@ -1418,8 +1418,6 @@ school_v2 %>%
 
 ## Using if_else() function within mutate()
 
-### Using `if_else()` function within `mutate()`
-
 ```{r, eval=FALSE, echo=FALSE}
 ?if_else
 ```
@@ -1463,7 +1461,6 @@ We often create dichotomous (0/1) indicator variables of whether something happe
 -   Variables that help you investigate data, check quality
     -   e.g., indicator of whether an observation is missing/non-missing for a particular variable
 
-### Using `if_else()` within `mutate()`
 
 **Task**
 
@@ -1519,13 +1516,13 @@ school_v2 %>% select(med_inc) %>%
 **Task**
 
 -   Create 0/1 indicator variable `nonmiss_math` which indicates whether school has non-missing values for the variable `num_took_math`
-    -   note: `num_took_math` refers to number of students at school that took state math proficiency test
+    -   note: `num_took_math` refers to number of students at a school that took state math proficiency test
 
 Usually a good to investigate "input" variables before creating analysis vars
 
 ```{r, results="hide"}
 school_v2 %>% count(num_took_math) # this isn't very helpful
-school_v2 %>% filter(is.na(num_took_math)) %>% count(num_took_math) # shows number of obs w/ missing med_inc
+school_v2 %>% filter(is.na(num_took_math)) %>% count(num_took_math) # shows number of obs w/ missing num_took_math
 ```
 
 Create variable
@@ -1618,7 +1615,7 @@ wwlist_temp %>% count(public_school) # note the NAs
 rm(wwlist_temp)
 ```
 
-### Using `recode()` function within `mutate()`
+<br/>
 
 Recoding `school_type` could have been accomplished using `if_else()`
 
@@ -1797,7 +1794,7 @@ df_event %>% count(event_type)
         -   LHS must evaluate to a logical vector.\
     -   The right hand side (RHS) provides the replacement value.
 
-**Example task**: Using data frame `wwlist` and input vars `state` and `firstgen`, create a 4-category var with following categories:
+**Task**: Using data frame `wwlist` and input vars `state` and `firstgen`, create a 4-category var with following categories:
 
 -   "instate_firstgen"; "instate_nonfirstgen"; "outstate_firstgen"; "outstate_nonfirstgen"
 
@@ -1812,8 +1809,6 @@ wwlist_temp <- wwlist %>% select(state,firstgen) %>%
 str(wwlist_temp$state_gen)
 wwlist_temp %>% count(state_gen)
 ```
-
-**Task**: Using data frame `wwlist` and input vars `state` and `firstgen`, create a 4-category var
 
 Let's take a closer look at how values of inputs are coded into values of outputs
 
