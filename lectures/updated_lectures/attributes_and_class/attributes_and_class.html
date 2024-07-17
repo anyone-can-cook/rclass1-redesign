@@ -87,27 +87,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#attributes-and-augmented-vectors" id="toc-attributes-and-augmented-vectors" class="nav-link" data-scroll-target="#attributes-and-augmented-vectors"><span class="header-section-number">2</span> Attributes and augmented vectors</a>
   <ul class="collapse">
-  <li><a href="#review-data-structures-vectors" id="toc-review-data-structures-vectors" class="nav-link" data-scroll-target="#review-data-structures-vectors"><span class="header-section-number">2.1</span> Review data structures: Vectors</a></li>
-  <li><a href="#review-data-structures-atomic-vectors" id="toc-review-data-structures-atomic-vectors" class="nav-link" data-scroll-target="#review-data-structures-atomic-vectors"><span class="header-section-number">2.2</span> Review data structures: Atomic vectors</a></li>
-  <li><a href="#review-data-structures-lists" id="toc-review-data-structures-lists" class="nav-link" data-scroll-target="#review-data-structures-lists"><span class="header-section-number">2.3</span> Review data structures: lists</a></li>
-  <li><a href="#review-data-structures-data-frames" id="toc-review-data-structures-data-frames" class="nav-link" data-scroll-target="#review-data-structures-data-frames"><span class="header-section-number">2.4</span> Review data structures: data frames</a></li>
-  <li><a href="#atomic-vectors-versus-augmented-vectors" id="toc-atomic-vectors-versus-augmented-vectors" class="nav-link" data-scroll-target="#atomic-vectors-versus-augmented-vectors"><span class="header-section-number">2.5</span> Atomic vectors versus augmented vectors</a></li>
-  <li><a href="#attributes-and-functions-to-identifymodify-attributes" id="toc-attributes-and-functions-to-identifymodify-attributes" class="nav-link" data-scroll-target="#attributes-and-functions-to-identifymodify-attributes"><span class="header-section-number">2.6</span> Attributes and functions to identify/modify attributes</a></li>
-  <li><a href="#attributes-function-describes-all-attributes-of-an-object" id="toc-attributes-function-describes-all-attributes-of-an-object" class="nav-link" data-scroll-target="#attributes-function-describes-all-attributes-of-an-object"><span class="header-section-number">2.7</span> attributes() function: describes all attributes of an object</a></li>
-  <li><a href="#attributes-function-attributes-of-a-variable-in-a-data-frame" id="toc-attributes-function-attributes-of-a-variable-in-a-data-frame" class="nav-link" data-scroll-target="#attributes-function-attributes-of-a-variable-in-a-data-frame"><span class="header-section-number">2.8</span> attributes() function, attributes of a variable in a data frame</a></li>
-  <li><a href="#attributes-function-attributes-of-lists-and-data-frames" id="toc-attributes-function-attributes-of-lists-and-data-frames" class="nav-link" data-scroll-target="#attributes-function-attributes-of-lists-and-data-frames"><span class="header-section-number">2.9</span> attributes() function, attributes of lists and data frames</a>
+  <li><a href="#review-data-structures-vectors" id="toc-review-data-structures-vectors" class="nav-link" data-scroll-target="#review-data-structures-vectors"><span class="header-section-number">2.1</span> Review data structures: Vectors</a>
   <ul class="collapse">
-  <li><a href="#attr-function-get-or-set-specific-attributes-of-an-object" id="toc-attr-function-get-or-set-specific-attributes-of-an-object" class="nav-link" data-scroll-target="#attr-function-get-or-set-specific-attributes-of-an-object"><span class="header-section-number">2.9.1</span> attr() function: get or set specific attributes of an object</a></li>
-  <li><a href="#attr-function-apply-on-data-frames" id="toc-attr-function-apply-on-data-frames" class="nav-link" data-scroll-target="#attr-function-apply-on-data-frames"><span class="header-section-number">2.9.2</span> attr() function, apply on data frames</a></li>
-  <li><a href="#why-add-attributes-to-data-frame-or-variables-of-data-frame" id="toc-why-add-attributes-to-data-frame-or-variables-of-data-frame" class="nav-link" data-scroll-target="#why-add-attributes-to-data-frame-or-variables-of-data-frame"><span class="header-section-number">2.9.3</span> Why add attributes to data frame or variables of data frame?</a></li>
-  <li><a href="#student-exercise" id="toc-student-exercise" class="nav-link" data-scroll-target="#student-exercise"><span class="header-section-number">2.9.4</span> Student exercise</a></li>
+  <li><a href="#atomic-vectors" id="toc-atomic-vectors" class="nav-link" data-scroll-target="#atomic-vectors"><span class="header-section-number">2.1.1</span> Atomic vectors</a></li>
+  <li><a href="#lists" id="toc-lists" class="nav-link" data-scroll-target="#lists"><span class="header-section-number">2.1.2</span> Lists</a></li>
+  <li><a href="#data-frames" id="toc-data-frames" class="nav-link" data-scroll-target="#data-frames"><span class="header-section-number">2.1.3</span> Data frames</a></li>
+  </ul></li>
+  <li><a href="#atomic-vectors-versus-augmented-vectors" id="toc-atomic-vectors-versus-augmented-vectors" class="nav-link" data-scroll-target="#atomic-vectors-versus-augmented-vectors"><span class="header-section-number">2.2</span> Atomic vectors versus augmented vectors</a></li>
+  <li><a href="#attributes-and-functions-to-identifymodify-attributes" id="toc-attributes-and-functions-to-identifymodify-attributes" class="nav-link" data-scroll-target="#attributes-and-functions-to-identifymodify-attributes"><span class="header-section-number">2.3</span> Attributes and functions to identify/modify attributes</a>
+  <ul class="collapse">
+  <li><a href="#attributes-function-describes-all-attributes-of-an-object" id="toc-attributes-function-describes-all-attributes-of-an-object" class="nav-link" data-scroll-target="#attributes-function-describes-all-attributes-of-an-object"><span class="header-section-number">2.3.1</span> attributes() function: describes all attributes of an object</a></li>
+  <li><a href="#attributes-function-attributes-of-a-variable-in-a-data-frame" id="toc-attributes-function-attributes-of-a-variable-in-a-data-frame" class="nav-link" data-scroll-target="#attributes-function-attributes-of-a-variable-in-a-data-frame"><span class="header-section-number">2.3.2</span> attributes() function, attributes of a variable in a data frame</a></li>
+  <li><a href="#attributes-function-attributes-of-lists-and-data-frames" id="toc-attributes-function-attributes-of-lists-and-data-frames" class="nav-link" data-scroll-target="#attributes-function-attributes-of-lists-and-data-frames"><span class="header-section-number">2.3.3</span> attributes() function, attributes of lists and data frames</a></li>
+  <li><a href="#attr-function-get-or-set-specific-attributes-of-an-object" id="toc-attr-function-get-or-set-specific-attributes-of-an-object" class="nav-link" data-scroll-target="#attr-function-get-or-set-specific-attributes-of-an-object"><span class="header-section-number">2.3.4</span> attr() function: get or set specific attributes of an object</a></li>
+  <li><a href="#attr-function-apply-on-data-frames" id="toc-attr-function-apply-on-data-frames" class="nav-link" data-scroll-target="#attr-function-apply-on-data-frames"><span class="header-section-number">2.3.5</span> attr() function, apply on data frames</a></li>
+  <li><a href="#why-add-attributes-to-data-frame-or-variables-of-data-frame" id="toc-why-add-attributes-to-data-frame-or-variables-of-data-frame" class="nav-link" data-scroll-target="#why-add-attributes-to-data-frame-or-variables-of-data-frame"><span class="header-section-number">2.3.6</span> Why add attributes to data frame or variables of data frame?</a></li>
+  <li><a href="#student-exercise" id="toc-student-exercise" class="nav-link" data-scroll-target="#student-exercise"><span class="header-section-number">2.3.7</span> Student exercise</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#object-class" id="toc-object-class" class="nav-link" data-scroll-target="#object-class"><span class="header-section-number">3</span> Object class</a>
   <ul class="collapse">
-  <li><a href="#why-is-object-class-important" id="toc-why-is-object-class-important" class="nav-link" data-scroll-target="#why-is-object-class-important"><span class="header-section-number">3.1</span> Why is object class important?</a></li>
-  <li><a href="#functions-care-about-object-class-not-object-type" id="toc-functions-care-about-object-class-not-object-type" class="nav-link" data-scroll-target="#functions-care-about-object-class-not-object-type"><span class="header-section-number">3.2</span> Functions care about object <strong>class</strong>, not object <strong>type</strong></a></li>
-  <li><a href="#class-and-object-oriented-programming" id="toc-class-and-object-oriented-programming" class="nav-link" data-scroll-target="#class-and-object-oriented-programming"><span class="header-section-number">3.3</span> Class and object-oriented programming</a></li>
+  <li><a href="#why-is-object-class-important" id="toc-why-is-object-class-important" class="nav-link" data-scroll-target="#why-is-object-class-important"><span class="header-section-number">3.1</span> Why is object class important?</a>
+  <ul class="collapse">
+  <li><a href="#class-and-object-oriented-programming" id="toc-class-and-object-oriented-programming" class="nav-link" data-scroll-target="#class-and-object-oriented-programming"><span class="header-section-number">3.1.1</span> Class and object-oriented programming</a></li>
+  <li><a href="#functions-care-about-object-class-not-object-type" id="toc-functions-care-about-object-class-not-object-type" class="nav-link" data-scroll-target="#functions-care-about-object-class-not-object-type"><span class="header-section-number">3.1.2</span> Functions care about object <strong>class</strong>, not object <strong>type</strong></a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#class-factor" id="toc-class-factor" class="nav-link" data-scroll-target="#class-factor"><span class="header-section-number">4</span> Class == factor</a>
   <ul class="collapse">
@@ -216,7 +220,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1 data-number="2"><span class="header-section-number">2</span> Attributes and augmented vectors</h1>
 <section id="review-data-structures-vectors" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="review-data-structures-vectors"><span class="header-section-number">2.1</span> Review data structures: Vectors</h2>
-<p><strong>Two types of vectors:</strong>ß</p>
+<p><strong>Two types of vectors:</strong></p>
 <ol type="1">
 <li><strong>Atomic vectors</strong></li>
 <li><strong>Lists</strong></li>
@@ -227,9 +231,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figcaption>Overview of data structures (Grolemund and Wickham, 2018)</figcaption>
 </figure>
 </div>
-</section>
-<section id="review-data-structures-atomic-vectors" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="review-data-structures-atomic-vectors"><span class="header-section-number">2.2</span> Review data structures: Atomic vectors</h2>
+<section id="atomic-vectors" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="atomic-vectors"><span class="header-section-number">2.1.1</span> Atomic vectors</h3>
 <p>An <strong>atomic vector</strong> is a collection of values</p>
 <ul>
 <li>Each value in an atomic vector is an <strong>element</strong></li>
@@ -275,8 +278,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="review-data-structures-lists" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="review-data-structures-lists"><span class="header-section-number">2.3</span> Review data structures: lists</h2>
+<section id="lists" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="lists"><span class="header-section-number">2.1.2</span> Lists</h3>
 <ul>
 <li>Like atomic vectors, <strong>lists</strong> are objects that contain <strong>elements</strong></li>
 <li>However, <strong>data type</strong> can differ across elements within a list
@@ -342,8 +345,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="review-data-structures-data-frames" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="review-data-structures-data-frames"><span class="header-section-number">2.4</span> Review data structures: data frames</h2>
+<section id="data-frames" class="level3" data-number="2.1.3">
+<h3 data-number="2.1.3" class="anchored" data-anchor-id="data-frames"><span class="header-section-number">2.1.3</span> Data frames</h3>
 <p>A <strong>data frame</strong> is a list with the following characteristics:</p>
 <ul>
 <li>All the elements must be <strong>vectors</strong> with the same <strong>length</strong></li>
@@ -398,8 +401,9 @@ $row.names
 </div>
 </div>
 </section>
-<section id="atomic-vectors-versus-augmented-vectors" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="atomic-vectors-versus-augmented-vectors"><span class="header-section-number">2.5</span> Atomic vectors versus augmented vectors</h2>
+</section>
+<section id="atomic-vectors-versus-augmented-vectors" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="atomic-vectors-versus-augmented-vectors"><span class="header-section-number">2.2</span> Atomic vectors versus augmented vectors</h2>
 <p><strong>Atomic vectors</strong> [our focus so far]</p>
 <ul>
 <li>I think of atomic vectors as “just the data”</li>
@@ -433,8 +437,8 @@ $row.names
 <li><strong>Augmented vectors</strong> are <strong>atomic vectors</strong> (just the data) with additional <strong>attributes</strong> attached</li>
 </ul>
 </section>
-<section id="attributes-and-functions-to-identifymodify-attributes" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="attributes-and-functions-to-identifymodify-attributes"><span class="header-section-number">2.6</span> Attributes and functions to identify/modify attributes</h2>
+<section id="attributes-and-functions-to-identifymodify-attributes" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="attributes-and-functions-to-identifymodify-attributes"><span class="header-section-number">2.3</span> Attributes and functions to identify/modify attributes</h2>
 <p>Description of attributes from Grolemund and Wickham 20.6</p>
 <ul>
 <li>“Any vector can contain arbitrary additional <strong>metadata</strong> through its <strong>attributes</strong>”</li>
@@ -445,9 +449,8 @@ $row.names
 <li><code>attributes()</code> function to describe all attributes of an object</li>
 <li><code>attr()</code> to see individual attribute of an object or set/change an individual attribute of an object</li>
 </ul>
-</section>
-<section id="attributes-function-describes-all-attributes-of-an-object" class="level2" data-number="2.7">
-<h2 data-number="2.7" class="anchored" data-anchor-id="attributes-function-describes-all-attributes-of-an-object"><span class="header-section-number">2.7</span> attributes() function: describes all attributes of an object</h2>
+<section id="attributes-function-describes-all-attributes-of-an-object" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="attributes-function-describes-all-attributes-of-an-object"><span class="header-section-number">2.3.1</span> attributes() function: describes all attributes of an object</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pull up help file for the attributes() function</span></span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>?attributes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -482,8 +485,8 @@ $row.names
 </div>
 </div>
 </section>
-<section id="attributes-function-attributes-of-a-variable-in-a-data-frame" class="level2" data-number="2.8">
-<h2 data-number="2.8" class="anchored" data-anchor-id="attributes-function-attributes-of-a-variable-in-a-data-frame"><span class="header-section-number">2.8</span> attributes() function, attributes of a variable in a data frame</h2>
+<section id="attributes-function-attributes-of-a-variable-in-a-data-frame" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="attributes-function-attributes-of-a-variable-in-a-data-frame"><span class="header-section-number">2.3.2</span> attributes() function, attributes of a variable in a data frame</h3>
 <p><strong>Accessing variable using <code>[[]]</code> subset operator</strong></p>
 <ul>
 <li>Recall <code>object_name[["element_name"]]</code> accesses contents of the element</li>
@@ -521,8 +524,8 @@ $row.names
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="fu">attributes</span>(wwlist[<span class="st">"firstgen"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="attributes-function-attributes-of-lists-and-data-frames" class="level2" data-number="2.9">
-<h2 data-number="2.9" class="anchored" data-anchor-id="attributes-function-attributes-of-lists-and-data-frames"><span class="header-section-number">2.9</span> attributes() function, attributes of lists and data frames</h2>
+<section id="attributes-function-attributes-of-lists-and-data-frames" class="level3" data-number="2.3.3">
+<h3 data-number="2.3.3" class="anchored" data-anchor-id="attributes-function-attributes-of-lists-and-data-frames"><span class="header-section-number">2.3.3</span> attributes() function, attributes of lists and data frames</h3>
 <p>Attributes of a <strong>named list</strong>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>list2 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">col_a =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">col_b =</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>))</span>
@@ -588,8 +591,9 @@ $row.names
 <pre><code>NULL</code></pre>
 </div>
 </div>
-<section id="attr-function-get-or-set-specific-attributes-of-an-object" class="level3" data-number="2.9.1">
-<h3 data-number="2.9.1" class="anchored" data-anchor-id="attr-function-get-or-set-specific-attributes-of-an-object"><span class="header-section-number">2.9.1</span> attr() function: get or set specific attributes of an object</h3>
+</section>
+<section id="attr-function-get-or-set-specific-attributes-of-an-object" class="level3" data-number="2.3.4">
+<h3 data-number="2.3.4" class="anchored" data-anchor-id="attr-function-get-or-set-specific-attributes-of-an-object"><span class="header-section-number">2.3.4</span> attr() function: get or set specific attributes of an object</h3>
 <p>Syntax</p>
 <ul>
 <li>Get: <code>attr(x, which, exact = FALSE)</code></li>
@@ -643,8 +647,8 @@ $row.names
 <span id="cb93-12"><a href="#cb93-12" aria-hidden="true" tabindex="-1"></a><span class="fu">attributes</span>(vector1) <span class="co"># see all attributes</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="attr-function-apply-on-data-frames" class="level3" data-number="2.9.2">
-<h3 data-number="2.9.2" class="anchored" data-anchor-id="attr-function-apply-on-data-frames"><span class="header-section-number">2.9.2</span> attr() function, apply on data frames</h3>
+<section id="attr-function-apply-on-data-frames" class="level3" data-number="2.3.5">
+<h3 data-number="2.3.5" class="anchored" data-anchor-id="attr-function-apply-on-data-frames"><span class="header-section-number">2.3.5</span> attr() function, apply on data frames</h3>
 <p><strong>Using <code>wwlist</code>, create data frame with three variables</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a>wwlist_small <span class="ot">&lt;-</span> wwlist[<span class="dv">1</span><span class="sc">:</span><span class="dv">25</span>, ] <span class="sc">%&gt;%</span> <span class="fu">select</span>(hs_state,firstgen,med_inc_zip)</span>
@@ -673,8 +677,8 @@ $row.names
 <span id="cb96-8"><a href="#cb96-8" aria-hidden="true" tabindex="-1"></a><span class="fu">attr</span>(wwlist_small<span class="sc">$</span>med_inc_zip, <span class="st">"inc attribute"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="why-add-attributes-to-data-frame-or-variables-of-data-frame" class="level3" data-number="2.9.3">
-<h3 data-number="2.9.3" class="anchored" data-anchor-id="why-add-attributes-to-data-frame-or-variables-of-data-frame"><span class="header-section-number">2.9.3</span> Why add attributes to data frame or variables of data frame?</h3>
+<section id="why-add-attributes-to-data-frame-or-variables-of-data-frame" class="level3" data-number="2.3.6">
+<h3 data-number="2.3.6" class="anchored" data-anchor-id="why-add-attributes-to-data-frame-or-variables-of-data-frame"><span class="header-section-number">2.3.6</span> Why add attributes to data frame or variables of data frame?</h3>
 <p>Pedagogical reasons</p>
 <ul>
 <li>Important to know how you can apply <code>attributes()</code> and <code>attr()</code> to data frames and to variables within data frames</li>
@@ -689,8 +693,8 @@ $row.names
 <li>Example dashboard: <a href="https://jkcf.shinyapps.io/dashboard/">LINK</a></li>
 </ul>
 </section>
-<section id="student-exercise" class="level3" data-number="2.9.4">
-<h3 data-number="2.9.4" class="anchored" data-anchor-id="student-exercise"><span class="header-section-number">2.9.4</span> Student exercise</h3>
+<section id="student-exercise" class="level3" data-number="2.3.7">
+<h3 data-number="2.3.7" class="anchored" data-anchor-id="student-exercise"><span class="header-section-number">2.3.7</span> Student exercise</h3>
 <ol type="1">
 <li><p>Using <code>wwlist</code>, create data frame of 30 observations with three variables: <code>state</code>, <code>zip5</code>, <code>pop_total_zip</code></p></li>
 <li><p>Return all attributes of this new data frame using <code>attributes()</code>. Then, get the <code>names</code> attribute of the data frame using <code>attr()</code>.</p></li>
@@ -775,16 +779,39 @@ $row.names
 </div>
 <section id="why-is-object-class-important" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="why-is-object-class-important"><span class="header-section-number">3.1</span> Why is object class important?</h2>
-<p>Functions care about object <strong>class</strong>, not object <strong>type</strong></p>
 <p>Specific functions usually work with only particular <strong>classes</strong> of objects</p>
 <ul>
 <li>“Date” functions usually only work on objects with a date class</li>
 <li>“String” functions usually only work on objects with a character class</li>
 <li>Functions that do mathematical computation usually work on objects with a numeric class</li>
 </ul>
+<section id="class-and-object-oriented-programming" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="class-and-object-oriented-programming"><span class="header-section-number">3.1.1</span> Class and object-oriented programming</h3>
+<p>R is an object-oriented programming language</p>
+<p>Definition of object oriented programming from this <a href="https://www.webopedia.com/TERM/O/object_oriented_programming_OOP.html">LINK</a></p>
+<blockquote class="blockquote">
+<p>“Object-oriented programming (OOP) refers to a type of computer programming in which programmers define not only the data type of a data structure, but also the types of operations (functions) that can be applied to the data structure.”</p>
+</blockquote>
+<p>Object <strong>class</strong> is fundamental to object oriented programming because:</p>
+<ul>
+<li>Object class determines which functions can be applied to the object</li>
+<li>Object class also determines what those functions do to the object
+<ul>
+<li>E.g., a specific function might do one thing to objects of <strong>class</strong> A and another thing to objects of <strong>class</strong> B</li>
+<li>What a function does to objects of different class is determined by whoever wrote the function</li>
+</ul></li>
+</ul>
+<p>Many different object classes exist in R</p>
+<ul>
+<li>You can also create your own classes
+<ul>
+<li>Example: the <code>labelled</code> class is an object class created by Hadley Wickham when he created the <code>haven</code> package</li>
+</ul></li>
+<li>In this course we will work with classes that have been created by others</li>
+</ul>
 </section>
-<section id="functions-care-about-object-class-not-object-type" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="functions-care-about-object-class-not-object-type"><span class="header-section-number">3.2</span> Functions care about object <strong>class</strong>, not object <strong>type</strong></h2>
+<section id="functions-care-about-object-class-not-object-type" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="functions-care-about-object-class-not-object-type"><span class="header-section-number">3.1.2</span> Functions care about object <strong>class</strong>, not object <strong>type</strong></h3>
 <p><strong>Example</strong>: <code>sum()</code> applies to <strong>numeric</strong>, <strong>logical</strong>, or <strong>complex</strong> class objects</p>
 <p>Apply <code>sum()</code> to object with class = <strong>logical</strong>:</p>
 <div class="cell">
@@ -890,30 +917,6 @@ $row.names
 </div>
 </div>
 </section>
-<section id="class-and-object-oriented-programming" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="class-and-object-oriented-programming"><span class="header-section-number">3.3</span> Class and object-oriented programming</h2>
-<p>R is an object-oriented programming language</p>
-<p>Definition of object oriented programming from this <a href="https://www.webopedia.com/TERM/O/object_oriented_programming_OOP.html">LINK</a></p>
-<blockquote class="blockquote">
-<p>“Object-oriented programming (OOP) refers to a type of computer programming in which programmers define not only the data type of a data structure, but also the types of operations (functions) that can be applied to the data structure.”</p>
-</blockquote>
-<p>Object <strong>class</strong> is fundamental to object oriented programming because:</p>
-<ul>
-<li>Object class determines which functions can be applied to the object</li>
-<li>Object class also determines what those functions do to the object
-<ul>
-<li>E.g., a specific function might do one thing to objects of <strong>class</strong> A and another thing to objects of <strong>class</strong> B</li>
-<li>What a function does to objects of different class is determined by whoever wrote the function</li>
-</ul></li>
-</ul>
-<p>Many different object classes exist in R</p>
-<ul>
-<li>You can also create your own classes
-<ul>
-<li>Example: the <code>labelled</code> class is an object class created by Hadley Wickham when he created the <code>haven</code> package</li>
-</ul></li>
-<li>In this course we will work with classes that have been created by others</li>
-</ul>
 </section>
 </section>
 <section id="class-factor" class="level1" data-number="4">

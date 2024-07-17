@@ -73,7 +73,7 @@ load(url("https://github.com/anyone-can-cook/rclass1/raw/master/data/prospect_li
 
 \medskip
 
-**Two types of vectors:**ß
+**Two types of vectors:**
 
 1.  **Atomic vectors**
 2.  **Lists**
@@ -82,7 +82,7 @@ load(url("https://github.com/anyone-can-cook/rclass1/raw/master/data/prospect_li
 
 ![Overview of data structures (Grolemund and Wickham, 2018)](data-structures-overview.png){width="60%"}
 
-## Review data structures: Atomic vectors
+### Atomic vectors
 
 \medskip An **atomic vector** is a collection of values
 
@@ -105,7 +105,7 @@ typeof(b)
 str(b) 
 ```
 
-## Review data structures: lists
+### Lists
 
 \medskip
 
@@ -135,7 +135,7 @@ list_c <- list(v1=1, v2=c("apple", "orange"), v3=list(1, 2, 3))
 str(list_c) 
 ```
 
-## Review data structures: data frames
+### Data frames
 
 \medskip A **data frame** is a list with the following characteristics:
 
@@ -202,7 +202,7 @@ Functions to identify and modify attributes
 -   `attributes()` function to describe all attributes of an object
 -   `attr()` to see individual attribute of an object or set/change an individual attribute of an object
 
-## attributes() function: describes all attributes of an object
+### attributes() function: describes all attributes of an object
 
 ```{r, eval=FALSE}
 # pull up help file for the attributes() function
@@ -224,7 +224,7 @@ vector1
 attributes(vector1)
 ```
 
-## attributes() function, attributes of a variable in a data frame
+### attributes() function, attributes of a variable in a data frame
 
 \medskip
 
@@ -253,7 +253,7 @@ str(wwlist["firstgen"])
 attributes(wwlist["firstgen"])
 ```
 
-## attributes() function, attributes of lists and data frames
+### attributes() function, attributes of lists and data frames
 
 \medskip
 
@@ -463,7 +463,6 @@ attributes(vector2)
 
 ## Why is object class important?
 
-Functions care about object **class**, not object **type**
 
 \medskip
 
@@ -473,7 +472,38 @@ Specific functions usually work with only particular **classes** of objects
 -   "String" functions usually only work on objects with a character class
 -   Functions that do mathematical computation usually work on objects with a numeric class
 
-## Functions care about object **class**, not object **type**
+### Class and object-oriented programming
+
+\medskip
+
+R is an object-oriented programming language
+
+\medskip
+
+Definition of object oriented programming from this [LINK](https://www.webopedia.com/TERM/O/object_oriented_programming_OOP.html)
+
+\medskip
+
+> "Object-oriented programming (OOP) refers to a type of computer programming in which programmers define not only the data type of a data structure, but also the types of operations (functions) that can be applied to the data structure."
+
+\medskip
+
+Object **class** is fundamental to object oriented programming because:
+
+-   Object class determines which functions can be applied to the object
+-   Object class also determines what those functions do to the object
+    -   E.g., a specific function might do one thing to objects of **class** A and another thing to objects of **class** B
+    -   What a function does to objects of different class is determined by whoever wrote the function
+
+\medskip
+
+Many different object classes exist in R
+
+-   You can also create your own classes
+    -   Example: the `labelled` class is an object class created by Hadley Wickham when he created the `haven` package
+-   In this course we will work with classes that have been created by others
+
+### Functions care about object **class**, not object **type**
 
 \medskip
 
@@ -562,34 +592,6 @@ wwlist$hs_city[1:6]
 tolower(wwlist$hs_city[1:6])
 ```
 
-## Class and object-oriented programming
-
-R is an object-oriented programming language
-
-\medskip
-
-Definition of object oriented programming from this [LINK](https://www.webopedia.com/TERM/O/object_oriented_programming_OOP.html)
-
-\medskip
-
-> "Object-oriented programming (OOP) refers to a type of computer programming in which programmers define not only the data type of a data structure, but also the types of operations (functions) that can be applied to the data structure."
-
-\medskip
-
-Object **class** is fundamental to object oriented programming because:
-
--   Object class determines which functions can be applied to the object
--   Object class also determines what those functions do to the object
-    -   E.g., a specific function might do one thing to objects of **class** A and another thing to objects of **class** B
-    -   What a function does to objects of different class is determined by whoever wrote the function
-
-\medskip
-
-Many different object classes exist in R
-
--   You can also create your own classes
-    -   Example: the `labelled` class is an object class created by Hadley Wickham when he created the `haven` package
--   In this course we will work with classes that have been created by others
 
 # Class == factor
 
