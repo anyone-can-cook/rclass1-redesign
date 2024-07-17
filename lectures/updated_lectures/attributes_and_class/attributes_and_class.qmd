@@ -1,13 +1,20 @@
 ---
-title: ""
+title: "Attributes and Class"
 author: ""
 date: ""
-format: html
-toc: true
-toc-depth: 2
-toc-location: left
-number-sections: true
-editor: visual
+format: 
+   html:
+    grid: 
+      sidebar-width: 300px
+      body-width: 1100px
+      margin-width: 100px
+    toc: true
+    #toc-depth: 2
+    toc-location: left
+    number-sections: true
+    theme: default
+    highlight-style: tango
+    df_print: tibble
 ---
 
 ```{r, echo=FALSE, include=FALSE}
@@ -47,6 +54,12 @@ library(lubridate)
 -   `library(tidyverse)`
 
 ## Dataset we will use
+
+Recall from Into the tidyverse lecture, we used the data set `wwlist`. This data set represents "prospects" purchased by Western Washington U.
+
+- Essentially, universities identify/target "prospect" by buying student lists from College Board/ACT (e.g., $.50+ per prospect).  
+- Data universities purchase on students includes their contact info (e.g., address, email), academics (e.g., GPA, AP coursework), socioeconomic and demographic characteristics.  
+- Universities choose which prospective students' information to purchase by filtering on criteria like their zip code, GPA, test score range, etc. 
 
 ```{r}
 rm(list = ls()) # remove all objects
@@ -111,7 +124,6 @@ length(list_b)
 str(list_b)
 ```
 
-
 Like atomic vectors, elements within a list can be named, thereby creating a **named list**
 
 ```{r}
@@ -136,7 +148,6 @@ str(list_c)
 typeof(list_d)
 attributes(list_d)
 ```
-
 
 ```{r}
 # a data frame
@@ -262,7 +273,6 @@ str(list2[['col_a']]) # structure of the element named 'col_a'
 attributes(list2[['col_a']]) # attributes of element named 'col_a'
 ```
 
-
 Attributes of a **data frame**:
 
 ```{r}
@@ -310,7 +320,6 @@ attr(vector1, "names")
 attr(vector1, "name") # we don't provide exact name of attribute
 attr(vector1, "name", exact = TRUE) # don't provide exact name of attribute
 ```
-
 
 **Using `attr()` to set specific attribute of an object** (output omitted)
 
@@ -397,7 +406,6 @@ Example practical application: interactive dashboards
 
 <summary><strong>Solutions to student exercise</strong></summary>
 
-
 ```{r, results = "hide"}
 # Part 1
 wwlist_exercise <- wwlist[1:30, ] %>% select(state, zip5, pop_total_zip)
@@ -425,7 +433,6 @@ attr(wwlist_exercise$pop_total_zip, "attribute_variable")
 </details>
 
 <br>
-
 
 # Object class
 
@@ -503,7 +510,6 @@ wwlist$hs_city[1:5]
 sum(wwlist$hs_city[1:5], na.rm = TRUE) 
 ```
 
-
 **Example**: `year()` from `lubridate` package applies to date-time objects
 
 ```{r, include=FALSE, results = "hide"}
@@ -530,7 +536,6 @@ typeof(wwlist$med_inc_zip)
 class(wwlist$med_inc_zip) 
 year(wwlist$med_inc_zip[1:10]) 
 ```
-
 
 **Example**: `tolower()` applies to **character** class objects
 
@@ -693,7 +698,6 @@ Display underlying integer values of variable `ethn_code_fac`:
 wwlist %>% count(as.integer(ethn_code_fac))
 ```
 
-
 \medskip
 
 Refer to categories of a factor (e.g., when filtering obs) using values of **levels** attribute rather than underlying values of variable
@@ -715,7 +719,6 @@ wwlist %>% filter(ethn_code_fac==7) %>% count()
 #referring to value of level attribute; this works
 wwlist %>% filter(ethn_code_fac=="white") %>% count()
 ```
-
 
 **Example**: Count the number of prospects in `wwlist` who identify as "white"
 
@@ -788,7 +791,6 @@ wwlist %>%
   count(receive_date)
 
 ```
-
 
 <details>
 
@@ -872,7 +874,6 @@ When using `haven` to read data, resulting R objects have these characteristics:
     -   Helpful description of `labelled` class [HERE](https://haven.tidyverse.org/articles/semantics.html)
 -   Dates and times converted to R date/time classes
 -   Character vectors not converted to factors
-
 
 Use `read_dta()` function from `haven` package to import Stata dataset into R
 
@@ -1156,7 +1157,6 @@ attr(df$sch, 'labels')
 5.  Add variable label for `pop_asian_zip` & `pop_asian_state` in data frame `wwlist`
 6.  Add value labels for `ethn_code` in data frame `wwlist`
 
-
 <details>
 
 <summary><strong>`labelled` student exercise solutions</strong></summary>
@@ -1172,7 +1172,6 @@ hsls %>%
   select(s3hs) %>% 
   val_labels()
 ```
-
 
 2.  Get a count of the variable `s3hs` showing the values and the value labels (**hint**: use `as_factor()`)
 
@@ -1247,7 +1246,7 @@ wwlist <- wwlist %>%
 
 <br>
 
-# Comparing  class labelled to class factor
+# Comparing class labelled to class factor
 
 |                               | `class==labelled`    | `class==factor`  |
 |-------------------------------|----------------------|------------------|
@@ -1307,7 +1306,6 @@ Showing variable values associated with a factor variable
 ```{r}
 hsls_f %>% count(as.integer(s3classes))
 ```
-
 
 When sub-setting observations (e.g., filtering), refer `level` attribute not variable value
 
@@ -1375,7 +1373,6 @@ attributes(wwlist_temp$hs_state_fac)
 rm(wwlist_temp)
 
 ```
-
 
 How the `levels` argument works when underlying data is character:
 
