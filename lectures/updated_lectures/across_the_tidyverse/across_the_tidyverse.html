@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -23,7 +23,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -79,7 +79,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
-  <ul class="collapse">
+  <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a>
   <ul class="collapse">
   <li><a href="#libraries-we-will-use-today" id="toc-libraries-we-will-use-today" class="nav-link" data-scroll-target="#libraries-we-will-use-today"><span class="header-section-number">1.1</span> Libraries we will use today</a></li>
@@ -88,21 +88,53 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#group_by-and-summarize" id="toc-group_by-and-summarize" class="nav-link" data-scroll-target="#group_by-and-summarize"><span class="header-section-number">2</span> <code>group_by()</code> and <code>summarize()</code></a>
   <ul class="collapse">
-  <li><a href="#group_by" id="toc-group_by" class="nav-link" data-scroll-target="#group_by"><span class="header-section-number">2.1</span> group_by</a></li>
-  <li><a href="#summarize" id="toc-summarize" class="nav-link" data-scroll-target="#summarize"><span class="header-section-number">2.2</span> summarize()</a></li>
+  <li><a href="#group_by" id="toc-group_by" class="nav-link" data-scroll-target="#group_by"><span class="header-section-number">2.1</span> group_by</a>
+  <ul class="collapse">
+  <li><a href="#grouping-not-retained-unless-you-assign-it" id="toc-grouping-not-retained-unless-you-assign-it" class="nav-link" data-scroll-target="#grouping-not-retained-unless-you-assign-it"><span class="header-section-number">2.1.1</span> Grouping not retained unless you <strong>assign</strong> it</a></li>
+  <li><a href="#un-grouping-an-object" id="toc-un-grouping-an-object" class="nav-link" data-scroll-target="#un-grouping-an-object"><span class="header-section-number">2.1.2</span> Un-grouping an object</a></li>
+  <li><a href="#student-exercise-group_by" id="toc-student-exercise-group_by" class="nav-link" data-scroll-target="#student-exercise-group_by"><span class="header-section-number">2.1.3</span> Student exercise <code>group_by()</code></a></li>
+  </ul></li>
+  <li><a href="#summarize" id="toc-summarize" class="nav-link" data-scroll-target="#summarize"><span class="header-section-number">2.2</span> summarize()</a>
+  <ul class="collapse">
+  <li><a href="#investigate-objects-created-by-summarize" id="toc-investigate-objects-created-by-summarize" class="nav-link" data-scroll-target="#investigate-objects-created-by-summarize"><span class="header-section-number">2.2.1</span> Investigate objects created by <code>summarize()</code></a></li>
+  <li><a href="#takeaways-summarize" id="toc-takeaways-summarize" class="nav-link" data-scroll-target="#takeaways-summarize"><span class="header-section-number">2.2.2</span> <strong>Takeaways</strong>, <code>summarize()</code></a></li>
+  <li><a href="#using-operator-to-filter-observations-within-summarize" id="toc-using-operator-to-filter-observations-within-summarize" class="nav-link" data-scroll-target="#using-operator-to-filter-observations-within-summarize"><span class="header-section-number">2.2.3</span> Using [] operator to filter observations within summarize</a></li>
+  <li><a href="#using-summarize-to-create-descriptive-statistics-table" id="toc-using-summarize-to-create-descriptive-statistics-table" class="nav-link" data-scroll-target="#using-summarize-to-create-descriptive-statistics-table"><span class="header-section-number">2.2.4</span> Using <code>summarize()</code> to create descriptive statistics table</a></li>
+  <li><a href="#student-exercise-summarize" id="toc-student-exercise-summarize" class="nav-link" data-scroll-target="#student-exercise-summarize"><span class="header-section-number">2.2.5</span> Student exercise <code>summarize()</code></a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#combining-group_by-and-summarize" id="toc-combining-group_by-and-summarize" class="nav-link" data-scroll-target="#combining-group_by-and-summarize"><span class="header-section-number">3</span> Combining group_by() and summarize()</a>
   <ul class="collapse">
-  <li><a href="#summarize-and-counts" id="toc-summarize-and-counts" class="nav-link" data-scroll-target="#summarize-and-counts"><span class="header-section-number">3.1</span> summarize() and Counts</a></li>
-  <li><a href="#summarize-and-means" id="toc-summarize-and-means" class="nav-link" data-scroll-target="#summarize-and-means"><span class="header-section-number">3.2</span> summarize() and means</a></li>
-  <li><a href="#summarize-and-logical-vectors-part-ii" id="toc-summarize-and-logical-vectors-part-ii" class="nav-link" data-scroll-target="#summarize-and-logical-vectors-part-ii"><span class="header-section-number">3.3</span> summarize() and logical vectors, part II</a></li>
+  <li><a href="#summarize-and-counts" id="toc-summarize-and-counts" class="nav-link" data-scroll-target="#summarize-and-counts"><span class="header-section-number">3.1</span> summarize() and Counts</a>
+  <ul class="collapse">
+  <li><a href="#summarize-count-with-logical-vectors-and-sum" id="toc-summarize-count-with-logical-vectors-and-sum" class="nav-link" data-scroll-target="#summarize-count-with-logical-vectors-and-sum"><span class="header-section-number">3.1.1</span> <code>summarize()</code>: count with logical vectors and <code>sum()</code></a></li>
+  <li><a href="#summarize-and-count-student-exercise" id="toc-summarize-and-count-student-exercise" class="nav-link" data-scroll-target="#summarize-and-count-student-exercise"><span class="header-section-number">3.1.2</span> <code>summarize()</code> and <code>count()</code> student exercise</a></li>
+  </ul></li>
+  <li><a href="#summarize-and-means" id="toc-summarize-and-means" class="nav-link" data-scroll-target="#summarize-and-means"><span class="header-section-number">3.2</span> summarize() and means</a>
+  <ul class="collapse">
+  <li><a href="#summarize-means-and-na.rm-argument" id="toc-summarize-means-and-na.rm-argument" class="nav-link" data-scroll-target="#summarize-means-and-na.rm-argument"><span class="header-section-number">3.2.1</span> <code>summarize()</code>: means and <code>na.rm</code> argument</a></li>
+  <li><a href="#student-exercise" id="toc-student-exercise" class="nav-link" data-scroll-target="#student-exercise"><span class="header-section-number">3.2.2</span> Student exercise</a></li>
+  </ul></li>
+  <li><a href="#summarize-and-logical-vectors-part-ii" id="toc-summarize-and-logical-vectors-part-ii" class="nav-link" data-scroll-target="#summarize-and-logical-vectors-part-ii"><span class="header-section-number">3.3</span> summarize() and logical vectors, part II</a>
+  <ul class="collapse">
+  <li><a href="#summarize-logical-vectors-to-count-proportions" id="toc-summarize-logical-vectors-to-count-proportions" class="nav-link" data-scroll-target="#summarize-logical-vectors-to-count-proportions"><span class="header-section-number">3.3.1</span> <code>summarize()</code>: logical vectors to count <em>proportions</em></a></li>
+  <li><a href="#summarize-other-helper-functions" id="toc-summarize-other-helper-functions" class="nav-link" data-scroll-target="#summarize-other-helper-functions"><span class="header-section-number">3.3.2</span> <code>summarize()</code>: Other “helper” functions</a></li>
+  <li><a href="#student-exercise-1" id="toc-student-exercise-1" class="nav-link" data-scroll-target="#student-exercise-1"><span class="header-section-number">3.3.3</span> Student exercise</a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#summarize-across-multiple-columns" id="toc-summarize-across-multiple-columns" class="nav-link" data-scroll-target="#summarize-across-multiple-columns"><span class="header-section-number">4</span> Summarize across multiple columns</a>
   <ul class="collapse">
   <li><a href="#what-are-column-wise-operations" id="toc-what-are-column-wise-operations" class="nav-link" data-scroll-target="#what-are-column-wise-operations"><span class="header-section-number">4.1</span> What are column-wise operations?</a></li>
-  <li><a href="#across-affects-every-variable" id="toc-across-affects-every-variable" class="nav-link" data-scroll-target="#across-affects-every-variable"><span class="header-section-number">4.2</span> across() affects every variable</a></li>
+  <li><a href="#across-affects-every-variable" id="toc-across-affects-every-variable" class="nav-link" data-scroll-target="#across-affects-every-variable"><span class="header-section-number">4.2</span> across() affects every variable</a>
+  <ul class="collapse">
+  <li><a href="#across-quosure-style-lambdas-func_name.x" id="toc-across-quosure-style-lambdas-func_name.x" class="nav-link" data-scroll-target="#across-quosure-style-lambdas-func_name.x"><span class="header-section-number">4.2.1</span> across(), quosure style lambdas ~ func_name(.x)</a></li>
+  <li><a href="#across-and-where-affects-selected-variables-if-they-meet-a-condition" id="toc-across-and-where-affects-selected-variables-if-they-meet-a-condition" class="nav-link" data-scroll-target="#across-and-where-affects-selected-variables-if-they-meet-a-condition"><span class="header-section-number">4.2.2</span> across() and where() affects selected variables if they meet a condition</a></li>
   </ul></li>
-  <li><a href="#attach-aggregate-measures-to-your-data-frame" id="toc-attach-aggregate-measures-to-your-data-frame" class="nav-link" data-scroll-target="#attach-aggregate-measures-to-your-data-frame"><span class="header-section-number">5</span> Attach aggregate measures to your data frame</a></li>
+  </ul></li>
+  <li><a href="#attach-aggregate-measures-to-your-data-frame" id="toc-attach-aggregate-measures-to-your-data-frame" class="nav-link" data-scroll-target="#attach-aggregate-measures-to-your-data-frame"><span class="header-section-number">5</span> Attach aggregate measures to your data frame</a>
+  <ul class="collapse">
+  <li><a href="#student-exercise-2" id="toc-student-exercise-2" class="nav-link" data-scroll-target="#student-exercise-2"><span class="header-section-number">5.0.1</span> Student exercise</a></li>
+  </ul></li>
   </ul>
 </nav>
 </div>
@@ -125,7 +157,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <section id="introduction" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
@@ -174,14 +208,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>You have a dataset with one observation per student-term and want to create a variable of credits attempted per term</li>
 <li>You have a dataset with one observation per student-term and want to create a variable of GPA for the semester or cumulative GPA for all semesters</li>
-<li>Number of off-campus recruiting events university makes to each state</li>
+<li>Number of off-campus recruiting events a university makes to each state</li>
 <li>Average household income at visited versus non-visited high schools</li>
 </ul>
-<p><strong>Creating graphs and tables of descripive stats usually require calculations across obs</strong></p>
+<p><strong>Creating graphs and tables of descriptive stats usually require calculations across obs</strong></p>
 <p>Example: Want to create a graph that shows number of recruiting events by event “type” (e.g., public HS, private HS) for each university</p>
 <ul>
-<li>Start with <code>df_event</code> dataset that has one obervation per university, recruiting event</li>
-<li>Create new data frame object that has one observation per university and event type and has variable for number of events
+<li>Start with <code>df_event</code> dataset that has one observation per university, recruiting event</li>
+<li>Create a new data frame object that has one observation per university and event type and has a variable for the number of events
 <ul>
 <li>this variable calculated by counting number of rows in each combination of university and event type</li>
 </ul></li>
@@ -464,8 +498,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#?max # base R function max() returns max value</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>df_event <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">max_inc=</span><span class="fu">max</span>(med_inc, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>df_event <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">max_inc=</span><span class="fu">max</span>(med_inc, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> <span class="fu">str</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>df_event <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">max_inc =</span> <span class="fu">max</span>(med_inc, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>df_event <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">max_inc =</span> <span class="fu">max</span>(med_inc, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> <span class="fu">str</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Example</strong>: Count total number of events AND max value of median income</p>
 <div class="cell">
@@ -1205,7 +1239,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="4.2" class="anchored" data-anchor-id="across-affects-every-variable"><span class="header-section-number">4.2</span> across() affects every variable</h2>
 <p><strong>Task</strong>:</p>
 <ul>
-<li>For U. Pittsburgh (<code>univ_id = 215293</code>) events at public and private high schools, caclulate the <strong>mean</strong> value of <code>med_inc</code> and <code>pct_white_zip</code> for each combination of <code>event_type</code> and <code>event_inst</code></li>
+<li>For U. Pittsburgh (<code>univ_id = 215293</code>) events at public and private high schools, calculate the <strong>mean</strong> value of <code>med_inc</code> and <code>pct_white_zip</code> for each combination of <code>event_type</code> and <code>event_inst</code></li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>df_event <span class="sc">%&gt;%</span> </span>
@@ -1224,7 +1258,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><strong>Task</strong>:</p>
 <ul>
-<li><p>For U. Pittsburgh (<code>univ_id = 215293</code>) events at public and private high schools, caclulate <strong>mean</strong> and <strong>standard deviation</strong> of <code>med_inc</code> and <code>pct_white_zip</code> for each combination of <code>event_type</code> and <code>event_inst</code></p></li>
+<li><p>For U. Pittsburgh (<code>univ_id = 215293</code>) events at public and private high schools, calculate <strong>mean</strong> and <strong>standard deviation</strong> of <code>med_inc</code> and <code>pct_white_zip</code> for each combination of <code>event_type</code> and <code>event_inst</code></p></li>
 <li><p>You can create a named list of functions to supply into the second argument <code>.fns</code></p></li>
 </ul>
 <div class="cell">
@@ -1361,7 +1395,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-
 "Scoped" variants of a function apply the function to a selection of variables. 
 
 \medskip
@@ -1390,8 +1423,6 @@ Arguments of scoped variants
 ### What are "scoped" variants of a function?
 
 
-
-
 Why/when use "scoped" variants of a function
 
 - When you want to perform an operation on multiple variables without naming each individual variable
@@ -1409,8 +1440,6 @@ Why/when use "scoped" variants of a function
 
 
 ### Scoped variants of summarize()
-
-
 
 
 __Description__. The "scoped variants" of `summarize()` apply `summarize()` to multiple variables. Three variants:
@@ -1441,8 +1470,6 @@ __Arguments__
 ### summarize_all() affects every variable
 
 
-
-
 Syntax: `summarize_all(.tbl, .funs, ...)`
 
 - `.funs`   specifies which function(s) to perform. Argument values:
@@ -1452,7 +1479,6 @@ Syntax: `summarize_all(.tbl, .funs, ...)`
 __Task__: 
 
 - For U. Pittsburgh (`univ_id = 215293`) events at public and private high schools, caclulate the __mean__ value of `med_inc` and `pct_white_zip` for each combination of `event_type` and `event_inst`
-
 ::: {.cell}
 
 ```{.r .cell-code}
@@ -1462,15 +1488,12 @@ df_event %>%
   group_by(event_type,event_inst) %>%
   summarize_all(.funs = mean)
 ```
-
 :::
-
 \medskip
 
 Try again, this time applying `na.rm = TRUE`
 
 - this is an example of a `...` argument "for the function calls in `.funs`." 
-
 ::: {.cell}
 
 ```{.r .cell-code}
@@ -1482,10 +1505,7 @@ df_event %>%
 ```
 :::
 
-
 ### summarize_all() affects every variable
-
-
 
 
 Syntax: `summarize_all(.tbl, .funs, ...)`
@@ -1498,7 +1518,6 @@ __Task__:
 
 - For U. Pittsburgh (`univ_id = 215293`) events at public and private high schools, caclulate __mean__ and __standard deviation__ of `med_inc` and `pct_white_zip` for each combination of `event_type` and `event_inst`
 
-
 ::: {.cell}
 
 ```{.r .cell-code}
@@ -1510,11 +1529,9 @@ df_event %>%
 ```
 :::
 
-
 Use this syntax to control variable name suffixes:
 
 - `.funs = list(var_name_suffix = function_name,...)`
-
 ::: {.cell}
 
 ```{.r .cell-code}
@@ -1526,7 +1543,6 @@ df_event %>%
 ```
 :::
 
-
 ### summarize_all() affects every variable
 
 __Task__: 
@@ -1534,7 +1550,6 @@ __Task__:
 - Same task as before, but now calculate __mean__, __standard deviation__, __min__, and __max__ of `med_inc` and `pct_white_zip` for each combination of `event_type` and `event_inst`
 
 \medskip
-
 
 ::: {.cell}
 
@@ -1557,7 +1572,6 @@ df_event %>%
 #> #   pct_white_zip_low <dbl>, med_inc_high <dbl>, pct_white_zip_high <dbl>
 ```
 :::
-
 ### summarize_all(), quosure style lambdas ~ func_name(.)
 
 Syntax: `summarize_all(.tbl, .funs, ...)`
@@ -1574,7 +1588,6 @@ __Task__: Calculate mean, number of obs, and number of non-missing obs for varia
 
 \medskip
 
-
 ::: {.cell}
 
 ```{.r .cell-code}
@@ -1585,10 +1598,8 @@ df_event %>%
   summarize_all(.funs = list(~ mean(., na.rm = TRUE), ~ n(), ~ sum(!is.na(.))))
 ```
 :::
-
 \medskip
 Specify suffix of variable name
-
 ::: {.cell}
 
 ```{.r .cell-code}
@@ -1600,7 +1611,6 @@ df_event %>%
     n_nonmiss = ~ sum(!is.na(.))))
 ```
 :::
-
 
 ### summarize_at() affects selected variables
 
@@ -1617,7 +1627,6 @@ Syntax: `summarize_at(.tbl, .vars, .funs, ...)`
 
 __Task__: For U. Pittsburgh events at public and private high schools, caclulate __mean__, __min__, and __max__ of variables `med_inc` and `event_date` for each combination of `event_type` and `event_inst`
 
-
 ::: {.cell}
 
 ```{.r .cell-code}
@@ -1629,9 +1638,7 @@ df_event %>%
 ```
 :::
 
-
 Alternative:
-
 ::: {.cell}
 
 ```{.r .cell-code}
@@ -1642,7 +1649,6 @@ df_event %>%
      .funs = list(avg = mean, low = min, high = max), na.rm = TRUE)
 ```
 :::
-
 
 
 ### summarize_if() affects variables that satisfy some condition
@@ -1662,7 +1668,6 @@ Syntax: `summarize_if(.predicate, .tbl, .funs, ...)`
 
 __Task__: For events by U. Pittsburgh at public and private high schools, caclulate mean and standard deviation for __numeric variables__
 
-
 ::: {.cell}
 
 ```{.r .cell-code}
@@ -1679,7 +1684,6 @@ df_event %>%
     na.rm = TRUE)
 ```
 :::
-
 
 -->
 </section>
@@ -1729,7 +1733,7 @@ df_event %>%
 <p>Steps:</p>
 <ol type="1">
 <li>Create measure of average income for each event type [already done]</li>
-<li>Create 0/1 indicator that identifies whether median income at event location is higher than average median income for events of that type</li>
+<li>Create a 0/1 indicator that identifies whether the median income at the event location is higher than the average median income for events of that type.</li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># average income at recruiting events across all universities</span></span>
@@ -1863,10 +1867,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1876,8 +1897,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1889,7 +1919,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1933,6 +2086,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1958,6 +2112,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -2018,6 +2198,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 

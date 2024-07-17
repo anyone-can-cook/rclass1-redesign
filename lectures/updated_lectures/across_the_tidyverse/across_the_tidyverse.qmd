@@ -2,12 +2,19 @@
 title: "Across the tidyverse: processing across rows"
 author: ""
 date: ""
-format: html
-toc: true
-toc-depth: 2
-toc-location: left
-number-sections: true
-editor: visual
+format: 
+   html:
+    grid: 
+      sidebar-width: 300px
+      body-width: 1100px
+      margin-width: 100px
+    toc: true
+    #toc-depth: 2
+    toc-location: left
+    number-sections: true
+    theme: default
+    highlight-style: tango
+    df_print: tibble
 ---
 
 ```{r, echo=FALSE, include=FALSE}
@@ -956,7 +963,7 @@ event_berk %>% arrange(event_type, event_datetime_start) %>%
 
 **Task**:
 
--   For U. Pittsburgh (`univ_id = 215293`) events at public and private high schools, caclulate the **mean** value of `med_inc` and `pct_white_zip` for each combination of `event_type` and `event_inst`
+-   For U. Pittsburgh (`univ_id = 215293`) events at public and private high schools, calculate the **mean** value of `med_inc` and `pct_white_zip` for each combination of `event_type` and `event_inst`
 
 ```{r, results="hide"}
 df_event %>% 
@@ -980,7 +987,7 @@ df_event %>%
 
 **Task**:
 
--   For U. Pittsburgh (`univ_id = 215293`) events at public and private high schools, caclulate **mean** and **standard deviation** of `med_inc` and `pct_white_zip` for each combination of `event_type` and `event_inst`
+-   For U. Pittsburgh (`univ_id = 215293`) events at public and private high schools, calculate **mean** and **standard deviation** of `med_inc` and `pct_white_zip` for each combination of `event_type` and `event_inst`
 
 -   You can create a named list of functions to supply into the second argument `.fns`
 
@@ -1437,7 +1444,7 @@ event_berk_temp %>% head(5)
 Steps:
 
 1.  Create measure of average income for each event type \[already done\]
-2.  Create 0/1 indicator that identifies whether median income at event location is higher than average median income for events of that type
+2.  Create a 0/1 indicator that identifies whether the median income at the event location is higher than the average median income for events of that type.
 
 ```{r, results="hide"}
 # average income at recruiting events across all universities
