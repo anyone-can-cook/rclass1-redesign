@@ -202,7 +202,7 @@ Functions to identify and modify attributes
 -   `attributes()` function to describe all attributes of an object
 -   `attr()` to see individual attribute of an object or set/change an individual attribute of an object
 
-### attributes() function: describes all attributes of an object
+### Describe all attributes of an object
 
 ```{r, eval=FALSE}
 # pull up help file for the attributes() function
@@ -224,7 +224,7 @@ vector1
 attributes(vector1)
 ```
 
-### attributes() function, attributes of a variable in a data frame
+### Attributes of a variable in a data frame
 
 \medskip
 
@@ -253,7 +253,7 @@ str(wwlist["firstgen"])
 attributes(wwlist["firstgen"])
 ```
 
-### attributes() function, attributes of lists and data frames
+### Attributes of lists and data frames
 
 \medskip
 
@@ -290,7 +290,7 @@ str(list3[['col_a']]) # structure of the element named 'col_a'
 attributes(list3[['col_a']]) # attributes of element named 'col_a'
 ```
 
-### attr() function: get or set specific attributes of an object
+### attr() function to get or set specific attributes of an object
 
 ```{r, eval=FALSE, include=FALSE}
 ?attr
@@ -338,7 +338,7 @@ attr(x=vector1, which = "names") <- NULL # delete names attribute
 attributes(vector1) # see all attributes
 ```
 
-### attr() function, apply on data frames
+### attr() function on data frames
 
 \medskip
 
@@ -595,7 +595,7 @@ tolower(wwlist$hs_city[1:6])
 
 # Class == factor
 
-## Recoding variable `ethn_code` from data frame `wwlist`
+**Recoding variable `ethn_code` from data frame `wwlist`**
 
 Let's first recode the `ethn_code` variable:
 
@@ -678,7 +678,7 @@ wwlist$ethn_code_fac[1:5]
 wwlist %>% count(ethn_code_fac)
 ```
 
-Apply `as.integer()` to display underlying integer values of factor variable
+Apply `as.integer()` to display underlying integer values of factor the variable
 
 ```{r, eval=FALSE, include=FALSE}
 ?as.integer
@@ -764,9 +764,6 @@ wwlist %>% filter(as.integer(psat_range_fac)==4) %>% count()
 wwlist %>% filter(psat_range=="1270-1520") %>% count()
 ```
 
-### Creating factor variables from character variables or from integer variables
-
-See Appendix
 
 ### Student exercise working with factors
 
@@ -865,6 +862,13 @@ We will be working with [High School Longitudinal Study of 2009 (HSLS:09)](https
 -   Stata
 
 \medskip
+
+If you haven't installed `haven` run the following code in your console.
+
+-   Generic syntax: `install.packages("package_name")`
+-   Install "haven": `install.packages("haven")`
+
+Make sure to load `haven` (e.g., `library(haven)`)
 
 When using `haven` to read data, resulting R objects have these characteristics:
 
@@ -1261,9 +1265,11 @@ wwlist <- wwlist %>%
 So should you work with `class==labelled` or `class==factor`?
 
 -   No right or wrong answer; this is a subjective decision
--   Personally, I prefer \`labelled' class
-    -   Easier to control underlying variable value
-    -   Feels more suited to working with survey data variables, where there are usually several different values that represent different kinds of "missing" values
+-   Personally, I prefer `factor` class
+    -   Easier to run analysis
+-   `labelled` class
+    -   Feels more suited to working with survey data variables, where there are usually several different values that represent different kinds of "missing" values. 
+-   You can use both!
 
 ## Converting `class==labelled` to `class==factor`
 
@@ -1309,7 +1315,7 @@ Showing variable values associated with a factor variable
 hsls_f %>% count(as.integer(s3classes))
 ```
 
-When sub-setting observations (e.g., filtering), refer `level` attribute not variable value
+When sub-setting observations (e.g., filtering), refer to the `level` attribute, not the underlying variable integer value.
 
 ```{r}
 hsls_f %>% filter(s3classes=="Yes") %>% count(s3classes)

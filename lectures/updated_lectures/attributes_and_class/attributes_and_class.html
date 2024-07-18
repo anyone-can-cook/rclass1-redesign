@@ -96,11 +96,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#atomic-vectors-versus-augmented-vectors" id="toc-atomic-vectors-versus-augmented-vectors" class="nav-link" data-scroll-target="#atomic-vectors-versus-augmented-vectors"><span class="header-section-number">2.2</span> Atomic vectors versus augmented vectors</a></li>
   <li><a href="#attributes-and-functions-to-identifymodify-attributes" id="toc-attributes-and-functions-to-identifymodify-attributes" class="nav-link" data-scroll-target="#attributes-and-functions-to-identifymodify-attributes"><span class="header-section-number">2.3</span> Attributes and functions to identify/modify attributes</a>
   <ul class="collapse">
-  <li><a href="#attributes-function-describes-all-attributes-of-an-object" id="toc-attributes-function-describes-all-attributes-of-an-object" class="nav-link" data-scroll-target="#attributes-function-describes-all-attributes-of-an-object"><span class="header-section-number">2.3.1</span> attributes() function: describes all attributes of an object</a></li>
-  <li><a href="#attributes-function-attributes-of-a-variable-in-a-data-frame" id="toc-attributes-function-attributes-of-a-variable-in-a-data-frame" class="nav-link" data-scroll-target="#attributes-function-attributes-of-a-variable-in-a-data-frame"><span class="header-section-number">2.3.2</span> attributes() function, attributes of a variable in a data frame</a></li>
-  <li><a href="#attributes-function-attributes-of-lists-and-data-frames" id="toc-attributes-function-attributes-of-lists-and-data-frames" class="nav-link" data-scroll-target="#attributes-function-attributes-of-lists-and-data-frames"><span class="header-section-number">2.3.3</span> attributes() function, attributes of lists and data frames</a></li>
-  <li><a href="#attr-function-get-or-set-specific-attributes-of-an-object" id="toc-attr-function-get-or-set-specific-attributes-of-an-object" class="nav-link" data-scroll-target="#attr-function-get-or-set-specific-attributes-of-an-object"><span class="header-section-number">2.3.4</span> attr() function: get or set specific attributes of an object</a></li>
-  <li><a href="#attr-function-apply-on-data-frames" id="toc-attr-function-apply-on-data-frames" class="nav-link" data-scroll-target="#attr-function-apply-on-data-frames"><span class="header-section-number">2.3.5</span> attr() function, apply on data frames</a></li>
+  <li><a href="#describe-all-attributes-of-an-object" id="toc-describe-all-attributes-of-an-object" class="nav-link" data-scroll-target="#describe-all-attributes-of-an-object"><span class="header-section-number">2.3.1</span> Describe all attributes of an object</a></li>
+  <li><a href="#attributes-of-a-variable-in-a-data-frame" id="toc-attributes-of-a-variable-in-a-data-frame" class="nav-link" data-scroll-target="#attributes-of-a-variable-in-a-data-frame"><span class="header-section-number">2.3.2</span> Attributes of a variable in a data frame</a></li>
+  <li><a href="#attributes-of-lists-and-data-frames" id="toc-attributes-of-lists-and-data-frames" class="nav-link" data-scroll-target="#attributes-of-lists-and-data-frames"><span class="header-section-number">2.3.3</span> Attributes of lists and data frames</a></li>
+  <li><a href="#attr-function-to-get-or-set-specific-attributes-of-an-object" id="toc-attr-function-to-get-or-set-specific-attributes-of-an-object" class="nav-link" data-scroll-target="#attr-function-to-get-or-set-specific-attributes-of-an-object"><span class="header-section-number">2.3.4</span> attr() function to get or set specific attributes of an object</a></li>
+  <li><a href="#attr-function-on-data-frames" id="toc-attr-function-on-data-frames" class="nav-link" data-scroll-target="#attr-function-on-data-frames"><span class="header-section-number">2.3.5</span> attr() function on data frames</a></li>
   <li><a href="#why-add-attributes-to-data-frame-or-variables-of-data-frame" id="toc-why-add-attributes-to-data-frame-or-variables-of-data-frame" class="nav-link" data-scroll-target="#why-add-attributes-to-data-frame-or-variables-of-data-frame"><span class="header-section-number">2.3.6</span> Why add attributes to data frame or variables of data frame?</a></li>
   <li><a href="#student-exercise" id="toc-student-exercise" class="nav-link" data-scroll-target="#student-exercise"><span class="header-section-number">2.3.7</span> Student exercise</a></li>
   </ul></li>
@@ -115,13 +115,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#class-factor" id="toc-class-factor" class="nav-link" data-scroll-target="#class-factor"><span class="header-section-number">4</span> Class == factor</a>
   <ul class="collapse">
-  <li><a href="#recoding-variable-ethn_code-from-data-frame-wwlist" id="toc-recoding-variable-ethn_code-from-data-frame-wwlist" class="nav-link" data-scroll-target="#recoding-variable-ethn_code-from-data-frame-wwlist"><span class="header-section-number">4.1</span> Recoding variable <code>ethn_code</code> from data frame <code>wwlist</code></a></li>
-  <li><a href="#factors" id="toc-factors" class="nav-link" data-scroll-target="#factors"><span class="header-section-number">4.2</span> Factors</a></li>
-  <li><a href="#working-with-factor-variables" id="toc-working-with-factor-variables" class="nav-link" data-scroll-target="#working-with-factor-variables"><span class="header-section-number">4.3</span> Working with factor variables</a></li>
-  <li><a href="#how-to-identify-the-variable-values-associated-with-factor-levels" id="toc-how-to-identify-the-variable-values-associated-with-factor-levels" class="nav-link" data-scroll-target="#how-to-identify-the-variable-values-associated-with-factor-levels"><span class="header-section-number">4.4</span> How to identify the variable values associated with factor levels</a>
+  <li><a href="#factors" id="toc-factors" class="nav-link" data-scroll-target="#factors"><span class="header-section-number">4.1</span> Factors</a></li>
+  <li><a href="#working-with-factor-variables" id="toc-working-with-factor-variables" class="nav-link" data-scroll-target="#working-with-factor-variables"><span class="header-section-number">4.2</span> Working with factor variables</a></li>
+  <li><a href="#how-to-identify-the-variable-values-associated-with-factor-levels" id="toc-how-to-identify-the-variable-values-associated-with-factor-levels" class="nav-link" data-scroll-target="#how-to-identify-the-variable-values-associated-with-factor-levels"><span class="header-section-number">4.3</span> How to identify the variable values associated with factor levels</a>
   <ul class="collapse">
-  <li><a href="#creating-factor-variables-from-character-variables-or-from-integer-variables" id="toc-creating-factor-variables-from-character-variables-or-from-integer-variables" class="nav-link" data-scroll-target="#creating-factor-variables-from-character-variables-or-from-integer-variables"><span class="header-section-number">4.4.1</span> Creating factor variables from character variables or from integer variables</a></li>
-  <li><a href="#student-exercise-working-with-factors" id="toc-student-exercise-working-with-factors" class="nav-link" data-scroll-target="#student-exercise-working-with-factors"><span class="header-section-number">4.4.2</span> Student exercise working with factors</a></li>
+  <li><a href="#student-exercise-working-with-factors" id="toc-student-exercise-working-with-factors" class="nav-link" data-scroll-target="#student-exercise-working-with-factors"><span class="header-section-number">4.3.1</span> Student exercise working with factors</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#class-labelled" id="toc-class-labelled" class="nav-link" data-scroll-target="#class-labelled"><span class="header-section-number">5</span> Class == labelled</a>
@@ -449,8 +447,8 @@ $row.names
 <li><code>attributes()</code> function to describe all attributes of an object</li>
 <li><code>attr()</code> to see individual attribute of an object or set/change an individual attribute of an object</li>
 </ul>
-<section id="attributes-function-describes-all-attributes-of-an-object" class="level3" data-number="2.3.1">
-<h3 data-number="2.3.1" class="anchored" data-anchor-id="attributes-function-describes-all-attributes-of-an-object"><span class="header-section-number">2.3.1</span> attributes() function: describes all attributes of an object</h3>
+<section id="describe-all-attributes-of-an-object" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="describe-all-attributes-of-an-object"><span class="header-section-number">2.3.1</span> Describe all attributes of an object</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pull up help file for the attributes() function</span></span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>?attributes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -485,8 +483,8 @@ $row.names
 </div>
 </div>
 </section>
-<section id="attributes-function-attributes-of-a-variable-in-a-data-frame" class="level3" data-number="2.3.2">
-<h3 data-number="2.3.2" class="anchored" data-anchor-id="attributes-function-attributes-of-a-variable-in-a-data-frame"><span class="header-section-number">2.3.2</span> attributes() function, attributes of a variable in a data frame</h3>
+<section id="attributes-of-a-variable-in-a-data-frame" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="attributes-of-a-variable-in-a-data-frame"><span class="header-section-number">2.3.2</span> Attributes of a variable in a data frame</h3>
 <p><strong>Accessing variable using <code>[[]]</code> subset operator</strong></p>
 <ul>
 <li>Recall <code>object_name[["element_name"]]</code> accesses contents of the element</li>
@@ -524,8 +522,8 @@ $row.names
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="fu">attributes</span>(wwlist[<span class="st">"firstgen"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="attributes-function-attributes-of-lists-and-data-frames" class="level3" data-number="2.3.3">
-<h3 data-number="2.3.3" class="anchored" data-anchor-id="attributes-function-attributes-of-lists-and-data-frames"><span class="header-section-number">2.3.3</span> attributes() function, attributes of lists and data frames</h3>
+<section id="attributes-of-lists-and-data-frames" class="level3" data-number="2.3.3">
+<h3 data-number="2.3.3" class="anchored" data-anchor-id="attributes-of-lists-and-data-frames"><span class="header-section-number">2.3.3</span> Attributes of lists and data frames</h3>
 <p>Attributes of a <strong>named list</strong>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>list2 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">col_a =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">col_b =</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>))</span>
@@ -592,8 +590,8 @@ $row.names
 </div>
 </div>
 </section>
-<section id="attr-function-get-or-set-specific-attributes-of-an-object" class="level3" data-number="2.3.4">
-<h3 data-number="2.3.4" class="anchored" data-anchor-id="attr-function-get-or-set-specific-attributes-of-an-object"><span class="header-section-number">2.3.4</span> attr() function: get or set specific attributes of an object</h3>
+<section id="attr-function-to-get-or-set-specific-attributes-of-an-object" class="level3" data-number="2.3.4">
+<h3 data-number="2.3.4" class="anchored" data-anchor-id="attr-function-to-get-or-set-specific-attributes-of-an-object"><span class="header-section-number">2.3.4</span> attr() function to get or set specific attributes of an object</h3>
 <p>Syntax</p>
 <ul>
 <li>Get: <code>attr(x, which, exact = FALSE)</code></li>
@@ -647,8 +645,8 @@ $row.names
 <span id="cb93-12"><a href="#cb93-12" aria-hidden="true" tabindex="-1"></a><span class="fu">attributes</span>(vector1) <span class="co"># see all attributes</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="attr-function-apply-on-data-frames" class="level3" data-number="2.3.5">
-<h3 data-number="2.3.5" class="anchored" data-anchor-id="attr-function-apply-on-data-frames"><span class="header-section-number">2.3.5</span> attr() function, apply on data frames</h3>
+<section id="attr-function-on-data-frames" class="level3" data-number="2.3.5">
+<h3 data-number="2.3.5" class="anchored" data-anchor-id="attr-function-on-data-frames"><span class="header-section-number">2.3.5</span> attr() function on data frames</h3>
 <p><strong>Using <code>wwlist</code>, create data frame with three variables</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a>wwlist_small <span class="ot">&lt;-</span> wwlist[<span class="dv">1</span><span class="sc">:</span><span class="dv">25</span>, ] <span class="sc">%&gt;%</span> <span class="fu">select</span>(hs_state,firstgen,med_inc_zip)</span>
@@ -921,8 +919,7 @@ $row.names
 </section>
 <section id="class-factor" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Class == factor</h1>
-<section id="recoding-variable-ethn_code-from-data-frame-wwlist" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="recoding-variable-ethn_code-from-data-frame-wwlist"><span class="header-section-number">4.1</span> Recoding variable <code>ethn_code</code> from data frame <code>wwlist</code></h2>
+<p><strong>Recoding variable <code>ethn_code</code> from data frame <code>wwlist</code></strong></p>
 <p>Let’s first recode the <code>ethn_code</code> variable:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb144"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb144-1"><a href="#cb144-1" aria-hidden="true" tabindex="-1"></a>wwlist <span class="ot">&lt;-</span> wwlist <span class="sc">%&gt;%</span>  </span>
@@ -944,9 +941,8 @@ $row.names
 <span id="cb144-17"><a href="#cb144-17" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(wwlist<span class="sc">$</span>ethn_code)</span>
 <span id="cb144-18"><a href="#cb144-18" aria-hidden="true" tabindex="-1"></a>wwlist <span class="sc">%&gt;%</span> <span class="fu">count</span>(ethn_code)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="factors" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="factors"><span class="header-section-number">4.2</span> Factors</h2>
+<section id="factors" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="factors"><span class="header-section-number">4.1</span> Factors</h2>
 <p><strong>Factors</strong> are an object <em>class</em> used to display categorical data (e.g., marital status)</p>
 <ul>
 <li>A factor is an <strong>augmented vector</strong> built by attaching a <strong>levels</strong> attribute to an (atomic) integer vectors</li>
@@ -1022,8 +1018,8 @@ $class
 </div>
 </div>
 </section>
-<section id="working-with-factor-variables" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="working-with-factor-variables"><span class="header-section-number">4.3</span> Working with factor variables</h2>
+<section id="working-with-factor-variables" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="working-with-factor-variables"><span class="header-section-number">4.2</span> Working with factor variables</h2>
 <p>Main things to note about variable <code>ethn_code_fac</code></p>
 <ul>
 <li><strong>type</strong> = integer</li>
@@ -1052,7 +1048,7 @@ Levels: api black latinx multirace nativeam not_reported white</code></pre>
 7 white         159680</code></pre>
 </div>
 </div>
-<p>Apply <code>as.integer()</code> to display underlying integer values of factor variable</p>
+<p>Apply <code>as.integer()</code> to display underlying integer values of factor the variable</p>
 <p>Investigate <code>as.integer()</code> function:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb173"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb173-1"><a href="#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(wwlist<span class="sc">$</span>ethn_code_fac)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1137,8 +1133,8 @@ $class
 </div>
 </div>
 </section>
-<section id="how-to-identify-the-variable-values-associated-with-factor-levels" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="how-to-identify-the-variable-values-associated-with-factor-levels"><span class="header-section-number">4.4</span> How to identify the variable values associated with factor levels</h2>
+<section id="how-to-identify-the-variable-values-associated-with-factor-levels" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="how-to-identify-the-variable-values-associated-with-factor-levels"><span class="header-section-number">4.3</span> How to identify the variable values associated with factor levels</h2>
 <p>Create a factor version of the character variable <code>psat_range</code></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb192"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb192-1"><a href="#cb192-1" aria-hidden="true" tabindex="-1"></a>wwlist <span class="sc">%&gt;%</span> <span class="fu">count</span>(psat_range)</span>
@@ -1177,12 +1173,8 @@ $class
 1  8348</code></pre>
 </div>
 </div>
-<section id="creating-factor-variables-from-character-variables-or-from-integer-variables" class="level3" data-number="4.4.1">
-<h3 data-number="4.4.1" class="anchored" data-anchor-id="creating-factor-variables-from-character-variables-or-from-integer-variables"><span class="header-section-number">4.4.1</span> Creating factor variables from character variables or from integer variables</h3>
-<p>See Appendix</p>
-</section>
-<section id="student-exercise-working-with-factors" class="level3" data-number="4.4.2">
-<h3 data-number="4.4.2" class="anchored" data-anchor-id="student-exercise-working-with-factors"><span class="header-section-number">4.4.2</span> Student exercise working with factors</h3>
+<section id="student-exercise-working-with-factors" class="level3" data-number="4.3.1">
+<h3 data-number="4.3.1" class="anchored" data-anchor-id="student-exercise-working-with-factors"><span class="header-section-number">4.3.1</span> Student exercise working with factors</h3>
 <ol type="1">
 <li>After running the code below, use <code>typeof()</code>, <code>class()</code>, <code>str()</code>, and <code>attributes()</code> functions to check the new variable <code>receive_year</code><br>
 </li>
@@ -1317,6 +1309,12 @@ $class
 <li>SPSS</li>
 <li>Stata</li>
 </ul>
+<p>If you haven’t installed <code>haven</code> run the following code in your console.</p>
+<ul>
+<li>Generic syntax: <code>install.packages("package_name")</code></li>
+<li>Install “haven”: <code>install.packages("haven")</code></li>
+</ul>
+<p>Make sure to load <code>haven</code> (e.g., <code>library(haven)</code>)</p>
 <p>When using <code>haven</code> to read data, resulting R objects have these characteristics:</p>
 <ul>
 <li>Data frames are <strong>tibbles</strong>, Tidyverse’s preferred <strong>class</strong> of data frames</li>
@@ -1879,11 +1877,15 @@ NULL</code></pre>
 <p>So should you work with <code>class==labelled</code> or <code>class==factor</code>?</p>
 <ul>
 <li>No right or wrong answer; this is a subjective decision</li>
-<li>Personally, I prefer `labelled’ class
+<li>Personally, I prefer <code>factor</code> class
 <ul>
-<li>Easier to control underlying variable value</li>
-<li>Feels more suited to working with survey data variables, where there are usually several different values that represent different kinds of “missing” values</li>
+<li>Easier to run analysis</li>
 </ul></li>
+<li><code>labelled</code> class
+<ul>
+<li>Feels more suited to working with survey data variables, where there are usually several different values that represent different kinds of “missing” values.</li>
+</ul></li>
+<li>You can use both!</li>
 </ul>
 <section id="converting-classlabelled-to-classfactor" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="converting-classlabelled-to-classfactor"><span class="header-section-number">6.1</span> Converting <code>class==labelled</code> to <code>class==factor</code></h2>
@@ -1943,7 +1945,7 @@ NULL</code></pre>
 5                       8  1621</code></pre>
 </div>
 </div>
-<p>When sub-setting observations (e.g., filtering), refer <code>level</code> attribute not variable value</p>
+<p>When sub-setting observations (e.g., filtering), refer to the <code>level</code> attribute, not the underlying variable integer value.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb290"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb290-1"><a href="#cb290-1" aria-hidden="true" tabindex="-1"></a>hsls_f <span class="sc">%&gt;%</span> <span class="fu">filter</span>(s3classes<span class="sc">==</span><span class="st">"Yes"</span>) <span class="sc">%&gt;%</span> <span class="fu">count</span>(s3classes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
