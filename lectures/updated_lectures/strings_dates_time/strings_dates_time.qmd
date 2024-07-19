@@ -1,13 +1,20 @@
 ---
-title: ""
+title: "Strings & Dates"
 author: ""
 date: ""
-format: html
-toc: true
-toc-depth: 2
-toc-location: left
-number-sections: true
-editor: visual
+format: 
+   html:
+    grid: 
+      sidebar-width: 300px
+      body-width: 1100px
+      margin-width: 100px
+    toc: true
+    #toc-depth: 2
+    toc-location: left
+    number-sections: true
+    theme: default
+    highlight-style: tango
+    df_print: tibble
 ---
 
 ```{r, echo=FALSE, include=FALSE}
@@ -61,7 +68,7 @@ p12_df <- p12_full_df %>% select("user_id", "created_at", "screen_name", "text",
 head(p12_df)
 ```
 
-# Data structures and types
+# Review of Data structures and types
 
 What is an **object**?
 
@@ -85,132 +92,12 @@ What is an **object**?
 
 Basic **data structures**:
 
--   [Atomic vectors](#atomic-vectors)
--   [Lists](#lists)
-    -   [Dataframes](#dataframes)
+_Review from Intro to R and Attributes and Class lectures:_ 
 
-## Atomic vectors {#atomtic-vectors}
+-   [Atomic vectors](https://anyone-can-cook.github.io/rclass1-redesign/lectures/updated_lectures/intro_to_r/intro_to_r.html#atomic-vectors)
+-   [Lists](https://anyone-can-cook.github.io/rclass1-redesign/lectures/updated_lectures/intro_to_r/intro_to_r.html#lists)
+    -   [Dataframes](https://anyone-can-cook.github.io/rclass1-redesign/lectures/updated_lectures/attributes_and_class/attributes_and_class.html#data-frames)
 
-What are **atomic vectors**?
-
--   **Atomic vectors** are objects that contains elements
--   Elements must be of the same data type (i.e., *homogeneous*)
--   The `class()` and `typeof()` a vector describes the elements it contains
-
-**Example**: Create a tibble to investigate atomic vectors
-
-```{r}
-#create a tibble with columns or variables of different atomic vectors 
-v <- tibble(l = c(TRUE, FALSE, FALSE, TRUE),
-            n = c(1, 3, 5, 7),
-            i = c(1L, 3L, 5L, 7L),
-            c = c("a", "b", "c", "d"))
-
-str(v$l)
-class(v$l)
-typeof(v$l)
-```
-
-<details>
-
-<summary>**Example**: Investigating numeric vectors</summary>
-
-```{r}
-str(v$n)
-class(v$n)
-typeof(v$n)
-```
-
-</details>
-
-<details>
-
-<summary>**Example**: Investigating integer vectors</summary>
-
-```{r}
-str(v$i)
-class(v$i)
-typeof(v$i)
-```
-
-</details>
-
-<details>
-
-<summary>**Example**: Investigating character vectors</summary>
-
-Each element in a `character` vector is a **string** (covered in next section):
-
-```{r}
-str(v$c)
-class(v$c)
-typeof(v$c)
-```
-
-</details>
-
-## Lists {#lists}
-
-What are **lists**?
-
--   **Lists** are objects that contains elements
--   Elements do not need to be of the same type (i.e., *heterogeneous*)
-    -   Elements can be atomic vectors or even other lists
--   The `class()` and `typeof()` a list is `list`
-
-**Example**: Investigating heterogeneous lists
-
-```{r}
-l <- list(2.5, "abc", TRUE, c(1L, 2L, 3L))
-str(l)
-class(l)
-typeof(l)
-```
-
-<details>
-
-<summary>**Example**: Investigating nested lists</summary>
-
-```{r}
-l <- list(list(TRUE, c(1, 2, 3), list(c("a", "b", "c"))), FALSE, 10L)
-str(l)
-class(l)
-typeof(l)
-```
-
-</details>
-
-## Dataframes {#dataframes}
-
-What are **dataframes**?
-
--   **Dataframes** are a special kind of **list** with the following characteristics:
-    -   Each element is a **vector** (i.e., *a column in the dataframe*)
-    -   The element should be named (i.e., *column name in the dataframe*)
-    -   Each of the vectors must be the same length (i.e., *same number of rows in the dataframe*)
-    -   The data type of each vector may be different
--   Dataframes can be created using the function `data.frame()`
--   The `class()` of a dataframe is `data.frame`
--   The `typeof()` a dataframe is `list`
-
-<details>
-
-<summary>**Example**: Investigating dataframe</summary>
-
-```{r}
-df <- data.frame(
-  colA = c(1, 2, 3),
-  colB = c("a", "b", "c"),
-  colC = c(TRUE, FALSE, TRUE),
-  stringsAsFactors = FALSE
-)
-df
-str(df)
-class(df)
-typeof(df)
-```
-
-</details>
 
 ## Converting between types
 
@@ -222,6 +109,19 @@ Functions for converting between types:
 -   `as.character()`: Convert to `character`
 -   `as.list()`: Convert to `list`
 -   `as.data.frame()`: Convert to `data.frame`
+
+_Before converting between vectors types, it is important to know that the most complex type always wins._ 
+
+```{r}
+typeof(c(TRUE, 3L))
+#> [1] "integer"
+typeof(c(2L, 4.5))
+#> [1] "double"
+typeof(c(2.5, "j"))
+#> [1] "character"
+```
+
+_Credit:_ [R for Data Science, section on Coercion](https://r4ds.had.co.nz/vectors.html#coercion)
 
 <br>
 
