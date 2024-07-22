@@ -33,6 +33,16 @@ library(lubridate)  # package for working with dates and times
 #library(rvest)  # package for reading and manipulating HTML
 ```
 
+**If package not yet installed**, then must install before you load. Install in "console" rather than .Rmd file:
+
+-   Generic syntax: `install.packages("package_name")`
+-   Install "tidyverse": `install.packages("tidyverse")`
+
+**Note**: When we load package, name of package is not in quotes; but when we install package, name of package is in quotes:
+
+-   `install.packages("tidyverse")`
+-   `library(tidyverse)`
+
 Resources used to create this lecture:
 
 -   https://r4ds.had.co.nz/strings.html
@@ -392,9 +402,8 @@ str_length(string)
 
 <br>
 
-<details>
 
-<summary>**Example**: Using `str_length()` on string</summary>
+**Example**: Using `str_length()` on string
 
 ```{r}
 str_length("cats")
@@ -406,11 +415,8 @@ Compare to `length()`, which treats the string as a single object:
 length("cats")
 ```
 
-</details>
 
-<details>
-
-<summary>**Example**: Using `str_length()` on a character vector</summary>
+**Example**: Using `str_length()` on a character vector
 
 ```{r}
 str_length(c("cats", "in", "hat"))
@@ -422,7 +428,6 @@ Compare to `length()`, which finds the number of elements in the vector:
 length(c("cats", "in", "hat"))
 ```
 
-</details>
 
 <details>
 
@@ -510,7 +515,7 @@ str_c(..., sep = "", collapse = NULL)
 -   Arguments:
     -   The input is one or more character vectors (or vectors coercible to character)
         -   Zero length arguments are removed
-        -   Short arguments are recycled to the length of the longest
+        -   Scalar inputs (vectors of length 1) are recycled to the common length of vector inputs 
     -   `sep`: String to insert between input vectors
     -   `collapse`: Optional string used to combine input vectors into single string
 
@@ -684,7 +689,14 @@ str_c(TRUE, 1.5, 2L, "X")
 
 <summary>**Example**: Using `str_c()` on vectors of different lengths</summary>
 
-When multiple vectors are provided, they are joined together element-wise, recycling the elements of the shorter vectors:
+<br> 
+
+When trying to join vectors of different length, you will run into an error. 
+
+-   This is because new recycling rules are applied to the `stringr()` package to be consistent with other tidyverse recycling rules (see Wickham blog 12/05/2022)[https://www.tidyverse.org/blog/2022/12/stringr-1-5-0/#recycling-rules]
+
+-   In practice this makes sense when working with data frames and tidyverse because columns (variables) in a data frame must be the same length. 
+
 
 ```{r, warning = FALSE, eval=FALSE}
 str_c("#", c("a", "b", "c", "d"), c(1, 2, 3), c(TRUE, FALSE))
@@ -698,6 +710,8 @@ str_c("#", c("a", "b", "c", "d"), c(1, 2, 3), c(TRUE, FALSE), sep = "~", collaps
 <details>
 
 <summary>**Example**: Using `str_c()` on dataframe columns</summary>
+
+<br> 
 
 Let's combine the `user_id` and `screen_name` columns from `p12_df`. We'll focus on unique Twitter handles:
 
@@ -753,6 +767,8 @@ str_sub(string, start = 1L, end = -1L, omit_na = FALSE) <- value
 
 <summary>**Example**: Using `str_sub()` to subset strings</summary>
 
+<br> 
+
 If no `start` and `end` positions are specified, `str_sub()` will by default return the entire (original) string:
 
 ```{r}
@@ -776,6 +792,8 @@ str_sub(c("abcdefg", 123, TRUE), start = 2, end = -2)
 <details>
 
 <summary>**Example**: Using `str_sub()` to replace strings</summary>
+
+<br> 
 
 If no `start` and `end` positions are specified, `str_sub()` will by default return the original string, so the entire string would be replaced:
 
@@ -811,14 +829,22 @@ str_sub(c("A", "AB", "ABC", "ABCD", "ABCDE")) <- "*"
 
 <summary>**Example**: Using `str_sub()` on dataframe column</summary>
 
+<br> 
+
 We can use `as.character()` to turn the `created_at` value to a string, then use `str_sub()` to extract out various date/time components from the string:
 
 ```{r}
+
+#str(p12_df %>% select(created_at))
+typeof(p12_df$created_at)
+class(p12_df$created_at)
+head(p12_df$created_at)
+
 p12_datetime_df <- p12_df %>% select(created_at) %>%
   mutate(
-      dt_chr = as.character(created_at),
-      date_chr = str_sub(dt_chr, 1, 10),
-      yr_chr = str_sub(dt_chr, 1, 4),
+      dt_chr = as.character(created_at), #convert to character
+      date_chr = str_sub(dt_chr, 1, 10), #subset values in position 1 and 10 to grab the date
+      yr_chr = str_sub(dt_chr, 1, 4), #subset values in position 1 and 4 to grab the year
       mth_chr = str_sub(dt_chr, 6, 7),
       day_chr = str_sub(dt_chr, 9, 10),
       hr_chr = str_sub(dt_chr, -8, -7),
@@ -846,6 +872,8 @@ Other useful `stringr` functions:
 
 <summary>**Example**: Using `str_to_upper()` to turn strings to uppercase</summary>
 
+<br> 
+
 Turn column names of `p12_df` to uppercase:
 
 ```{r}
@@ -863,6 +891,8 @@ names(p12_df)
 
 <summary>**Example**: Using `str_to_lower()` to turn strings to lowercase</summary>
 
+<br> 
+
 Turn column names of `p12_df` to lowercase:
 
 ```{r}
@@ -879,6 +909,8 @@ names(p12_df)
 <details>
 
 <summary>**Example**: Using `str_sort()` to sort character vector</summary>
+
+<br> 
 
 Sort the vector of `p12_df` column names:
 
@@ -899,6 +931,8 @@ str_sort(names(p12_df), decreasing = TRUE)
 
 <summary>**Example**: Using `str_trim()` to trim whitespace from string</summary>
 
+<br> 
+
 ```{r}
 # Trim whitespace from both left and right sides (default)
 str_trim(c("\nABC ", " XYZ\t"))
@@ -915,6 +949,8 @@ str_trim(c("\nABC ", " XYZ\t"), side = "right")
 <details>
 
 <summary>**Example**: Using `str_pad()` to pad string with character</summary>
+
+<br> 
 
 Let's say we have a vector of zip codes that has lost all leading 0's. We can use `str_pad()` to add that back in:
 
