@@ -1,15 +1,20 @@
 ---
-title: ""
+title: "Visualizations with ggplot2"
 author: ""
 date: ""
-format: html
-toc: true
-toc-depth: 2
-toc-location: left
-number-sections: true
-editor: visual
-bibliography: rclass1_bib.bib
-csl: apa.csl
+format: 
+   html:
+    grid: 
+      sidebar-width: 300px
+      body-width: 1100px
+      margin-width: 100px
+    toc: true
+    #toc-depth: 2
+    toc-location: left
+    number-sections: true
+    theme: default
+    highlight-style: tango
+    df_print: tibble
 ---
 
 ```{r global options, include = FALSE}
@@ -25,10 +30,20 @@ library(tidyverse)
 library(ggplot2) # superfluous because ggplot2 is part of tidyverse
 library(scales) # for formatting labels for axes and legends
 
-library(haven)
-library(labelled)
-library(RColorBrewer)
+library(haven) #read in spss, stata, sas files
+library(labelled) #work with metadata e.g., variable and value labels
+library(RColorBrewer) #manage colors in R
 ```
+
+**If package not yet installed**, then must install before you load. Install in "console" rather than .Rmd file:
+
+-   Generic syntax: `install.packages("package_name")`
+-   Install "tidyverse": `install.packages("ggplot2")`
+
+**Note**: When we load package, name of package is not in quotes; but when we install package, name of package is in quotes:
+
+-   `install.packages("ggplot2")`
+-   `library(ggplot2)`
 
 **Resources used to create this lecture:**
 
