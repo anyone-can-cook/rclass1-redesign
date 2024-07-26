@@ -61,22 +61,10 @@ It may be helpful to familiarize yourself with this cheatsheet and use it as a r
 
 ## Datasets we will use
 
-We will use two datasets that are part of the `ggplot2` package:
+We will use one dataset that is part of the `ggplot2` package:
 
--   `mpg`: EPA fuel economy data in 1999 and 2008 for 38 car models that had a new release every year between 1999 and 2008
-    -   Note: There are no set of variables that uniquely identify observations
 -   `diamonds`: Prices and attributes of about 54,000 diamonds
 
-```{r}
-#?mpg
-glimpse(mpg)
-```
-
-```{r, echo = FALSE}
-#Uniquely identify obs?
-#mpg %>% group_by(manufacturer,model,cyl,trans,drv,fl,year) %>% count()
-#mpg %>% group_by(manufacturer,model,cyl,trans,drv,fl,year,displ,cty,hwy,class) %>% count()
-```
 
 ```{r}
 #?diamonds
@@ -96,6 +84,7 @@ els <- df_els_stu_allobs_fac
 ```
 
 <br>
+
 
 <details>
 
@@ -125,8 +114,11 @@ els <- els %>%
     f2evratt = unclass(f2evratt),
     f1mothed = unclass(f1mothed),
     f1fathed = unclass(f1fathed),
-    f1sex = recode_factor(f1sex, `1` = 'Male', `2` = 'Female')
+    f3tzpostern = unclass(f3tzpostern),
+    f1sex = recode_factor(f1sex, `1` = 'Male', `2` = 'Female'),
+    totloan_v2 = as.numeric(format(els$f3totloan, scientific = FALSE))
   )
+
 ```
 
 ## Type/class of variables ggplot expects
@@ -352,22 +344,76 @@ Graphs visually display data, using **geometric objects** like a point, line, ba
 
 **Position adjustment** adjusts the position of visual elements in the plot so that these visual elements do not overlap with one another in ways that make the plot difficult to interpret.
 
-**Example**: The dataset `mpg` (included in the `ggplot2` package) contains variables for the specifications of different cars, with 234 observations
+**Example**: The dataset `els` contains variables on 10th graders from 2002 until 2012; there are 16197 observations, and each observation is a student.
 
--   Create a scatterplot of the relationship between number of cylinders in the engine (x-axis) and highway miles-per-gallon (y-axis)
--   Below plot is difficult to interpet because many points overlap with one another
+-   Create a scatterplot of the relationship between the total amount borrowed in loans (x-axis) and reported earnings for 2011 (y-axis)
+-   Below plot is difficult to interpret because many points overlap with one another
+-   Note we filtered to less than \$50k borrowed in loans and less than \$100K in earnings due to the large number of observations. 
+
+```{r echo=FALSE, eval=FALSE}
+#run some descriptives on variables of interest
+#els %>% var_label()
+
+els %>% 
+  group_by(stu_id) %>%
+  summarise(n_per_grp = n()) %>%
+  filter(n_per_grp > 1)
+  
+els %>% head(10)
+
+#respondents taking courses at 2 - 4year institution
+attributes(els$f3a01d) #"No" = not taking courses
+
+#remove current students?
+els %>%
+  group_by(f3a01d) %>%
+  count(f3ern2011)
+
+els %>%
+  group_by(f3a01d) %>%
+  count() #~10k not taking courses
+
+#mean roughly 14K, max 300K, observe $50k
+els %>% select(totloan_v2) %>% summary()
+els %>%count(totloan_v2)
+
+#mean roughly $63k, max $250k, median $32k, lets filter for $150k or less
+els %>% select(parent_income) %>% summary()
+els %>% count(parent_income)
+
+#know credits earned
+attributes(els$f3tzpostern)
+els %>% select(f3tzpostern) %>% summary()
+
+#earnings in 2011, mean $29k, median $25k
+els %>% filter(f3ern2011 > 0) %>% select(f3ern2011) %>% summary()
+els %>% count(f3ern2011)
+
+#highest known degree attained as of June 2013
+attributes(els$f3tzhighdeg)
+els %>% select(f3tzhighdeg) %>% summary()
+```
+
 
 ```{r}
-ggplot(data = mpg, mapping = aes(x = cyl, y = hwy)) +
+#total amount borrowed in loans on 2011 earnings 
+els %>%
+  filter(totloan_v2 < 50000 & f3ern2011 > 0 & f3ern2011 < 100000) %>%
+  ggplot(aes(x = totloan_v2, y = f3ern2011)) +
   geom_point()
+
 ```
 
 -   The `jitter` position adjustment "adds a small amount of random variation to the location of each point" (from `?geom_jitter`)
 
 ```{r}
-ggplot(data = mpg, mapping = aes(x = cyl, y = hwy)) +
+#total amount borrowed in loans on 2011 earnings 
+els %>%
+  filter(totloan_v2 < 50000 & f3ern2011 > 0 & f3ern2011 < 100000) %>%
+  ggplot(aes(x = totloan_v2, y = f3ern2011)) +
   geom_point(position = "jitter")
 ```
+
 
 ## Coordinate system (**coord**)
 
@@ -396,12 +442,34 @@ p +
 
 -   When using the default Cartesian coordinate system, a common task is to flip the x and y axis using `coord_flip()`. (From [R for Data Science](https://r4ds.had.co.nz/data-visualisation.html#coordinate-systems))
 
+```{r echo=FALSE}
+#recode some values that are too long
+els <- els %>%
+  mutate(h_degree = recode(f3tzhighdeg,
+                           "Associate's degree" = "Associate's",
+                           "Bachelor's degree or Post-bachelor's certificate" = "Bachelor's",
+                           "Master's degree or Post-master's certificate" = "Master's",
+                           "Doctoral degree" = "Doctorate"
+    
+  ))
+   
+```
+
 ```{r}
-ggplot(data = mpg, mapping = aes(x = class, y = hwy)) + 
-  geom_boxplot()
-ggplot(data = mpg, mapping = aes(x = class, y = hwy)) + 
+#filtering for those with a postsecondary degree 
+els %>%
+  filter(h_degree %in% c("Associate's","Bachelor's", "Master's", "Doctorate")) %>%
+  ggplot(mapping = aes(x = h_degree, y = totloan_v2)) + 
   geom_boxplot() +
-  coord_flip()
+  scale_y_continuous(labels = label_number(prefix = '$', suffix = 'K', scale = 1e-3, accuracy = 1))
+
+els %>%
+  filter(h_degree %in% c("Associate's","Bachelor's", "Master's", "Doctorate")) %>%
+  ggplot(mapping = aes(x = h_degree, y = totloan_v2)) + 
+  geom_boxplot() +
+  coord_flip() +
+  scale_y_continuous(labels = label_number(prefix = '$', suffix = 'K', scale = 1e-3, accuracy = 1))
+
 ```
 
 **Example**: Polar coordinate system
@@ -416,12 +484,14 @@ p +
 
 **Facets** are subplots that display one subset of the data. They are most commonly used to create "small multiples"
 
-**Example**: Imagine creating a scatterplot of the relationship between number of cylinders in the engine (x-axis) and highway miles-per-gallon (y-axis), with separate subplots for car `class` (e.g., midsize, minivan, pickup, suv)
+**Example**: Imagine creating a scatterplot of the relationship between the total amount borrowed in loans (x-axis) and earnings in 2011 (y-axis), with separate subplots for race/ethnicity.
 
 ```{r}
-ggplot(data = mpg) + 
-  geom_point(mapping = aes(x = cyl, y = hwy), position = "jitter") + 
-  facet_wrap(~ class, nrow = 2)
+els %>%
+  filter(totloan_v2 < 50000 & f3ern2011 > 0 & f3ern2011 < 100000) %>%
+  ggplot() + 
+  geom_point(mapping = aes(x = totloan_v2, y = f3ern2011), position = "jitter") +
+  facet_wrap(~f1race, nrow = 3)
 ```
 
 # Creating graphs using `ggplot`
@@ -587,20 +657,24 @@ ggplot(data= els_parphd, aes(x = hw_time, y = earn2011)) + geom_point()
 
 <br>
 
-**Example**: Scatterplot of the relationship between engine displacement (`displ`) and highway miles-per-gallon (`hwy`), using the `mpg` dataset
+**Example**: Scatterplot of the relationship between parent income (`parent_income`) and students' earnings in 2011 (`f3ern2011`), using the `els` dataset
 
--   Color of points determined by type of car (`class`):
+-   Color of points determined by type race/ethnicity (`f1racae`):
 
 ```{r}
-ggplot(data = mpg, aes(x = displ, y = hwy, color = class)) + 
-  geom_point()
+els_v2 %>%
+  filter(parent_income < 150000 & f3ern2011 > 0 & f3ern2011 < 100000) %>%
+  ggplot(mapping = aes(x = parent_income, y = f3ern2011, color = f1race)) +
+  geom_point(position = "jitter")
 ```
 
 -   Alternatively, the `color` aesthetic can be specified within `geom_point()`:
 
 ```{r}
-ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
-  geom_point(mapping = aes(color = class))
+els_v2 %>%
+  filter(parent_income < 150000 & f3ern2011 > 0 & f3ern2011 < 100000) %>%
+  ggplot(mapping = aes(x = parent_income, y = f3ern2011)) +
+  geom_point(position = "jitter", mapping = aes(color = f1race))
 ```
 
 <br>
@@ -1022,6 +1096,13 @@ Specifying which variable(s) to facet your plot on:
 ggplot(data = mpg, aes(x = displ, y = hwy)) +
   geom_point() +
   facet_grid(rows = vars(cyl))
+
+#left off here, figure out better variables to use
+els_v2 %>%
+  filter(parent_income < 150000 & f3ern2011 > 0 & f3ern2011 < 100000) %>%
+  ggplot(mapping = aes(x = parent_income, y = f3ern2011)) +
+  geom_point(position = "jitter") +
+  facet_grid(rows = vars(h_degree))
 ```
 
 ```{r}
