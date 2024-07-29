@@ -111,7 +111,7 @@ els <- els %>%
   mutate(
     bys34a = unclass(bys34a),
     f3ern2011 = unclass(f3ern2011),
-    f2evratt = unclass(f2evratt),
+    f3evratt = unclass(f3evratt),
     f1mothed = unclass(f1mothed),
     f1fathed = unclass(f1fathed),
     f3tzpostern = unclass(f3tzpostern),
@@ -647,6 +647,31 @@ els_v2$f1pared %>% attributes()
 
 # els_v2$f1pared is a factor class variable so we filter based on factor levels
 els_parphd <- els_v2 %>% filter(f1pared=="Completed PhD, MD, other advanced degree")
+
+#recode some values for later
+els_parphd %>% count(bystexp)
+els_parphd %>% count(f3evratt)
+
+els_parphd <- els_parphd %>%
+  mutate(ever_college = recode(f3evratt, "Survey component legitimate skip/NA" = "Skip",
+                               "Nonrespondent" = "Nonresponse",
+                               "No postsecondary enrollment" = "No college",
+                               "Has some postsecondary enrollment" = "Some college"),
+         ed_aspiration = recode(bystexp, "Survey component legitimate skip/NA" = "Skip",
+                                "Nonrespondent" = "Nonresponse",
+                                "Don't know" = "Don't know",
+                                "Less than high school graduation" = "No HS diploma",
+                                "High school graduation or GED only" = "HS diploma or GED",
+                                "Attend or complete 2-year college/school" = "2-year",
+                                "Attend college, 4-year degree incomplete" = "Attend college, no Bachelor's",
+                                "Graduate from college" = "Bachelor's",
+                                "Obtain Master's degree or equivalent" = "Master's",
+                                "Obtain PhD, MD, or other advanced degree" = "Doctorate")) 
+  
+#check
+els_parphd %>%
+  select(f3evratt, ever_college, bystexp, ed_aspiration)
+
 ```
 
 -   Plot the scatterplot:
@@ -657,23 +682,23 @@ ggplot(data= els_parphd, aes(x = hw_time, y = earn2011)) + geom_point()
 
 <br>
 
-**Example**: Scatterplot of the relationship between parent income (`parent_income`) and students' earnings in 2011 (`f3ern2011`), using the `els` dataset
+**Example**: Scatterplot of the relationship between parent income (`parent_income`) and student earnings in 2011 (`earn2011`), using the `els` dataset
 
--   Color of points determined by type race/ethnicity (`f1racae`):
+-   Color of points determined by type race/ethnicity (`f1race`):
 
 ```{r}
-els_v2 %>%
-  filter(parent_income < 150000 & f3ern2011 > 0 & f3ern2011 < 100000) %>%
-  ggplot(mapping = aes(x = parent_income, y = f3ern2011, color = f1race)) +
+els_parphd %>%
+  #filter(f3ern2011 > 0 & f3ern2011 < 100000) %>%
+  ggplot(mapping = aes(x = parent_income, y = earn2011, color = f1race)) +
   geom_point(position = "jitter")
 ```
 
 -   Alternatively, the `color` aesthetic can be specified within `geom_point()`:
 
 ```{r}
-els_v2 %>%
-  filter(parent_income < 150000 & f3ern2011 > 0 & f3ern2011 < 100000) %>%
-  ggplot(mapping = aes(x = parent_income, y = f3ern2011)) +
+els_parphd %>%
+  #filter(f3ern2011 > 0 & f3ern2011 < 100000) %>%
+  ggplot(mapping = aes(x = parent_income, y = earn2011)) +
   geom_point(position = "jitter", mapping = aes(color = f1race))
 ```
 
@@ -752,7 +777,7 @@ geom_smooth(mapping = NULL, data = NULL, stat = "smooth",
 
 <br>
 
-**Example**: Smoothed prediction lines for hours/week spent on homework (`bys34a`) versus 2011 earnings (`f3ern2011`), using the `els` dataset
+**Example**: Smoothed prediction lines for hours/week spent on homework (`bys34a`) versus 2011 earnings (`earn2011`), using the `els` dataset
 
 -   This code produces same plot as above, when aesthetics were specified in `ggplot()`:
 
@@ -935,7 +960,7 @@ diamonds %>% count(cut) %>% ggplot(aes(x= cut, y=n)) +
   geom_col()
 ```
 
-**Student Task**: Using the `els_v2` dataset, create a bar chart with the variable "ever attended postsecondary education" (`f2evratt`) as x-axis and number of students as y-axis
+**Student Task**: Using the `els_v2` dataset, create a bar chart with the variable "ever attended postsecondary education" (`f3evratt`) as x-axis and number of students as y-axis
 
 <details>
 
@@ -945,35 +970,35 @@ diamonds %>% count(cut) %>% ggplot(aes(x= cut, y=n)) +
 
 ```{r, eval=FALSE, echo=FALSE}
 #glimpse(els_v2)
-els_v2 %>% select(f2evratt) %>% var_label()
+els_v2 %>% select(f3evratt) %>% var_label()
 
 #ever attended
-els_v2 %>% count(f2evratt)
+els_v2 %>% count(f3evratt)
 ```
 
 ```{r}
-els_v2 %>% count(f2evratt)
+els_v2 %>% count(f3evratt)
 ```
 
 ***Method 1***: Create bar chart using `geom_bar()`
 
 ```{r}
-ggplot(data = els_v2, aes(x = f2evratt)) +
+ggplot(data = els_v2, aes(x = f3evratt)) +
   geom_bar()
 ```
 
--   Additionally, we can use pipes to filter values of `f2evratt` before plotting:
+-   Additionally, we can use pipes to filter values of `f3evratt` before plotting:
 
 ```{r}
 
-#check variable f2evratt
-typeof(els_v2$f2evratt)
-class(els_v2$f2evratt)
-str(els_v2$f2evratt)
-attributes(els_v2$f2evratt)$levels
+#check variable f3evratt
+typeof(els_v2$f3evratt)
+class(els_v2$f3evratt)
+str(els_v2$f3evratt)
+attributes(els_v2$f3evratt)$levels
 
 #new factor var
-els_v2$attend_coll_fac <- factor(els_v2$f2evratt,
+els_v2$attend_coll_fac <- factor(els_v2$f3evratt,
                                  labels = c("Survey component legitimate skip/NA", "Nonrespondent", "Item legitimate skip/NA", "No", "Yes"))
 
 #check variable
@@ -981,12 +1006,12 @@ els_v2 %>%
   count(attend_coll_fac)
 
 els_v2 %>%
-  count(f2evratt)
+  count(f3evratt)
 
 typeof(els_v2$attend_coll_fac)
 class(els_v2$attend_coll_fac)
 
-#els_v2 %>% filter(f2evratt %in% c('No','Yes')) %>% ggplot(aes(x = f2evratt)) +
+#els_v2 %>% filter(f3evratt %in% c('No','Yes')) %>% ggplot(aes(x = f3evratt)) +
 #  geom_bar()
 
 els_v2 %>% filter(attend_coll_fac %in% c('No','Yes')) %>% ggplot(aes(x = attend_coll_fac)) +
@@ -998,11 +1023,11 @@ els_v2 %>% filter(attend_coll_fac %in% c('No','Yes')) %>% ggplot(aes(x = attend_
 ```{r}
 #els_v2 %>% 
   # filter to remove missing values
-#  filter(f2evratt %in% c('No','Yes')) %>% 
+#  filter(f3evratt %in% c('No','Yes')) %>% 
   # use count() to create summary statistics object
-#  count(f2evratt) %>%
+#  count(f3evratt) %>%
   # plot summary statistic object
-#  ggplot(aes(x=f2evratt, y=n)) + geom_col()
+#  ggplot(aes(x=f3evratt, y=n)) + geom_col()
 
 els_v2 %>% 
   # filter to remove missing values
@@ -1018,21 +1043,6 @@ els_v2 %>%
 
 <br>
 
-<!-- Relationship between discrete x and discrete y -->
-
-```{r, echo=FALSE, eval=FALSE}
-els_v2 %>% select(f2evratt,f2ps1lvl) %>% var_label()
-
-#ever attended
-els_v2 %>%  count(f2evratt)
-
-#level of first postsec institution
-els_v2 %>%  count(f2ps1lvl)
-
-#ever attended by level attended
-els_v2 %>%  count(f2evratt,f2ps1lvl)
-
-```
 
 ## Small multiples using faceting
 
@@ -1085,7 +1095,7 @@ Specifying which variable(s) to facet your plot on:
 
 ### Faceting by one variable
 
-**Example**: Scatterplot of the relationship between engine displacement (`displ`) and highway miles-per-gallon (`hwy`), faceted by number of cylinders (`cyl`), from the `mpg` dataset
+**Example**: Scatterplot of the relationship between parent income (`parent_income`) and student earnings in 2011 (`earn2011`), faceted by if student ever enrolled in a postsecondary institution (`ever_college`), from the `els_parphd` dataset.
 
 ***Method 1***: Faceting using `facet_grid()`
 
@@ -1093,39 +1103,40 @@ Specifying which variable(s) to facet your plot on:
 
 ```{r}
 # Facet into rows
-ggplot(data = mpg, aes(x = displ, y = hwy)) +
-  geom_point() +
-  facet_grid(rows = vars(cyl))
-
-#left off here, figure out better variables to use
-els_v2 %>%
-  filter(parent_income < 150000 & f3ern2011 > 0 & f3ern2011 < 100000) %>%
-  ggplot(mapping = aes(x = parent_income, y = f3ern2011)) +
+els_parphd %>%
+  filter(ever_college %in% c("No college", "Some college") & parent_income < 150000 & earn2011 < 100000) %>%
+  ggplot(mapping = aes(x = parent_income, y = earn2011)) +
   geom_point(position = "jitter") +
-  facet_grid(rows = vars(h_degree))
+  facet_grid(rows = vars(ever_college))
 ```
 
 ```{r}
 # Facet into columns
-ggplot(data = mpg, aes(x = displ, y = hwy)) +
-  geom_point() +
-  facet_grid(cols = vars(cyl))
+els_parphd %>%
+  filter(ever_college %in% c("No college", "Some college") & parent_income < 150000 & earn2011 < 100000) %>%
+  ggplot(mapping = aes(x = parent_income, y = earn2011)) +
+  geom_point(position = "jitter") +
+  facet_grid(cols = vars(ever_college))
 ```
 
 -   Alternatively, we could specify the input as a *formula* to get the same results:
 
 ```{r}
 # Facet into rows
-ggplot(data = mpg, aes(x = displ, y = hwy)) +
-  geom_point() +
-  facet_grid(cyl ~ .)
+els_parphd %>%
+  filter(ever_college %in% c("No college", "Some college") & parent_income < 150000 & earn2011 < 100000) %>%
+  ggplot(mapping = aes(x = parent_income, y = earn2011)) +
+  geom_point(position = "jitter") +
+  facet_grid(ever_college ~ .)
 ```
 
 ```{r}
 # Facet into columns
-ggplot(data = mpg, aes(x = displ, y = hwy)) +
-  geom_point() +
-  facet_grid(. ~ cyl)
+els_parphd %>%
+  filter(ever_college %in% c("No college", "Some college") & parent_income < 150000 & earn2011 < 100000) %>%
+  ggplot(mapping = aes(x = parent_income, y = earn2011)) +
+  geom_point(position = "jitter") +
+  facet_grid(. ~ ever_college)
 ```
 
 ***Method 2***: Faceting using `facet_wrap()`
@@ -1133,23 +1144,30 @@ ggplot(data = mpg, aes(x = displ, y = hwy)) +
 -   Unlike `facet_grid()`, `facet_wrap()` is not restricted to either rows or columns:
 
 ```{r}
-ggplot(data = mpg, aes(x = displ, y = hwy)) +
+els_parphd %>%
+  filter(ever_college %in% c("N college", "Some college") & parent_income < 150000 & earn2011 < 100000) %>%
+  ggplot(mapping = aes(x = parent_income, y = earn2011)) +
   geom_point() +
-  facet_wrap(~ cyl)
+  facet_wrap(~ ever_college)
+
 ```
 
 -   But we are free to set the number of rows or columns if we wanted:
 
 ```{r}
-ggplot(data = mpg, aes(x = displ, y = hwy)) +
+els_parphd %>%
+  filter(ever_college %in% c("No college", "Some college") & parent_income < 150000 & earn2011 < 100000) %>%
+  ggplot(mapping = aes(x = parent_income, y = earn2011)) +
   geom_point() +
-  facet_wrap(~ cyl, nrow = 1)
+  facet_wrap(~ ever_college, nrow = 2)
 ```
 
 ```{r}
-ggplot(data = mpg, aes(x = displ, y = hwy)) +
-  geom_point() +
-  facet_wrap(~ cyl, ncol = 1)
+els_parphd %>%
+  filter(ever_college %in% c("No college", "Some college") & parent_income < 150000 & earn2011 < 100000) %>%
+  ggplot(mapping = aes(x = parent_income, y = earn2011)) +
+  geom_point(position = "jitter") +
+  facet_wrap(~ ever_college, ncol = 1)
 ```
 
 ### Faceting by two variables
@@ -1164,6 +1182,13 @@ ggplot(data = mpg, aes(x = displ, y = hwy)) +
 ggplot(data = mpg, aes(x = displ, y = hwy)) +
   geom_point() +
   facet_grid(rows = vars(cyl), cols = vars(class))
+
+els_parphd %>%
+  filter(ever_college %in% c("No college", "Some college") 
+         & ed_aspiration %in% c("Don't know","No HS diploma", "HS diploma or GED", "2-year", "Attend college, no Bachelors ", "Bachelor's", "Master's", "Doctorate") & parent_income < 150000 & earn2011 < 100000) %>%
+  ggplot(mapping = aes(x = parent_income, y = earn2011)) +
+  geom_point(position = "jitter") +
+  facet_grid(rows = vars(ever_college), cols = vars(ed_aspiration)) 
 ```
 
 -   Alternatively, we could specify the input as a *formula* to get the same results:
@@ -1182,6 +1207,13 @@ ggplot(data = mpg, aes(x = displ, y = hwy)) +
 ggplot(data = mpg, aes(x = displ, y = hwy)) +
   geom_point() +
   facet_wrap(cyl ~ class)
+
+els_parphd %>%
+  filter(ever_college %in% c("No college", "Some college") 
+         & ed_aspiration %in% c("Don't know","No HS diploma", "HS diploma or GED", "2-year", "Attend college, no Bachelors ", "Bachelor's", "Master's", "Doctorate") & parent_income < 150000 & earn2011 < 100000) %>%
+  ggplot(mapping = aes(x = parent_income, y = earn2011)) +
+  geom_point(position = "jitter") +
+  facet_wrap(ever_college ~ ed_aspiration) 
 ```
 
 -   We are also free to choose the number of rows or columns to display:
@@ -1190,12 +1222,27 @@ ggplot(data = mpg, aes(x = displ, y = hwy)) +
 ggplot(data = mpg, aes(x = displ, y = hwy)) +
   geom_point() +
   facet_wrap(cyl ~ class, nrow = 3)
+
+els_parphd %>%
+  filter(ever_college %in% c("No college", "Some college") 
+         & ed_aspiration %in% c("Don't know","No HS diploma", "HS diploma or GED", "2-year", "Attend college, no Bachelors ", "Bachelor's", "Master's", "Doctorate") & parent_income < 150000 & earn2011 < 100000) %>%
+  ggplot(mapping = aes(x = parent_income, y = earn2011)) +
+  geom_point(position = "jitter") +
+  facet_wrap(ever_college ~ ed_aspiration, nrow = 5)
 ```
 
 ```{r}
 ggplot(data = mpg, aes(x = displ, y = hwy)) +
   geom_point() +
   facet_wrap(cyl ~ class, ncol = 4)
+
+
+els_parphd %>%
+  filter(ever_college %in% c("No college", "Some college") 
+         & ed_aspiration %in% c("Don't know","No HS diploma", "HS diploma or GED", "2-year", "Attend college, no Bachelors ", "Bachelor's", "Master's", "Doctorate") & parent_income < 150000 & earn2011 < 100000) %>%
+  ggplot(mapping = aes(x = parent_income, y = earn2011)) +
+  geom_point(position = "jitter") +
+  facet_wrap(ever_college ~ ed_aspiration, ncol = 5) 
 ```
 
 # Customization
