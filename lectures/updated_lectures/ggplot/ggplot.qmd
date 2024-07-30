@@ -111,13 +111,11 @@ els <- els %>%
   mutate(
     bys34a = unclass(bys34a),
     f3ern2011 = unclass(f3ern2011),
-    f3evratt = unclass(f3evratt),
+    #f3evratt = unclass(f3evratt),
     f1mothed = unclass(f1mothed),
     f1fathed = unclass(f1fathed),
     f3tzpostern = unclass(f3tzpostern),
-    f1sex = recode_factor(f1sex, `1` = 'Male', `2` = 'Female'),
-    totloan_v2 = as.numeric(format(els$f3totloan, scientific = FALSE))
-  )
+    f1sex = recode_factor(f1sex, `1` = 'Male', `2` = 'Female'))
 
 ```
 
@@ -252,6 +250,82 @@ The five layers of the grammar of graphics:
 els %>% select(stu_id, bys34a, f3ern2011, f1sex) %>% head(10)
 ```
 
+-   First, let's investigate the underlying variables:
+
+```{r}
+els %>% select(bys34a,f3ern2011) %>%
+  summarize_all(.funs = list(~ mean(., na.rm = TRUE), ~ min(., na.rm = TRUE), ~ max(., na.rm = TRUE)))
+```
+
+-   Investigate values less than zero:
+
+```{r}
+els %>% select(bys34a) %>% filter(bys34a<0) %>% count(bys34a)
+
+els %>% select(f3ern2011) %>% filter(f3ern2011<0) %>% count(f3ern2011)
+```
+
+-   Create version of variables that replace values less than zero with `NA`:
+
+```{r}
+els_v2 <- els %>% 
+  mutate(
+    hw_time = if_else(bys34a<0,NA_real_,as.numeric(bys34a)),
+    earn2011 = if_else(f3ern2011<0,NA_real_,as.numeric(f3ern2011)),
+    totloan = f3totloan
+  )
+
+#check
+els_v2 %>% filter(bys34a<0) %>% count(bys34a, hw_time)
+els_v2 %>% filter(f3ern2011<0) %>% count(f3ern2011, earn2011)
+```
+
+-   To reduce the number of observations, we are creating a dataframe consisting of students whose parents have a PhD, MD, or advanced degree that we will use later:
+
+```{r}
+els_v2 %>% count(f1pared)
+
+els_v2$f1pared %>% class()
+els_v2$f1pared %>% attributes()
+
+# els_v2$f1pared is a factor class variable so we filter based on factor levels
+els_parphd <- els_v2 %>% filter(f1pared=="Completed PhD, MD, other advanced degree")
+
+```
+
+-     Let's recode some variables we will use later to make them easier to work with.
+```{r}
+
+#recode some values for later
+els_parphd %>% count(bystexp) #how far student thinks they will get 
+#attributes(els_parphd$bystexp)
+els_parphd %>% count(f3evratt)
+attributes(els_parphd$f3evratt) #ever attended a postsecondary institution
+
+
+els_parphd <- els_parphd %>%
+  mutate(ever_college = recode(f3evratt, "Missing" = "Missing",
+                               "Survey component legitimate skip/NA" = "Skip",
+                               "Nonrespondent" = "Nonrespondent",
+                               "No postsecondary enrollment" = "No college",
+                               "Has some postsecondary enrollment" = "Some college"),
+         ed_aspiration = recode(bystexp, "Survey component legitimate skip/NA" = "Skip",
+                                "Nonrespondent" = "Nonresponse",
+                                "Don't know" = "Don't know",
+                                "Less than high school graduation" = "No HS diploma",
+                                "High school graduation or GED only" = "HS diploma or GED",
+                                "Attend or complete 2-year college/school" = "2-year",
+                                "Attend college, 4-year degree incomplete" = "Attend college, no Bachelor's",
+                                "Graduate from college" = "Bachelor's",
+                                "Obtain Master's degree or equivalent" = "Master's",
+                                "Obtain PhD, MD, or other advanced degree" = "Doctorate")) 
+  
+#check
+els_parphd %>%
+  select(f3evratt, ever_college, bystexp, ed_aspiration)
+```
+
+
 ## Set of aesthetic mappings (**mappings**) {#set-of-aesthetic-mappings-mappings}
 
 **Mapping** defines how variables in a dataset are applied (mapped) to a graphic.
@@ -263,15 +337,15 @@ els %>% select(stu_id, bys34a, f3ern2011, f1sex) %>% head(10)
 -   Map sex to the color of each point
 
 ```{r}
-els %>% select(stu_id, bys34a, f3ern2011, f1sex) %>% 
-  rename(x = bys34a, y = f3ern2011, color = f1sex) %>% 
+els_v2 %>% select(stu_id, bys34a, earn2011, f1sex) %>%
+  rename(x = bys34a, y = earn2011, color = f1sex) %>% 
   head(10)
 ```
 
 ```{r}
-els %>% 
+els_v2 %>% 
   filter(bys34a > 0) %>%
-  ggplot(mapping = aes(x = bys34a, y = f3ern2011, color = f1sex)) +
+  ggplot(mapping = aes(x = bys34a, y = earn2011, color = f1sex)) +
   geom_point()
 ```
 
@@ -280,13 +354,13 @@ els %>%
 -   Map sex to the x-axis (*by default, bar plots will plot the counts, see next section*)
 
 ```{r}
-els %>% select(stu_id, f1sex) %>% 
+els_v2 %>% select(stu_id, f1sex) %>% 
   rename(x = f1sex) %>% 
   head(10)
 ```
 
 ```{r}
-els %>% 
+els_v2 %>% 
   ggplot(mapping = aes(x = f1sex)) +
   geom_bar(width = 0.6)
 ```
@@ -301,14 +375,14 @@ A **statistical transformation** transforms the underlying data before plotting 
 -   This is the "identity" transformation (*default for plots like scatterplots*)
 
 ```{r}
-els %>% select(stu_id,bys34a,f3ern2011) %>% rename(x=bys34a, y=f3ern2011) %>% 
+els_v2 %>% select(stu_id, bys34a, earn2011) %>% rename(x=bys34a, y=earn2011) %>% 
   head(10)
 ```
 
 ```{r}
-els %>% 
+els_v2 %>% 
   filter(bys34a > 0) %>% 
-  ggplot(mapping = aes(x = bys34a, y = f3ern2011)) +
+  ggplot(mapping = aes(x = bys34a, y = earn2011)) +
   geom_point()
 ```
 
@@ -318,11 +392,11 @@ els %>%
 -   This is the "count" transformation (*default for plots like barplots*)
 
 ```{r}
-els %>% count(f1sex) 
+els_v2 %>% count(f1sex) 
 ```
 
 ```{r}
-els %>% 
+els_v2 %>% 
   ggplot(mapping = aes(x = f1sex)) +
   geom_bar(width = 0.6)
 ```
@@ -354,52 +428,53 @@ Graphs visually display data, using **geometric objects** like a point, line, ba
 #run some descriptives on variables of interest
 #els %>% var_label()
 
-els %>% 
+els_v2 %>% 
   group_by(stu_id) %>%
   summarise(n_per_grp = n()) %>%
   filter(n_per_grp > 1)
   
-els %>% head(10)
+els_v2 %>% head(10)
 
 #respondents taking courses at 2 - 4year institution
 attributes(els$f3a01d) #"No" = not taking courses
 
 #remove current students?
-els %>%
+els_v2 %>%
   group_by(f3a01d) %>%
-  count(f3ern2011)
+  count(earn2011)
 
-els %>%
+els_v2 %>%
   group_by(f3a01d) %>%
   count() #~10k not taking courses
 
 #mean roughly 14K, max 300K, observe $50k
-els %>% select(totloan_v2) %>% summary()
-els %>%count(totloan_v2)
+els_v2 %>% select(totloan) %>% summary()
+els_v2 %>% count(totloan)
 
 #mean roughly $63k, max $250k, median $32k, lets filter for $150k or less
-els %>% select(parent_income) %>% summary()
-els %>% count(parent_income)
+els_v2 %>% select(parent_income) %>% summary()
+els_v2 %>% count(parent_income)
 
 #know credits earned
-attributes(els$f3tzpostern)
-els %>% select(f3tzpostern) %>% summary()
+attributes(els_v2$f3tzpostern)
+els_v2 %>% select(f3tzpostern) %>% summary()
 
 #earnings in 2011, mean $29k, median $25k
-els %>% filter(f3ern2011 > 0) %>% select(f3ern2011) %>% summary()
-els %>% count(f3ern2011)
+els_v2 %>% select(earn2011) %>% summary()
+els_v2 %>% count(earn2011)
+#typeof(els_v2$earn2011)
 
 #highest known degree attained as of June 2013
-attributes(els$f3tzhighdeg)
-els %>% select(f3tzhighdeg) %>% summary()
+attributes(els_v2$f3tzhighdeg)
+els_v2 %>% select(f3tzhighdeg) %>% summary()
 ```
 
 
 ```{r}
 #total amount borrowed in loans on 2011 earnings 
-els %>%
-  filter(totloan_v2 < 50000 & f3ern2011 > 0 & f3ern2011 < 100000) %>%
-  ggplot(aes(x = totloan_v2, y = f3ern2011)) +
+els_v2 %>%
+  filter(totloan < 30000) %>%
+  ggplot(aes(x = totloan, y = earn2011)) +
   geom_point()
 
 ```
@@ -408,9 +483,9 @@ els %>%
 
 ```{r}
 #total amount borrowed in loans on 2011 earnings 
-els %>%
-  filter(totloan_v2 < 50000 & f3ern2011 > 0 & f3ern2011 < 100000) %>%
-  ggplot(aes(x = totloan_v2, y = f3ern2011)) +
+els_v2 %>%
+  filter(totloan < 30000) %>%
+  ggplot(aes(x = totloan, y = earn2011)) +
   geom_point(position = "jitter")
 ```
 
@@ -444,7 +519,7 @@ p +
 
 ```{r echo=FALSE}
 #recode some values that are too long
-els <- els %>%
+els_v2 <- els_v2 %>%
   mutate(h_degree = recode(f3tzhighdeg,
                            "Associate's degree" = "Associate's",
                            "Bachelor's degree or Post-bachelor's certificate" = "Bachelor's",
@@ -452,20 +527,19 @@ els <- els %>%
                            "Doctoral degree" = "Doctorate"
     
   ))
-   
 ```
 
 ```{r}
 #filtering for those with a postsecondary degree 
-els %>%
+els_v2 %>%
   filter(h_degree %in% c("Associate's","Bachelor's", "Master's", "Doctorate")) %>%
-  ggplot(mapping = aes(x = h_degree, y = totloan_v2)) + 
+  ggplot(mapping = aes(x = h_degree, y = totloan)) + 
   geom_boxplot() +
   scale_y_continuous(labels = label_number(prefix = '$', suffix = 'K', scale = 1e-3, accuracy = 1))
 
-els %>%
+els_v2 %>%
   filter(h_degree %in% c("Associate's","Bachelor's", "Master's", "Doctorate")) %>%
-  ggplot(mapping = aes(x = h_degree, y = totloan_v2)) + 
+  ggplot(mapping = aes(x = h_degree, y = totloan)) + 
   geom_boxplot() +
   coord_flip() +
   scale_y_continuous(labels = label_number(prefix = '$', suffix = 'K', scale = 1e-3, accuracy = 1))
@@ -487,11 +561,11 @@ p +
 **Example**: Imagine creating a scatterplot of the relationship between the total amount borrowed in loans (x-axis) and earnings in 2011 (y-axis), with separate subplots for race/ethnicity.
 
 ```{r}
-els %>%
-  filter(totloan_v2 < 50000 & f3ern2011 > 0 & f3ern2011 < 100000) %>%
+els_v2 %>%
+  filter(totloan < 50000 & earn2011 < 100000) %>%
   ggplot() + 
-  geom_point(mapping = aes(x = totloan_v2, y = f3ern2011), position = "jitter") +
-  facet_wrap(~f1race, nrow = 3)
+  geom_point(mapping = aes(x = totloan, y = earn2011), position = "jitter") +
+  facet_wrap(~f1race_v2, nrow = 3)
 ```
 
 # Creating graphs using `ggplot`
@@ -566,7 +640,7 @@ diam_ggplot # blank ggplot
 typeof(diam_ggplot)
 class(diam_ggplot)
 
-str(diam_ggplot)
+#str(diam_ggplot)
 ```
 
 -   Attributes of ggplot object:
@@ -608,72 +682,6 @@ diam_ggplot + geom_point()
 
 **Example**: Scatterplot of the hours/week spent on homework (`bys34a`) and 2011 earnings (`f3ern2011`), using the `els` dataset
 
--   First, let's investigate the underlying variables:
-
-```{r}
-els %>% select(bys34a,f3ern2011) %>%
-  summarize_all(.funs = list(~ mean(., na.rm = TRUE), ~ min(., na.rm = TRUE), ~ max(., na.rm = TRUE)))
-```
-
--   Investigate values less than zero:
-
-```{r}
-els %>% select(bys34a) %>% filter(bys34a<0) %>% count(bys34a)
-
-els %>% select(f3ern2011) %>% filter(f3ern2011<0) %>% count(f3ern2011)
-```
-
--   Create version of variables that replace values less than zero with `NA`:
-
-```{r}
-els_v2 <- els %>% 
-  mutate(
-    hw_time = if_else(bys34a<0,NA_real_,as.numeric(bys34a)),
-    earn2011 = if_else(f3ern2011<0,NA_real_,as.numeric(f3ern2011)),
-  )
-
-#check
-els_v2 %>% filter(bys34a<0) %>% count(bys34a, hw_time)
-els_v2 %>% filter(f3ern2011<0) %>% count(f3ern2011, earn2011)
-```
-
--   To avoid scatterplot with too many points, create a dataframe consisting of students whose parents have a PhD or first professional degree:
-
-```{r}
-els_v2 %>% count(f1pared)
-
-els_v2$f1pared %>% class()
-els_v2$f1pared %>% attributes()
-
-# els_v2$f1pared is a factor class variable so we filter based on factor levels
-els_parphd <- els_v2 %>% filter(f1pared=="Completed PhD, MD, other advanced degree")
-
-#recode some values for later
-els_parphd %>% count(bystexp)
-els_parphd %>% count(f3evratt)
-
-els_parphd <- els_parphd %>%
-  mutate(ever_college = recode(f3evratt, "Survey component legitimate skip/NA" = "Skip",
-                               "Nonrespondent" = "Nonresponse",
-                               "No postsecondary enrollment" = "No college",
-                               "Has some postsecondary enrollment" = "Some college"),
-         ed_aspiration = recode(bystexp, "Survey component legitimate skip/NA" = "Skip",
-                                "Nonrespondent" = "Nonresponse",
-                                "Don't know" = "Don't know",
-                                "Less than high school graduation" = "No HS diploma",
-                                "High school graduation or GED only" = "HS diploma or GED",
-                                "Attend or complete 2-year college/school" = "2-year",
-                                "Attend college, 4-year degree incomplete" = "Attend college, no Bachelor's",
-                                "Graduate from college" = "Bachelor's",
-                                "Obtain Master's degree or equivalent" = "Master's",
-                                "Obtain PhD, MD, or other advanced degree" = "Doctorate")) 
-  
-#check
-els_parphd %>%
-  select(f3evratt, ever_college, bystexp, ed_aspiration)
-
-```
-
 -   Plot the scatterplot:
 
 ```{r, warning = FALSE}
@@ -682,14 +690,13 @@ ggplot(data= els_parphd, aes(x = hw_time, y = earn2011)) + geom_point()
 
 <br>
 
-**Example**: Scatterplot of the relationship between parent income (`parent_income`) and student earnings in 2011 (`earn2011`), using the `els` dataset
+**Example**: Scatterplot of the relationship between parent income (`parent_income`) and student earnings in 2011 (`earn2011`), using the `els_parphd` dataset
 
--   Color of points determined by type race/ethnicity (`f1race`):
+-   Color of points determined by type race/ethnicity (`f1race_v2`):
 
 ```{r}
 els_parphd %>%
-  #filter(f3ern2011 > 0 & f3ern2011 < 100000) %>%
-  ggplot(mapping = aes(x = parent_income, y = earn2011, color = f1race)) +
+  ggplot(mapping = aes(x = parent_income, y = earn2011, color = f1race_v2)) +
   geom_point(position = "jitter")
 ```
 
@@ -697,9 +704,8 @@ els_parphd %>%
 
 ```{r}
 els_parphd %>%
-  #filter(f3ern2011 > 0 & f3ern2011 < 100000) %>%
   ggplot(mapping = aes(x = parent_income, y = earn2011)) +
-  geom_point(position = "jitter", mapping = aes(color = f1race))
+  geom_point(position = "jitter", mapping = aes(color = f1race_v2))
 ```
 
 <br>
@@ -960,7 +966,7 @@ diamonds %>% count(cut) %>% ggplot(aes(x= cut, y=n)) +
   geom_col()
 ```
 
-**Student Task**: Using the `els_v2` dataset, create a bar chart with the variable "ever attended postsecondary education" (`f3evratt`) as x-axis and number of students as y-axis
+**Student Task**: Using the `els_parphd` dataset, create a bar chart with the variable "ever attended postsecondary education" (`ever_college`) as x-axis and number of students as y-axis
 
 <details>
 
@@ -970,72 +976,47 @@ diamonds %>% count(cut) %>% ggplot(aes(x= cut, y=n)) +
 
 ```{r, eval=FALSE, echo=FALSE}
 #glimpse(els_v2)
-els_v2 %>% select(f3evratt) %>% var_label()
+els_parphd %>% select(ever_college) %>% var_label()
 
 #ever attended
-els_v2 %>% count(f3evratt)
+els_parphd %>% count(ever_college)
 ```
 
 ```{r}
-els_v2 %>% count(f3evratt)
+els_parphd %>% count(ever_college)
 ```
 
 ***Method 1***: Create bar chart using `geom_bar()`
 
 ```{r}
-ggplot(data = els_v2, aes(x = f3evratt)) +
+ggplot(data = els_parphd, aes(x = ever_college)) +
   geom_bar()
 ```
 
--   Additionally, we can use pipes to filter values of `f3evratt` before plotting:
+-   Additionally, we can use pipes to filter values of `ever_college` before plotting:
 
 ```{r}
 
 #check variable f3evratt
-typeof(els_v2$f3evratt)
-class(els_v2$f3evratt)
-str(els_v2$f3evratt)
-attributes(els_v2$f3evratt)$levels
+typeof(els_parphd$ever_college)
+class(els_parphd$ever_college)
+str(els_parphd$ever_college)
+attributes(els_parphd$ever_college)$levels
 
-#new factor var
-els_v2$attend_coll_fac <- factor(els_v2$f3evratt,
-                                 labels = c("Survey component legitimate skip/NA", "Nonrespondent", "Item legitimate skip/NA", "No", "Yes"))
-
-#check variable
-els_v2 %>%
-  count(attend_coll_fac)
-
-els_v2 %>%
-  count(f3evratt)
-
-typeof(els_v2$attend_coll_fac)
-class(els_v2$attend_coll_fac)
-
-#els_v2 %>% filter(f3evratt %in% c('No','Yes')) %>% ggplot(aes(x = f3evratt)) +
-#  geom_bar()
-
-els_v2 %>% filter(attend_coll_fac %in% c('No','Yes')) %>% ggplot(aes(x = attend_coll_fac)) +
+els_parphd %>% filter(ever_college %in% c('No college','Some college')) %>% ggplot(aes(x = ever_college)) +
  geom_bar()
 ```
 
 ***Method 2***: Create bar chart using `geom_col()`
 
 ```{r}
-#els_v2 %>% 
+els_parphd %>% 
   # filter to remove missing values
-#  filter(f3evratt %in% c('No','Yes')) %>% 
+  filter(ever_college %in% c('No college','Some college')) %>% 
   # use count() to create summary statistics object
-#  count(f3evratt) %>%
+  count(ever_college) %>%
   # plot summary statistic object
-#  ggplot(aes(x=f3evratt, y=n)) + geom_col()
-
-els_v2 %>% 
-  # filter to remove missing values
-  filter(attend_coll_fac %in% c('No','Yes')) %>% 
-  # use count() to create summary statistics object
-  count(attend_coll_fac) %>%
-  # plot summary statistic object
-  ggplot(aes(x=attend_coll_fac, y=n)) + geom_col()
+  ggplot(aes(x=ever_college, y=n)) + geom_col()
 
 ```
 
@@ -1104,7 +1085,7 @@ Specifying which variable(s) to facet your plot on:
 ```{r}
 # Facet into rows
 els_parphd %>%
-  filter(ever_college %in% c("No college", "Some college") & parent_income < 150000 & earn2011 < 100000) %>%
+  filter(ever_college %in% c("No college", "Some college") & parent_income < 150000 & earn2011 < 150000) %>%
   ggplot(mapping = aes(x = parent_income, y = earn2011)) +
   geom_point(position = "jitter") +
   facet_grid(rows = vars(ever_college))
@@ -1113,7 +1094,7 @@ els_parphd %>%
 ```{r}
 # Facet into columns
 els_parphd %>%
-  filter(ever_college %in% c("No college", "Some college") & parent_income < 150000 & earn2011 < 100000) %>%
+  filter(ever_college %in% c("No college", "Some college") & parent_income < 150000 & earn2011 < 150000) %>%
   ggplot(mapping = aes(x = parent_income, y = earn2011)) +
   geom_point(position = "jitter") +
   facet_grid(cols = vars(ever_college))
@@ -1124,7 +1105,7 @@ els_parphd %>%
 ```{r}
 # Facet into rows
 els_parphd %>%
-  filter(ever_college %in% c("No college", "Some college") & parent_income < 150000 & earn2011 < 100000) %>%
+  filter(ever_college %in% c("No college", "Some college") & parent_income < 150000 & earn2011 < 150000) %>%
   ggplot(mapping = aes(x = parent_income, y = earn2011)) +
   geom_point(position = "jitter") +
   facet_grid(ever_college ~ .)
@@ -1133,7 +1114,7 @@ els_parphd %>%
 ```{r}
 # Facet into columns
 els_parphd %>%
-  filter(ever_college %in% c("No college", "Some college") & parent_income < 150000 & earn2011 < 100000) %>%
+  filter(ever_college %in% c("No college", "Some college") & parent_income < 150000 & earn2011 < 150000) %>%
   ggplot(mapping = aes(x = parent_income, y = earn2011)) +
   geom_point(position = "jitter") +
   facet_grid(. ~ ever_college)
@@ -1145,7 +1126,7 @@ els_parphd %>%
 
 ```{r}
 els_parphd %>%
-  filter(ever_college %in% c("N college", "Some college") & parent_income < 150000 & earn2011 < 100000) %>%
+  filter(ever_college %in% c("No college", "Some college") & parent_income < 150000 & earn2011 < 150000) %>%
   ggplot(mapping = aes(x = parent_income, y = earn2011)) +
   geom_point() +
   facet_wrap(~ ever_college)
@@ -1156,7 +1137,7 @@ els_parphd %>%
 
 ```{r}
 els_parphd %>%
-  filter(ever_college %in% c("No college", "Some college") & parent_income < 150000 & earn2011 < 100000) %>%
+  filter(ever_college %in% c("No college", "Some college") & parent_income < 150000 & earn2011 < 150000) %>%
   ggplot(mapping = aes(x = parent_income, y = earn2011)) +
   geom_point() +
   facet_wrap(~ ever_college, nrow = 2)
@@ -1164,7 +1145,7 @@ els_parphd %>%
 
 ```{r}
 els_parphd %>%
-  filter(ever_college %in% c("No college", "Some college") & parent_income < 150000 & earn2011 < 100000) %>%
+  filter(ever_college %in% c("No college", "Some college") & parent_income < 150000 & earn2011 < 150000) %>%
   ggplot(mapping = aes(x = parent_income, y = earn2011)) +
   geom_point(position = "jitter") +
   facet_wrap(~ ever_college, ncol = 1)
@@ -1172,20 +1153,16 @@ els_parphd %>%
 
 ### Faceting by two variables
 
-**Example**: Scatterplot of the relationship between engine displacement (`displ`) and highway miles-per-gallon (`hwy`), faceted by number of cylinders (`cyl`) and type of car (`class`), from the `mpg` dataset
+**Example**: Scatterplot of the relationship between parent income (`parent_income`) and student earnings in 2011 (`earn2011`), faceted by if student ever enrolled in a postsecondary institution (`ever_college`) and educational aspirations (`ed_aspiration`), from the `els_parphd` dataset.
 
 ***Method 1***: Faceting using `facet_grid()`
 
--   For example, we can make the rows based on `cyl` and the columns based on `class`:
+-   For example, we can make the rows based on `ever_college` and the columns based on `ed_aspiration`:
 
 ```{r}
-ggplot(data = mpg, aes(x = displ, y = hwy)) +
-  geom_point() +
-  facet_grid(rows = vars(cyl), cols = vars(class))
-
 els_parphd %>%
   filter(ever_college %in% c("No college", "Some college") 
-         & ed_aspiration %in% c("Don't know","No HS diploma", "HS diploma or GED", "2-year", "Attend college, no Bachelors ", "Bachelor's", "Master's", "Doctorate") & parent_income < 150000 & earn2011 < 100000) %>%
+         & ed_aspiration %in% c("Don't know","No HS diploma", "HS diploma or GED", "2-year", "Attend college, no Bachelors ", "Bachelor's", "Master's", "Doctorate") & parent_income < 150000 & earn2011 < 150000) %>%
   ggplot(mapping = aes(x = parent_income, y = earn2011)) +
   geom_point(position = "jitter") +
   facet_grid(rows = vars(ever_college), cols = vars(ed_aspiration)) 
@@ -1194,9 +1171,12 @@ els_parphd %>%
 -   Alternatively, we could specify the input as a *formula* to get the same results:
 
 ```{r}
-ggplot(data = mpg, aes(x = displ, y = hwy)) +
-  geom_point() +
-  facet_grid(cyl ~ class)
+els_parphd %>%
+  filter(ever_college %in% c("No college", "Some college") 
+         & ed_aspiration %in% c("Don't know","No HS diploma", "HS diploma or GED", "2-year", "Attend college, no Bachelors ", "Bachelor's", "Master's", "Doctorate") & parent_income < 150000 & earn2011 < 150000) %>%
+  ggplot(mapping = aes(x = parent_income, y = earn2011)) +
+  geom_point(position = "jitter") +
+  facet_grid(ever_college ~ ed_aspiration) 
 ```
 
 ***Method 2***: Faceting using `facet_wrap()`
@@ -1204,13 +1184,9 @@ ggplot(data = mpg, aes(x = displ, y = hwy)) +
 -   Since `facet_wrap()` is not defined by rows and columns, it omits any subplots that do not display any data:
 
 ```{r}
-ggplot(data = mpg, aes(x = displ, y = hwy)) +
-  geom_point() +
-  facet_wrap(cyl ~ class)
-
 els_parphd %>%
   filter(ever_college %in% c("No college", "Some college") 
-         & ed_aspiration %in% c("Don't know","No HS diploma", "HS diploma or GED", "2-year", "Attend college, no Bachelors ", "Bachelor's", "Master's", "Doctorate") & parent_income < 150000 & earn2011 < 100000) %>%
+         & ed_aspiration %in% c("Don't know","No HS diploma", "HS diploma or GED", "2-year", "Attend college, no Bachelors ", "Bachelor's", "Master's", "Doctorate") & parent_income < 150000 & earn2011 < 150000) %>%
   ggplot(mapping = aes(x = parent_income, y = earn2011)) +
   geom_point(position = "jitter") +
   facet_wrap(ever_college ~ ed_aspiration) 
@@ -1219,27 +1195,18 @@ els_parphd %>%
 -   We are also free to choose the number of rows or columns to display:
 
 ```{r}
-ggplot(data = mpg, aes(x = displ, y = hwy)) +
-  geom_point() +
-  facet_wrap(cyl ~ class, nrow = 3)
-
 els_parphd %>%
   filter(ever_college %in% c("No college", "Some college") 
-         & ed_aspiration %in% c("Don't know","No HS diploma", "HS diploma or GED", "2-year", "Attend college, no Bachelors ", "Bachelor's", "Master's", "Doctorate") & parent_income < 150000 & earn2011 < 100000) %>%
+         & ed_aspiration %in% c("Don't know","No HS diploma", "HS diploma or GED", "2-year", "Attend college, no Bachelors ", "Bachelor's", "Master's", "Doctorate") & parent_income < 150000 & earn2011 < 150000) %>%
   ggplot(mapping = aes(x = parent_income, y = earn2011)) +
   geom_point(position = "jitter") +
-  facet_wrap(ever_college ~ ed_aspiration, nrow = 5)
+  facet_wrap(ever_college ~ ed_aspiration, nrow = 4)
 ```
 
 ```{r}
-ggplot(data = mpg, aes(x = displ, y = hwy)) +
-  geom_point() +
-  facet_wrap(cyl ~ class, ncol = 4)
-
-
 els_parphd %>%
   filter(ever_college %in% c("No college", "Some college") 
-         & ed_aspiration %in% c("Don't know","No HS diploma", "HS diploma or GED", "2-year", "Attend college, no Bachelors ", "Bachelor's", "Master's", "Doctorate") & parent_income < 150000 & earn2011 < 100000) %>%
+         & ed_aspiration %in% c("Don't know","No HS diploma", "HS diploma or GED", "2-year", "Attend college, no Bachelors ", "Bachelor's", "Master's", "Doctorate") & parent_income < 150000 & earn2011 < 150000) %>%
   ggplot(mapping = aes(x = parent_income, y = earn2011)) +
   geom_point(position = "jitter") +
   facet_wrap(ever_college ~ ed_aspiration, ncol = 5) 
@@ -1472,9 +1439,9 @@ Palettes are a combination of colors displayed together. In `RColorBrewer`, ther
 
     -   Sequential palette names: Blues, BuGn, BuPu, GnBu, Greens, Greys, Oranges, OrRd, PuBu, PuBuGn, PuRd, Purples, RdPu, Reds, YlGn, YlGnBu, YlOrBr, YlOrRd
 
-    ```{r}
-    display.brewer.all(type="seq")
-    ```
+```{r}
+display.brewer.all(type="seq")
+```
 
 -   **Diverging**: Diverging palettes represent ordered data but in two directions. The middle represents a neutral value and the opposite ends represent two extremes. The hue distinguishes the direction of the values.
 
@@ -1834,7 +1801,8 @@ The steps for saving a plot:
 pdf('Rplot.pdf') #indicating the file type "pdf" and the name of the file "Rplot.pdf"
 
 # Create the plot
-ggplot(data = mpg, aes(x = displ, y = hwy, color = class)) + 
+diamonds %>% 
+  ggplot(mapping = aes(x = carat, y = price, color = color)) + 
   geom_point()
 
 # Close the file
@@ -1848,7 +1816,8 @@ dev.off()
 jpeg('Rplot.jpg', width = 350, height = 350)
 
 # Create the plot
-ggplot(data = mpg, aes(x = displ, y = hwy, color = class)) + 
+diamonds %>% 
+  ggplot(mapping = aes(x = carat, y = price, color = color)) + 
   geom_point()
 
 # Close the file
