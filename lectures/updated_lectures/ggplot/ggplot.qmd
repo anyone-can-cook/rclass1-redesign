@@ -1626,7 +1626,7 @@ diamonds %>%
 
 ### `scale_color_manual()` to select specific colors
 
-If we want to customize our graph by selecting specific colors we could use `scale_color_manual()`. We could specify colors by their name (e.g., "red", "darkgreen"), rgb(), Number, and hex code ([Dealing with colors in ggplot2](https://r-graph-gallery.com/ggplot2-color.html))
+If we want to customize our graph by selecting specific colors we could use `scale_color_manual()`. We could specify colors by their name (e.g., "red", "darkgreen"), rgb(), Number, and hex color code ([Dealing with colors in ggplot2](https://r-graph-gallery.com/ggplot2-color.html))
 
 **The `scale_color_manual()` function**:
 
@@ -1671,7 +1671,7 @@ diamonds %>%
                      name = 'Diamond color')
 ```
 
-If we want to be more specific, we could manually select colors by their Hex code ([Hex Code Selector](https://htmlcolorcodes.com/)).
+If we want to be more specific, we could manually select colors by their Hex color code ([Hex Code Selector](https://htmlcolorcodes.com/)).
 
 ```{r}
 diamonds %>% 
@@ -1690,6 +1690,50 @@ diamonds %>%
                                 ),
                      name = 'Diamond color')
 ```
+
+We could also create an object assigning variable values with hex color codes. 
+-     For example, below we create the object `diamond_colors` and assign the values of the variable `color` to hex color codes. Next, we add the new object `diamond_colors` to the values argument from the `scale_color_manual` function. 
+```{r}
+diamond_colors <- c("D" = "#00a866",
+                    "E" = "#c10c79",
+                    "F" = "#ffd859",
+                    "G" = "#fa5b3d",
+                    "H" = "#5083f0",
+                    "I" = "#9370db",
+                    "J" = "#1b6770")
+
+diamond_colors[1:3] #select the first three values (D,E,F)
+
+diamonds %>% 
+  ggplot(mapping = aes(x = carat, y = price, color = color)) + 
+  geom_point() +
+  ggtitle('Correlation between diamond carat and price') +
+  xlab('Carat') + ylab('Price') +
+  scale_y_continuous(labels = label_number(prefix = '$', suffix = 'K', scale = 1e-3, accuracy = 1)) +
+  scale_color_manual(values = diamond_colors,
+                     name = 'Diamond color')
+```
+
+### Grayscale palette for journal manuscripts
+
+Many journals require grayscale graphs or figures. You can use the `scale_colour_grey()` function for continuous or the `scale_fill_grey()` function for discrete color scales. 
+
+For example, we can plot the relationship between parent income and 2011 student earnings separately by race/ethnicity using the `scale_color_grey()` function. 
+
+The `start` and `end` arguments indicate the the starting and ending gray level in the palette where 0 indicates "black" and 1 indicates "white". 
+```{r}
+els_parphd %>%
+  ggplot(mapping = aes(x = parent_income, y = earn2011)) +
+  geom_point(position = "jitter", mapping = aes(color = f1race)) +
+  scale_color_grey()
+
+els_parphd %>%
+  ggplot(mapping = aes(x = parent_income, y = earn2011)) +
+  geom_point(position = "jitter", mapping = aes(color = f1race)) +
+  scale_color_grey(start = 0, end = 0.75)
+```
+
+If we are gr
 
 ## Themes
 
