@@ -280,6 +280,7 @@ els_v2 %>% filter(bys34a<0) %>% count(bys34a, hw_time)
 els_v2 %>% filter(f3ern2011<0) %>% count(f3ern2011, earn2011)
 ```
 
+
 -   To reduce the number of observations, we are creating a dataframe consisting of students whose parents have a PhD, MD, or advanced degree that we will use later:
 
 ```{r}
@@ -293,7 +294,10 @@ els_parphd <- els_v2 %>% filter(f1pared=="Completed PhD, MD, other advanced degr
 
 ```
 
--     Let's recode some variables we will use later to make them easier to work with.
+<details>
+
+<summary>Let's recode some variables we will use later to make them easier to work with.</summary>
+
 ```{r}
 
 #recode some values for later
@@ -325,6 +329,7 @@ els_parphd %>%
   select(f3evratt, ever_college, bystexp, ed_aspiration)
 ```
 
+</details>
 
 ## Set of aesthetic mappings (**mappings**) {#set-of-aesthetic-mappings-mappings}
 
@@ -342,7 +347,18 @@ els_v2 %>% select(stu_id, bys34a, earn2011, f1sex) %>%
   head(10)
 ```
 
-```{r}
+<details>
+
+<summary>**Code**</summary>
+```{r eval=FALSE}
+els_v2 %>% 
+  filter(bys34a > 0) %>%
+  ggplot(mapping = aes(x = bys34a, y = earn2011, color = f1sex)) +
+  geom_point()
+```
+</details>
+
+```{r echo=FALSE}
 els_v2 %>% 
   filter(bys34a > 0) %>%
   ggplot(mapping = aes(x = bys34a, y = earn2011, color = f1sex)) +
@@ -359,11 +375,23 @@ els_v2 %>% select(stu_id, f1sex) %>%
   head(10)
 ```
 
-```{r}
+<details>
+
+<summary>**Code**</summary>
+```{r eval=FALSE}
 els_v2 %>% 
   ggplot(mapping = aes(x = f1sex)) +
   geom_bar(width = 0.6)
 ```
+
+</details>
+
+```{r echo=FALSE}
+els_v2 %>% 
+  ggplot(mapping = aes(x = f1sex)) +
+  geom_bar(width = 0.6)
+```
+
 
 ## Statistical transformation (**stat**) {#statistical-transformation-stat}
 
@@ -379,12 +407,24 @@ els_v2 %>% select(stu_id, bys34a, earn2011) %>% rename(x=bys34a, y=earn2011) %>%
   head(10)
 ```
 
-```{r}
+<details>
+
+<summary>**Code**</summary>
+```{r eval=FALSE}
 els_v2 %>% 
   filter(bys34a > 0) %>% 
   ggplot(mapping = aes(x = bys34a, y = earn2011)) +
   geom_point()
 ```
+</details>
+
+```{r echo=FALSE}
+els_v2 %>% 
+  filter(bys34a > 0) %>% 
+  ggplot(mapping = aes(x = bys34a, y = earn2011)) +
+  geom_point()
+```
+
 
 **Example**: Imagine creating a bar chart of the number of students by sex
 
@@ -395,11 +435,22 @@ els_v2 %>%
 els_v2 %>% count(f1sex) 
 ```
 
-```{r}
+<details>
+
+<summary>**Code**</summary>
+```{r eval=FALSE}
 els_v2 %>% 
   ggplot(mapping = aes(x = f1sex)) +
   geom_bar(width = 0.6)
 ```
+</details>
+
+```{r echo=FALSE}
+els_v2 %>% 
+  ggplot(mapping = aes(x = f1sex)) +
+  geom_bar(width = 0.6)
+```
+
 
 ## Geometric objects (**geoms**) {#geometric-objects-geoms}
 
@@ -469,8 +520,20 @@ attributes(els_v2$f3tzhighdeg)
 els_v2 %>% select(f3tzhighdeg) %>% summary()
 ```
 
+<details>
 
-```{r}
+<summary>**Code**</summary>
+```{r eval=FALSE}
+#total amount borrowed in loans on 2011 earnings 
+els_v2 %>%
+  filter(totloan < 30000) %>%
+  ggplot(aes(x = totloan, y = earn2011)) +
+  geom_point()
+
+```
+</details>
+
+```{r echo=FALSE}
 #total amount borrowed in loans on 2011 earnings 
 els_v2 %>%
   filter(totloan < 30000) %>%
@@ -481,7 +544,19 @@ els_v2 %>%
 
 -   The `jitter` position adjustment "adds a small amount of random variation to the location of each point" (from `?geom_jitter`)
 
-```{r}
+<details>
+
+<summary>**Code**</summary>
+```{r eval=FALSE}
+#total amount borrowed in loans on 2011 earnings 
+els_v2 %>%
+  filter(totloan < 30000) %>%
+  ggplot(aes(x = totloan, y = earn2011)) +
+  geom_point(position = "jitter")
+```
+</details>
+
+```{r echo=FALSE}
 #total amount borrowed in loans on 2011 earnings 
 els_v2 %>%
   filter(totloan < 30000) %>%
@@ -498,7 +573,21 @@ els_v2 %>%
 
 -   Most plots use the Cartesian coordinate system
 
-```{r}
+<details>
+
+<summary>**Code**</summary>
+```{r eval=FALSE}
+x1 <- c(1, 10)
+y1 <- c(1, 5)
+p <- qplot(x = x1, y = y1, geom = "blank", xlab = NULL, ylab = NULL) +
+  theme_bw()
+
+p +
+  ggtitle(label = "Cartesian coordinate system")
+```
+</details>
+
+```{r echo=FALSE}
 x1 <- c(1, 10)
 y1 <- c(1, 5)
 p <- qplot(x = x1, y = y1, geom = "blank", xlab = NULL, ylab = NULL) +
@@ -510,7 +599,16 @@ p +
 
 -   Use `coord_fixed()` to fix the scaling of the coordinate system
 
-```{r}
+<details>
+
+<summary>**Code**</summary>
+```{r eval=FALSE}
+p +
+  coord_fixed()
+```
+</details>
+
+```{r echo=FALSE}
 p +
   coord_fixed()
 ```
@@ -529,26 +627,69 @@ els_v2 <- els_v2 %>%
   ))
 ```
 
-```{r}
+**Example**: Relationship between highest degree earned and the amount of total loans taken out. 
+
+<details>
+
+<summary>**Code**</summary>
+
+```{r eval=FALSE}
 #filtering for those with a postsecondary degree 
 els_v2 %>%
   filter(h_degree %in% c("Associate's","Bachelor's", "Master's", "Doctorate")) %>%
   ggplot(mapping = aes(x = h_degree, y = totloan)) + 
   geom_boxplot() +
   scale_y_continuous(labels = label_number(prefix = '$', suffix = 'K', scale = 1e-3, accuracy = 1))
+```
+</details>
 
+```{r echo=FALSE}
+#filtering for those with a postsecondary degree 
+els_v2 %>%
+  filter(h_degree %in% c("Associate's","Bachelor's", "Master's", "Doctorate")) %>%
+  ggplot(mapping = aes(x = h_degree, y = totloan)) + 
+  geom_boxplot() +
+  scale_y_continuous(labels = label_number(prefix = '$', suffix = 'K', scale = 1e-3, accuracy = 1))
+```
+
+**Example**: Relationship between highest degree earned and the amount of total loans taken out using `coord_flip()`.
+
+<details>
+
+<summary>**Code**</summary>
+```{r eval=FALSE}
 els_v2 %>%
   filter(h_degree %in% c("Associate's","Bachelor's", "Master's", "Doctorate")) %>%
   ggplot(mapping = aes(x = h_degree, y = totloan)) + 
   geom_boxplot() +
   coord_flip() +
   scale_y_continuous(labels = label_number(prefix = '$', suffix = 'K', scale = 1e-3, accuracy = 1))
-
 ```
+</details>
+
+```{r echo=FALSE}
+els_v2 %>%
+  filter(h_degree %in% c("Associate's","Bachelor's", "Master's", "Doctorate")) %>%
+  ggplot(mapping = aes(x = h_degree, y = totloan)) + 
+  geom_boxplot() +
+  coord_flip() +
+  scale_y_continuous(labels = label_number(prefix = '$', suffix = 'K', scale = 1e-3, accuracy = 1))
+```
+
 
 **Example**: Polar coordinate system
 
-```{r}
+<details>
+
+<summary>**Code**</summary>
+```{r eval=FALSE}
+p +
+  coord_polar() +
+  ggtitle(label = "Polar coordinate system")
+```
+</details>
+
+```{r echo=FALSE}
 p +
   coord_polar() +
   ggtitle(label = "Polar coordinate system")
@@ -560,13 +701,26 @@ p +
 
 **Example**: Imagine creating a scatterplot of the relationship between the total amount borrowed in loans (x-axis) and earnings in 2011 (y-axis), with separate subplots for race/ethnicity.
 
-```{r}
+<details>
+
+<summary>**Code**</summary>
+```{r eval=FALSE}
 els_v2 %>%
   filter(totloan < 50000 & earn2011 < 100000) %>%
   ggplot() + 
   geom_point(mapping = aes(x = totloan, y = earn2011), position = "jitter") +
   facet_wrap(~f1race_v2, nrow = 3)
 ```
+</details>
+
+```{r echo=FALSE}
+els_v2 %>%
+  filter(totloan < 50000 & earn2011 < 100000) %>%
+  ggplot() + 
+  geom_point(mapping = aes(x = totloan, y = earn2011), position = "jitter") +
+  facet_wrap(~f1race_v2, nrow = 3)
+```
+
 
 # Creating graphs using `ggplot`
 
@@ -977,6 +1131,7 @@ diamonds %>% count(cut) %>% ggplot(aes(x= cut, y=n)) +
 ```{r, eval=FALSE, echo=FALSE}
 #glimpse(els_v2)
 els_parphd %>% select(ever_college) %>% var_label()
+els_parphd
 
 #ever attended
 els_parphd %>% count(ever_college)
@@ -1692,7 +1847,23 @@ diamonds %>%
 ```
 
 We could also create an object assigning variable values with hex color codes. 
--     For example, below we create the object `diamond_colors` and assign the values of the variable `color` to hex color codes. Next, we add the new object `diamond_colors` to the values argument from the `scale_color_manual` function. 
+-     For example, we want to plot the relationship between diamond carat (x-axis) and price (y-axis) with color of points determined by the variable `color`. 
+-     First, let's plot without color. 
+```{r}
+diamonds %>% 
+  ggplot(mapping = aes(x = carat, y = price)) + 
+  geom_point() +
+  ggtitle('Correlation between diamond carat and price') +
+  xlab('Carat') + ylab('Price') +
+  scale_y_continuous(labels = label_number(prefix = '$', suffix = 'K', scale = 1e-3, accuracy = 1)) 
+```
+
+-     Next, we investigate the variable `color` and see that it has seven values, D-J.
+```{r}
+diamonds %>% count(color)
+```
+
+-     Then, we create the object `diamond_colors` and assign the values (e.g., D-J) of the variable `color` to any hex color codes of our choosing. 
 ```{r}
 diamond_colors <- c("D" = "#00a866",
                     "E" = "#c10c79",
@@ -1702,21 +1873,26 @@ diamond_colors <- c("D" = "#00a866",
                     "I" = "#9370db",
                     "J" = "#1b6770")
 
+diamond_colors
 diamond_colors[1:3] #select the first three values (D,E,F)
+```
 
+-     Lastly, we add the new object `diamond_colors` to the values argument from the `scale_color_manual` function. 
+
+```{r}
 diamonds %>% 
   ggplot(mapping = aes(x = carat, y = price, color = color)) + 
   geom_point() +
   ggtitle('Correlation between diamond carat and price') +
   xlab('Carat') + ylab('Price') +
   scale_y_continuous(labels = label_number(prefix = '$', suffix = 'K', scale = 1e-3, accuracy = 1)) +
-  scale_color_manual(values = diamond_colors,
-                     name = 'Diamond color')
+  scale_color_manual(values = diamond_colors, #hex color code object we created
+                     name = 'Diamond color') #name of legend
 ```
 
 ### Grayscale palette for journal manuscripts
 
-Many journals require grayscale graphs or figures. You can use the `scale_colour_grey()` function for continuous or the `scale_fill_grey()` function for discrete color scales. 
+Many journals require grayscale graphs or figures. You can use the `scale_color_grey()` function for continuous or the `scale_fill_grey()` function for discrete color scales. 
 
 For example, we can plot the relationship between parent income and 2011 student earnings separately by race/ethnicity using the `scale_color_grey()` function. 
 
@@ -1724,16 +1900,28 @@ The `start` and `end` arguments indicate the the starting and ending gray level 
 ```{r}
 els_parphd %>%
   ggplot(mapping = aes(x = parent_income, y = earn2011)) +
-  geom_point(position = "jitter", mapping = aes(color = f1race)) +
+  geom_point(position = "jitter", mapping = aes(color = f1race_v2)) +
   scale_color_grey()
 
 els_parphd %>%
   ggplot(mapping = aes(x = parent_income, y = earn2011)) +
-  geom_point(position = "jitter", mapping = aes(color = f1race)) +
-  scale_color_grey(start = 0, end = 0.75)
+  geom_point(position = "jitter", mapping = aes(color = f1race_v2)) +
+  scale_color_grey(start = 0.5, end = 0.75)
 ```
 
-If we are gr
+If we want to graph the frequency count of the race/ethnicity of students in our data set, we can use the `scale_fill_grey()` function. 
+
+```{r}
+els_v2 %>%
+  ggplot(mapping = aes(x = f1race_v2)) +
+  geom_bar(mapping = aes(fill = f1race_v2)) +
+  scale_fill_grey()
+
+els_v2 %>%
+  ggplot(mapping = aes(x = f1race_v2)) +
+  geom_bar(mapping = aes(fill = f1race_v2)) +
+  scale_fill_grey(start = 0.8, end = 0.2)
+```
 
 ## Themes
 
