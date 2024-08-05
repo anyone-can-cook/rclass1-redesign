@@ -141,6 +141,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#comparing-class-labelled-to-class-factor" id="toc-comparing-class-labelled-to-class-factor" class="nav-link" data-scroll-target="#comparing-class-labelled-to-class-factor"><span class="header-section-number">6</span> Comparing class labelled to class factor</a>
   <ul class="collapse">
+  <li><a href="#why-factor-variables-are-essential-for-analysis" id="toc-why-factor-variables-are-essential-for-analysis" class="nav-link" data-scroll-target="#why-factor-variables-are-essential-for-analysis"><span class="header-section-number">6.0.1</span> Why factor variables are essential for analysis</a></li>
   <li><a href="#converting-classlabelled-to-classfactor" id="toc-converting-classlabelled-to-classfactor" class="nav-link" data-scroll-target="#converting-classlabelled-to-classfactor"><span class="header-section-number">6.1</span> Converting <code>class==labelled</code> to <code>class==factor</code></a></li>
   <li><a href="#working-with-classfactor-data" id="toc-working-with-classfactor-data" class="nav-link" data-scroll-target="#working-with-classfactor-data"><span class="header-section-number">6.2</span> Working with <code>class==factor</code> data</a></li>
   </ul></li>
@@ -1879,14 +1880,94 @@ NULL</code></pre>
 <li>No right or wrong answer; this is a subjective decision</li>
 <li>Personally, I prefer <code>factor</code> class
 <ul>
-<li>Easier to run analysis</li>
+<li>Easier to run analysis (see section below)</li>
 </ul></li>
 <li><code>labelled</code> class
 <ul>
 <li>Feels more suited to working with survey data variables, where there are usually several different values that represent different kinds of “missing” values.</li>
 </ul></li>
-<li>You can use both!</li>
+<li>You can use both! We recommend using labelled variables, particularly for exploratory data analysis, and factor variables for analysis when using categorical variables.</li>
 </ul>
+<section id="why-factor-variables-are-essential-for-analysis" class="level3" data-number="6.0.1">
+<h3 data-number="6.0.1" class="anchored" data-anchor-id="why-factor-variables-are-essential-for-analysis"><span class="header-section-number">6.0.1</span> Why factor variables are essential for analysis</h3>
+<p><br></p>
+<p><strong>When running analyses using categorical variables (e.g., marital status: single, married, divorced, etc.), it is best practice to use <code>class == factor</code> over <code>class == labelled</code>.</strong></p>
+<p>To demonstrate a quick example, let’s load data from ELS. We will use this data set later in the graphing and ggplot lecture, so don’t worry about understanding it now.</p>
+<p>Say we are interested in the relationship between having an internship or co-op job (X) (in 2005-2006) on subsequent earnings (Y) (in 2011) after controlling for standardized reading test score (as a measure for high school achievement), sex, and race/ethnicity.</p>
+<ul>
+<li>We have two linear models below, the first using variables that are class labelled and the second using variables that are class factor.</li>
+</ul>
+<p><br></p>
+<p><strong>Linear model <code>lm()</code> model using categorical variables of class <code>labelled</code></strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb283"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb283-1"><a href="#cb283-1" aria-hidden="true" tabindex="-1"></a>intern_mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> f3ern2011 <span class="sc">~</span> f2intern0506 <span class="sc">+</span> bytxrstd <span class="sc">+</span> f1sex <span class="sc">+</span> f1race_v2, <span class="at">data =</span> df_els_stu_allobs <span class="sc">%&gt;%</span> <span class="fu">filter</span>(f2enroll0506<span class="sc">==</span><span class="dv">1</span>))</span>
+<span id="cb283-2"><a href="#cb283-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb283-3"><a href="#cb283-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(intern_mod1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = f3ern2011 ~ f2intern0506 + bytxrstd + f1sex + f1race_v2, 
+    data = df_els_stu_allobs %&gt;% filter(f2enroll0506 == 1))
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-37135 -18595  -2783  12020 231894 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  20479.35    1607.58  12.739  &lt; 2e-16 ***
+f2intern0506  5580.01    1059.32   5.268 1.41e-07 ***
+bytxrstd       261.16      23.86  10.945  &lt; 2e-16 ***
+f1sex        -4104.21     515.28  -7.965 1.85e-15 ***
+f1race_v2    -1275.57     189.17  -6.743 1.64e-11 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 24760 on 9317 degrees of freedom
+  (21 observations deleted due to missingness)
+Multiple R-squared:  0.02949,   Adjusted R-squared:  0.02908 
+F-statistic: 70.78 on 4 and 9317 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p><br></p>
+<p><strong>Linear model <code>lm()</code> model using categorical variables of class <code>factor</code></strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb285"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb285-1"><a href="#cb285-1" aria-hidden="true" tabindex="-1"></a>intern_mod2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> f3ern2011 <span class="sc">~</span> f2intern0506 <span class="sc">+</span> bytxrstd <span class="sc">+</span> f1sex <span class="sc">+</span> f1race_v2, <span class="at">data =</span> df_els_stu_allobs_fac <span class="sc">%&gt;%</span> <span class="fu">filter</span>(f2enroll0506<span class="sc">==</span><span class="st">"yes"</span>))</span>
+<span id="cb285-2"><a href="#cb285-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb285-3"><a href="#cb285-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(intern_mod2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = f3ern2011 ~ f2intern0506 + bytxrstd + f1sex + f1race_v2, 
+    data = df_els_stu_allobs_fac %&gt;% filter(f2enroll0506 == "yes"))
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-37282 -18246  -2868  12045 228779 
+
+Coefficients:
+                 Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)      16503.51    1414.69  11.666  &lt; 2e-16 ***
+f2intern0506yes   5616.95    1059.04   5.304 1.16e-07 ***
+bytxrstd           240.60      24.38   9.869  &lt; 2e-16 ***
+f1sexFemale      -4055.06     515.10  -7.872 3.87e-15 ***
+f1race_v2api     -1784.73     817.78  -2.182  0.02910 *  
+f1race_v2black   -5113.41     859.37  -5.950 2.78e-09 ***
+f1race_v2latinx  -4768.47     838.71  -5.685 1.34e-08 ***
+f1race_v2native -10149.40    3591.46  -2.826  0.00472 ** 
+f1race_v2multi   -3206.89    1279.05  -2.507  0.01218 *  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 24740 on 9313 degrees of freedom
+  (21 observations deleted due to missingness)
+Multiple R-squared:  0.03148,   Adjusted R-squared:  0.03065 
+F-statistic: 37.84 on 8 and 9313 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p><strong>Why does this matter?</strong></p>
+<p>Notice that for the linear model <code>intern_mod1</code>, the coefficients for categorical variables sex and race are grouped together, whereas in the second linear model <code>intern_mod2</code>, using class factor variables, coefficients are calculated separately by “category” (e.g., female, male, black, white, Asian, etc.).</p>
+</section>
 <section id="converting-classlabelled-to-classfactor" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="converting-classlabelled-to-classfactor"><span class="header-section-number">6.1</span> Converting <code>class==labelled</code> to <code>class==factor</code></h2>
 <p>The <code>as_factor()</code> function from <code>haven</code> package converts variables with <code>class==labelled</code> to <code>class==factor</code></p>
@@ -1894,32 +1975,32 @@ NULL</code></pre>
 <li>Can be used for descriptive statistics</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb283"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb283-1"><a href="#cb283-1" aria-hidden="true" tabindex="-1"></a>hsls <span class="sc">%&gt;%</span> <span class="fu">select</span>(s3classes) <span class="sc">%&gt;%</span> <span class="fu">count</span>(s3classes)</span>
-<span id="cb283-2"><a href="#cb283-2" aria-hidden="true" tabindex="-1"></a>hsls <span class="sc">%&gt;%</span> <span class="fu">select</span>(s3classes) <span class="sc">%&gt;%</span> <span class="fu">count</span>(s3classes) <span class="sc">%&gt;%</span> <span class="fu">as_factor</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb287"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb287-1"><a href="#cb287-1" aria-hidden="true" tabindex="-1"></a>hsls <span class="sc">%&gt;%</span> <span class="fu">select</span>(s3classes) <span class="sc">%&gt;%</span> <span class="fu">count</span>(s3classes)</span>
+<span id="cb287-2"><a href="#cb287-2" aria-hidden="true" tabindex="-1"></a>hsls <span class="sc">%&gt;%</span> <span class="fu">select</span>(s3classes) <span class="sc">%&gt;%</span> <span class="fu">count</span>(s3classes) <span class="sc">%&gt;%</span> <span class="fu">as_factor</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Can create object with some or all <code>labelled</code> vars converted to <code>factor</code></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb284"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb284-1"><a href="#cb284-1" aria-hidden="true" tabindex="-1"></a>hsls_f <span class="ot">&lt;-</span> <span class="fu">as_factor</span>(hsls, <span class="at">only_labelled =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb288"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb288-1"><a href="#cb288-1" aria-hidden="true" tabindex="-1"></a>hsls_f <span class="ot">&lt;-</span> <span class="fu">as_factor</span>(hsls, <span class="at">only_labelled =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s examine this object</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb285"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb285-1"><a href="#cb285-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(hsls_f)</span>
-<span id="cb285-2"><a href="#cb285-2" aria-hidden="true" tabindex="-1"></a>hsls_f <span class="sc">%&gt;%</span> <span class="fu">select</span>(s3classes,s3clglvl) <span class="sc">%&gt;%</span> <span class="fu">str</span>()</span>
-<span id="cb285-3"><a href="#cb285-3" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(hsls_f<span class="sc">$</span>s3classes)</span>
-<span id="cb285-4"><a href="#cb285-4" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(hsls_f<span class="sc">$</span>s3classes)</span>
-<span id="cb285-5"><a href="#cb285-5" aria-hidden="true" tabindex="-1"></a><span class="fu">attributes</span>(hsls_f<span class="sc">$</span>s3classes)</span>
-<span id="cb285-6"><a href="#cb285-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb285-7"><a href="#cb285-7" aria-hidden="true" tabindex="-1"></a>hsls_f <span class="sc">%&gt;%</span> <span class="fu">select</span>(s3classes) <span class="sc">%&gt;%</span> <span class="fu">var_label</span>()</span>
-<span id="cb285-8"><a href="#cb285-8" aria-hidden="true" tabindex="-1"></a>hsls_f <span class="sc">%&gt;%</span> <span class="fu">select</span>(s3classes) <span class="sc">%&gt;%</span> <span class="fu">val_labels</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb289"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb289-1"><a href="#cb289-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(hsls_f)</span>
+<span id="cb289-2"><a href="#cb289-2" aria-hidden="true" tabindex="-1"></a>hsls_f <span class="sc">%&gt;%</span> <span class="fu">select</span>(s3classes,s3clglvl) <span class="sc">%&gt;%</span> <span class="fu">str</span>()</span>
+<span id="cb289-3"><a href="#cb289-3" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(hsls_f<span class="sc">$</span>s3classes)</span>
+<span id="cb289-4"><a href="#cb289-4" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(hsls_f<span class="sc">$</span>s3classes)</span>
+<span id="cb289-5"><a href="#cb289-5" aria-hidden="true" tabindex="-1"></a><span class="fu">attributes</span>(hsls_f<span class="sc">$</span>s3classes)</span>
+<span id="cb289-6"><a href="#cb289-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb289-7"><a href="#cb289-7" aria-hidden="true" tabindex="-1"></a>hsls_f <span class="sc">%&gt;%</span> <span class="fu">select</span>(s3classes) <span class="sc">%&gt;%</span> <span class="fu">var_label</span>()</span>
+<span id="cb289-8"><a href="#cb289-8" aria-hidden="true" tabindex="-1"></a>hsls_f <span class="sc">%&gt;%</span> <span class="fu">select</span>(s3classes) <span class="sc">%&gt;%</span> <span class="fu">val_labels</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="working-with-classfactor-data" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="working-with-classfactor-data"><span class="header-section-number">6.2</span> Working with <code>class==factor</code> data</h2>
 <p>Showing factor levels associated with a factor variable</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb286"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb286-1"><a href="#cb286-1" aria-hidden="true" tabindex="-1"></a>hsls_f <span class="sc">%&gt;%</span> <span class="fu">count</span>(s3classes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb290"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb290-1"><a href="#cb290-1" aria-hidden="true" tabindex="-1"></a>hsls_f <span class="sc">%&gt;%</span> <span class="fu">count</span>(s3classes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 2
   s3classes             n
@@ -1933,7 +2014,7 @@ NULL</code></pre>
 </div>
 <p>Showing variable values associated with a factor variable</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb288"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb288-1"><a href="#cb288-1" aria-hidden="true" tabindex="-1"></a>hsls_f <span class="sc">%&gt;%</span> <span class="fu">count</span>(<span class="fu">as.integer</span>(s3classes))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb292"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb292-1"><a href="#cb292-1" aria-hidden="true" tabindex="-1"></a>hsls_f <span class="sc">%&gt;%</span> <span class="fu">count</span>(<span class="fu">as.integer</span>(s3classes))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 2
   `as.integer(s3classes)`     n
@@ -1947,7 +2028,7 @@ NULL</code></pre>
 </div>
 <p>When sub-setting observations (e.g., filtering), refer to the <code>level</code> attribute, not the underlying variable integer value.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb290"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb290-1"><a href="#cb290-1" aria-hidden="true" tabindex="-1"></a>hsls_f <span class="sc">%&gt;%</span> <span class="fu">filter</span>(s3classes<span class="sc">==</span><span class="st">"Yes"</span>) <span class="sc">%&gt;%</span> <span class="fu">count</span>(s3classes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb294"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb294-1"><a href="#cb294-1" aria-hidden="true" tabindex="-1"></a>hsls_f <span class="sc">%&gt;%</span> <span class="fu">filter</span>(s3classes<span class="sc">==</span><span class="st">"Yes"</span>) <span class="sc">%&gt;%</span> <span class="fu">count</span>(s3classes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 2
   s3classes     n
@@ -1968,32 +2049,32 @@ NULL</code></pre>
 <li>Attach levels to the data using the <code>factor()</code> function</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb292"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb292-1"><a href="#cb292-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Underlying data: months my fam is born</span></span>
-<span id="cb292-2"><a href="#cb292-2" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Jan"</span>, <span class="st">"Aug"</span>, <span class="st">"Apr"</span>, <span class="st">"Mar"</span>)</span>
-<span id="cb292-3"><a href="#cb292-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create vector with valid levels</span></span>
-<span id="cb292-4"><a href="#cb292-4" aria-hidden="true" tabindex="-1"></a>month_levels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Jan"</span>, <span class="st">"Feb"</span>, <span class="st">"Mar"</span>, <span class="st">"Apr"</span>, <span class="st">"May"</span>, <span class="st">"Jun"</span>, </span>
-<span id="cb292-5"><a href="#cb292-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Jul"</span>, <span class="st">"Aug"</span>, <span class="st">"Sep"</span>, <span class="st">"Oct"</span>, <span class="st">"Nov"</span>, <span class="st">"Dec"</span>)</span>
-<span id="cb292-6"><a href="#cb292-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Attach levels to data</span></span>
-<span id="cb292-7"><a href="#cb292-7" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">factor</span>(x1, <span class="at">levels =</span> month_levels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb296"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb296-1"><a href="#cb296-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Underlying data: months my fam is born</span></span>
+<span id="cb296-2"><a href="#cb296-2" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Jan"</span>, <span class="st">"Aug"</span>, <span class="st">"Apr"</span>, <span class="st">"Mar"</span>)</span>
+<span id="cb296-3"><a href="#cb296-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create vector with valid levels</span></span>
+<span id="cb296-4"><a href="#cb296-4" aria-hidden="true" tabindex="-1"></a>month_levels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Jan"</span>, <span class="st">"Feb"</span>, <span class="st">"Mar"</span>, <span class="st">"Apr"</span>, <span class="st">"May"</span>, <span class="st">"Jun"</span>, </span>
+<span id="cb296-5"><a href="#cb296-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Jul"</span>, <span class="st">"Aug"</span>, <span class="st">"Sep"</span>, <span class="st">"Oct"</span>, <span class="st">"Nov"</span>, <span class="st">"Dec"</span>)</span>
+<span id="cb296-6"><a href="#cb296-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Attach levels to data</span></span>
+<span id="cb296-7"><a href="#cb296-7" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">factor</span>(x1, <span class="at">levels =</span> month_levels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Note how attributes differ:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb293"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb293-1"><a href="#cb293-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb297"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb297-1"><a href="#cb297-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> chr [1:4] "Jan" "Aug" "Apr" "Mar"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb295"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb295-1"><a href="#cb295-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb299"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb299-1"><a href="#cb299-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> Factor w/ 12 levels "Jan","Feb","Mar",..: 1 8 4 3</code></pre>
 </div>
 </div>
 <p>Sorting also differs:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb297"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb297-1"><a href="#cb297-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(x1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb301"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb301-1"><a href="#cb301-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(x1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Apr" "Aug" "Jan" "Mar"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb299"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb299-1"><a href="#cb299-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(x2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb303"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb303-1"><a href="#cb303-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(x2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] Jan Mar Apr Aug
 Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</code></pre>
@@ -2001,27 +2082,27 @@ Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</code></pre>
 </div>
 <p>Let’s create a character version of variable <code>hs_state</code> and then turn it into a factor:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb301"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb301-1"><a href="#cb301-1" aria-hidden="true" tabindex="-1"></a><span class="co">#wwlist %&gt;%</span></span>
-<span id="cb301-2"><a href="#cb301-2" aria-hidden="true" tabindex="-1"></a><span class="co">#  count(hs_state)</span></span>
-<span id="cb301-3"><a href="#cb301-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset obs to West Coast states </span></span>
-<span id="cb301-4"><a href="#cb301-4" aria-hidden="true" tabindex="-1"></a>wwlist_temp <span class="ot">&lt;-</span> wwlist <span class="sc">%&gt;%</span></span>
-<span id="cb301-5"><a href="#cb301-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(hs_state <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"CA"</span>, <span class="st">"OR"</span>, <span class="st">"WA"</span>))</span>
-<span id="cb301-6"><a href="#cb301-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb301-7"><a href="#cb301-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create character version of high school state for West Coast states only</span></span>
-<span id="cb301-8"><a href="#cb301-8" aria-hidden="true" tabindex="-1"></a>wwlist_temp<span class="sc">$</span>hs_state_char <span class="ot">&lt;-</span> <span class="fu">as.character</span>(wwlist_temp<span class="sc">$</span>hs_state)</span>
-<span id="cb301-9"><a href="#cb301-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb301-10"><a href="#cb301-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Investigate character variable</span></span>
-<span id="cb301-11"><a href="#cb301-11" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(wwlist_temp<span class="sc">$</span>hs_state_char)</span>
-<span id="cb301-12"><a href="#cb301-12" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(wwlist_temp<span class="sc">$</span>hs_state_char)</span>
-<span id="cb301-13"><a href="#cb301-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb301-14"><a href="#cb301-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Create new variable that assigns levels</span></span>
-<span id="cb301-15"><a href="#cb301-15" aria-hidden="true" tabindex="-1"></a>wwlist_temp<span class="sc">$</span>hs_state_fac <span class="ot">&lt;-</span> <span class="fu">factor</span>(wwlist_temp<span class="sc">$</span>hs_state_char, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"CA"</span>,<span class="st">"OR"</span>,<span class="st">"WA"</span>))</span>
-<span id="cb301-16"><a href="#cb301-16" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(wwlist_temp<span class="sc">$</span>hs_state_fac)</span>
-<span id="cb301-17"><a href="#cb301-17" aria-hidden="true" tabindex="-1"></a><span class="fu">attributes</span>(wwlist_temp<span class="sc">$</span>hs_state_fac)</span>
-<span id="cb301-18"><a href="#cb301-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb301-19"><a href="#cb301-19" aria-hidden="true" tabindex="-1"></a><span class="co">#wwlist_temp %&gt;%</span></span>
-<span id="cb301-20"><a href="#cb301-20" aria-hidden="true" tabindex="-1"></a><span class="co">#  count(hs_state_fac)</span></span>
-<span id="cb301-21"><a href="#cb301-21" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(wwlist_temp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb305"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb305-1"><a href="#cb305-1" aria-hidden="true" tabindex="-1"></a><span class="co">#wwlist %&gt;%</span></span>
+<span id="cb305-2"><a href="#cb305-2" aria-hidden="true" tabindex="-1"></a><span class="co">#  count(hs_state)</span></span>
+<span id="cb305-3"><a href="#cb305-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset obs to West Coast states </span></span>
+<span id="cb305-4"><a href="#cb305-4" aria-hidden="true" tabindex="-1"></a>wwlist_temp <span class="ot">&lt;-</span> wwlist <span class="sc">%&gt;%</span></span>
+<span id="cb305-5"><a href="#cb305-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(hs_state <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"CA"</span>, <span class="st">"OR"</span>, <span class="st">"WA"</span>))</span>
+<span id="cb305-6"><a href="#cb305-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb305-7"><a href="#cb305-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create character version of high school state for West Coast states only</span></span>
+<span id="cb305-8"><a href="#cb305-8" aria-hidden="true" tabindex="-1"></a>wwlist_temp<span class="sc">$</span>hs_state_char <span class="ot">&lt;-</span> <span class="fu">as.character</span>(wwlist_temp<span class="sc">$</span>hs_state)</span>
+<span id="cb305-9"><a href="#cb305-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb305-10"><a href="#cb305-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Investigate character variable</span></span>
+<span id="cb305-11"><a href="#cb305-11" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(wwlist_temp<span class="sc">$</span>hs_state_char)</span>
+<span id="cb305-12"><a href="#cb305-12" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(wwlist_temp<span class="sc">$</span>hs_state_char)</span>
+<span id="cb305-13"><a href="#cb305-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb305-14"><a href="#cb305-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Create new variable that assigns levels</span></span>
+<span id="cb305-15"><a href="#cb305-15" aria-hidden="true" tabindex="-1"></a>wwlist_temp<span class="sc">$</span>hs_state_fac <span class="ot">&lt;-</span> <span class="fu">factor</span>(wwlist_temp<span class="sc">$</span>hs_state_char, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"CA"</span>,<span class="st">"OR"</span>,<span class="st">"WA"</span>))</span>
+<span id="cb305-16"><a href="#cb305-16" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(wwlist_temp<span class="sc">$</span>hs_state_fac)</span>
+<span id="cb305-17"><a href="#cb305-17" aria-hidden="true" tabindex="-1"></a><span class="fu">attributes</span>(wwlist_temp<span class="sc">$</span>hs_state_fac)</span>
+<span id="cb305-18"><a href="#cb305-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb305-19"><a href="#cb305-19" aria-hidden="true" tabindex="-1"></a><span class="co">#wwlist_temp %&gt;%</span></span>
+<span id="cb305-20"><a href="#cb305-20" aria-hidden="true" tabindex="-1"></a><span class="co">#  count(hs_state_fac)</span></span>
+<span id="cb305-21"><a href="#cb305-21" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(wwlist_temp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>How the <code>levels</code> argument works when underlying data is character:</p>
 <ul>
@@ -2039,17 +2120,17 @@ Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</code></pre>
 <li>Attach levels to the data using the <code>factor()</code> function</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb302"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb302-1"><a href="#cb302-1" aria-hidden="true" tabindex="-1"></a>a1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>) <span class="co"># A vector of data</span></span>
-<span id="cb302-2"><a href="#cb302-2" aria-hidden="true" tabindex="-1"></a>a2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"zero"</span>,<span class="st">"one"</span>) <span class="co"># A vector of labels</span></span>
-<span id="cb302-3"><a href="#cb302-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb302-4"><a href="#cb302-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Attach labels to values</span></span>
-<span id="cb302-5"><a href="#cb302-5" aria-hidden="true" tabindex="-1"></a>a3 <span class="ot">&lt;-</span> <span class="fu">factor</span>(a1, <span class="at">labels =</span> a2)</span>
-<span id="cb302-6"><a href="#cb302-6" aria-hidden="true" tabindex="-1"></a>a3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb306"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb306-1"><a href="#cb306-1" aria-hidden="true" tabindex="-1"></a>a1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>) <span class="co"># A vector of data</span></span>
+<span id="cb306-2"><a href="#cb306-2" aria-hidden="true" tabindex="-1"></a>a2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"zero"</span>,<span class="st">"one"</span>) <span class="co"># A vector of labels</span></span>
+<span id="cb306-3"><a href="#cb306-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb306-4"><a href="#cb306-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Attach labels to values</span></span>
+<span id="cb306-5"><a href="#cb306-5" aria-hidden="true" tabindex="-1"></a>a3 <span class="ot">&lt;-</span> <span class="fu">factor</span>(a1, <span class="at">labels =</span> a2)</span>
+<span id="cb306-6"><a href="#cb306-6" aria-hidden="true" tabindex="-1"></a>a3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] one  one  one  zero one  one  zero
 Levels: zero one</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb304"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb304-1"><a href="#cb304-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(a3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb308"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb308-1"><a href="#cb308-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(a3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> Factor w/ 2 levels "zero","one": 2 2 2 1 2 2 1</code></pre>
 </div>
@@ -2058,30 +2139,30 @@ Levels: zero one</code></pre>
 <p>Let’s turn an integer variable into a factor variable in the <code>wwlist</code> data frame</p>
 <p>Create integer version of <code>receive_year</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb306"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb306-1"><a href="#cb306-1" aria-hidden="true" tabindex="-1"></a><span class="co">#typeof(wwlist_temp$receive_year)</span></span>
-<span id="cb306-2"><a href="#cb306-2" aria-hidden="true" tabindex="-1"></a>wwlist<span class="sc">$</span>receive_year_int <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(wwlist<span class="sc">$</span>receive_year)</span>
-<span id="cb306-3"><a href="#cb306-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(wwlist<span class="sc">$</span>receive_year_int)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb310"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb310-1"><a href="#cb310-1" aria-hidden="true" tabindex="-1"></a><span class="co">#typeof(wwlist_temp$receive_year)</span></span>
+<span id="cb310-2"><a href="#cb310-2" aria-hidden="true" tabindex="-1"></a>wwlist<span class="sc">$</span>receive_year_int <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(wwlist<span class="sc">$</span>receive_year)</span>
+<span id="cb310-3"><a href="#cb310-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(wwlist<span class="sc">$</span>receive_year_int)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> int [1:268396] 2016 2016 2016 2016 2016 2016 2016 2016 2016 2016 ...</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb308"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb308-1"><a href="#cb308-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(wwlist<span class="sc">$</span>receive_year_int)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb312"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb312-1"><a href="#cb312-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(wwlist<span class="sc">$</span>receive_year_int)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "integer"</code></pre>
 </div>
 </div>
 <p>Assign levels to values of integer variable:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb310"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb310-1"><a href="#cb310-1" aria-hidden="true" tabindex="-1"></a>wwlist<span class="sc">$</span>receive_year_fac <span class="ot">&lt;-</span> <span class="fu">factor</span>(wwlist<span class="sc">$</span>receive_year_int, </span>
-<span id="cb310-2"><a href="#cb310-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">labels=</span><span class="fu">c</span>(<span class="st">"Twenty-sixteen"</span>,<span class="st">"Twenty-seventeen"</span>,<span class="st">"Twenty-eighteen"</span>))</span>
-<span id="cb310-3"><a href="#cb310-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(wwlist<span class="sc">$</span>receive_year_fac)</span>
-<span id="cb310-4"><a href="#cb310-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(wwlist<span class="sc">$</span>receive_year)</span>
-<span id="cb310-5"><a href="#cb310-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb310-6"><a href="#cb310-6" aria-hidden="true" tabindex="-1"></a><span class="co">#Check variable</span></span>
-<span id="cb310-7"><a href="#cb310-7" aria-hidden="true" tabindex="-1"></a>wwlist <span class="sc">%&gt;%</span></span>
-<span id="cb310-8"><a href="#cb310-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(receive_year_fac)</span>
-<span id="cb310-9"><a href="#cb310-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb310-10"><a href="#cb310-10" aria-hidden="true" tabindex="-1"></a>wwlist <span class="sc">%&gt;%</span></span>
-<span id="cb310-11"><a href="#cb310-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(receive_year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb314"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb314-1"><a href="#cb314-1" aria-hidden="true" tabindex="-1"></a>wwlist<span class="sc">$</span>receive_year_fac <span class="ot">&lt;-</span> <span class="fu">factor</span>(wwlist<span class="sc">$</span>receive_year_int, </span>
+<span id="cb314-2"><a href="#cb314-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">labels=</span><span class="fu">c</span>(<span class="st">"Twenty-sixteen"</span>,<span class="st">"Twenty-seventeen"</span>,<span class="st">"Twenty-eighteen"</span>))</span>
+<span id="cb314-3"><a href="#cb314-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(wwlist<span class="sc">$</span>receive_year_fac)</span>
+<span id="cb314-4"><a href="#cb314-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(wwlist<span class="sc">$</span>receive_year)</span>
+<span id="cb314-5"><a href="#cb314-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb314-6"><a href="#cb314-6" aria-hidden="true" tabindex="-1"></a><span class="co">#Check variable</span></span>
+<span id="cb314-7"><a href="#cb314-7" aria-hidden="true" tabindex="-1"></a>wwlist <span class="sc">%&gt;%</span></span>
+<span id="cb314-8"><a href="#cb314-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(receive_year_fac)</span>
+<span id="cb314-9"><a href="#cb314-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb314-10"><a href="#cb314-10" aria-hidden="true" tabindex="-1"></a>wwlist <span class="sc">%&gt;%</span></span>
+<span id="cb314-11"><a href="#cb314-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(receive_year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>

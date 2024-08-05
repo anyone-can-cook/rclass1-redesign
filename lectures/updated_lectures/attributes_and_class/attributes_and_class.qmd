@@ -1266,10 +1266,66 @@ So should you work with `class==labelled` or `class==factor`?
 
 -   No right or wrong answer; this is a subjective decision
 -   Personally, I prefer `factor` class
-    -   Easier to run analysis
+    -   Easier to run analysis (see section below)
 -   `labelled` class
     -   Feels more suited to working with survey data variables, where there are usually several different values that represent different kinds of "missing" values. 
--   You can use both!
+-   You can use both! We recommend using labelled variables, particularly for exploratory data analysis, and factor variables for analysis when using categorical variables. 
+
+### Why factor variables are essential for analysis
+
+<br> 
+
+**When running analyses using categorical variables (e.g., marital status: single, married, divorced, etc.), it is best practice to use `class == factor` over `class == labelled`.** 
+
+To demonstrate a quick example, let's load data from ELS. We will use this data set later in the graphing and ggplot lecture, so don't worry about understanding it now. 
+
+```{r echo=FALSE}
+load(file = url('https://github.com/anyone-can-cook/educ152/raw/main/data/els/output_data/els_stu.RData'))
+```
+
+Say we are interested in the relationship between having an internship or co-op job (X) (in 2005-2006) on subsequent earnings (Y) (in 2011) after controlling for standardized reading test score (as a measure for high school achievement), sex, and race/ethnicity.  
+
+-   We have two linear models below, the first using variables that are class labelled and the second using variables that are class factor. 
+
+<br> 
+
+**Linear model `lm()` model using categorical variables of class `labelled`**
+```{r echo=FALSE}
+#class(df_els_stu_allobs$f2intern0506) 
+#class(df_els_stu_allobs$f3ern2011)
+#attributes(df_els_stu_allobs$bytxrstd)
+#attributes(df_els_stu_allobs$f1sex)
+#attributes(df_els_stu_allobs$f1race_v2)
+```
+
+```{r}
+intern_mod1 <- lm(formula = f3ern2011 ~ f2intern0506 + bytxrstd + f1sex + f1race_v2, data = df_els_stu_allobs %>% filter(f2enroll0506==1))
+
+summary(intern_mod1)
+```
+
+<br>
+
+**Linear model `lm()` model using categorical variables of class `factor`**
+```{r echo=FALSE}
+#class(df_els_stu_allobs_fac$f2intern0506) 
+#class(df_els_stu_allobs_fac$f3ern2011) #labelled + double
+#attributes(df_els_stu_allobs_fac$f2enroll0506)
+#attributes(df_els_stu_allobs_fac$bytxrstd) #labelled + double
+#attributes(df_els_stu_allobs_fac$f1sex)
+#attributes(df_els_stu_allobs_fac$f1race_v2)
+```
+
+```{r}
+intern_mod2 <- lm(formula = f3ern2011 ~ f2intern0506 + bytxrstd + f1sex + f1race_v2, data = df_els_stu_allobs_fac %>% filter(f2enroll0506=="yes"))
+
+summary(intern_mod2)
+```
+
+**Why does this matter?** 
+
+Notice that for the linear model `intern_mod1`, the coefficients for categorical variables sex and race are grouped together, whereas in the second linear model `intern_mod2`, using class factor variables, coefficients are calculated separately by "category" (e.g., female, male, black, white, Asian, etc.). 
+
 
 ## Converting `class==labelled` to `class==factor`
 
